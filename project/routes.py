@@ -36,6 +36,17 @@ def account():
 	return "account"
 
 
+@app.route("/course/care-certificate")
+def course():
+	return render_template("care-certificate.html")
+
+
+@app.route("/checkout/care-certificate")
+def checkout():
+	return "care-certificate_checkout"
+	return render_template("care-certificate_checkout.html")
+
+
 @app.route("/logout")
 def logout():
 	session.pop('username', None)
