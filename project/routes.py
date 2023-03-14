@@ -1,6 +1,7 @@
-from project import app
 from flask import render_template, request, session, redirect
 from functools import wraps
+from project import app, db
+from project.models import Users
 
 
 def login_required(f):
@@ -13,7 +14,6 @@ def login_required(f):
 
 
 @app.route("/")
-@login_required
 def home():
 	return render_template("home.html")
 
