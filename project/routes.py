@@ -43,8 +43,7 @@ def course():
 
 @app.route("/checkout/care-certificate")
 def checkout():
-	return "care-certificate_checkout"
-	return render_template("care-certificate_checkout.html")
+	return render_template("care-checkout.html")
 
 
 @app.route("/logout")
