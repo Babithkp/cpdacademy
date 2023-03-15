@@ -1,4 +1,4 @@
-from flask import render_template, request, session, redirect
+from flask import render_template, request, session, redirect, url_for
 from functools import wraps
 from project import app, db
 from project.models import Users
@@ -36,14 +36,24 @@ def account():
 	return "account"
 
 
-@app.route("/course/care-certificate")
-def course():
-	return render_template("care-certificate.html")
+@app.route("/info/care-info")
+def info_care():
+	return render_template("care-info.html")
 
 
-@app.route("/checkout/care-certificate")
+@app.route("/info/food-info")
+def info_food():
+	return render_template("food-info.html", disabled="disabled")
+
+
+@app.route("/info/mental-info")
+def info_mental():
+	return render_template("mental-info.html", disabled="disabled")
+
+
+@app.route("/checkout")
 def checkout():
-	return render_template("care-checkout.html")
+	return render_template("checkout.html")
 
 
 @app.route("/logout")
