@@ -15,18 +15,18 @@ def login_required(f):
 
 @app.route("/")
 def home():
-	return render_template("home.html")
+	return render_template("home.html", homepage="True")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
 	if request.method == "POST":
-		username = request.form["username"]
-		password = request.form["password"]
+		email = request.form.get("email")
+		password = request.form.get("password")
 
-		session["username"] = username
+		session["email"] = email
 
-		print(username, password)
+		print(email, password)
 	return render_template("login.html")
 
 

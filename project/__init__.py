@@ -1,6 +1,9 @@
 from flask import Flask, Blueprint
 from flask_sqlalchemy import SQLAlchemy
+import logging
 
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
 
 
 app = Flask(__name__)
