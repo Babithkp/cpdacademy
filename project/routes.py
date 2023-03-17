@@ -38,17 +38,17 @@ def account():
 
 @app.route("/info/care-info")
 def info_care():
-	return render_template("care-info.html")
+	return render_template("care-info.html", title="Care Certificate", img="/static/course/care-certificate_files/Care-Certificate-150x150.png")
 
 
 @app.route("/info/food-info")
 def info_food():
-	return render_template("food-info.html", disabled="disabled")
+	return render_template("food-info.html", title="Food Safety Certificate", img="/static/course/food/Food-Safety-and-Hygiene-in-Care-150x150.png", disabled="disabled")
 
 
 @app.route("/info/mental-info")
 def info_mental():
-	return render_template("mental-info.html", disabled="disabled")
+	return render_template("mental-info.html", title="Mental Health Certificate", img="/static/course/mental/Autism-Awareness-200x200.png", disabled="disabled")
 
 
 @app.route("/checkout")
