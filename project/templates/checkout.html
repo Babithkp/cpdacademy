@@ -1055,14 +1055,14 @@ The details supplied here will be used in your account - please double-check all
 					<td class="product-name">
 						Care Certificate&nbsp;						 <strong class="product-quantity">×&nbsp;1</strong>											</td>
 					<td class="product-total">
-						<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">£</span>5</bdi></span>					</td>
+						<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">£</span>150</bdi></span>					</td>
 				</tr>
 					</tbody>
 	<tfoot>
 
 		<tr class="cart-subtotal">
 			<th>Subtotal</th>
-			<td><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">£</span>20</bdi></span></td>
+			<td><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">£</span>150</bdi></span></td>
 		</tr>
 
 		
@@ -1083,22 +1083,22 @@ The details supplied here will be used in your account - please double-check all
 			
 		
 		
-									<tr class="tax-total">
+				<!-- <tr class="tax-total">
 					<th>VAT</th>
 					<td><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">£</span>150</bdi></span></td>
-				</tr>
+				</tr> -->
 					
 		
 		<tr class="order-total">
 			<th>Total</th>
-			<td><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">£</span>200</bdi></span></strong> </td>
+			<td><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">£</span>150</bdi></span></strong> </td>
 		</tr>
 
 		
 	</tfoot>
 </table>
 
-<div id="payment" class="woocommerce-checkout-payment">
+<!-- <div id="payment" class="woocommerce-checkout-payment">
 			<ul class="wc_payment_methods payment_methods methods">
 			<li class="wc_payment_method payment_method_stripe">
 	<input id="payment_method_stripe" type="radio" class="input-radio" name="payment_method" value="stripe" checked="checked" data-order_button_text="" style="display: none;">
@@ -1113,7 +1113,6 @@ The details supplied here will be used in your account - please double-check all
 
 				<div id="stripe-card-element" class="wc-stripe-elements-field StripeElement StripeElement--empty"><div class="__PrivateStripeElement" style="margin: 0px !important; padding: 0px !important; border: none !important; display: block !important; background: transparent !important; position: relative !important; opacity: 1 !important;"><iframe name="__privateStripeFrame7627" frameborder="0" allowtransparency="true" scrolling="no" role="presentation" allow="payment *" src="/static/checkout/care-checkout_files/elements-inner-card-e13c22424784c133ecaf081c49247ff4.html" title="Secure card payment input frame" style="border: none !important; margin-top: 0px; margin-right: 0px !important; margin-bottom: 0px !important; margin-left: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; user-select: none !important; transform: translate(0px) !important; color-scheme: light only !important; height: 18px;"></iframe><input class="__PrivateStripeElement-input" aria-hidden="true" aria-label=" " autocomplete="false" maxlength="1" style="border: none !important; display: block !important; position: absolute !important; height: 1px !important; top: -1px !important; left: 0px !important; padding: 0px !important; margin: 0px !important; width: 100% !important; opacity: 0 !important; background: transparent !important; pointer-events: none !important; font-size: 16px !important;"></div></div>
 			
-			<!-- Used to display form errors -->
 			<div class="stripe-source-errors" role="alert"></div>
 						<div class="clear"></div>
 		</fieldset>
@@ -1184,8 +1183,17 @@ The details supplied here will be used in your account - please double-check all
 		<button type="submit" class="button alt wp-element-button" name="woocommerce_checkout_place_order" id="place_order" value="Place order" data-value="Place order">Place order</button>
 		
 		<input type="hidden" id="woocommerce-process-checkout-nonce" name="woocommerce-process-checkout-nonce" value="65d4b26edf"><input type="hidden" name="_wp_http_referer" value="/?wc-ajax=update_order_review">	</div>
+</div> -->
+<div id="payment" class="woocommerce-checkout-payment">
+	<div id="smart-button-container">
+		<div style="text-align: center;">
+			<div id="paypal-button-container"></div>
+		</div>
+	</div>
+	  <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=GBP" data-sdk-integration-source="button-factory"></script>
+	  <script src="/static/checkout/paypal.js"></script>
+	
 </div>
-
 	</div>
 
 	
@@ -1282,7 +1290,7 @@ var cbxtakeatour = {"steps":[],"tour_label_pause":"Pause","tour_label_resume":"R
 <script id="thwcfe-public-checkout-script-js-extra">
 var thwcfe_public_var = {"lang":{"am":"am","pm":"pm","AM":"AM","PM":"PM","decimal":".","mins":"mins","hr":"hr","hrs":"hrs"},"language":"en","is_override_required":"","date_format":"d MM yy","dp_show_button_panel":"1","dp_change_month":"1","dp_change_year":"1","dp_prevent_close_onselect":"","readonly_date_field":"1","notranslate_dp":"1","restrict_time_slots_for_same_day":"1","rebind_all_cfields":"","change_event_disabled_fields":"","extra_cost_legacy_call":"","ajax_url":"https:\/\/cpdonline.co.uk\/wp-admin\/admin-ajax.php","user_id":"0","force_server_time_for_date_picker":"","force_server_time_for_time_picker":"","wp_max_upload_size":"268435456","wp_max_upload_size_warning":"Maximum upload size exceeded","use_custom_ship_to_different_address_css_selector":"","enable_autofill":"","billing_address_autofill":{"billing_address_1":"billing_address_1","billing_city":"billing_city","billing_country":"billing_country","billing_postcode":"billing_postcode","billing_state":"billing_state"},"shipping_address_autofill":{"shipping_address_1":"shipping_address_1","shipping_city":"shipping_city","shipping_country":"shipping_country","shipping_postcode":"shipping_postcode","shipping_state":"shipping_state"}};
 </script>
-<script src="/static/checkout/care-checkout_files/thwcfe-public-checkout.min.js" id="thwcfe-public-checkout-script-js"></script>
+<!-- <script src="/static/checkout/care-checkout_files/thwcfe-public-checkout.min.js" id="thwcfe-public-checkout-script-js"></script> -->
 <script src="/static/checkout/care-checkout_files/i18n.min.js" id="wp-i18n-js"></script>
 <script id="wp-i18n-js-after">
 wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
