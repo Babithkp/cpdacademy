@@ -7,7 +7,7 @@ from project.models import Users
 def login_required(f):
 	@wraps(f)
 	def decorated_function(*args, **kwargs):
-		if session.get("username") is None:
+		if session.get("email") is None:
 			return redirect("/login")
 		return f(*args, **kwargs)
 	return decorated_function
@@ -16,6 +16,26 @@ def login_required(f):
 @app.route("/")
 def home():
 	return render_template("home.html", homepage="True")
+
+
+@app.route("/signup", methods=["POST"])
+def signup():
+	form = request.form
+
+	print(form)
+	# f_name = form["f_name"]
+	# l_name = form["l_name"]
+	# company = form["company"]
+	# country = form["country"]
+	# addr_1 = form["addr_1"]
+	# addr_2 = form["addr_2"]
+	# city = form["city"]
+	# postal_code = form["postal_code"]
+	# phone = form["phone"]
+	# email = form["email"]
+	# passwd = form["passwd"]
+
+	return "Success"
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -58,5 +78,5 @@ def checkout():
 
 @app.route("/logout")
 def logout():
-	session.pop('username', None)
+	session.pop('email', None)
 	return redirect("/")

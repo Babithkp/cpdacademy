@@ -26,3 +26,18 @@ function validate_form() {
 
     return valid
 }
+
+function send_data() {
+    var form = new FormData()
+    fetch("/signup", {
+    method:"POST",
+    body: form
+    }).then(result => {
+        // do something with the result
+        console.log("Completed with result:", result);
+    }).catch(err => {
+        console.error(err);
+    });
+}
+
+send_data()
