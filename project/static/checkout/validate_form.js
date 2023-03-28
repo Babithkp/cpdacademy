@@ -11,7 +11,18 @@ var email = document.getElementById("billing_email")
 var passwd = document.getElementById("account_password")
 var c_passwd = document.getElementById("account_confirm_password")
 
+var inputs = [f_name, l_name, company, addr_1, city, postal_code, phone, email, passwd, c_passwd]
 
 function validate_form() {
-    return false
+    var valid = true
+
+    inputs.forEach((input)=> {
+        if(!input.checkValidity()) {
+            input.reportValidity()
+            valid = false
+            return
+        }
+    })
+
+    return valid
 }
