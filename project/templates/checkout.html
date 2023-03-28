@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0014)about:internet -->
-<html lang="en-GB" class=" js_active  vc_desktop  vc_transform  vc_transform "><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en-GB" class=" js_active  vc_desktop  vc_transform  vc_transform ">
+	{#<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
 	<meta name="robots" content="noindex, nofollow">
 
@@ -148,13 +149,7 @@ h1.entry-title{font-weight:700;}
 <link rel="stylesheet" id="um_tipsy-css" href="/static/checkout/care-checkout_files/um-tipsy.css" media="all">
 <link rel="stylesheet" id="um_responsive-css" href="/static/checkout/care-checkout_files/um-responsive.css" media="all">
 <link rel="stylesheet" id="um_default_css-css" href="/static/checkout/care-checkout_files/um-old-default.css" media="all">
-{#
-<!-- <script type="text/template" id="tmpl-variation-template">
-	<div class="woocommerce-variation-description">{{{ data.variation.variation_description }}}</div>
-	<div class="woocommerce-variation-price">{{{ data.variation.price_html }}}</div>
-	<div class="woocommerce-variation-availability">{{{ data.variation.availability_html }}}</div>
-</script> -->
-#}
+
 <script type="text/template" id="tmpl-unavailable-variation-template">
 	<p>Sorry, this product is unavailable. Please choose a different combination.</p>
 </script>
@@ -297,7 +292,8 @@ var wc_tokenization_form_params = {"is_registration_required":"1","is_logged_in"
 			}
 		</style>
 	
-<!-- Global site tag (gtag.js) - Google Ads: 769134375 --> <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-769134375"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-769134375'); </script>
+<!-- Global site tag (gtag.js) - Google Ads: 769134375 --> 
+<!-- <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-769134375"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-769134375'); </script> -->
 	
 <!-- Google Tag Manager for WordPress by gtm4wp.com -->
 <!-- GTM Container placement set to footer -->
@@ -929,7 +925,7 @@ label[for=card-element]
 
 	
 </form> -->
-
+#}
 <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:none">
 
 	<p>If you have a coupon code, please apply it below.</p>
@@ -1185,20 +1181,23 @@ The details supplied here will be used in your account - please double-check all
 		<input type="hidden" id="woocommerce-process-checkout-nonce" name="woocommerce-process-checkout-nonce" value="65d4b26edf"><input type="hidden" name="_wp_http_referer" value="/?wc-ajax=update_order_review">	</div>
 </div> -->
 <div id="payment" class="woocommerce-checkout-payment">
-	<div id="smart-button-container">
+	<!-- <div id="smart-button-container">
 		<div style="text-align: center;">
 			<div id="paypal-button-container"></div>
 		</div>
 	</div>
-	  <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=GBP" data-sdk-integration-source="button-factory"></script>
-	  <script src="/static/checkout/paypal.js"></script>
+	<script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=GBP" data-sdk-integration-source="button-factory"></script>
+	<script src="/static/checkout/paypal.js"></script> -->
 	
 </div>
 	</div>
 
 	
+<input type="button" value="VALIDATE" onclick="validate_form()">
 </form>
+<script src="/static/checkout/validate_form.js"></script>
 
+{#
 </div></div></div></div></div><section class="vc_section"><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-1/5"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div><div class="wpb_column vc_column_container vc_col-sm-1/5"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div><div class="wpb_column vc_column_container vc_col-sm-1/5"><div class="vc_column-inner"><div class="wpb_wrapper">
 	<div class="wpb_single_image wpb_content_element vc_align_left">
 		
@@ -1460,4 +1459,6 @@ jQuery(function($) {
 		display: none;
 	}
 </style>
-</div></body></html>
+</div>
+#}
+</body></html>
