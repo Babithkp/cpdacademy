@@ -2,12 +2,13 @@ from flask import render_template, request, session, redirect, url_for
 from functools import wraps
 from project import app, db
 from project.models import Users
-from time import sleep
+
+TITLE = "Healthcare CPD"
 
 def login_required(f):
 	@wraps(f)
 	def decorated_function(*args, **kwargs):
-		if session.get("email") is None:
+		if session.get("id") is None:
 			return redirect("/login")
 		return f(*args, **kwargs)
 	return decorated_function
@@ -15,20 +16,14 @@ def login_required(f):
 
 @app.route("/")
 def home():
-	return render_template("home.html", homepage="True")
+	return render_template("home.html", homepage="True", title=TITLE)
 
-# @app.route("/static/<path:path>")
-# def test(path):
-# 	return ""
 
 @app.route("/validate_email", methods=["POST"])
 def validate_email():
-	sleep(3)
 	email = request.form["email"]
 	if(Users.query.filter_by(email=email).first()):
-		print("Email already exits: " + email)
 		return "false"
-	print("Email does not exit " + email)
 	return "true"
 
 
@@ -48,7 +43,6 @@ def signup():
 	phone = form["phone"]
 
 	if(Users.query.filter_by(email=email).first()):
-		print("YO@")
 		return "email"
 
 	user = Users(
@@ -72,20 +66,24 @@ def signup():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+	if (session.get("id")):
+		return redirect("/account")
 	if request.method == "POST":
 		email = request.form.get("email")
 		password = request.form.get("password")
-
-		session["email"] = email
-
-		print(email, password)
-	return render_template("login.html")
+		user = Users.query.filter_by(email=email, password=password).first()
+		if(user):
+			session["id"] = user.id
+			session["email"] = email
+		return redirect("/account")
+	return render_template("login.html", title=TITLE)
 
 
 @app.route("/account")
 @login_required
 def account():
-	return "account"
+	user = Users.query.get(session["id"])
+	return render_template("account.html", user=user, title=TITLE)
 
 
 @app.route("/info/care-info")
@@ -105,7 +103,7 @@ def info_mental():
 
 @app.route("/checkout")
 def checkout():
-	return render_template("checkout.html")
+	return render_template("checkout.html", title=TITLE)
 
 
 @app.route("/logout")

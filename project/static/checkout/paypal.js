@@ -7,7 +7,11 @@ function initPayPalButton() {
       label: 'paypal',
 
     },
-
+    onClick: function(data, actions) {
+      if (!validate_form()) {
+        alert("Please Enter correct data in form")
+      }
+    },
     onInit: function (data, actions) {
       actions.disable();
       var form =  document.getElementById("signup_form")
@@ -49,12 +53,11 @@ function initPayPalButton() {
         const element = document.getElementById('paypal-button-container');
         element.innerHTML = '';
         element.innerHTML = '<h3>Thank you for your payment!</h3>';
-        var result = send_data()
-        alert("Go to login page to login and get access to course")
-        window.location.href = "/login"
-
-        // Or go to another URL:  actions.redirect('thank_you.html');
-
+        send_data().then(result=> {
+          console.log(result)
+          alert("Go to login page to login and get access to course")
+          window.location.href = "/login"
+        })
       });
     },
 

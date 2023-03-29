@@ -26,7 +26,7 @@ var inputs = {
     c_passwd: c_passwd,
 };
 
-async function validate_form() {
+function validate_form() {
     for (const key in inputs) {
         var input = inputs[key];
         if (!input.checkValidity()) {
@@ -36,7 +36,7 @@ async function validate_form() {
     }
 
     if (inputs["passwd"].value != inputs["c_passwd"].value) {
-        alert("Password Matching Failed\nPlease Enter same Passwords")
+        alert("Password Matching Failed")
         return false
     }
     return true
@@ -62,7 +62,6 @@ async function check_email(email) {
 
     var result = await send_data(form, url)
     if (result == "false") {
-        // alert("This Email Address is already in use")
         return "INVALID EMAIL"
     }
 
