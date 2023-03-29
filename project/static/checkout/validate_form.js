@@ -26,7 +26,7 @@ var inputs = {
     c_passwd: c_passwd,
 };
 
-function validate_form() {
+async function validate_form() {
     for (const key in inputs) {
         var input = inputs[key];
         if (!input.checkValidity()) {
@@ -39,7 +39,7 @@ function validate_form() {
         alert("Password Matching Failed\nPlease Enter same Passwords")
         return false
     }
-    return true;
+    return true
 }
 
 
@@ -54,15 +54,18 @@ function send_signup_info() {
 }
 
 async function check_email(email) {
+
+    console.log("CHECKING EMAIL")
     var form = new FormData();
     var url = "/validate_email"
-    form.append("email", email)
+    form.append("email", email.value)
 
     var result = await send_data(form, url)
     if (result == "false") {
-        alert("This Email Address is already in use")
+        // alert("This Email Address is already in use")
         return "INVALID EMAIL"
     }
+
     return "VALID EMAIL"
 }
 

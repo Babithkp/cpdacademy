@@ -12,6 +12,7 @@ function initPayPalButton() {
       actions.disable();
       var form =  document.getElementById("signup_form")
       form.addEventListener("change", (e)=> {
+        actions.disable();
         if (validate_form()) {
           console.log("form is valid")
           check_email(email).then((result) => {
@@ -19,10 +20,15 @@ function initPayPalButton() {
               actions.enable();
             }
             else {
-              console.log("THE HECK")
+              alert("This Email is already in use")
+              actions.disable();
             }
           }
-          )
+        )
+        }
+        else {
+          console.log("FORM IS NOT VALID")
+          actions.disable();
         }
       })
 
