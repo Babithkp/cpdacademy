@@ -108,25 +108,25 @@ def checkout():
 
 @app.route("/lms/care-certificate")
 def care_certificate():
-    return render_template("care_certificate/care_certificate.html")
+    return render_template("care_certificate/care_certificate.html", title=TITLE)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>")
 def unit(unit_id):
     unit_dir = f"care_certificate/units/unit_{unit_id}"
-    return render_template(f"{unit_dir}/index.html")
+    return render_template(f"{unit_dir}/index.html", title=TITLE)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/topic/<int:topic_id>")
 def topic(unit_id, topic_id):
     unit_dir = f"care_certificate/units/unit_{unit_id}"
-    return render_template(f"{unit_dir}/{topic_id}.html")
+    return render_template(f"{unit_dir}/{topic_id}.html", title=TITLE)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/quiz")
 def quiz(unit_id):
     unit_dir = f"care_certificate/units/unit_{unit_id}"
-    return render_template(f"{unit_dir}/quiz.html")
+    return render_template(f"{unit_dir}/quiz.html", title=TITLE)
 
 
 @app.route("/logout")
