@@ -9,7 +9,23 @@ function initPayPalButton() {
     },
 
     onInit: function (data, actions) {
-      // actions.disable();
+      actions.disable();
+      var form =  document.getElementById("signup_form")
+      form.addEventListener("change", (e)=> {
+        if (validate_form()) {
+          console.log("form is valid")
+          check_email(email).then((result) => {
+            if (result == "VALID EMAIL") {
+              actions.enable();
+            }
+            else {
+              console.log("THE HECK")
+            }
+          }
+          )
+        }
+      })
+
     },
     createOrder: function (data, actions) {
       return actions.order.create({
@@ -27,6 +43,9 @@ function initPayPalButton() {
         const element = document.getElementById('paypal-button-container');
         element.innerHTML = '';
         element.innerHTML = '<h3>Thank you for your payment!</h3>';
+        var result = send_data()
+        alert("Go to login page to login and get access to course")
+        window.location.href = "/login"
 
         // Or go to another URL:  actions.redirect('thank_you.html');
 
@@ -37,10 +56,6 @@ function initPayPalButton() {
       console.log(err);
     }
   }).render('#paypal-button-container');
-}
-
-function validateForm() {
-
 }
 
 initPayPalButton();

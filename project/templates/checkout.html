@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0014)about:internet -->
 <html lang="en-GB" class="js_active vc_desktop vc_transform vc_transform">
-  {#<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <meta name="robots" content="noindex, nofollow" />
@@ -9601,7 +9601,7 @@ fbq('track', 'PageView');
 
 	
 </form> -->
-                              #}
+                              
                               <form
                                 class="checkout_coupon woocommerce-form-coupon"
                                 method="post"
@@ -9646,9 +9646,9 @@ fbq('track', 'PageView');
                                 name="checkout"
                                 method="post"
                                 class="checkout woocommerce-checkout"
-                                action="https://cpdonline.co.uk/checkout/"
                                 enctype="multipart/form-data"
                                 novalidate="novalidate"
+                                id="signup_form"
                               >
                                 <div class="col2-set" id="customer_details">
                                   <div class="col-1">
@@ -10897,25 +10897,24 @@ fbq('track', 'PageView');
                                     id="payment"
                                     class="woocommerce-checkout-payment"
                                   >
-                                    <!-- <div id="smart-button-container">
+                                    <div id="smart-button-container">
 		<div style="text-align: center;">
 			<div id="paypal-button-container"></div>
 		</div>
 	</div>
-	<script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=GBP" data-sdk-integration-source="button-factory"></script>
-	<script src="/static/checkout/paypal.js"></script> -->
                                   </div>
                                 </div>
 
-                                <input
+                                <!-- <input
                                   type="button"
                                   value="VALIDATE"
                                   onclick="validate_form()"
-                                />
+                                /> -->
                               </form>
                               <script src="/static/checkout/validate_form.js"></script>
+                              <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=GBP" data-sdk-integration-source="button-factory"></script>
+                              <script src="/static/checkout/paypal.js"></script>
 
-                              {#
                             </div>
                           </div>
                         </div>
@@ -11348,10 +11347,10 @@ fbq('track', 'PageView');
         i18n_checkout_error: "Error processing checkout. Please try again.",
       };
     </script>
-    <script
+    <!-- <script
       src="/static/checkout/care-checkout_files/checkout.min.js"
       id="wc-checkout-js"
-    ></script>
+    ></script> -->
     <script id="wc-cart-fragments-js-extra">
       var wc_cart_fragments_params = {
         ajax_url: "\/wp-admin\/admin-ajax.php",
@@ -11388,12 +11387,12 @@ fbq('track', 'PageView');
       })(window, "tptag");
       tptag("init", 6021);
     </script>
-    <script
+    <!-- <script
       src="/static/checkout/care-checkout_files/jquery.payment.min.js"
       id="jquery-payment-js"
-    ></script>
-    <script src="https://js.stripe.com/v3/?ver=3.0" id="stripe-js"></script>
-    <script id="woocommerce_stripe-js-extra">
+    ></script> -->
+    <!-- <script src="https://js.stripe.com/v3/?ver=3.0" id="stripe-js"></script> -->
+    <!-- <script id="woocommerce_stripe-js-extra">
       var wc_stripe_params = {
         title: "",
         key: "pk_live_SiQ34IhxZu6R9WKeVLR3wgVu",
@@ -11465,7 +11464,7 @@ fbq('track', 'PageView');
     <script
       src="/static/checkout/care-checkout_files/stripe.min.js"
       id="woocommerce_stripe-js"
-    ></script>
+    ></script> -->
     <script id="ywdpd_popup-js-extra">
       var ywdpd_popup_args = {
         ajax_url: "https:\/\/cpdonline.co.uk\/wp-admin\/admin-ajax.php",
@@ -11834,6 +11833,6 @@ fbq('track', 'PageView');
         }
       </style>
     </div>
-    #}
+    
   </body>
 </html>

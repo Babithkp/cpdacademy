@@ -2,7 +2,7 @@ from flask import render_template, request, session, redirect, url_for
 from functools import wraps
 from project import app, db
 from project.models import Users
-
+from time import sleep
 
 def login_required(f):
 	@wraps(f)
@@ -17,25 +17,57 @@ def login_required(f):
 def home():
 	return render_template("home.html", homepage="True")
 
+# @app.route("/static/<path:path>")
+# def test(path):
+# 	return ""
+
+@app.route("/validate_email", methods=["POST"])
+def validate_email():
+	sleep(3)
+	email = request.form["email"]
+	if(Users.query.filter_by(email=email).first()):
+		print("Email already exits: " + email)
+		return "false"
+	print("Email does not exit " + email)
+	return "true"
+
 
 @app.route("/signup", methods=["POST"])
 def signup():
 	form = request.form
+	email = form["email"].lower()
+	passwd = form["passwd"]
+	f_name = form["f_name"]
+	l_name = form["l_name"]
+	company = form["company"]
+	country = form["country"]
+	addr1 = form["addr_1"]
+	addr2 = form["addr_2"]
+	city = form["city"]
+	postal_code = form["postal_code"]
+	phone = form["phone"]
 
-	print(form)
-	# f_name = form["f_name"]
-	# l_name = form["l_name"]
-	# company = form["company"]
-	# country = form["country"]
-	# addr_1 = form["addr_1"]
-	# addr_2 = form["addr_2"]
-	# city = form["city"]
-	# postal_code = form["postal_code"]
-	# phone = form["phone"]
-	# email = form["email"]
-	# passwd = form["passwd"]
+	if(Users.query.filter_by(email=email).first()):
+		print("YO@")
+		return "email"
 
-	return "Success"
+	user = Users(
+		email=email,
+		password=passwd,
+		f_name=f_name,
+		l_name=l_name,
+		company=company,
+		country=country,
+		addr1=addr1,
+		addr2=addr2,
+		city=city,
+		postcode=postal_code,
+		phone=phone
+	)
+	db.session.add(user)
+	db.session.commit()
+
+	return "success"
 
 
 @app.route("/login", methods=["GET", "POST"])
