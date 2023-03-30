@@ -32,10 +32,10 @@
 
                 <!-- COURSE START -->
                 {% for i in range(units| length) %}
-              <div class="inactive" id="lesson_list-151805">
+              <div class="inactive" id="lesson_list-{{i}}">
                 <div
                   class="list_arrow collapse flippable lesson_completed"
-                  onclick='return flip_expand_collapse("#lesson_list", 151805);'
+                  onclick='return flip_expand_collapse("#lesson_list", {{i}});'
                 ></div>
                 <div class="list_lessons">
                   <div class="lesson">
@@ -50,10 +50,11 @@
                   >
                     <ul>
                         {% for x in range(topics[i]| length) %}
-                      <li class="">
+                        {% if x + 1 != (topics[i]| length) %}
+                      <li>
                         <span class="topic_item"
                           ><a
-                            class="topic-completed"
+                            class="topic-{{unit_progress[i]}}"
                             href="/lms/care-certificate/unit/{{units[i].unit_id}}/topic/{{topics[i][x].section_id}}"
                             title="{{topics[i][x].title}}"
                             ><span
@@ -62,20 +63,20 @@
                           ></span
                         >
                       </li>
-                      
-                      <!-- <li class="quiz-item">
+                      {% else %}
+                      <li class="quiz-item">
                         <span class="topic_item"
                           ><a
-                            class="topic-completed"
+                            class="topic-{{unit_progress[i]}}"
                             href="/lms/care-certificate/unit/{{units[i].unit_id}}/quiz"
-                            title="Care Certificate Standard 1 – Understanding Your Role Quiz"
+                            title="{{topics[i][x].title}}"
                             ><span
-                              >Care Certificate Standard 1 – Understanding Your
-                              Role Quiz</span
+                              >{{topics[i][x].title}}</span
                             ></a
                           ></span
                         >
-                      </li> -->
+                      </li>
+                      {% endif %}
                       {% endfor %}
                     </ul>
                   </div>
