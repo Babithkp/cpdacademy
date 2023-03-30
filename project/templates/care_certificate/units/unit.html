@@ -10,16 +10,15 @@
             class="vc_custom_heading"
             style="color: #ffffff; text-align: left"
           >
-            Care Certificate Standard 1 – Understanding Your Role
+            {{units[unit_id-1].title}}
           </h1>
           <div class="wpb_text_column wpb_content_element">
              <div class="wpb_wrapper">
               <p>
                 <span style="color: #ffffff; font-size: 20px"
-                  >Below you will see the sections for this unit which you must
-                  work through. You must work through these in order from top to
-                  bottom. Once you have read a section you can click ‘Mark
-                  Complete’ to move on to the next.</span
+                  >
+Below you will see the sections for this unit which you must work through. You must work through these in order from top to bottom. Once you have read a section you can click ‘Mark Complete’ to move on to the next.
+                  </span
                 >
               </p>
             </div>
@@ -34,15 +33,15 @@
   <div class="learndash_topic_dots type-list" id="learndash_topic_dots-151805">
     <strong>Unit Sections</strong>
     <ul>
-        {% for i in topics[unit_id-1][:-1] %}
+        {% for i in range(topics[unit_id-1][:-1]|length) %}
       <li class="nth-of-type-odd">
         <span class="topic_item">
           <a
-            class="topic-{{topic_progress[unit_id-1][i.section_id-1]}}"
-            href="/lms/care-certificate/unit/{{unit_id}}/topic/{{i.section_id}}"
-            title="{{i.title}}"
+            class="topic-{{topic_progress[unit_id-1][i]}}"
+            href="/lms/care-certificate/unit/{{unit_id}}/topic/{{i+1}}"
+            title="{{topics[unit_id-1][i].title}}"
           >
-            <span>{{i.title}}</span>
+            <span>{{topics[unit_id-1][i].title}}</span>
           </a>
         </span>
       </li>
