@@ -54,11 +54,12 @@
                       <li>
                         <span class="topic_item"
                           ><a
-                            class="topic-{{unit_progress[i]}}"
+                            class="topic-{{topic_progress[i][x]}}"
                             href="/lms/care-certificate/unit/{{units[i].unit_id}}/topic/{{topics[i][x].section_id}}"
                             title="{{topics[i][x].title}}"
                             ><span
-                              >{{topics[i][x].title}}</span
+                              >{{topics[i][x].title}}
+                              </span
                             ></a
                           ></span
                         >
@@ -67,7 +68,7 @@
                       <li class="quiz-item">
                         <span class="topic_item"
                           ><a
-                            class="topic-{{unit_progress[i]}}"
+                            class="topic-{{topic_progress[i][x]}}"
                             href="/lms/care-certificate/unit/{{units[i].unit_id}}/quiz"
                             title="{{topics[i][x].title}}"
                             ><span

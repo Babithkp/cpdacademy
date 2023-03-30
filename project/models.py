@@ -51,6 +51,7 @@ class Unit_Progress(db.Model):
 class Progress(db.Model):
     __tablename__ = 'Progress'
     progress_id = db.Column(db.Integer, primary_key=True)
+    unit_id = db.Column(db.Integer)
     user_id = db.Column(db.Integer)
     section_id = db.Column(db.Integer)
     status = db.Column(db.Boolean, default=True)

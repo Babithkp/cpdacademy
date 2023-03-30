@@ -106,16 +106,18 @@ def checkout():
 	return render_template("checkout.html", title=TITLE)
 
 
-@app.route("/lms/care-certificate")
-@login_required
-def care_certificate():
+def get_units():
 	units = Unit.query.all()
-	topics = []
+	return units
 
+def get_topics(units):
+	topics = []
 	for i in units:
 		topic = Section.query.filter_by(unit_id=i.unit_id).all()
 		topics.append(topic)
+	return topics
 
+def get_unit_progress(units):
 	all_unit_progress = Unit_Progress.query.filter_by(user_id=session["id"]).order_by("unit_id")
 	unit_progress = []
 	for i in units:
@@ -124,28 +126,58 @@ def care_certificate():
 	for i in range(all_unit_progress.count()):
 		unit_progress[i] = "completed"
 
-	return render_template("care_certificate/care_certificate.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics)
+	return unit_progress
+
+def get_topic_progress(topics):
+	all_topic_progress = Progress.query.filter_by(user_id=session["id"]).order_by("section_id")
+	topic_progress = []
+	for i in topics:
+		temp = []
+		for x in range(len(i)):
+			temp.append("notcompleted")
+		topic_progress.append(temp)
+	for i in range(all_topic_progress.count()):
+		unit_id = all_topic_progress[i].unit_id
+		section_id = all_topic_progress[i].section_id
+		topic_progress[unit_id-1][section_id-1] = "completed"
+	return topic_progress
+
+@app.route("/lms/care-certificate")
+@login_required
+def care_certificate():
+	units = get_units()
+	topics = get_topics(units)
+	unit_progress = get_unit_progress(units)
+	topic_progress = get_topic_progress(topics)
+
+	return render_template("care_certificate/care_certificate.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>")
 @login_required
 def unit(unit_id):
-    unit_dir = f"care_certificate/units/unit_{unit_id}"
-    return render_template(f"{unit_dir}/index.html", title=TITLE)
+	unit_dir = f"care_certificate/units"
+	
+	units = get_units()
+	topics = get_topics(units)
+	unit_progress = get_unit_progress(units)
+	topic_progress = get_topic_progress(topics)
+
+	return render_template(f"{unit_dir}/unit.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, unit_id=unit_id)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/topic/<int:topic_id>")
 @login_required
 def topic(unit_id, topic_id):
-    unit_dir = f"care_certificate/units/unit_{unit_id}"
-    return render_template(f"{unit_dir}/{topic_id}.html", title=TITLE)
+	unit_dir = f"care_certificate/units/unit_{unit_id}"
+	return render_template(f"{unit_dir}/{topic_id}.html", title=TITLE)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/quiz")
 @login_required
 def quiz(unit_id):
-    unit_dir = f"care_certificate/units/unit_{unit_id}"
-    return render_template(f"{unit_dir}/quiz.html", title=TITLE)
+	unit_dir = f"care_certificate/units/unit_{unit_id}"
+	return render_template(f"{unit_dir}/quiz.html", title=TITLE)
 
 
 @app.route("/logout")
