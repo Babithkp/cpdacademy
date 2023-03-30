@@ -1,7 +1,7 @@
 from flask import render_template, request, session, redirect, url_for
 from functools import wraps
 from project import app, db
-from project.models import Users
+from project.models import Users, Unit, Section, Progress, Unit_Progress
 
 TITLE = "Healthcare CPD"
 
@@ -107,23 +107,42 @@ def checkout():
 
 
 @app.route("/lms/care-certificate")
+@login_required
 def care_certificate():
-    return render_template("care_certificate/care_certificate.html", title=TITLE)
+	units = Unit.query.all()
+	topics = []
+
+	for i in units:
+		topic = Section.query.filter_by(unit_id=i.unit_id).all()
+		topics.append(topic)
+
+	all_unit_progress = Unit_Progress.query.filter_by(user_id=session["id"]).order_by("unit_id")
+	unit_progress = []
+	for i in units:
+		unit_progress.append("notcompleted")
+
+	for i in range(all_unit_progress.count()):
+		unit_progress[i] = "completed"
+
+	return render_template("care_certificate/care_certificate.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>")
+@login_required
 def unit(unit_id):
     unit_dir = f"care_certificate/units/unit_{unit_id}"
     return render_template(f"{unit_dir}/index.html", title=TITLE)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/topic/<int:topic_id>")
+@login_required
 def topic(unit_id, topic_id):
     unit_dir = f"care_certificate/units/unit_{unit_id}"
     return render_template(f"{unit_dir}/{topic_id}.html", title=TITLE)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/quiz")
+@login_required
 def quiz(unit_id):
     unit_dir = f"care_certificate/units/unit_{unit_id}"
     return render_template(f"{unit_dir}/quiz.html", title=TITLE)
@@ -131,5 +150,6 @@ def quiz(unit_id):
 
 @app.route("/logout")
 def logout():
+	session.pop('id', None)
 	session.pop('email', None)
 	return redirect("/")
