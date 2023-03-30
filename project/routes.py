@@ -170,6 +170,10 @@ def unit(unit_id):
 @login_required
 def topic(unit_id, topic_id):
 	unit_dir = f"care_certificate/units/unit_{unit_id}"
+	if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=topic_id).first():
+		progress = Progress(unit_id=unit_id, user_id=session["id"], section_id=topic_id)
+		db.session.add(progress)
+		db.session.commit()
 	return render_template(f"{unit_dir}/{topic_id}.html", title=TITLE)
 
 
@@ -178,6 +182,19 @@ def topic(unit_id, topic_id):
 def quiz(unit_id):
 	unit_dir = f"care_certificate/units/unit_{unit_id}"
 	return render_template(f"{unit_dir}/quiz.html", title=TITLE)
+
+
+@app.route("/lms/care-certificate/unit/<int:unit_id>/quiz/<int:section_id>/done")
+def done_quiz(unit_id, section_id):
+	if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=topic_id).first():
+		progress = Progress(unit_id=unit_id, user_id=session["id"], section_id=topic_id)
+		db.session.add(progress)
+		db.session.commit()
+	if not Unit_Progress.query.filter_by(user_id=session["id"], unit_id=unit_id).first():
+		unit = Unit_Progress(user_id=session["id"], unit_id=unit_id, status=True)
+		db.session.add(unit)
+		db.session.commit()
+	return "ok"
 
 
 @app.route("/logout")

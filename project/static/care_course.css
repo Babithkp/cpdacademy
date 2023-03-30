@@ -1,0 +1,7 @@
+.notcompleted :not(:first-child) {
+    display: none !important;
+}
+
+.topic-notcompleted :not(:first-child) {
+    display: none !important;
+}
