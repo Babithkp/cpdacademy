@@ -41,9 +41,16 @@ class Section(db.Model):
     title = db.Column(db.Text)
     type = db.Column(db.Text)
 
+class Unit_Progress(db.Model):
+    __tablename__ = "Unit_progress"
+    unit_progress_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer)
+    unit_id = db.Column(db.Integer)
+    status = db.Column(db.Boolean, default=True)
+
 class Progress(db.Model):
     __tablename__ = 'Progress'
     progress_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
     section_id = db.Column(db.Integer)
-    status = db.Column(db.Boolean, default=False)
+    status = db.Column(db.Boolean, default=True)
