@@ -1,11 +1,16 @@
-btn_check = document.getElementById("btn_check")
+var btn_check = document.getElementById("btn_check")
+var btn_next_unit = document.getElementById("btn_next_unit")
+
+var url = window.location.href
+url = url.split("/")
+var unit_id = parseInt(url[url.length - 2])
 
 function check_quiz() {
     var correct_answers = 0
 
     ol = document.getElementsByTagName("ol")[2]
     li = ol.children
-    for (let i=0 ; i<li.length - 1 ; i++) {
+    for (let i = 0; i < li.length - 1; i++) {
         var quiz_li = li[i] // Direct li element of ol tag
         options = quiz_li.getElementsByTagName("li") // inside each quiz_li there is ul which contains all options as li tag
 
@@ -51,8 +56,6 @@ function check_quiz() {
 }
 
 function result(unit_id, correct_answers) {
-    alert(unit_id)
-    return
     var result_div = document.getElementById("result_div")
     var correct_answers_div = document.getElementById("correct_answers")
     var restart_quiz = document.getElementById("restart_quiz")
@@ -65,22 +68,46 @@ function result(unit_id, correct_answers) {
     // If passed
     if (correct_answers >= 12) {
         msg_passed.style.display = "block"
-
+        var url = `/lms/care-certificate/unit/${unit_id}/quiz/done`
+        fetch(url).then(resp => resp.text()).then(result => console.log(result)).then(()=> {
+            btn_next_unit.style.display = ""
+        })
     }
     // If failed
     else
         msg_failed.style.display = "block"
 
-    restart_quiz.onclick = ()=> {
+    restart_quiz.onclick = () => {
         location.href = location.href
     }
 }
 
 
 
-function btn_check_click (unit_id) {
+function btn_check_click() {
     var correct_answers = check_quiz()
     result(unit_id, correct_answers)
 }
 
+function btn_next_unit_click() {
+    var unit = unit_id+1
+    var url = `/lms/care-certificate/unit/${unit}`
+    window.location.href = url
+}
+
 btn_check.onclick = btn_check_click
+btn_next_unit.onclick = btn_next_unit_click
+
+// Hightlight correct quiz
+function Hightlight_correct() {
+    var a = document.getElementsByClassName("wpProQuiz_questionListItem")
+    for (var i = 0; i < a.length; i++) {
+        var input = a[i].children[1].children[0]
+        if (input.value == "1") {
+            input.checked = true
+            a[i].style.color = "red"
+        }
+    }
+}
+
+Hightlight_correct()

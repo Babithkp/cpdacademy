@@ -128,17 +128,31 @@ def get_unit_progress(units):
 	return unit_progress
 
 def get_topic_progress(topics):
-	all_topic_progress = Progress.query.filter_by(user_id=session["id"]).order_by("section_id")
+	all_topic_progress = Progress.query.filter_by(user_id=session["id"]).order_by("section_id").all()
 	topic_progress = []
 	for i in topics:
 		temp = []
 		for x in range(len(i)):
 			temp.append("notcompleted")
 		topic_progress.append(temp)
-	for i in range(all_topic_progress.count()):
-		unit_id = all_topic_progress[i].unit_id
-		section_id = all_topic_progress[i].section_id
-		topic_progress[unit_id-1][section_id-1] = "completed"
+
+	formated_progress = []
+	prev_unit = all_topic_progress[0].unit_id
+	temp = []
+	for i in all_topic_progress:
+		if (i.unit_id == prev_unit):
+			temp.append("completed")
+		else:
+			formated_progress.append(temp)
+			temp = []
+			temp.append("completed")
+		prev_unit = i.unit_id
+
+	formated_progress.append(temp)
+	for i in range(len(formated_progress)):
+		for x in range(len(formated_progress[i])):
+			topic_progress[i][x] = formated_progress[i][x]
+
 	return topic_progress
 
 @app.route("/lms/care-certificate")
@@ -149,7 +163,10 @@ def care_certificate():
 	unit_progress = get_unit_progress(units)
 	topic_progress = get_topic_progress(topics)
 
-	return render_template("care_certificate/care_certificate.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, Markup=Markup)
+	total_topics = Section.query.count()
+	completed_topics = Progress.query.filter_by(user_id=session["id"]).count()
+
+	return render_template("care_certificate/care_certificate.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, Markup=Markup, total_topics=total_topics, completed_topics=completed_topics)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>")
@@ -162,15 +179,20 @@ def unit(unit_id):
 	unit_progress = get_unit_progress(units)
 	topic_progress = get_topic_progress(topics)
 
-	return render_template(f"{unit_dir}/unit.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, unit_id=unit_id, Markup=Markup)
+	total_topics = Section.query.count()
+	completed_topics = Progress.query.filter_by(user_id=session["id"]).count()
+
+	return render_template(f"{unit_dir}/unit.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, unit_id=unit_id, Markup=Markup, total_topics=total_topics, completed_topics=completed_topics)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/topic/<int:topic_id>")
 @login_required
 def topic(unit_id, topic_id):
 	unit_dir = f"care_certificate/units/unit_{unit_id}"
-	if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=topic_id).first():
-		progress = Progress(unit_id=unit_id, user_id=session["id"], section_id=topic_id)
+
+	section_id = Section.query.filter_by(unit_id=unit_id).order_by("section_id").all()[topic_id-1].section_id
+	if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=section_id).first():
+		progress = Progress(unit_id=unit_id, user_id=session["id"], section_id=section_id)
 		db.session.add(progress)
 		db.session.commit()
 	return render_template(f"{unit_dir}/{topic_id}.html", title=TITLE)
@@ -184,7 +206,11 @@ def quiz(unit_id):
 	topics = get_topics(units)
 	unit_progress = get_unit_progress(units)
 	topic_progress = get_topic_progress(topics)
-	return render_template(f"{unit_dir}/quiz.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, unit_id=unit_id, Markup=Markup)
+
+	total_topics = Section.query.count()
+	completed_topics = Progress.query.filter_by(user_id=session["id"]).count()
+
+	return render_template(f"{unit_dir}/quiz.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, unit_id=unit_id, Markup=Markup, total_topics=total_topics, completed_topics=completed_topics)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/quiz/done")

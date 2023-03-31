@@ -12,9 +12,9 @@
         <dd
           class="course_progress"
           title="
-749 out of 749 steps completed"
+{{completed_topics}} out of {{total_topics}} steps completed"
         >
-          <div class="course_progress_blue" style="width: 100%"></div>
+          <div class="course_progress_blue" style="width: {{completed_topics / total_topics * 100}}%"></div>
         </dd>
       </aside>
       <aside

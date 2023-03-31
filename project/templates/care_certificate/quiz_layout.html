@@ -10060,8 +10060,56 @@
                         <p></p>
                       </div>
 
-                      {% block result %}
-                      {% endblock %}
+<!-- RESULT START -->
+<div class="wpProQuiz_results" id="result_div" style="display: none">
+  <h4 class="wpProQuiz_header">Results</h4>
+  <p>
+    <span class="wpProQuiz_correct_answer" id="correct_answers"> 5 </span>
+    of
+    <span> 15 </span>
+    Questions answered correctly
+  </p>
+  <div>
+    <ul class="wpProQuiz_resultsList">
+      <li id="msg_failed" style="display: none">
+        <div>
+          <p>
+            You have failed the quiz. But don’t worry – you can go back to the
+            lessons and then tackle this quiz again as many times as you need to
+            pass.
+          </p>
+        </div>
+      </li>
+      <li id="msg_passed" style="display: none">
+        <div>
+          <p>Well done on passing the quiz!</p>
+          <p>
+            You have now completed the Care Certificate {{unit_id}} quiz! You can now move
+            onto the next section.
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="ld-quiz-actions" style="margin: 10px 0px">
+    <input
+      class="wpProQuiz_button wpProQuiz_button_restartQuiz"
+      id="restart_quiz"
+      name="restartQuiz"
+      type="button"
+      value="Restart Quiz"
+    />
+    <input
+      class="wpProQuiz_button wpProQuiz_button_restartQuiz"
+      style="display: none;"
+      id="btn_next_unit"
+      name="btn_next_unit"
+      type="button"
+      value="Next Unit"
+    />
+  </div>
+</div>
+<!-- RESULT END -->
                       <div class="wpProQuiz_reviewDiv" style="display: none">
                         <div class="wpProQuiz_reviewQuestion">
                           <ol>
@@ -10868,14 +10916,5 @@
       src="/static/quiz_files/lazyload.min(1).js"
     ></script>
     <script src="/static/disable_uncomplete.js"></script>
-    <script>
-      // Hightlight correct quiz
-      var a = document.getElementsByClassName("wpProQuiz_questionListItem")
-      for (var i=0;i<a.length;i++) {
-        if(a[i].children[1].children[0].value == "1") {
-          a[i].style.color = "red"
-        }
-      }
-    </script>
   </body>
 </html>
