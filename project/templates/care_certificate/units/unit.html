@@ -29,6 +29,7 @@ Below you will see the sections for this unit which you must work through. You m
     </div>
   </div>
 </div>
+
 {% endblock %} {% block content %}
 <div class="learndash_lesson_topics_list" id="learndash_lesson_topics_list">
   <div class="learndash_topic_dots type-list" id="learndash_topic_dots-151805">
@@ -39,7 +40,8 @@ Below you will see the sections for this unit which you must work through. You m
         <span class="topic_item">
           <a
             class="topic-{{topic_progress[unit_id-1][i]}}"
-            href="/lms/care-certificate/unit/{{unit_id}}/topic/{{i+1}}"
+            href="#topic"
+            onclick="go_topic('{{unit_id}}', '{{i+1}}')"
             title="{{topics[unit_id-1][i].title}}"
           >
             <span>{{topics[unit_id-1][i].title}}</span>

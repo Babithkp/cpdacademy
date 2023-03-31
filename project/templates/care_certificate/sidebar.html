@@ -28,7 +28,7 @@
           id="course_navigation"
         >
           <div class="ld-course-navigation-widget-content-contaiiner">
-            <div class="learndash_navigation_lesson_topics_list">
+            <div class="learndash_navigation_lesson_topics_list" id="sidebar_lessons">
 
                 <!-- COURSE START -->
                 {% for i in range(units| length) %}
@@ -55,7 +55,8 @@
                         <span class="topic_item"
                           ><a
                             class="topic-{{topic_progress[i][x]}}"
-                            href="/lms/care-certificate/unit/{{units[i].unit_id}}/topic/{{x+1}}"
+                            href="#topic"
+                            onclick="go_topic('{{units[i].unit_id}}', '{{x+1}}')"
                             title="{{topics[i][x].title}}"
                             ><span
                               >{{topics[i][x].title}}
@@ -95,3 +96,7 @@
     </div>
   </div>
 </div>
+
+<script>
+var unit_progress = []
+</script>
