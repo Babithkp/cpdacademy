@@ -38,7 +38,7 @@ if (sidebar_unit_div) {
     // var sidebar_units = sidebar_unit_div.getElementsByClassName("")
     var sidebar_topics = sidebar_unit_div.getElementsByClassName("topic-notcompleted")
     for (var i=1;i<sidebar_topics.length;i++) {
-        sidebar_topics[i].parentElement.parentElement.remove()
+        sidebar_topics[i].parentElement.parentElement.style.display ="none"
     }
 }
 

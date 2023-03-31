@@ -1,4 +1,4 @@
-from flask import render_template, request, session, redirect, url_for
+from flask import render_template, request, session, redirect, url_for, Markup
 from functools import wraps
 from project import app, db
 from project.models import Users, Unit, Section, Progress, Unit_Progress
@@ -122,7 +122,6 @@ def get_unit_progress(units):
 	unit_progress = []
 	for i in units:
 		unit_progress.append("notcompleted")
-
 	for i in range(all_unit_progress.count()):
 		unit_progress[i] = "completed"
 
@@ -150,7 +149,7 @@ def care_certificate():
 	unit_progress = get_unit_progress(units)
 	topic_progress = get_topic_progress(topics)
 
-	return render_template("care_certificate/care_certificate.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress)
+	return render_template("care_certificate/care_certificate.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, Markup=Markup)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>")
@@ -163,7 +162,7 @@ def unit(unit_id):
 	unit_progress = get_unit_progress(units)
 	topic_progress = get_topic_progress(topics)
 
-	return render_template(f"{unit_dir}/unit.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, unit_id=unit_id)
+	return render_template(f"{unit_dir}/unit.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, unit_id=unit_id, Markup=Markup)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/topic/<int:topic_id>")
@@ -181,7 +180,11 @@ def topic(unit_id, topic_id):
 @login_required
 def quiz(unit_id):
 	unit_dir = f"care_certificate/units/unit_{unit_id}"
-	return render_template(f"{unit_dir}/quiz.html", title=TITLE)
+	units = get_units()
+	topics = get_topics(units)
+	unit_progress = get_unit_progress(units)
+	topic_progress = get_topic_progress(topics)
+	return render_template(f"{unit_dir}/quiz.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, unit_id=unit_id, Markup=Markup)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/quiz/<int:section_id>/done")

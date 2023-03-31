@@ -98,5 +98,18 @@
 </div>
 
 <script>
-var unit_progress = []
+var unit_progress = {{Markup(unit_progress)}}
+var tracker = 0;
+for (var i=0;i<unit_progress.length;i++) {
+  var p = unit_progress[i]
+  if (p == "notcompleted") {
+    var lesson_list = document.getElementById("lesson_list-" + i)
+    // lesson_list.onclick = ()=> {
+    //   return false
+    // }
+    if (tracker > 0) lesson_list.style.display = "none";
+    tracker++;
+
+  }
+}
 </script>
