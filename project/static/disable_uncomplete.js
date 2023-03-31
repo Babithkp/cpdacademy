@@ -34,6 +34,7 @@ if (unit_div) {
 
 // FOR SIDE BAR
 var sidebar_unit_div = document.getElementById("sidebar_lessons")
+// console.log(sidebar_unit_div)
 if (sidebar_unit_div) {
     // var sidebar_units = sidebar_unit_div.getElementsByClassName("")
     var sidebar_topics = sidebar_unit_div.getElementsByClassName("topic-notcompleted")

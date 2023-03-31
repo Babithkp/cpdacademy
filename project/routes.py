@@ -190,7 +190,7 @@ def quiz(unit_id):
 @app.route("/lms/care-certificate/unit/<int:unit_id>/quiz/<int:section_id>/done")
 def done_quiz(unit_id, section_id):
 	if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=topic_id).first():
-		progress = Progress(unit_id=unit_id, user_id=session["id"], section_id=topic_id)
+		progress = Progress(unit_id=unit_id, user_id=session["id"], section_id=section_id)
 		db.session.add(progress)
 		db.session.commit()
 	if not Unit_Progress.query.filter_by(user_id=session["id"], unit_id=unit_id).first():
