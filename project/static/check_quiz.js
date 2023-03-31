@@ -70,7 +70,9 @@ function result(unit_id, correct_answers) {
         msg_passed.style.display = "block"
         var url = `/lms/care-certificate/unit/${unit_id}/quiz/done`
         fetch(url).then(resp => resp.text()).then(result => console.log(result)).then(()=> {
+        if (unit_id < 15) {
             btn_next_unit.style.display = ""
+        }
         })
     }
     // If failed

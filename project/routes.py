@@ -71,6 +71,10 @@ def login():
 	if request.method == "POST":
 		email = request.form.get("email")
 		password = request.form.get("password")
+		if email == "admin@admin.com" and password == "admin":
+			session["id"] = -1
+			session["email"] = email
+			return redirect("/admin")
 		user = Users.query.filter_by(email=email, password=password).first()
 		if(user):
 			session["id"] = user.id
@@ -84,6 +88,17 @@ def login():
 def account():
 	user = Users.query.get(session["id"])
 	return render_template("account.html", user=user, title=TITLE)
+
+
+@app.route("/admin")
+def admin():
+	if (session["email"] != "admin@admin.com"):
+		return redirect("/account")
+	unit_progress = Unit_Progress.query.filter_by(unit_id=15, status=True).all()
+	users = []
+	for i in unit_progress:
+		users.append(Users.query.get(i.user_id))
+	return render_template("admin.html", users=users)
 
 
 @app.route("/info/care-info")

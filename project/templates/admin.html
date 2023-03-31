@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            margin: 10px;
+        }
+        table {
+            width: 100%;
+        }
+        h1, h3, td, th {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+   <h1>Admin Panel</h1>
+   <h3><a href="/logout">LOGOUT</a></h3>
+   <table border="2">
+<tr>
+    <th>No</th>
+    <th>Name</th>
+    <th>Email</th>
+</tr>
+    {% for i in range(users|length) %}
+        <tr>
+            <td>{{i}}</td>
+            <td>{{users[i].f_name}} {{users[i].l_name}}</td>
+            <td>{{users[i].email}}</td>
+        </tr>
+    {% endfor %}
+   </table>
+</body>
+</html>
