@@ -10868,5 +10868,14 @@
       src="/static/quiz_files/lazyload.min(1).js"
     ></script>
     <script src="/static/disable_uncomplete.js"></script>
+    <script>
+      // Hightlight correct quiz
+      var a = document.getElementsByClassName("wpProQuiz_questionListItem")
+      for (var i=0;i<a.length;i++) {
+        if(a[i].children[1].children[0].value == "1") {
+          a[i].style.color = "red"
+        }
+      }
+    </script>
   </body>
 </html>

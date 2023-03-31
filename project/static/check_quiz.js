@@ -50,7 +50,9 @@ function check_quiz() {
     return correct_answers
 }
 
-function result(correct_answers) {
+function result(unit_id, correct_answers) {
+    alert(unit_id)
+    return
     var result_div = document.getElementById("result_div")
     var correct_answers_div = document.getElementById("correct_answers")
     var restart_quiz = document.getElementById("restart_quiz")
@@ -60,9 +62,12 @@ function result(correct_answers) {
     result_div.style.display = "block"
     correct_answers_div.innerText = correct_answers
 
+    // If passed
     if (correct_answers >= 12) {
         msg_passed.style.display = "block"
+
     }
+    // If failed
     else
         msg_failed.style.display = "block"
 
@@ -73,7 +78,9 @@ function result(correct_answers) {
 
 
 
-btn_check.onclick = ()=> {
+function btn_check_click (unit_id) {
     var correct_answers = check_quiz()
-    result(correct_answers)
+    result(unit_id, correct_answers)
 }
+
+btn_check.onclick = btn_check_click

@@ -187,9 +187,10 @@ def quiz(unit_id):
 	return render_template(f"{unit_dir}/quiz.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, unit_id=unit_id, Markup=Markup)
 
 
-@app.route("/lms/care-certificate/unit/<int:unit_id>/quiz/<int:section_id>/done")
-def done_quiz(unit_id, section_id):
-	if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=topic_id).first():
+@app.route("/lms/care-certificate/unit/<int:unit_id>/quiz/done")
+def done_quiz(unit_id):
+	section_id = Section.query.filter_by(unit_id=unit_id, type="quiz").first().section_id
+	if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=section_id).first():
 		progress = Progress(unit_id=unit_id, user_id=session["id"], section_id=section_id)
 		db.session.add(progress)
 		db.session.commit()
