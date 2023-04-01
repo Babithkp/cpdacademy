@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,31 +9,75 @@
     <style>
         body {
             margin: 10px;
+            height: 98%;
+            width: 98%;
+            padding: 10px;
         }
+
         table {
             width: 100%;
         }
-        h1, h3, td, th {
+
+        thead {
+            background-color: rgb(48, 48, 48);
+            color: white;
+        }
+
+        h1,
+        h3,
+        td,
+        th {
+            padding: 6px;
             text-align: center;
+        }
+
+        .done {
+            color: white;
+            background-color: rgb(0, 107, 0);
+        }
+
+        .not-done {
+            color: white;
+            background-color: brown;
         }
     </style>
 </head>
+
 <body>
-   <h1>Admin Panel</h1>
-   <h3><a href="/logout">LOGOUT</a></h3>
-   <table border="2">
-<tr>
-    <th>No</th>
-    <th>Name</th>
-    <th>Email</th>
-</tr>
-    {% for i in range(users|length) %}
-        <tr>
-            <td>{{i}}</td>
-            <td>{{users[i].f_name}} {{users[i].l_name}}</td>
-            <td>{{users[i].email}}</td>
-        </tr>
-    {% endfor %}
-   </table>
+    <h1>Admin Panel</h1>
+    <h3><a href="/logout">LOGOUT</a></h3>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Progress</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{user["num"]}}</td>
+                <td>{{user["user"].f_name}} {{user["user"].l_name}}</td>
+                <td>
+                    <a href="mailto:{{user["user"].email}}">{{user["user"].email}}</a>
+                </td>
+                <td>{{user["done"]}} / {{user["total"]}}</td>
+                {% if user["done"] == user["total"] %}
+                <th class="done">
+                    DONE
+                </th>
+                {% else %}
+                <th class="not-done">
+                    PENDING
+                </th>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
+
 </html>

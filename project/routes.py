@@ -92,13 +92,26 @@ def account():
 
 @app.route("/admin")
 def admin():
-	if (session["email"] != "admin@admin.com"):
+	if (session.get("email") != "admin@admin.com"):
 		return redirect("/account")
-	unit_progress = Unit_Progress.query.filter_by(unit_id=15, status=True).all()
-	users = []
-	for i in unit_progress:
-		users.append(Users.query.get(i.user_id))
-	return render_template("admin.html", users=users)
+	users_data = []
+	all_users = Users.query.all()
+	
+	num = 0
+	for user in all_users:
+		num += 1
+		data = {}
+		data["num"] = num
+		data["user"] = user
+
+		data["done"] = Progress.query.filter_by(user_id=user.id).count()
+		data["total"] = Section.query.count()
+		
+		print(data["done"], data["total"])
+		users_data.append(data)
+
+
+	return render_template("admin.html", users=users_data)
 
 
 @app.route("/info/care-info")
