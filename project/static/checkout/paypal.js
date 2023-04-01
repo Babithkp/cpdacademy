@@ -1,3 +1,4 @@
+var verified_email = "";
 function initPayPalButton() {
   paypal.Buttons({
     style: {
@@ -18,25 +19,31 @@ function initPayPalButton() {
       form.addEventListener("change", (e) => {
         actions.disable();
         if (validate_form()) {
-          show_overlay()
           console.log("form is valid")
-          check_email(email).then((result) => {
-            if (result == "VALID EMAIL") {
-              console.log("EMAIL IS VALID")
-              actions.enable();
+          if (verified_email != email.value) {
+            show_overlay()
+            check_email(email).then((result) => {
+              if (result == "VALID EMAIL") {
+                console.log("EMAIL IS VALID")
+                verified_email = email.value
+                actions.enable();
+              }
+              else if (result == "error") {
+                alert("Something Went Wrong")
+                alert("Try to refresh page")
+              }
+              else {
+                alert("This Email is already in use")
+                actions.disable();
+              }
             }
-            else if (result == "error") {
-              alert("Something Went Wrong")
-              alert("Try to refresh page")
-            }
-            else {
-              alert("This Email is already in use")
-              actions.disable();
-            }
+            ).then(() => {
+              hide_overlay()
+            })
           }
-          ).then(() => {
-            hide_overlay()
-          })
+          else {
+            actions.enable()
+          }
         }
         else {
           console.log("FORM IS NOT VALID")

@@ -11,6 +11,8 @@ var email = document.getElementById("billing_email");
 var passwd = document.getElementById("account_password");
 var c_passwd = document.getElementById("account_confirm_password");
 
+var postal_code_field = document.getElementById("billing_postcode_field");
+
 var inputs = {
     f_name: f_name,
     l_name: l_name,
@@ -29,8 +31,9 @@ var inputs = {
 function validate_form() {
     for (const key in inputs) {
         var input = inputs[key];
-        if (!input.checkValidity()) {
+        if (!input.checkValidity() && !(postal_code_field.style.display == "none" && input == postal_code)) {
             input.reportValidity();
+            console.log("VALIDITY ISSUE: ", input)
             return false;
         }
     }
