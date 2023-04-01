@@ -52,7 +52,7 @@ function initPayPalButton() {
         // Show a success message within this page, e.g.
         const element = document.getElementById('paypal-button-container');
         element.innerHTML = '';
-        element.innerHTML = '<h3>Thank you for your payment!</h3>';
+        element.innerHTML = '<h3>Thanks for your payment!</h3>';
         send_data().then(result=> {
           console.log(result)
           alert("Go to login page to login and get access to course")
