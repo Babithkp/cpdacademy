@@ -10792,16 +10792,16 @@
 
 
 																		<div
-																			class="um-profile-edit um-profile-headericon um-trigger-menu-on-click">
+																			class="um-profile-edit um-profile-headericon um-trigger-menu-on-click" onclick="toggle_dropdown()">
 
-																			<a href="javascript:void(0);"
+																			<a href="#toggle"
 																				class="um-profile-edit-a"><i
 																					class="um-faicon-cog"></i></a>
 
 
 																			<div class="um-dropdown"
 																				data-element="div.um-profile-edit"
-																				data-position="bc" data-trigger="click"
+																				data-position="bc" data-trigger="click" id="dropdown-account"
 																				style="top: 36px; width: 200px; left: -85px; right: auto; text-align: center; display: none;">
 																				<div class="um-dropdown-b">
 																					<div class="um-dropdown-arr"
@@ -10825,6 +10825,18 @@
 																					</ul>
 																				</div>
 																			</div>
+																			<script>
+																				var dropdown = document.getElementById("dropdown-account")
+																				function toggle_dropdown() {
+																					if (dropdown.style.display == "none") {
+																						dropdown.style.display = "block"
+																					}
+																					else {
+																						dropdown.style.display = "none"
+																					}
+
+																				}
+																			</script>
 
 
 																		</div>
