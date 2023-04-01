@@ -10083,10 +10083,16 @@
       <li id="msg_passed" style="display: none">
         <div>
           <p>Well done on passing the quiz!</p>
+          {% if unit_id == 15 %}
+          <p>
+            You have now completed all the Care Certificate course and your certificate will be sent to your email within 24 hours.
+          </p>
+          {% else %}
           <p>
             You have now completed the Care Certificate {{unit_id}} quiz! You can now move
             onto the next section.
           </p>
+          {% endif %}
         </div>
       </li>
     </ul>
