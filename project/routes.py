@@ -21,7 +21,7 @@ def home():
 
 @app.route("/validate_email", methods=["POST"])
 def validate_email():
-	email = request.form["email"]
+	email = request.form["email"].lower()
 	if(Users.query.filter_by(email=email).first()):
 		return "false"
 	return "true"
