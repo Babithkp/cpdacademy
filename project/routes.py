@@ -151,22 +151,23 @@ def get_topic_progress(topics):
 			temp.append("notcompleted")
 		topic_progress.append(temp)
 
-	formated_progress = []
-	prev_unit = all_topic_progress[0].unit_id
-	temp = []
-	for i in all_topic_progress:
-		if (i.unit_id == prev_unit):
-			temp.append("completed")
-		else:
-			formated_progress.append(temp)
-			temp = []
-			temp.append("completed")
-		prev_unit = i.unit_id
+	if (all_topic_progress):
+		formated_progress = []
+		prev_unit = all_topic_progress[0].unit_id
+		temp = []
+		for i in all_topic_progress:
+			if (i.unit_id == prev_unit):
+				temp.append("completed")
+			else:
+				formated_progress.append(temp)
+				temp = []
+				temp.append("completed")
+			prev_unit = i.unit_id
 
-	formated_progress.append(temp)
-	for i in range(len(formated_progress)):
-		for x in range(len(formated_progress[i])):
-			topic_progress[i][x] = formated_progress[i][x]
+		formated_progress.append(temp)
+		for i in range(len(formated_progress)):
+			for x in range(len(formated_progress[i])):
+				topic_progress[i][x] = formated_progress[i][x]
 
 	return topic_progress
 
