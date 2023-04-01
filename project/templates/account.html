@@ -9941,7 +9941,7 @@
 		!function (f, b, e, v, n, t, s) {
 			if (f.fbq) return; n = f.fbq = function () {
 				n.callMethod ?
-				n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+					n.callMethod.apply(n, arguments) : n.queue.push(arguments)
 			};
 			if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
 			n.queue = []; t = b.createElement(e); t.async = !0;
@@ -10833,8 +10833,7 @@
 																		<div class="um-profile-photo um-trigger-menu-on-click"
 																			data-user_id="98127">
 
-																			<a href="#img"
-																				class="um-profile-photo-img"
+																			<a href="#img" class="um-profile-photo-img"
 																				title="Uche Nora Odunze">
 																				<span class="um-profile-photo-overlay">
 																					<span
@@ -10845,11 +10844,9 @@
 																						</ins>
 																					</span>
 																				</span><img
-																					src="/static/account_files/default-profile.jpg"
+																					src="/static/pictures/{{user.image_file}}"
 																					class="gravatar avatar avatar-80 um-avatar um-avatar-default"
-																					width="80" height="80"
-																					alt="Uche Nora Odunze"
-																					data-default="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/03/28173024/default-profile.jpg"
+																					width="80" height="80" alt="USER"
 																					onerror="if ( ! this.getAttribute(&#39;data-load-error&#39;) ){ this.setAttribute(&#39;data-load-error&#39;, &#39;1&#39;);this.setAttribute(&#39;src&#39;, this.getAttribute(&#39;data-default&#39;));}">
 																			</a>
 
@@ -10980,7 +10977,8 @@
 																				<div class="um-name">
 
 																					<a href="#name"
-																						title="Uche Nora Odunze">{{user.f_name}} {{user.l_name}}</a>
+																						title="Uche Nora Odunze">{{user.f_name}}
+																						{{user.l_name}}</a>
 																				</div>
 
 																				<div class="um-clear"></div>
@@ -11042,7 +11040,7 @@
 																			class="um-profile-nav-item um-profile-nav-courses ">
 																			<a href="/lms/care-certificate"
 																				class="uimob800-show uimob500-show uimob340-show um-tip-n"
-																				original-title="Courses">
+																				original-title="Course">
 
 																				<i class="um-faicon-book"></i>
 
@@ -11052,12 +11050,12 @@
 																			</a>
 																			<a href="/lms/care-certificate"
 																				class="uimob800-hide uimob500-hide uimob340-hide"
-																				title="Courses">
+																				title="Course">
 
 																				<i class="um-faicon-book"></i>
 
 
-																				<span class="title">Courses</span>
+																				<span class="title">Course</span>
 																			</a>
 																		</div>
 
@@ -11124,7 +11122,8 @@
 																					</div>
 																					<div class="um-field-area">
 																						<div class="um-field-value"
-																							id="first_name-18895">{{user.f_name}}</div>
+																							id="first_name-18895">
+																							{{user.f_name}}</div>
 																					</div>
 																				</div>
 																			</div>
@@ -11139,7 +11138,8 @@
 																					</div>
 																					<div class="um-field-area">
 																						<div class="um-field-value"
-																							id="last_name-18895">{{user.l_name}}
+																							id="last_name-18895">
+																							{{user.l_name}}
 																						</div>
 																					</div>
 																				</div>
@@ -11463,8 +11463,57 @@
 		});
 	</script>
 
-
-
+<!-- <div class="um-modal-overlayy"></div>
+	<div class="um-modal no-photo normal" style="display: block; bottom: 97.422px;">
+		<div id="um_upload_single" style="" data-user_id="98127">
+			<div class="um-modal-header">
+				Change your profile photo
+			</div>
+			<div class="um-modal-body">
+				<div class="um-single-image-preview crop" data-crop="square" data-ratio="1" data-min_width="160"
+					data-min_height="160" data-coord="" style="height: 0px; max-height: 413px;"><a
+						href="javascript:void(0);" class="cancel"><i class="um-icon-close"></i></a><img
+						src="https://cpdonline.co.uk/my-account/98127/" alt="" style="height: auto; max-height: 413px;">
+					<div class="um-clear">
+					</div>
+				</div>
+				<div class="um-clear"></div>
+				<div class="ajax-upload-dragdrop" style="vertical-align:top;"><span class="icon"><i
+							class="um-faicon-camera"></i></span><span class="str">Upload your photo here<small
+							class="um-max-filesize">( max: <span>97.7kb</span> )</small></span>
+					<div class="upload" style="position: relative; overflow: hidden; cursor: default;">
+						Upload
+						<form method="POST" action="/upload/image" enctype="multipart/form-data"
+							style="margin: 0px; padding: 0px;" tp-global-watched="true"><input type="file"
+								id="ajax-upload-id-1680348349775" name="profile_photo"
+								style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 34px; left: 0px; z-index: 100; opacity: 0;">
+						</form>
+					</div>
+				</div>
+				<div class="um-single-image-upload" data-user_id="98127" data-nonce="b37603dc9a"
+					data-timestamp="1680108542" data-icon="um-faicon-camera" data-set_id="0" data-set_mode=""
+					data-type="image" data-key="profile_photo" data-max_size="99999"
+					data-max_size_error="This image is too large!" data-min_size_error="This image is too small!"
+					data-extension_error="Sorry this is not a valid image." data-allowed_types="gif,jpg,jpeg,png"
+					data-upload_text="Upload your photo here<small class=&quot;um-max-filesize&quot;>( max: <span>97.7kb</span> )</small>"
+					data-max_files_error="You can only upload one image" data-upload_help_text=""
+					style="display: none;">
+					Upload</div>
+				<div></div>
+				<div class="um-modal-footer">
+					<div class="um-modal-right">
+						<a href="javascript:void(0);" class="um-modal-btn um-finish-upload image disabled"
+							data-key="profile_photo" data-change="Change photo" data-processing="Processing...">
+							Apply</a>
+						<a href="javascript:void(0);" class="um-modal-btn alt" data-action="um_remove_modal">
+							Cancel</a>
+					</div>
+					<div class="um-clear">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
 </body>
 
 </html>
