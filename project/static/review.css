@@ -1,0 +1,17 @@
+@media only screen and (max-width: 600px) {
+    .item__meta {
+        border: none !important;
+    }
+
+    .item__review {
+        padding-left: 0 !important;
+    }
+
+    .R-ContentList__item {
+        flex-direction: column !important;
+    }
+    /* .R-PaginationControls {
+        overflow: auto !important;
+        flex: none !important;
+    } */
+}
