@@ -68,7 +68,7 @@ function initPayPalButton() {
         const element = document.getElementById('paypal-button-container');
         element.innerHTML = '';
         element.innerHTML = '<h3>Thanks for your payment!</h3>';
-        send_data().then(result => {
+        send_signup_info().then(result => {
           console.log(result)
           alert("Go to login page to login and get access to course")
           window.location.href = "/login"

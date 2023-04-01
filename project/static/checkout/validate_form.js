@@ -46,14 +46,14 @@ function validate_form() {
 }
 
 
-function send_signup_info() {
+async function send_signup_info() {
     var form = new FormData();
     var url = "/signup"
     for (const key in inputs) {
         let input = inputs[key];
         form.append(key, input.value)
     }
-    return send_data(form, url)
+    return await send_data(form, url)
 }
 
 async function check_email(email) {
