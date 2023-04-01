@@ -112,4 +112,4 @@ function Hightlight_correct() {
     }
 }
 
-Hightlight_correct()
+// Hightlight_correct()
