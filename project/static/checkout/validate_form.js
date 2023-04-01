@@ -61,6 +61,9 @@ async function check_email(email) {
     form.append("email", email.value)
 
     var result = await send_data(form, url)
+    if (result == "error") {
+        return "error"
+    }
     if (result == "false") {
         return "INVALID EMAIL"
     }
@@ -70,7 +73,7 @@ async function check_email(email) {
 
 
 async function send_data(form, url) {
-    var output = false;
+    var output = "false";
 
     await fetch(url, {
         method: "POST",
@@ -82,8 +85,20 @@ async function send_data(form, url) {
         .then(text => {
             output = text
         })
-        .catch((err) => {
-            console.error(err);
-        });
+            .catch((error) => {
+              console.log(error)
+              output = "error";
+            })
     return output;
 }
+
+
+var overlay = document.getElementById("custom-overlay");
+
+function show_overlay() {
+    overlay.style.top = "0%"
+}
+function hide_overlay() {
+    overlay.style.top = "100%"
+}
+// show_overlay()

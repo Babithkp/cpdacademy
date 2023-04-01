@@ -7,28 +7,36 @@ function initPayPalButton() {
       label: 'paypal',
 
     },
-    onClick: function(data, actions) {
+    onClick: function (data, actions) {
       if (!validate_form()) {
         alert("Please Enter correct data in form")
       }
     },
     onInit: function (data, actions) {
       actions.disable();
-      var form =  document.getElementById("signup_form")
-      form.addEventListener("change", (e)=> {
+      var form = document.getElementById("signup_form")
+      form.addEventListener("change", (e) => {
         actions.disable();
         if (validate_form()) {
+          show_overlay()
           console.log("form is valid")
           check_email(email).then((result) => {
             if (result == "VALID EMAIL") {
+              console.log("EMAIL IS VALID")
               actions.enable();
+            }
+            else if (result == "error") {
+              alert("Something Went Wrong")
+              alert("Try to refresh page")
             }
             else {
               alert("This Email is already in use")
               actions.disable();
             }
           }
-        )
+          ).then(() => {
+            hide_overlay()
+          })
         }
         else {
           console.log("FORM IS NOT VALID")
@@ -53,7 +61,7 @@ function initPayPalButton() {
         const element = document.getElementById('paypal-button-container');
         element.innerHTML = '';
         element.innerHTML = '<h3>Thanks for your payment!</h3>';
-        send_data().then(result=> {
+        send_data().then(result => {
           console.log(result)
           alert("Go to login page to login and get access to course")
           window.location.href = "/login"
@@ -66,5 +74,6 @@ function initPayPalButton() {
     }
   }).render('#paypal-button-container');
 }
+
 
 initPayPalButton();

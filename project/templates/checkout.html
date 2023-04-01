@@ -135,6 +135,9 @@
         background: none !important;
         padding: 0 !important;
       }
+      .zoid-visible {
+        max-width: 100% !important;
+      }
     </style>
     <link
       rel="stylesheet"
@@ -9602,6 +9605,18 @@ fbq('track', 'PageView');
 	
 </form> -->
                               
+   <link rel="stylesheet" href="/static/overlay.css"> 
+   <div id="custom-overlay">
+    <h1>Verifying Your Email Address</h1>
+    <br>
+    Please Wait . . .
+
+    <div class="loading-container">
+      <div class="loading-ball"></div>
+      <div class="loading-ball"></div>
+      <div class="loading-ball"></div>
+    </div>
+  </div>
                               <form
                                 class="checkout_coupon woocommerce-form-coupon"
                                 method="post"
@@ -11830,6 +11845,5 @@ Enter purchaser's details here. Create your account and get access to the course
         }
       </style>
     </div>
-    
   </body>
 </html>

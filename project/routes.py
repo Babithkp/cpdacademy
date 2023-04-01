@@ -18,9 +18,10 @@ def login_required(f):
 def home():
 	return render_template("home.html", homepage="True", title=TITLE)
 
-
+from time import sleep
 @app.route("/validate_email", methods=["POST"])
 def validate_email():
+	sleep(2)
 	email = request.form["email"]
 	if(Users.query.filter_by(email=email).first()):
 		return "false"
