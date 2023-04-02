@@ -2,6 +2,7 @@ from flask import render_template, request, session, redirect, url_for, Markup
 from functools import wraps
 from project import app, db
 from project.models import Users, Unit, Section, Progress, Unit_Progress
+from project.send_mail import send_mail
 
 TITLE = "Healthcare CPD"
 
@@ -107,7 +108,6 @@ def admin():
 		data["done"] = Progress.query.filter_by(user_id=user.id).count()
 		data["total"] = Section.query.count()
 		
-		print(data["done"], data["total"])
 		users_data.append(data)
 
 
@@ -255,6 +255,35 @@ def done_quiz(unit_id):
 		db.session.commit()
 	return "ok"
 
+
+@app.route("/password_reset", methods=["GET", "POST"])
+def reset_password():
+	layout = """
+<h1 style="text-align: center;">Healthcare CPD</h1>
+<p>CODE: <b>{}</b></p>
+"""
+	if request.method == "POST":
+		email = request.form["email"]
+		code = request.form["code"]
+		if (Users.query.filter_by(email=email).first()):
+			message = layout.format(code)
+			send_mail(email, "Verification Code", message)
+			return "True"
+		else:
+			return "False"
+	return render_template("password_reset.html", title=TITLE)
+
+@app.route("/set_password", methods=["GET", "POST"])
+def set_password():
+	email = request.form["email"]
+	password = request.form["passwd"]
+
+	user = Users.query.filter_by(email=email).first()
+	if (user):
+		user.email = email
+		user.password = password
+		db.session.commit()
+	return "True"
 
 @app.route("/logout")
 def logout():
