@@ -87,6 +87,8 @@ def login():
 @app.route("/account")
 @login_required
 def account():
+	if session["id"] == -1:
+		return redirect('/admin')
 	user = Users.query.get(session["id"])
 	return render_template("account.html", user=user, title=TITLE)
 
