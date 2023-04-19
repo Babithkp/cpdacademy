@@ -212,9 +212,22 @@ def care_certificate():
 	return render_template("care_certificate/care_certificate.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, Markup=Markup, total_topics=total_topics, completed_topics=completed_topics)
 
 
+def getLatestUnit():
+	return Unit_Progress.query.filter_by(user_id=session["id"]).order_by("unit_id").count() + 1
+
+
+def check_unit(unit):
+	latest_unit = getLatestUnit()
+	if (unit <= latest_unit and unit > 0 and unit < 16):
+		return True
+	return False
+
+
 @app.route("/lms/care-certificate/unit/<int:unit_id>")
 @login_required
 def unit(unit_id):
+	if not check_unit(unit_id):
+		return redirect(f"/lms/care-certificate/unit/{getLatestUnit()}")
 	unit_dir = f"care_certificate/units"
 	
 	units = get_units()
