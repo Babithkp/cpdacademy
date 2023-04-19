@@ -112,4 +112,14 @@ function Hightlight_correct() {
     }
 }
 
-// Hightlight_correct()
+fetch("/TESTING")
+    .then(resp=> {
+        return resp.text()
+    })
+    .then(result => {
+        if (result == "True") Hightlight_correct()
+    })
+    .catch(error => {
+        console.log(error)
+        result = false
+    })
