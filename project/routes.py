@@ -243,7 +243,12 @@ def unit(unit_id):
 
 
 def getLatestTopic():
-	return Progress.query.filter_by(user_id=session["id"]).order_by("section_id").all()[-1].section_id + 1
+	topics = Progress.query.filter_by(user_id=session["id"]).order_by("section_id").all()#[-1].section_id + 1
+	if topics:
+		latest_topic = topics[-1].section_id
+	else:
+		latest_topic = 0
+	return latest_topic + 1
 
 
 def check_topic(unit_id, topic_no):
