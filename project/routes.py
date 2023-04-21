@@ -241,17 +241,33 @@ def unit(unit_id):
 	return render_template(f"{unit_dir}/unit.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, unit_id=unit_id, Markup=Markup, total_topics=total_topics, completed_topics=completed_topics)
 
 
-@app.route("/lms/care-certificate/unit/<int:unit_id>/topic/<int:topic_id>")
+def getLatestTopic():
+	return Progress.query.filter_by(user_id=session["id"]).order_by("section_id").all()[-1].section_id + 1
+
+
+def check_topic(unit_id, topic_no):
+	section_id = Section.query.filter_by(unit_id=unit_id).order_by("section_id").all()[topic_no-1].section_id
+	total_topics = Section.query.count()
+	latest_topic = getLatestTopic()
+	if section_id <= latest_topic and section_id > 0 and section_id <= total_topics:
+		return True
+	return False
+
+
+@app.route("/lms/care-certificate/unit/<int:unit_id>/topic/<int:topic_no>")
 @login_required
-def topic(unit_id, topic_id):
+def topic(unit_id, topic_no):
+	if not check_topic(unit_id, topic_no):
+
+		return redirect(f"/lms/care-certificate/unit/{getLatestUnit()}")
 	unit_dir = f"care_certificate/units/unit_{unit_id}"
 
-	section_id = Section.query.filter_by(unit_id=unit_id).order_by("section_id").all()[topic_id-1].section_id
+	section_id = Section.query.filter_by(unit_id=unit_id).order_by("section_id").all()[topic_no-1].section_id
 	if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=section_id).first():
 		progress = Progress(unit_id=unit_id, user_id=session["id"], section_id=section_id)
 		db.session.add(progress)
 		db.session.commit()
-	return render_template(f"{unit_dir}/{topic_id}.html", title=TITLE)
+	return render_template(f"{unit_dir}/{topic_no}.html", title=TITLE)
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/quiz")
