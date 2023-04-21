@@ -279,6 +279,10 @@ def topic(unit_id, topic_no):
 @app.route("/lms/care-certificate/unit/<int:unit_id>/quiz")
 @login_required
 def quiz(unit_id):
+	last_topic = Section.query.filter_by(unit_id=unit_id).all()[-1].section_id - 1
+	if not Progress.query.filter_by(user_id=session["id"], section_id=last_topic).first():
+		return redirect(f"/lms/care-certificate/unit/{unit_id}")
+
 	unit_dir = f"care_certificate/units/unit_{unit_id}"
 	units = get_units()
 	topics = get_topics(units)
