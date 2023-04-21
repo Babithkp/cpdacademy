@@ -226,8 +226,9 @@ def check_unit(unit):
 @app.route("/lms/care-certificate/unit/<int:unit_id>")
 @login_required
 def unit(unit_id):
+	latest_unit = getLatestUnit()
 	if not check_unit(unit_id):
-		return redirect(f"/lms/care-certificate/unit/{getLatestUnit()}")
+		return redirect(f"/lms/care-certificate/unit/{latest_unit}")
 	unit_dir = f"care_certificate/units"
 	
 	units = get_units()
@@ -238,7 +239,7 @@ def unit(unit_id):
 	total_topics = Section.query.count()
 	completed_topics = Progress.query.filter_by(user_id=session["id"]).group_by("section_id").count()
 
-	return render_template(f"{unit_dir}/unit.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, unit_id=unit_id, Markup=Markup, total_topics=total_topics, completed_topics=completed_topics)
+	return render_template(f"{unit_dir}/unit.html", title=TITLE, units=units, unit_progress=unit_progress, topics=topics, topic_progress=topic_progress, unit_id=unit_id, Markup=Markup, total_topics=total_topics, completed_topics=completed_topics, latest_unit=latest_unit)
 
 
 def getLatestTopic():

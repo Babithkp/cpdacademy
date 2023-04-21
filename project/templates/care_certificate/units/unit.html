@@ -71,7 +71,7 @@ Below you will see the sections for this unit which you must work through. You m
     {% if unit_id-1 != 0 %}
         <a class="prev-link" href="/lms/care-certificate/unit/{{unit_id-1}}" rel="prev"><span class="meta-nav">←</span> Previous Unit</a>
     {% endif %}
-    {% if unit_id+1 != 16 %}
+    {% if unit_id+1 != 16 and unit_id < latest_unit %}
         <a class="next-link" href="/lms/care-certificate/unit/{{unit_id+1}}" rel="next">Next Unit <span class="meta-nav">→</span></a>
     {% endif %}
 </p>
