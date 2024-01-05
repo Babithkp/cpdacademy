@@ -1,6 +1,6 @@
 #stripe_pay {
-    display: none;
-    padding: 20px 10px;
+    display: block;
+    padding: 10px 0;
     color: white;
     background-color: rgb(38, 38, 147);
     border-radius: 10px;

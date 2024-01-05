@@ -6,11 +6,6 @@
 
     <meta name="robots" content="noindex, nofollow" />
 
-    <!-- Google Tag Manager for WordPress by gtm4wp.com -->
-    <!-- <script src="/static/checkout/care-checkout_files/zxcvbn.min.js" type="text/javascript" async=""></script>
-<script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
-<script src="https://bat.bing.com/bat.js" async=""></script>
-<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-WDNT4XX"></script> -->
     <script data-cfasync="false" data-pagespeed-no-defer="">
       var gtm4wp_datalayer_name = "dataLayer";
       var dataLayer = dataLayer || [];
@@ -25,15 +20,13 @@
       const gtm4wp_business_vertical = "retail";
       const gtm4wp_business_vertical_id = "id";
     </script>
-    <!-- End Google Tag Manager for WordPress by gtm4wp.com -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- This site is optimized with the Yoast SEO Premium plugin v20.2.1 (Yoast SEO v20.2.1) - https://yoast.com/wordpress/plugins/seo/ -->
     <title>{{title}}</title>
     <meta
       name="description"
       content="Find the courses you have proceeded to checkout with here, fill in all your billing details and then you can access your course."
     />
-    <link rel="canonical" href="https://cpdonline.co.uk/checkout/" />
+    <link rel="canonical" href="" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Checkout" />
@@ -41,70 +34,7 @@
       property="og:description"
       content="Find the courses you have proceeded to checkout with here, fill in all your billing details and then you can access your course."
     />
-    <meta property="og:url" content="https://cpdonline.co.uk/checkout/" />
-    <meta property="og:site_name" content="CPD Online College" />
-    <meta
-      property="article:modified_time"
-      content="2022-12-12T12:33:33+00:00"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:label1" content="Estimated reading time" />
-    <meta name="twitter:data1" content="1 minute" />
-    <script type="application/ld+json" class="yoast-schema-graph">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "CheckoutPage",
-            "@id": "https://cpdonline.co.uk/checkout/",
-            "url": "https://cpdonline.co.uk/checkout/",
-            "name": "Checkout | CPD Online College",
-            "isPartOf": { "@id": "https://cpdonline.co.uk/#website" },
-            "datePublished": "2016-06-20T09:22:56+00:00",
-            "dateModified": "2022-12-12T12:33:33+00:00",
-            "description": "Find the courses you have proceeded to checkout with here, fill in all your billing details and then you can access your course.",
-            "inLanguage": "en-GB"
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://cpdonline.co.uk/#website",
-            "url": "https://cpdonline.co.uk/",
-            "name": "CPD Online College",
-            "description": "Always learning",
-            "publisher": { "@id": "https://cpdonline.co.uk/#organization" },
-            "potentialAction": [
-              {
-                "@type": "SearchAction",
-                "target": {
-                  "@type": "EntryPoint",
-                  "urlTemplate": "https://cpdonline.co.uk/?s={search_term_string}"
-                },
-                "query-input": "required name=search_term_string"
-              }
-            ],
-            "inLanguage": "en-GB"
-          },
-          {
-            "@type": "Organization",
-            "@id": "https://cpdonline.co.uk/#organization",
-            "name": "CPD Online College",
-            "url": "https://cpdonline.co.uk/",
-            "logo": {
-              "@type": "ImageObject",
-              "inLanguage": "en-GB",
-              "@id": "https://cpdonline.co.uk/#/schema/logo/image/",
-              "url": "https://cpdonline.co.uk/wp-content/uploads/2018/11/cpd-online-college.png",
-              "contentUrl": "https://cpdonline.co.uk/wp-content/uploads/2018/11/cpd-online-college.png",
-              "width": 1273,
-              "height": 513,
-              "caption": "CPD Online College"
-            },
-            "image": { "@id": "https://cpdonline.co.uk/#/schema/logo/image/" }
-          }
-        ]
-      }
-    </script>
-    <!-- / Yoast SEO Premium plugin. -->
+    <meta property="og:url" content="" />
 
     <link rel="dns-prefetch" href="https://kit.fontawesome.com/" />
     <link rel="dns-prefetch" href="https://a.trstplse.com/" />
@@ -10912,6 +10842,10 @@ Enter purchaser's details here. Create your account and get access to the course
                                     <div id="smart-button-container">
 		<div style="text-align: center;">
 			<div id="paypal-button-container"></div>
+      <link rel="stylesheet" href="/static/stripe.css">
+                              <script src="/static/checkout/validate_form.js"></script>
+                              <script src="/static/checkout/stripe_pay.js"></script>
+      <button id="stripe_pay" onclick="stripe_payment()" type="button">Pay With Stripe</button>
 		</div>
 	</div>
                                   </div>
@@ -10923,7 +10857,6 @@ Enter purchaser's details here. Create your account and get access to the course
                                   onclick="validate_form()"
                                 /> -->
                               </form>
-                              <script src="/static/checkout/validate_form.js"></script>
                               <script src="/static/overlay.js"></script>
                               <!-- <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=GBP" data-sdk-integration-source="button-factory"></script> -->
                               <script src="https://www.paypal.com/sdk/js?client-id=REDACTED_PAYPAL_KEY&enable-funding=venmo&currency=GBP" data-sdk-integration-source="button-factory"></script>
