@@ -1,0 +1,15 @@
+#stripe_pay {
+    display: none;
+    padding: 20px 10px;
+    color: white;
+    background-color: rgb(38, 38, 147);
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    transition-duration: 200ms;
+}
+
+#stripe_pay:hover {
+    background-color: rgb(20, 20, 94);
+}

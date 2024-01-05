@@ -1,4 +1,5 @@
-from flask import render_template, request, session, redirect, url_for, Markup
+from flask import render_template, request, session, redirect
+from markupsafe import Markup
 from functools import wraps
 from project import app, db
 from project.models import Users, Unit, Section, Progress, Unit_Progress
@@ -141,6 +142,11 @@ def info_food():
 @app.route("/info/mental-info")
 def info_mental():
 	return render_template("mental-info.html", title="Mental Health Certificate", img="/static/course/mental/Autism-Awareness-200x200.png", disabled="disabled", price=150)
+
+
+@app.route("/info/fire-info")
+def fire_info():
+	return render_template("fire-info.html", title="Fire Safety Certificate", img="/static/course/fire/Fire-safety-course-150x150.png", disabled="disabled", price=9090)
 
 
 @app.route("/checkout")
@@ -343,3 +349,4 @@ def logout():
 	session.pop('id', None)
 	session.pop('email', None)
 	return redirect("/")
+
