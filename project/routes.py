@@ -145,13 +145,16 @@ def info_mental():
 
 
 @app.route("/info/equ-info")
-def  equipment_info():
+def equipment_info():
     return render_template("equipment-info.html", title="Personal Protective Equipment", img="/static/course/PPE-150x150.png", disabled="disabled", price=9090)
 
 @app.route("/info/food-info")
-def  food_info():
+def food_info():
     return render_template("food-info.html", title="Food Safety", img="/static/course/food-hygiene-for-caterers-course-level-2-150x150.jpg", disabled="disabled", price=9090)
 
+@app.route("/info/weld-info")
+def weld_info():
+    return render_template("weld-info.html", title="Welding Awareness Course", img="/static/course/weld.png", disabled="disabled", price=9090)
 
 @app.route('/create-checkout-session')
 def create_checkout_session():
