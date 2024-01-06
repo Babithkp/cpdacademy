@@ -156,6 +156,10 @@ def food_info():
 def weld_info():
     return render_template("weld-info.html", title="Welding Awareness Course", img="/static/course/weld.png", disabled="disabled", price=9090)
 
+@app.route("/info/fire-info")
+def fire_info():
+	return render_template("fire-info.html", title="Fire Safety Certificate", img="/static/course/fire/Fire-safety-course-150x150.png", disabled="disabled", price=9090)
+
 @app.route('/create-checkout-session')
 def create_checkout_session():
     try:
