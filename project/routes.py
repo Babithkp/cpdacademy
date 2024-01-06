@@ -138,7 +138,6 @@ def info_care():
     return render_template("care-info.html", title="Care Certificate", img="/static/course/care-certificate_files/Care-Certificate-150x150.png", price=150)
 
 
-
 @app.route("/info/mental-info")
 def info_mental():
     return render_template("mental-info.html", title="Mental Health Certificate", img="/static/course/mental/Autism-Awareness-200x200.png", disabled="disabled", price=150)
@@ -159,6 +158,11 @@ def weld_info():
 @app.route("/info/fire-info")
 def fire_info():
 	return render_template("fire-info.html", title="Fire Safety Certificate", img="/static/course/fire/Fire-safety-course-150x150.png", disabled="disabled", price=9090)
+
+
+@app.route("/info/electrical-info")
+def electrical_info():
+    return render_template("electrical-info.html", title="Electrical Awareness Course", img="/static/course/electrical.png", disabled="disabled", price=9090)
 
 @app.route('/create-checkout-session')
 def create_checkout_session():
