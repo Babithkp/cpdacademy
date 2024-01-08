@@ -29,9 +29,12 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+
 @app.route("/html/<path:path>")
 def extra_files(path):
     file = f"html/{path}"
+    file = os.path.join(app.config["APP_DIR"], "project", file)
+    print(file)
     if os.path.isfile(file):
         return send_file(file, as_attachment=False)
     return abort(404)
@@ -370,7 +373,7 @@ def course(ID):
 # module_1.html
 @app.route("/course/m")
 def module():
-    return render_template("course_data/fire_certificate/module_3.html", module_title="Fire Preventation")
+    return render_template("course_data/fire_certificate/module_1.html", module_title="Fire Preventation")
 
 
 @app.route("/password_reset", methods=["GET", "POST"])
