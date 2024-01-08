@@ -373,7 +373,7 @@ def course(ID):
 # module_1.html
 @app.route("/course/m")
 def module():
-    return render_template("course_data/fire_certificate/module_1.html", module_title="Fire Preventation")
+    return render_template("course_data/fire_certificate/module_3.html", module_title="Fire Preventation")
 
 
 @app.route("/password_reset", methods=["GET", "POST"])
