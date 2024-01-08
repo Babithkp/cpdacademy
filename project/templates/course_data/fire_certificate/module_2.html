@@ -1,0 +1,148 @@
+{% extends "course_data/module_layout.html" %}
+{% block module %}
+<div id="learning-environment">
+    <script>
+        var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+        if (window.localStorage && iOS) {
+            if (!localStorage.getItem('i')) {
+                localStorage['i'] = true;
+                window.location.reload();
+            } else {
+                localStorage.removeItem('i');
+            }
+        }
+        var wrapper = document.getElementById('learning-environment'),
+            observer = new MutationObserver(function (mutations, observer) {
+                wrapper.style.height = '';
+                wrapper.style.minHeight = '';
+            });
+        observer.observe(wrapper, {
+            attributes: true,
+            attributeFilter: ['style']
+        });
+    </script>
+    <div style="display:none;" class="player-nav--top">
+        <a style="display:none;" href="https://alison.com/topic/learn/135448/evacuation-plan">next</a>
+    </div>
+    <div class="new-player player">
+        <div class="new-player--inner">
+            <div id="iframe_container" class="" style="min-height: auto;">
+                <div class="close-mode"></div>
+                <div style="display: none;">
+                    <app-root data-course-name="Health and Safety - Fire Safety Training and Planning" data-course-completed="" data-course-id="4651" data-sco-id="135447" data-course-theme="6" data-topics="[]" data-isassessment="0" course_id="4651" course_name="Health and Safety - Fire Safety Training and Planning" data-canpassassessment="1" ng-version="16.2.5"></app-root>
+                </div>
+                <div class="js-angular-course-player angular-course-player" data-course-name="Health and Safety - Fire Safety Training and Planning" data-course-completed="" data-course-id="4651" data-sco-id="135447" data-course-theme="6" data-topics="[]" data-isassessment="0" data-canpassassessment="1">
+                    <app-course-player></app-course-player>
+                </div>
+                <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon="{&quot;rayId&quot;:&quot;821b2bca28411c47&quot;,&quot;version&quot;:&quot;2023.10.0&quot;,&quot;token&quot;:&quot;263a0b32707e43db9835c488586fa192&quot;}" crossorigin="anonymous"></script>
+                <div class="side-player-nav" style="">
+                    <div class="player-nav__button player-nav__button--left">
+                        <div class="player-nav__button-inner player-nav__next">
+                            <span>Next</span>
+                            <i class="icon-thick-chevron-up"></i>
+                        </div>
+                    </div>
+                    <div class="player-nav__button player-nav__button--right">
+                        <div class="player-nav__button-inner player-nav__prev disabled">
+                            <i class="icon-thick-chevron-down"></i>
+                            <span>Previous</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mot-message-outer" style="display: none;">
+                    <div class="mot-message">
+                        <span class="icon-cross2"></span>
+                        <div class="mot-message__inner">
+                            <div class="mot-message__img"><img src="/html/site/img/player/halfway.png"></div>
+                            <p>You're halfway through this module already - Well Done!</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="sr-banner" class="sr-banner-primary" style="display: none;">
+                    <div class="sr-message">
+                        <h2 class="sr-message-heading">You’ve started now, make sure you finish!</h2>
+                        <p class="sr-message-headline">Set study reminders to guarantee a steady learning routine.</p>
+                    </div>
+                    <div class="sr-buttons">
+                        <span class="sr-banner-button sr-banner-button--blank">Not Now</span>
+                        <span class="sr-banner-button sr-banner-button--green">Set Study Reminder</span>
+                    </div>
+                </div>
+                <div id="sr-banner" class="sr-banner-secondary" style="display: none">
+                    <div class="sr-message">
+                        <h2 class="sr-message-heading sr-message-heading--narrow">Learners with study reminders are 34% more likely to finish their course!</h2>
+                        <p class="sr-message-headline sr-message-headline sr-message-headline--underline">Don't ask me again</p>
+                    </div>
+                    <div class="sr-buttons">
+                        <span class="sr-banner-button sr-banner-button--blank">Not Now</span>
+                        <span class="sr-banner-button sr-banner-button--green">Set Study Reminder</span>
+                    </div>
+                    <div class="sr-hide-mobile">
+                        <p>Don't ask me again</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- Extras -->
+    </div>
+    <div id="search-sticky" class="sticky-ad player-sticky search-sticky--index" style="position: fixed; top: 92px;">
+        <script>
+            sidebar_sizes = window.innerWidth >= 1580 ? [
+                [
+                    300, 600
+                ],
+                [
+                    160, 600
+                ],
+                [
+                    120, 600
+                ],
+                'fluid'
+            ] : [
+                [
+                    160, 600
+                ],
+                [
+                    120, 600
+                ],
+                'fluid'
+            ];
+        </script>
+        <div id="gam_sidebar" style="height: 100%">
+            <script type="text/javascript">
+                if (sidebar_sizes.length > 0) {
+                    if (window.device === 'desktop') {
+                        googletag.cmd.push(function () {
+                            googletag.defineSlot('/6434961/sidebar', sidebar_sizes, 'gam_sidebar').addService(googletag.pubads());
+                            googletag.display('gam_sidebar');
+                        });
+                    }
+                }
+            </script>
+        </div>
+    </div>
+    <div class="player-popup" style="display: none">
+        <div class="player-popup__inner">
+            <h4>Shail,<br><strong>Are you sure you want<br>
+                    to leave midway?</strong>
+            </h4><img src="/html/site/img/player/dont-leave.svg"><p>
+                <strong>If you leave now, you'll lose some of your progress.</strong><br><span>
+                    To save your progress, keep learning until you see the
+                    <span>"Progress Saved"</span>
+                    message appear under your progress bar.
+                </span>
+            </p>
+            <div class="player-popup__buttons">
+                <div class="but but--outline player-popup__close">
+                    <span>Discard Progress</span>
+                </div>
+                <div class="but player-popup__next">
+                    <span>Keep Learning</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

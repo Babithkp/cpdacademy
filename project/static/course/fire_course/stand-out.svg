@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_2527" data-name="Ellipse 2527" cx="24" cy="24" r="24" transform="translate(0 0.021)" fill="rgba(131,193,31,0.4)" stroke="#fff" stroke-width="4"/>
+    </clipPath>
+  </defs>
+  <g id="stand_out_from_the_crowd" data-name="stand out from the crowd" transform="translate(0 -0.021)">
+    <g id="Ellipse_2459" data-name="Ellipse 2459" transform="translate(0 0.021)" fill="#C2E090" stroke="#fff" stroke-width="4">
+      <circle cx="24" cy="24" r="24" stroke="none"/>
+      <circle cx="24" cy="24" r="22" fill="none"/>
+    </g>
+    <g id="application_tool_icon" data-name="application tool icon" transform="translate(0 0)" clip-path="url(#clip-path)">
+      <g id="form" transform="translate(15.67 15.447)">
+        <path id="Path_99278" data-name="Path 99278" d="M3.33,4.341V16.356A3.317,3.317,0,0,0,6.6,19.7h4.431a4.779,4.779,0,0,1,.388-1.342,5.064,5.064,0,0,1,2.682-2.63,3.328,3.328,0,0,1,1.867-6.031,3.045,3.045,0,0,1,.927.141,3.211,3.211,0,0,1,1.315.778V4.341A3.308,3.308,0,0,0,14.941,1H6.6A3.313,3.313,0,0,0,3.33,4.341ZM7.3,4.328h6.943a.671.671,0,0,1,0,1.342H7.3a.671.671,0,0,1,0-1.342ZM7.3,7.9h6.943a.671.671,0,0,1,0,1.342H7.3A.671.671,0,0,1,7.3,7.9Zm0,3.562h3.156a.671.671,0,0,1,0,1.342H7.3a.671.671,0,0,1,0-1.342Z" transform="translate(-3.33 -1)" fill="#fff"/>
+        <ellipse id="Ellipse_2522" data-name="Ellipse 2522" cx="2.268" cy="2.315" rx="2.268" ry="2.315" transform="translate(10.375 9.701)" fill="#fff"/>
+        <path id="Path_99279" data-name="Path 99279" d="M17.117,28.662H23.83a.666.666,0,0,0,.657-.671,4.015,4.015,0,1,0-8.028,0,.666.666,0,0,0,.657.671Z" transform="translate(-7.827 -8.535)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

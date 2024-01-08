@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_2417" data-name="Ellipse 2417" cx="18" cy="18" r="18" transform="translate(809 489)" fill="#eaeff4"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_884" data-name="Mask Group 884" transform="translate(-809 -489)" clip-path="url(#clip-path)">
+    <g id="Group_117552" data-name="Group 117552" transform="translate(5762.403 17414.473)">
+      <g id="Group_117550" data-name="Group 117550" transform="translate(-4943.403 -16915.473)">
+        <path id="Path_86948" data-name="Path 86948" d="M-4936.042-16915.473a14.324,14.324,0,0,0-2.665,7.551h5.291C-4933.393-16907.889-4933.5-16913.021-4936.042-16915.473Z" transform="translate(4944 16915.473)" fill="#016C94"/>
+        <path id="Path_86949" data-name="Path 86949" d="M-4932.36-16907.891h4.248a8.068,8.068,0,0,0-6.839-7.562A11.432,11.432,0,0,1-4932.36-16907.891Z" transform="translate(4944.112 16915.475)" fill="#016C94"/>
+        <path id="Path_86950" data-name="Path 86950" d="M-4930.815-16907.893h-4.14a8.068,8.068,0,0,1,6.84-7.561A15.4,15.4,0,0,0-4930.815-16907.893Z" transform="translate(4934.955 16915.475)" fill="#016C94"/>
+      </g>
+      <g id="Group_117551" data-name="Group 117551" transform="translate(-4943.4 -16906.904)">
+        <path id="Path_86948-2" data-name="Path 86948" d="M-4936.073-16908.045a11.7,11.7,0,0,1-2.634-7.395l.045-.012c-.009-.059,3.865,0,5.176,0C-4933.463-16915.482-4933.562-16910.473-4936.073-16908.045Z" transform="translate(4944.026 16915.477)" fill="#016C94"/>
+        <path id="Path_86949-2" data-name="Path 86949" d="M-4932.319-16915.457h4.2a7.938,7.938,0,0,1-6.836,7.406C-4934.926-16908.094-4932.673-16910.24-4932.319-16915.457Z" transform="translate(4944.109 16915.463)" fill="#016C94"/>
+        <path id="Path_86950-2" data-name="Path 86950" d="M-4930.811-16915.457h-4.141a7.938,7.938,0,0,0,6.836,7.406A12.218,12.218,0,0,1-4930.811-16915.457Z" transform="translate(4934.951 16915.463)" fill="#016C94"/>
+      </g>
+    </g>
+  </g>
+</svg>

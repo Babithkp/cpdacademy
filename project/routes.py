@@ -1,4 +1,4 @@
-from flask import render_template, request, session, redirect
+from flask import render_template, request, session, redirect, send_file, abort
 from markupsafe import Markup
 from functools import wraps
 from project import app, db
@@ -6,6 +6,7 @@ from project.models import Users, Unit, Section, Progress, Unit_Progress
 from project.send_mail import send_mail
 from project.stripe_config import stripe_config
 import stripe
+import os
 
 stripe.api_key = stripe_config["KEY"]
 TITLE = "Healthcare CPD"
@@ -28,6 +29,12 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+@app.route("/html/<path:path>")
+def extra_files(path):
+    file = f"html/{path}"
+    if os.path.isfile(file):
+        return send_file(file, as_attachment=False)
+    return abort(404)
 
 @app.route("/")
 def home():
@@ -354,6 +361,16 @@ def done_quiz(unit_id):
         db.session.add(unit)
         db.session.commit()
     return "ok"
+
+
+@app.route("/course/<ID>")
+def course(ID):
+    return render_template("courses_data/fire_certificate/fire_course.html", files="fire_course")
+
+# module_1.html
+@app.route("/course/m")
+def module():
+    return render_template("course_data/fire_certificate/module_3.html", module_title="Fire Preventation")
 
 
 @app.route("/password_reset", methods=["GET", "POST"])
