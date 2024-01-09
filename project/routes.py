@@ -2,7 +2,7 @@ from flask import render_template, request, session, redirect, send_file, abort
 from markupsafe import Markup
 from functools import wraps
 from project import app, db
-from project.models import Users, Unit, Section, Progress, Unit_Progress
+from project.models import *
 from project.send_mail import send_mail
 from project.stripe_config import stripe_config
 import stripe
@@ -34,7 +34,6 @@ def login_required(f):
 def extra_files(path):
     file = f"html/{path}"
     file = os.path.join(app.config["APP_DIR"], "project", file)
-    print(file)
     if os.path.isfile(file):
         return send_file(file, as_attachment=False)
     return abort(404)
@@ -368,12 +367,19 @@ def done_quiz(unit_id):
 
 @app.route("/course/<ID>")
 def course(ID):
-    return render_template("courses_data/fire_certificate/fire_course.html", files="fire_course")
+    course = db.session.get(Course, ID)
+    return render_template(f"course_data/{course.html}/index.html", files=course.files)
 
-# module_1.html
-@app.route("/course/m")
-def module():
-    return render_template("course_data/fire_certificate/module_3.html", module_title="Fire Preventation")
+
+@app.route("/course/<c_ID>/module/<module_num>/sub_module/<sub_num>")
+def sub_module(c_ID, module_num, sub_num):
+    course = db.session.get(Course, c_ID)
+    return render_template(f"course_data/{course.html}/module_{module_num}/{sub_num}.html", module_title="Fire Preventation")
+
+
+@app.route("/course_complete")
+def course_complete():
+    return render_template("course_data/course_complete.html")
 
 
 @app.route("/password_reset", methods=["GET", "POST"])

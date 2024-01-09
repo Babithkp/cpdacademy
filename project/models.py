@@ -55,3 +55,22 @@ class Progress(db.Model):
     user_id = db.Column(db.Integer)
     section_id = db.Column(db.Integer)
     status = db.Column(db.Boolean, default=True)
+
+class Course(db.Model):
+    __tablename__ = 'Course'
+    ID = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.Text)
+    html = db.Column(db.Text)
+    files = db.Column(db.Text)
+ 
+class Module(db.Model):
+    __tablename__ = 'Module'
+    ID = db.Column(db.Integer, primary_key=True)
+    course_id = db.Column(db.Integer)
+    title = db.Column(db.Text)
+
+class SubModule(db.Model):
+    ID = db.Column(db.Integer, primary_key=True)
+    course_id = db.Column(db.Integer)
+    module_id = db.Column(db.Integer)
+    title = db.Column(db.Text)
