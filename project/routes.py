@@ -368,7 +368,9 @@ def done_quiz(unit_id):
 @app.route("/course/<ID>")
 def course(ID):
     course = db.session.get(Course, ID)
-    return render_template(f"course_data/{course.html}/index.html", files=course.files)
+    if not course:
+        return redirect("/")
+    return render_template(f"course_data/{course.html}/index.html", files="course_files")
 
 
 @app.route("/course/<c_ID>/module/<module_num>/sub_module/<sub_num>")

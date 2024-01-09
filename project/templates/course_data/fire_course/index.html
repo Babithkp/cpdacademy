@@ -1,0 +1,957 @@
+{% extends 'course_data/course_layout.html' %}
+{% block data %}
+        <div id="main-holder">
+            <div class="landing__ad landing__ad--top" style="min-height: 119px">
+                <div class="landing__top-ad-inner">
+                    <div id="gam_header" style="margin: 0px auto; text-align: center; width: 970px;">
+                        <script type="text/javascript">
+                            document.getElementById('gam_header').style.width = header_sizes[0][0] + 'px';
+                            googletag.cmd.push(function () {
+                                googletag.defineSlot('/6434961/header', header_sizes, 'gam_header').addService(googletag.pubads());
+                                googletag.display('gam_header');
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="landing">
+                <div class="l-card closed">
+                    <div class="l-card__inner" style="position: fixed; margin-top: 0px; top: 100px;">
+                        <div class="l-card__img-overflow">
+                            <div class="l-card__img" style="display: none;"><img width="300px" height="200px" src="/static/course/{{files}}/alison_courseware_intro_4651.jpg" alt="Health and Safety - Fire Safety Training and Planning"></div>
+                        </div>
+                        <div class="l-card__info-padding">
+                            <h3 class="course-title">
+                                Health and Safety - Fire Safety Training and Planning
+                            </h3>
+                            <div class="l-card__enrolled">
+                                <span>
+                                    <span class="icon-learners-1"></span>
+                                    <span class="course-enrolled">15,853</span>
+                                </span>
+                                Learners already enrolled
+                            </div>
+                            <div class="l-rating">
+                                <div class="l-rating__love">
+                                    <span class="rating" data-val="5" data-l-tooltip="Loved it!"></span>
+                                    <span class="course-love">24</span>
+                                </div>
+                                <div class="l-rating__like">
+                                    <span class="rating" data-val="2" data-l-tooltip="Liked it!"></span>
+                                    <span class="course-like">6</span>
+                                </div>
+                                <div class="l-rating__no">
+                                    <span class="rating" data-val="0"></span>
+                                    Not Interested
+                                </div>
+                            </div>
+                            <div class="l-card__includes l-list l-list--tick">
+                                <h6>This Free Online Course Includes:</h6>
+                                <ul>
+                                    <li>
+                                        <span class="course-avg_duration l-time">1.5-3</span>
+                                        Hours of Learning</li>
+                                    <li>CPD Accreditation</li>
+                                    <li>Final Assessment</li>
+                                </ul>
+                            </div>
+                            <a class="course_btn add-course-id course_btn--shop l-but" href="https://alison.com/resume/courses/4651" data-id="4651">Continue Learning</a>
+                            <div class="l-pub l-pub--card">
+                                <div class="l-pub__img missing" style="visibility: visible;"><img class=" ls-is-cached lazyloaded" data-src="https://cdn01.alison-static.net/publishers/2/f1.jpg" src="/static/course/{{files}}/f1.jpg">
+                                </div>
+                                <div class="l-pub__content">
+                                    <span class="l-pub__type">
+                                        COURSE PUBLISHER
+                                    </span>
+                                    <span class="l-pub__name">
+                                        <span class="l-pub__name-pre" style="display: none">Published by
+                                        </span>
+                                        <span class="course-publisher">Advance Learning</span>
+                                    </span>
+                                    <span class="course-publisher-info l-pub__desc">Expert providers of quality courses</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="landing__content">
+                    <div class=" breadcrumb__outer ">
+                        <ol class="breadcrumb ">
+                            <li id="home-link">
+                                <i class="icon-home"></i>
+                                <a href="https://alison.com/" title="Alison Homepage">Home</a>
+                            </li>
+                            <i class="icon-right-arrow"></i>
+                            <li class="top-cat">
+                                <a href="https://alison.com/courses/health" title="Free Health Courses">Health</a>
+                            </li>
+                            <i class="icon-right-arrow"></i>
+                            <li class="top-tag">
+                                <a href="https://alison.com/tag/health-and-safety" title="Free Health and Safety Courses">Health and Safety</a>
+                            </li>
+                            <i class="icon-right-arrow"></i>
+                            <li>
+                                <span class="breadcrumb_h1">Health and Safety - Fire Safety Training and Plannin...</span>
+                            </li>
+                        </ol>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            var courseId = "4651",
+                                tagRoute = "https://alison.com/tag/replaceme".replace(new RegExp('/replaceme', 'g'), '/'),
+                                categoryRoute = "https://alison.com/courses/replaceme".replace(new RegExp('/replaceme', 'g'), '/'),
+                                locale = "en",
+                                endpoint = $('body').attr('data-api_endpoint') || 'https://api.alison.com/v0.1';
+                            $.ajaxSetup({
+                                beforeSend: function (request) {
+                                    request.setRequestHeader("x-header-host", "oTbrPD9HRO+jdciawiXuh4vUgB8=");
+                                }
+                            });
+                            $.ajax({
+                                type: "GET",
+                                url: endpoint + "/categories/breadcrumbs?course_id=" + courseId + "&locale=" + locale,
+                                dataType: 'json',
+                                async: true,
+                                success: function (response) {
+                                    if (response.status === 200 && response.result.length > 1) {
+                                        $('<i class="icon-right-arrow"></i><li class="top-cat"><a href="' + categoryRoute + response.result[0].slug + '" title="Free ' + response.result[0].name + ' Courses">' + response.result[0].name + '</a></li>').insertAfter('li#home-link');
+                                        $('<i class="icon-right-arrow"></i><li class="top-tag"><a href="' + tagRoute + response.result[1].slug + '" title="Free ' + response.result[1].name + ' Courses">' + response.result[1].name + '</a></li>').insertAfter('li.top-cat');
+                                    }
+                                },
+                                error: function (error) {
+                                    console.log('Error loading breadcrumbs');
+                                    console.log(error);
+                                },
+                                complete: function () {
+                                    var element = document.createElement('script');
+                                    element.setAttribute('type', 'application/ld+json');
+                                    var breadcrumbs = {
+                                        "@context": "http://schema.org",
+                                        "@type": "BreadcrumbList",
+                                        "itemListElement": []
+                                    };
+                                    var courseUrl = "https://alison.com/course/health-and-safety-fire-safety-training-and-planning";
+                                    $('ol.breadcrumb li').each(function (index) {
+                                        var item = {};
+                                        var href = (typeof $(this).find("a").attr('href') !== "undefined") ? $(this).find("a").attr('href') : courseUrl;
+                                        if (href) 
+                                            item["@id"] = href;
+                                        
+                                        item["name"] = $.trim($(this).text());
+                                        breadcrumbs.itemListElement.push({
+                                            "@type": "ListItem",
+                                            "position": index + 1,
+                                            item
+                                        });
+                                    });
+                                    element.text = JSON.stringify(breadcrumbs);
+                                    document.querySelector('head').appendChild(element);
+                                    function trimString(str, length) {
+                                        str = str.trim();
+                                        return(str.length <= length) ? str : str.slice(0, length) + '...';
+                                    }
+                                    let breadcrumb_length = 75 - ($('.top-cat').text().length + $('.top-tag').text().length);
+                                    $('.breadcrumb_h1').text(trimString($('.breadcrumb_h1').text(), breadcrumb_length));
+                                }
+                            });
+                        });
+                    </script>
+                    <div class="l-info">
+                        <div class="l-info__inner">
+                            <h1 class="course-title">Health and Safety - Fire Safety Training and Planning
+                            </h1>
+                            <div class="course-headline l-info__headline">
+                                This free online course teaches basic fire
+                                                            prevention measures and evacuation procedures in the event of a fire.
+                            </div>
+                            <div class="course-description l-info__description">
+                                <span class="l-info__description-short">
+                                    The
+                                                                    best way to avoid fires is to prevent them in the first place. This brief course ...
+                                </span>
+                                <span class="l-info__description-full">
+                                    The best way to avoid fires is to prevent them in the first place. This
+                                                                    brief course provides the essential components to help you preempt
+                                                                    fires in the work environment and take action in case a fire does occur.
+                                                                    You will explore all the possible causes of fire and the measures
+                                                                    required to mitigate them. Despite all these precautions, there are
+                                                                    times when fires will occur. Be prepared for this kind of emergency by
+                                                                    taking this course.
+                                </span>
+                                <span class="l-info__read-more" style="display: none">
+                                    Read
+                                                                    More
+                                </span>
+                            </div>
+                            <div class="l-info__bottom">
+                                <div class="l-pub l-pub--small">
+                                    <div class="l-pub__img missing" style="visibility: visible;"><img class=" ls-is-cached lazyloaded" data-src="https://cdn01.alison-static.net/publishers/2/f1.jpg" src="/static/course/{{files}}/f1.jpg">
+                                    </div>
+                                    <div class="l-pub__content">
+                                        <span class="l-pub__type">
+                                            COURSE PUBLISHER
+                                        </span>
+                                        <span class="course-publisher l-pub__name">Advance Learning</span>
+                                    </div>
+                                </div>
+                                <a class="course_btn add-course-id course_btn--shop l-but" href="https://alison.com/resume/courses/4651" data-id="4651">Continue Learning</a>
+                                <a class="course_btn--revisit" href="https://alison.com/resume/courses" style="display: none">
+                                    <span>
+                                        Revisit Course
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-outcomes l-section l-outcomes--bg">
+                        <div class="l-section__inner">
+                            <h3>In This Free Course, You Will Learn How To</h3>
+                            <ul class="course-outcomes">
+                                <li class="visible">Explain possible causes of fire...</li>
+                                <li class="visible">Outline preventative measures to sto...</li>
+                                <li class="visible">Summarize serious life safety hazard...</li>
+                                <li class="visible">Discuss the importance of approved s...</li>
+                                <li>Explain possible causes of fire</li>
+                                <li>Outline preventative measures to stop a fire from occurring</li>
+                                <li>Summarize serious life safety hazards</li>
+                                <li>Discuss the importance of approved storage areas</li>
+                                <li>Indicate various fire protection systems and their locations</li>
+                                <li>Describe the importance of a sound emergency evacuation plan</li>
+                                <li>Identify where you should locate an evacuation plan</li>
+                                <li>Recall the steps to take in the event of an emergency procedure</li>
+                                <li>Recognize how to aid individuals who require assistance</li>
+                            </ul>
+                            <span class="l-outcomes__all">
+                                <span>
+                                    View All Learning Outcomes
+                                    <span class="icon-thick-chevron-down"></span>
+                                </span>
+                                <span style="display: none">
+                                    View Less
+                                    <span class="icon-thick-chevron-up"></span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="l-tabs">
+                        <div class="l-tabs__nav">
+                            <div class="l-tabs__title l-tabs__title--active" data-tab="course-modules">
+                                <span>Course
+                                </span>
+                                Modules
+                            </div>
+                            <div class="l-tabs__title" data-tab="course-outcomes" style="display:none;">
+                                Outcomes
+                            </div>
+                            <div class="l-tabs__title" data-tab="course-desc">
+                                <span>Course
+                                </span>
+                                Description
+                            </div>
+                            <div class="l-tabs__title" data-tab="cert-desc">
+                                <span>Alison
+                                </span>
+                                Certificates
+                            </div>
+                        </div>
+                        <div class="l-tabs__content">
+                            <div class="l-mods course-modules l-mods--cancel">
+                                <div class="l-mods__module l-mods__module--default">
+                                    <div class="l-mods__module-inner">
+                                        <a href="https://alison.com/courses/health-and-safety-fire-safety-training-and-planning/content" title="Fire Prevention">
+                                            <div class="l-mods__module-num">Module
+                                                <span></span>
+                                            </div>
+                                            <h3>Fire Prevention</h3>
+                                            <div class="l-mods__module-desc">
+                                                <span>
+                                                    Fire losses are costly. This module teaches you the leading causes of
+                                                                                                    fire in the workplace and suggests tips on preventing or controlling
+                                                                                                    them once they have started.
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <a class="l-mods__module-start" href="https://alison.com/topic/learn/135444/fire-protection-systems">Continue
+                                                                                    Learning</a>
+                                    </div>
+                                    <div style="display:none" class="l-mods__topics">
+                                        <div class="l-mods__topics-inner">
+                                            <a href="https://alison.com/topic/learn/135441/fire-prevention-learning-outcomes" class="l-mods__topic  l-mods__topic--completed " data-lang="Continue Learning">
+                                                <h4>Fire Prevention - Learning Outcomes</h4>
+                                                <span>
+                                                    <span class="icon-tick"></span>
+                                                    Topic Completed
+                                                </span>
+                                            </a>
+                                            <a href="https://alison.com/topic/learn/135442/an-introduction-to-fire-safety-and-prevention" class="l-mods__topic  l-mods__topic--completed " data-lang="Continue Learning">
+                                                <h4>An Introduction to Fire Safety and Prevention</h4>
+                                                <span>
+                                                    <span class="icon-tick"></span>
+                                                    Topic Completed
+                                                </span>
+                                            </a>
+                                            <a href="https://alison.com/topic/learn/135443/fire-preventative-measures" class="l-mods__topic  l-mods__topic--completed " data-lang="Continue Learning">
+                                                <h4>Fire Preventative Measures</h4>
+                                                <span>
+                                                    <span class="icon-tick"></span>
+                                                    Topic Completed
+                                                </span>
+                                            </a>
+                                            <a href="https://alison.com/topic/learn/135444/fire-protection-systems" class="l-mods__topic l-mods__topic--to-do l-mods__topic--start" data-lang="Continue Learning">
+                                                <h4>Fire Protection Systems</h4>
+                                            </a>
+                                            <a href="https://alison.com/topic/learn/135445/fire-prevention-lesson-summary" class="l-mods__topic  l-mods__topic--to-do " data-lang="Continue Learning">
+                                                <h4>Fire Prevention - Lesson Summary</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END .l-mods__module -->
+                                <div class="l-mods__module">
+                                    <div class="l-mods__module-inner">
+                                        <a href="https://alison.com/courses/health-and-safety-fire-safety-training-and-planning/content" title="Emergency Evacuation">
+                                            <div class="l-mods__module-num">Module
+                                                <span></span>
+                                            </div>
+                                            <h3>Emergency Evacuation</h3>
+                                            <div class="l-mods__module-desc">
+                                                <span>
+                                                    This module discusses emergency equipment and its location. In
+                                                                                                    addition, you will learn about the step-by-step procedure for planning
+                                                                                                    an evacuation, exit routes, and protocols.
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <a class="l-mods__module-start" href="https://alison.com/topic/learn/135446/emergency-evacuation-learning-outcomes">Continue
+                                                                                    Learning</a>
+                                    </div>
+                                    <div style="display:none" class="l-mods__topics">
+                                        <div class="l-mods__topics-inner">
+                                            <a href="https://alison.com/topic/learn/135446/emergency-evacuation-learning-outcomes" class="l-mods__topic l-mods__topic--to-do l-mods__topic--start" data-lang="Continue Learning">
+                                                <h4>Emergency Evacuation - Learning Outcomes</h4>
+                                            </a>
+                                            <a href="https://alison.com/topic/learn/135447/planning-and-emergency-equipment" class="l-mods__topic  l-mods__topic--to-do " data-lang="Continue Learning">
+                                                <h4>Planning and Emergency Equipment</h4>
+                                            </a>
+                                            <a href="https://alison.com/topic/learn/135448/evacuation-plan" class="l-mods__topic  l-mods__topic--to-do " data-lang="Continue Learning">
+                                                <h4>Evacuation Plan</h4>
+                                            </a>
+                                            <a href="https://alison.com/topic/learn/135449/emergency-procedures" class="l-mods__topic  l-mods__topic--to-do " data-lang="Continue Learning">
+                                                <h4>Emergency Procedures</h4>
+                                            </a>
+                                            <a href="https://alison.com/topic/learn/135450/emergency-evacuation-lesson-summary" class="l-mods__topic  l-mods__topic--to-do " data-lang="Continue Learning">
+                                                <h4>Emergency Evacuation - Lesson Summary</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END .l-mods__module -->
+                                <div class="l-mods__module l-mods__module--open">
+                                    <div class="l-mods__module-inner">
+                                        <a href="https://alison.com/courses/health-and-safety-fire-safety-training-and-planning/content" title="Course assessment">
+                                            <div class="l-mods__module-num">Module
+                                                <span></span>
+                                            </div>
+                                            <h3>Course assessment</h3>
+                                            <div class="l-mods__module-desc">
+                                                <span></span>
+                                            </div>
+                                        </a>
+                                        <a class="l-mods__module-start" href="https://alison.com/topic/learn/135451/health-and-safety-fire-safety-training-and-planning-course-assessment">Continue
+                                                                                    Learning</a>
+                                    </div>
+                                    <div style="" class="l-mods__topics">
+                                        <div class="l-mods__topics-inner">
+                                            <a href="https://alison.com/topic/learn/135451/health-and-safety-fire-safety-training-and-planning-course-assessment" class="l-mods__topic l-mods__topic--to-do l-mods__topic--start" data-lang="Continue Learning">
+                                                <h4>Health and Safety - Fire Safety Training and Planning: Course Assessment
+                                                </h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END .l-mods__module -->
+                                <div class="l-mods__more l-but l-but--center" style="display: none">
+                                    View All Modules
+                                    <span class="icon-thick-chevron-down"></span>
+                                </div>
+                                <div class="l-mods__less l-but l-but--center" style="display: none">
+                                    View Less Modules
+                                    <span class="icon-thick-chevron-up"></span>
+                                </div>
+                            </div>
+                            <div class="l-desc course-desc" style="display:none;">
+                                <p>Fire
+                                                                    safety and training are essential for any company or business. Fire
+                                                                    safety programmes need to be developed and regulated under the auspices
+                                                                    of each authority's health and safety standards. This course intends to
+                                                                    help you establish and maintain a safe working environment. It will
+                                                                    guide you through preventative measures to minimise the causes of fires
+                                                                    and teach you correct evacuation procedures if one occurs.&nbsp;</p>
+                                <p>We
+                                                                    believe that knowledge and education is crucial to save lives and
+                                                                    prevent property damage. This training course begins by explaining the
+                                                                    components of a fire and the possible causes. Then you will investigate
+                                                                    how to prevent fires before learning how to reduce them, inspect
+                                                                    potential problems and report them as soon as they occur. This leads to
+                                                                    the necessity of a fire prevention plan (FPP), which provides
+                                                                    information and guidelines to all employees or trainees to control fires
+                                                                    or eliminate their cause in the first place.</p>
+                                <p>The second section
+                                                                    of the course will teach you emergency evacuation and procedures. You
+                                                                    will become familiar with portable and stationary equipment and learn
+                                                                    how to plan ahead if a fire breaks out. Understand that at least two
+                                                                    evacuation routes are required in an evacuation plan and know that you
+                                                                    should display these emergency routes in a visible location. Individuals
+                                                                    requiring assistance must particularly be prepared and know their
+                                                                    routes. The course will take you step by step through emergency
+                                                                    procedures and train you in simple fire safety techniques. Although this
+                                                                    material is a health and safety guide, individuals should refer to
+                                                                    specific requirements and practices based on their industry and
+                                                                    location. So enrol today and be a step ahead of your colleagues in
+                                                                    understanding fire safety and the role that evacuation procedures can
+                                                                    play in keeping everyone safe.</p>
+                                <div class="l-but__outer">
+                                    <a href="https://alison.com/resume/courses/4651" class="l-but course_btn">Continue Learning</a>
+                                </div>
+                            </div>
+                            <div class="l-desc course-outcomes" style="display:none;">
+                                <div class="l-outcomes l-section l-outcomes--bg">
+                                    <div class="l-section__inner">
+                                        <h3>In This Free Course, You Will Learn How To</h3>
+                                        <ul class="course-outcomes">
+                                            <li class="visible">Explain possible causes of fire...</li>
+                                            <li class="visible">Outline preventative measures to sto...</li>
+                                            <li class="visible">Summarize serious life safety hazard...</li>
+                                            <li class="visible">Discuss the importance of approved s...</li>
+                                            <li>Explain possible causes of fire</li>
+                                            <li>Outline preventative measures to stop a fire from occurring</li>
+                                            <li>Summarize serious life safety hazards</li>
+                                            <li>Discuss the importance of approved storage areas</li>
+                                            <li>Indicate various fire protection systems and their locations</li>
+                                            <li>Describe the importance of a sound emergency evacuation plan</li>
+                                            <li>Identify where you should locate an evacuation plan</li>
+                                            <li>Recall the steps to take in the event of an emergency procedure</li>
+                                            <li>Recognize how to aid individuals who require assistance</li>
+                                        </ul>
+                                        <span class="l-outcomes__all">
+                                            <span>
+                                                View All Learning Outcomes
+                                                <span class="icon-thick-chevron-down"></span>
+                                            </span>
+                                            <span style="display: none">
+                                                View Less
+                                                <span class="icon-thick-chevron-up"></span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="l-desc cert-desc" style="display:none;">
+                                <p>
+                                    All Alison courses are free to enrol study and complete. To successfully complete this
+                                    <span class="course-type">certificate</span>
+                                    course and become an Alison Graduate, you need to achieve 80% or higher
+                                                                    in each course assessment. Once you have completed this
+                                    <span class="course-type">certificate</span>
+                                    course, you have the option to acquire an
+                                                                    official Diploma, which is a great way to share your achievement with the world.
+                                </p>
+                                <div class="l-list l-list--tick">
+                                    <h6>Your Alison
+                                        <span class="course-type">certificate</span>
+                                        is:</h6>
+                                    <ul>
+                                        <li>Ideal for sharing with potential employers</li>
+                                        <li>Include it in your CV, professional social media profiles and job applications.
+                                        </li>
+                                        <li>An indication of your commitment to continuously learn, upskill &amp; achieve
+                                                                                    high results.</li>
+                                        <li>An incentive for you to continue empowering yourself through lifelong learning.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div class="l-flex l-flex--even">
+                                    <div class="l-list l-list--bullet">
+                                        <h6>Alison offers
+                                            <span class="l-list__color">3 types</span>
+                                            of Diplomas for
+                                                                                    completed Diploma courses:</h6>
+                                        <ul>
+                                            <li>
+                                                <strong>Digital
+                                                    <span class="course-type">certificate</span>:</strong>
+                                                a
+                                                                                            downloadable
+                                                <span class="course-type">certificate</span>
+                                                in PDF format
+                                                                                            immediately available to you when you complete your purchase.
+                                            </li>
+                                            <li>
+                                                <strong>
+                                                    <span class="course-type">certificate</span>:</strong>
+                                                a physical
+                                                                                            version of your officially branded and security-marked
+                                                <span class="course-type">certificate</span>, posted to you with FREE
+                                                                                                shipping.
+                                            </li>
+                                            <li>
+                                                <strong>Framed
+                                                    <span class="course-type">certificate</span>:</strong>
+                                                a
+                                                                                            physical version of your officially branded and security marked
+                                                <span class="course-type">certificate</span>
+                                                in a stylish frame, posted to you
+                                                                                            with FREE shipping.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="l-diploma"><img class="lazyload" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/diploma.png"><a class="course_btn course_btn--alt" href="https://alison.com/resume/courses/4651">Continue Learning
+                                            <span class="icon-thick-chevron-down right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p>
+                                    All
+                                    <span class="course-type">certificate</span>s are available to purchase through the
+                                    <a href="https://alison.com/shop">Alison Shop</a>. For more information on purchasing
+                                                                        Alison
+                                    <span class="course-type">certificate</span>, please visit our
+                                    <a href="https://alison.com/faqs">FAQs</a>. If you decide not to purchase your Alison
+                                    <span class="course-type">certificate</span>,
+                                                                        you can still demonstrate your achievement by sharing your Learner
+                                                                        Record or Learner Achievement Verification, both of which are accessible
+                                                                        from your
+                                    <a href="https://alison.com/settings">Account Settings</a>. For more details
+                                                                        on our
+                                    <span class="course-type">certificate</span>
+                                    pricing, please visit our
+                                    <a href="https://alison.com/about/pricing">Pricing Page</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-tags l-tags--icon l-section" style="min-height: 210px">
+                        <div class="l-section__inner">
+                            <h3><img class=" ls-is-cached lazyloaded" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/knowledge-and-skills.svg" src="/static/course/{{files}}/knowledge-and-skills.svg">
+                                Knowledge &amp; Skills You Will Learn</h3>
+                            <ul>
+                                <li><a href="https://alison.com/tag/health-and-safety" title="Health and Safety">Health and
+                                                                        Safety</a></li>
+                                <li><a href="https://alison.com/tag/fire-safety" title="Fire Safety">Fire Safety</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="l-accred l-section l-section--green">
+                        <div class="l-section__inner">
+                            <h3>Complete This CPD Accredited Course &amp; Get Your
+                                <span class="course-type">certificate</span>!</h3>
+                            <div class="l-flex">
+                                <div class="l-list l-list--image">
+                                    <ul>
+                                        <li>
+                                            <span><img class=" lazyloaded" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certify-icon.svg" src="/static/course/{{files}}/certify-icon.svg"></span>
+                                            <span>
+                                                <h5>Certify Your Skills</h5>
+                                                A CPD accredited Alison Diploma/Certificate
+                                                                                            certifies the skills you’ve learned
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span><img class=" lazyloaded" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/stand-out.svg" src="/static/course/{{files}}/stand-out.svg"></span>
+                                            <span>
+                                                <h5>Stand Out From The Crowd</h5>
+                                                Add your Alison Certification to your
+                                                                                            resumé and stay ahead of the competition
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span><img class=" lazyloaded" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/advance-in-career.svg" src="/static/course/{{files}}/advance-in-career.svg"></span>
+                                            <span>
+                                                <h5>Advance in Your Career</h5>
+                                                Share your Alison Certification with
+                                                                                            potential employers to show off your skills and capabilities
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="l-diploma">
+                                    <picture class=" lazyloaded" style="min-height: 167px">
+                                        <source srcset="/static/course/{{files}}/certificate-small.webp 1x" media="(max-width: 480px)" data-srcset="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate-small.webp">
+                                        <source srcset="/static/course/{{files}}/certificate.webp 1x" media="(max-width: 768px)" data-srcset="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate.webp">
+                                        <img data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate.png" src="/static/course/{{files}}/certificate.png">
+                                    </picture>
+                                    <a class="course_btn course_btn--alt" href="https://alison.com/resume/courses/4651">Continue Learning
+                                        <span class="icon-thick-chevron-down right"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="landing__ad--middle" class="landing__ad landing__ad--middle" style="min-height: 183px">
+                        <div class="landing__top-ad-inner">
+                            <div id="gam_inner">
+                                <script type="text/javascript">
+                                    if (window.device === 'mobile') {
+                                        document.getElementById('gam_inner').style.cssText = 'width: 360px; text-align: center; margin: 0 auto;';
+                                        googletag.cmd.push(function () {
+                                            googletag.defineSlot('/6434961/inner', inner_sizes, 'gam_inner').addService(googletag.pubads());
+                                            googletag.display('gam_inner');
+                                        });
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-reviews-fullpage">
+                        <div class="l-reviews__back back-button l-reviews__back--top" style="display: none">
+                            <span class="icon-thick-chevron-down left"></span>
+                            Back to course information
+                        </div>
+                        <div class="l-reviews-fullpage__inner">
+                            <div class="l-reviews">
+                                <div class="l-reviews__head">
+                                    <h2>
+                                        <strong>Learner Reviews &amp; Feedback For</strong>
+                                        Health and Safety - Fire Safety
+                                                                            Training and Planning</h2>
+                                    <div class="l-rating">
+                                        <div class="l-rating__love">
+                                            <span class="rating" data-val="5"></span>
+                                            <span class="course-love">24</span>
+                                        </div>
+                                        <div class="l-rating__like">
+                                            <span class="rating" data-val="2"></span>
+                                            <span class="course-like">6</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="l-reviews__content">
+                                    <div class="l-review" data-id="721810">
+                                        <div class="l-flex">
+                                            <div class="l-review__img">
+                                                <img class=" ls-is-cached lazyloaded" data-src="https://alison.com/images/users/191fd729a23dc2525af800d0bd9352723ea977ea5b25dec9974c7142b51a053b/29745784.jpg" src="/static/course/{{files}}/29745784.jpg">
+                                            </div>
+                                            <div class="l-review__details">
+                                                <div class="l-review__details-top">
+                                                    <span class="l-review__name">Jim
+                                                                                                            P.</span>
+                                                    <span class="l-review__flag">
+                                                        <img width="20" height="10" class=" lazyloaded" data-srcset="/html/site/img/course-landing-v2/small-flags/gb.png, /html/site/img/course-landing-v2/small-flags-2x/gb.png 2x" data-src="/html/site/img/course-landing-v2/small-flags/gb.png" srcset="/static/course/{{files}}/gb.webp 1x, Health%20and%20Safety%20-%20Fire%20Safety%20Training%20and%20Training%20Alison_files/gb_002.webp 2x" src="/static/course/{{files}}/gb.webp">
+                                                    </span>
+                                                    <span class="l-review__graduate">
+                                                        <span class="icon-qualified"></span>
+                                                        Alison Graduate
+                                                    </span>
+                                                </div>
+                                                <span class="l-review__graduate " style="display: none">
+                                                    <span class="icon-qualified"></span>
+                                                    Alison Graduate
+                                                </span>
+                                                <span class="l-review__user-rating">
+                                                    <span class="liked">liked</span>
+                                                    this
+                                                                                                    course
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="l-review__content">
+                                            Best way to learn in-depth and in a very effective
+                                                                                    way. Thanks to Alison for your very useful platform for learning
+                                        </div>
+                                        <div class="l-review__rating">
+                                            Was This Review Helpful?
+                                            <div class="l-review__buttons">
+                                                <span class="review-icon icon-like "></span>
+                                                <span class="review-icon icon-nope "></span>
+                                                <span class="l-review__report">Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="l-review" data-id="721610">
+                                        <div class="l-flex">
+                                            <div class="l-review__img">
+                                                <img class=" lazyloaded" data-src="https://alison.com/images/users/54f87594bff0b9483f86ebdf94228080dec71c585bb991334831ccdc93a77504/28985205.jpg" src="/static/course/{{files}}/28985205.jpg">
+                                            </div>
+                                            <div class="l-review__details">
+                                                <div class="l-review__details-top">
+                                                    <span class="l-review__name">Owusu
+                                                                                                            B.</span>
+                                                    <span class="l-review__flag">
+                                                        <img width="20" height="10" class=" lazyloaded" data-srcset="/html/site/img/course-landing-v2/small-flags/gh.png, /html/site/img/course-landing-v2/small-flags-2x/gh.png 2x" data-src="/html/site/img/course-landing-v2/small-flags/gh.png" srcset="/static/course/{{files}}/gh_002.webp 1x, Health%20and%20Safety%20-%20Fire%20Safety%20Training%20and%20Training%20Alison_files/gh.webp 2x" src="/static/course/{{files}}/gh_002.webp">
+                                                    </span>
+                                                    <span class="l-review__graduate">
+                                                        <span class="icon-qualified"></span>
+                                                        Alison Graduate
+                                                    </span>
+                                                </div>
+                                                <span class="l-review__graduate " style="display: none">
+                                                    <span class="icon-qualified"></span>
+                                                    Alison Graduate
+                                                </span>
+                                                <span class="l-review__user-rating">
+                                                    <span class="loved">loved</span>
+                                                    this
+                                                                                                    course
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="l-review__content">
+                                            Best way to learning in depth and in very effective
+                                                                                    way. Thanks to Alison for your very useful platform for learning.
+                                        </div>
+                                        <div class="l-review__rating">
+                                            Was This Review Helpful?
+                                            <div class="l-review__buttons">
+                                                <span class="review-icon icon-like "></span>
+                                                <span class="review-icon icon-nope "></span>
+                                                <span class="l-review__report">Report</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="l-reviews__more l-but l-but--center" style="display: none;">
+                                    View More Reviews
+                                </div>
+                                <div class="l-reviews__pagination l-but l-but--center" style="display: none">
+                                    <span class="icon-thick-chevron-down left"></span>
+                                    <span class="nums">
+                                        <span class="active" data-page="1">1</span>
+                                    </span>
+                                    <span class="icon-thick-chevron-down right"></span>
+                                </div>
+                            </div>
+                            <div class="l-reviews__back">
+                                <span class="icon-thick-chevron-down left"></span>
+                                Back to course
+                                                            information
+                            </div>
+                        </div>
+                        <div class="l-report" style="display:none;">
+                            <div class="l-report__inner">
+                                <span class="icon-cross2"></span>
+                                <h3>Report Abuse</h3>
+                                <p>Flagged
+                                                                    content is reviewed by Alison to determine whether it violates Terms of
+                                                                    Service or Community Guidelines. If you have a question or technical
+                                                                    issue, please contact our
+                                    <a title="Contact support" href="https://alison.com/contact-us">Support team here.</a>
+                                </p>
+                                <form method="POST" action="https://alison.com/contact-us/report" accept-charset="UTF-8" name="contact-form"><input name="_token" type="hidden" value="2NBrr4GXKMWUsVe3nTrz57icBuHEva01jhVs1zfp"><span>Issue Type</span>
+                                    <select required="" name="section">
+                                        <option selected="selected">Select an issue</option>
+                                        <option>Inappropriate content/behaviour</option>
+                                        <option>Alison Policy Violation</option>
+                                        <option>Other</option>
+                                    </select>
+                                    <span>Issue Details</span>
+                                    <textarea required="" name="message"></textarea><input name="id" type="hidden" value="36383682"><input name="comment_id" type="hidden" value=""><input name="email" type="hidden" value="shailmahan012@gmail.com"><input name="course" type="hidden" value="4651"><button>Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-careers l-careers--init">
+                        <h3>Explore Careers Related To This Course</h3>
+                        <div class="l-careers__inner slick-initialized slick-slider">
+                            <div aria-live="polite" class="slick-list draggable">
+                                <div class="slick-track" style="opacity: 1; width: 650px; left: 0px;" role="listbox">
+                                    <div class="l-careers__section slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 650px;" tabindex="-1" role="option" aria-describedby="slick-slide00">
+                                        <a href="https://alison.com/careers/security/fire-investigator" class="l-career" tabindex="0">
+                                            <div class="l-career__img">
+                                                <img class="lazyload" data-src="https://cdn01.alison-static.net/careers/career/fire.jpg">
+                                            </div>
+                                            <span>Fire Investigator</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-main-pub" id="l-main-pub">
+                        <div class="l-main-pub__back back-button" style="display: none">
+                            <span class="icon-thick-chevron-down left"></span>
+                            Back to course information
+                        </div>
+                        <div class="mobile-scroll">
+                            <div class="l-main-pub__inner">
+                                <h3>About Your Alison Course Publisher</h3>
+                                <h4 class="" style="display: none">
+                                    <a class="course-publisher course-publisher--stats" href="https://alison.com/course-creators/advance-learning">
+                                        <strong>Advance
+                                                                                    Learning's</strong>
+                                    </a>
+                                    Alison Stats</h4>
+                                <div class="l-main-pub__info">
+                                    <div class="l-main-pub__img missing" style="visibility: visible;"><img class="lazyload" data-src="https://cdn01.alison-static.net/publishers/2/f1.jpg"></div>
+                                    <div class="l-main-pub__stats">
+                                        <h4 class="">
+                                            <a class="course-publisher course-publisher--stats" href="https://alison.com/course-creators/advance-learning">
+                                                <strong>Advance
+                                                                                                    Learning's</strong>
+                                            </a>
+                                            Alison Stats</h4>
+                                        <span class="">
+                                            <span class="icon-learners-1"></span>
+                                            <strong class="publisher-enrollments">10,244,986</strong>
+                                            Learners</span>
+                                        <span class="">
+                                            <span class="icon-Literature-Filled"></span>
+                                            <strong class="publisher-course-count">671</strong>
+                                            Courses</span>
+                                        <span class="">
+                                            <span class="icon-learners-benefited"></span>
+                                            <strong class="publisher-likes">57,550</strong>
+                                            Learners Have Benefited From Their
+                                                                                    Courses
+                                        </span>
+                                    </div>
+                                </div>
+                                <span class="l-main-pub__desc l-main-pub__desc--cut">Advance Learning has produced
+                                                                    cutting-edge interactive multimedia IT Skills training courses for cor...</span>
+                                <span class="l-main-pub__desc l-main-pub__desc--full" style="display: none">Advance
+                                                                    Learning has produced cutting-edge interactive multimedia IT Skills
+                                                                    training courses for corporate clients including the Microsoft
+                                                                    Corporation. Advance Learning is an expert in the field of E-Learning
+                                                                    Theory and Practice. Each course they publish is pedagogically sound and
+                                                                    designed to offer the learner the best educational experience possible.
+                                    <br><br>
+                                    From 1998 to 2007, Advance Learning produced leading edge
+                                                                    interactive multimedia IT Skills training courses for its own direct
+                                                                    clients and for corporate clients such as the Microsoft Corporation.
+                                                                    Over the years, Advance Learning has expanded its content and today
+                                                                    boasts an extensive catalogue of curated courses on a wide range of
+                                                                    categories, from Health &amp; Safety to GDPR, Business to Management and
+                                                                    Caregiving to Parenting. Each online course is carefully selected,
+                                                                    reviewed and edited to ensure it reaches Continuing Professional
+                                                                    Development UK (CPD) high standards and accreditation.
+                                    <br><br>
+                                    Advance
+                                                                    Learning provides high quality interactive multimedia content
+                                                                    development services. They work with multiple partners and clients to
+                                                                    continue to source, purchase and commission more and more courses
+                                                                    developed by subject matter experts.
+                                </span>
+                                <span class="l-main-pub__read-more" style="">Read More</span>
+                            </div>
+                            <div id="l-carousel--pub" class="l-carousel l-carousel--pub">
+                                <h3>More Free Online Courses by This Publisher</h3>
+                                <div class="l-carousel__courses">
+                                    <ul id="lcp-list">
+                                        <li>
+                                            <a href="https://alison.com/course/protect-your-pc-against-the-notpetya-cyber-attack">Protect
+                                                                                            Your PC against the NotPetya Cyber Attack</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://alison.com/course/introduction-to-digital-photography">Introduction
+                                                                                            to Digital Photography</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://alison.com/course/english-grammar-comparisons-and-word-order-intermediate-level">English
+                                                                                            Grammar - Comparisons &amp; Word Order (Intermediate level)</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://alison.com/course/introduction-to-supervision">Introduction to
+                                                                                            Supervision</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://alison.com/course/wind-energy-from-wind-turbines-to-grid-integration">Wind
+                                                                                            Energy – From Wind Turbines to Grid Integration</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://alison.com/course/beginner-digital-photography">Beginner
+                                                                                            Digital Photography</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://alison.com/course/supervision-effective-communication-skills">Supervision
+                                                                                            - Effective Communication Skills</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://alison.com/course/beginner-level-english-1-foundations">Beginner
+                                                                                            Level English 1 - Foundations</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://alison.com/course/intermediate-digital-photography">Intermediate
+                                                                                            Digital Photography</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://alison.com/course/beginner-level-english-2-make-a-request">Beginner
+                                                                                            Level English 2 - Make a Request</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="l-carousel--enrolled" class="l-carousel l-carousel--enrolled">
+                        <h3>Learners Who Took This Course Also Enrolled In</h3>
+                        <div class="l-carousel__courses">
+                            <ul id="lce-list">
+                                <li>
+                                    <a href="https://alison.com/course/cpr-aed-and-first-aid">CPR, AED and First Aid</a>
+                                </li>
+                                <li>
+                                    <a href="https://alison.com/course/basics-of-manual-handling-in-the-workplace">Basics of
+                                                                            Manual Handling in the Workplace</a>
+                                </li>
+                                <li>
+                                    <a href="https://alison.com/course/iso-45001-2018-principles-of-occupational-health-and-safety-management-systems">ISO
+                                                                            45001:2018 - Principles of Occupational Health and Safety Management Systems</a>
+                                </li>
+                                <li>
+                                    <a href="https://alison.com/course/diploma-in-workplace-safety-and-health-revised-2017">Diploma
+                                                                            in Workplace Safety and Health</a>
+                                </li>
+                                <li>
+                                    <a href="https://alison.com/course/diploma-in-caregiving-revised-2018">Diploma in
+                                                                            Caregiving</a>
+                                </li>
+                                <li>
+                                    <a href="https://alison.com/course/basic-life-support-bls">Basic Life Support (BLS)</a>
+                                </li>
+                                <li>
+                                    <a href="https://alison.com/course/diploma-in-fire-safety">Diploma in Fire Safety</a>
+                                </li>
+                                <li>
+                                    <a href="https://alison.com/course/elderly-care-and-caring-for-the-disabled-revised">Elderly
+                                                                            Care and Caring for the Disabled</a>
+                                </li>
+                                <li>
+                                    <a href="https://alison.com/course/fire-safety-essential-concepts-prevention-and-control">Fire
+                                                                            Safety - Essential Concepts, Prevention &amp; Control</a>
+                                </li>
+                                <li>
+                                    <a href="https://alison.com/course/first-aid-training-in-the-workplace">First Aid
+                                                                            Training in the Workplace</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="l-tags l-section l-tags--lower">
+                        <div class="l-section__inner">
+                            <h3>Explore Subjects Related To This Course</h3>
+                            <ul>
+                                <li><a href="https://alison.com/tag/health-and-safety" title="Health and Safety">Health and
+                                                                        Safety</a></li>
+                                <li><a href="https://alison.com/tag/fire-safety" title="Fire Safety">Fire Safety</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sticky-ad inner-page-sticky-ad player-page-sticky le-sticky" style="position: fixed; top: 87px;">
+                <div id="gam_sidebar" style="height: 100%">
+                    <script type="text/javascript">
+                        if (sidebar_sizes.length > 0) {
+                            if (window.device === 'desktop') {
+                                googletag.cmd.push(function () {
+                                    googletag.defineSlot('/6434961/sidebar', sidebar_sizes, 'gam_sidebar').addService(googletag.pubads());
+                                    googletag.display('gam_sidebar');
+                                });
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
