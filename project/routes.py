@@ -8,6 +8,10 @@ from project.stripe_config import stripe_config
 import stripe
 import os
 
+# import cloudscraper
+# scraper = cloudscraper.create_scraper()
+# ALISON = "https://alison.com"
+
 stripe.api_key = stripe_config["KEY"]
 TITLE = "Healthcare CPD"
 domain = ("https", "healthcarecpd.org")
@@ -36,6 +40,10 @@ def extra_files(path):
     file = os.path.join(app.config["APP_DIR"], "project", file)
     if os.path.isfile(file):
         return send_file(file, as_attachment=False)
+    # data = scraper.get(f"{ALISON}/html/{path}").text
+    # if file.endswith(".js"):
+    #     open(file, "w").write(data)
+    #     return send_file(file, as_attachment=False)
     return abort(404)
 
 @app.route("/")

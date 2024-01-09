@@ -1,3 +1,6 @@
+greenlet==2.0.0
+urllib3==1.26.6
 flask
 flask_sqlalchemy
+requests
 stripe
