@@ -1,45 +1,810 @@
 {% extends 'course_data/course_layout.html' %}
 {% block data %}
-<div id="main-holder"><div class="landing__ad landing__ad--top" style="min-height: 119px"><div class="landing__top-ad-inner"><div id="gam_header" style="margin: 0px auto; text-align: center; width: 728px;"><script type="text/javascript"> document.getElementById('gam_header').style.width = header_sizes[0][0] + 'px'; googletag.cmd.push(function () { googletag.defineSlot('/6434961/header', header_sizes, 'gam_header').addService(googletag.pubads()); googletag.display('gam_header'); }); </script></div></div></div><div class="landing"><div class="l-card"><div class="l-card__inner"><div class="l-card__img-overflow"><div class="l-card__img"><img width="300px" height="200px" src="https://cdn01.alison-static.net/courses/4653/alison_courseware_intro_4653.jpg" alt="Health and Safety - Personal Protective Equipment"></div></div><div class="l-card__info-padding"><h3 class="course-title"> Health and Safety - Personal Protective Equipment </h3><div class="l-card__enrolled"><span><span class="icon-learners-1"></span><span class="course-enrolled">2,540</span></span> Learners already enrolled </div><div class="l-rating enrol-to-rate"><div class="l-rating__love"><span class="rating disabled" data-val="5" data-l-tooltip="Loved it!"></span><span class="course-love">6</span></div><div class="l-rating__like"><span class="rating disabled" data-val="2" data-l-tooltip="Liked it!"></span><span class="course-like">2</span></div><div class="l-rating__no"><span class="rating disabled" data-val="0"></span> Not Interested </div></div><div class="l-card__includes l-list l-list--tick"><h6>This Free Online Course Includes:</h6><ul><li><span class="course-avg_duration l-time">3-4</span> Hours of Learning</li><li>CPD Accreditation</li><li>Final Assessment</li></ul></div><a class="course_btn add-course-id course_btn--shop l-but" href="https://alison.com/resume/courses/4653" data-id="4653">Start Course Now</a><div class="l-pub l-pub--card"><div class="l-pub__img missing" style="visibility: visible;"><img class=" lazyloaded" data-src="https://cdn01.alison-static.net/publishers/2/f1.jpg" src="https://cdn01.alison-static.net/publishers/2/f1.jpg"></div><div class="l-pub__content"><span class="l-pub__type"> COURSE PUBLISHER </span><span class="l-pub__name"><span class="l-pub__name-pre" style="display: none">Published by </span><span class="course-publisher">Advance Learning</span></span><span class="course-publisher-info l-pub__desc">Expert providers of quality courses</span></div></div></div></div></div><div class="landing__content"><div class=" breadcrumb__outer "><ol class="breadcrumb "><li id="home-link"><i class="icon-home"></i><a href="https://alison.com" title="Alison Homepage">Home</a></li><i class="icon-right-arrow"></i><li class="top-cat"><a href="https://alison.com/courses/health" title="Free Health Courses">Health</a></li><i class="icon-right-arrow"></i><li class="top-tag"><a href="https://alison.com/tag/health-and-safety" title="Free Health and Safety Courses">Health and Safety</a></li><i class="icon-right-arrow"></i><li><span class="breadcrumb_h1">Health and Safety - Personal Protective Equipment</span></li></ol></div><script> $(document).ready(function() { var courseId = "4653", tagRoute = "https://alison.com/tag/replaceme".replace(new RegExp('/replaceme', 'g'), '/'), categoryRoute = "https://alison.com/courses/replaceme".replace(new RegExp('/replaceme', 'g'), '/'), locale = "en", endpoint = $('body').attr('data-api_endpoint') || 'https://api.alison.com/v0.1'; $.ajaxSetup({ beforeSend: function (request) { request.setRequestHeader("x-header-host", "oTbrPD9HRO+jdciawiXuh4vUgB8="); } }); $.ajax({ type: "GET", url: endpoint + "/categories/breadcrumbs?course_id="+ courseId +"&locale=" + locale, dataType: 'json', async: true, success: function(response){ if(response.status === 200 && response.result.length > 1){ $('<i class="icon-right-arrow"></i><li class="top-cat"><a href="'+categoryRoute+response.result[0].slug+'" title="Free '+response.result[0].name+' Courses">'+response.result[0].name+'</a></li>').insertAfter('li#home-link'); $('<i class="icon-right-arrow"></i><li class="top-tag"><a href="'+tagRoute+response.result[1].slug+'" title="Free '+response.result[1].name+' Courses">'+response.result[1].name+'</a></li>').insertAfter('li.top-cat'); } }, error: function(error){ console.log('Error loading breadcrumbs'); console.log(error); }, complete: function(){ var element = document.createElement('script'); element.setAttribute('type', 'application/ld+json'); var breadcrumbs = { "@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [] }; var courseUrl = "https://alison.com/course/health-and-safety-personal-protective-equipment"; $('ol.breadcrumb li').each(function(index) { var item = {}; var href = (typeof $(this).find("a").attr('href') !== "undefined") ? $(this).find("a").attr('href') : courseUrl; if (href) item["@id"] = href; item["name"] = $.trim($(this).text()); breadcrumbs.itemListElement.push({ "@type": "ListItem", "position": index + 1, item }); }); element.text = JSON.stringify(breadcrumbs); document.querySelector('head').appendChild(element); function trimString(str, length){ str = str.trim(); return (str.length <= length) ? str : str.slice(0, length) + '...'; } let breadcrumb_length = 75 - ($('.top-cat').text().length + $('.top-tag').text().length); $('.breadcrumb_h1').text(trimString($('.breadcrumb_h1').text(), breadcrumb_length)); } }); }); </script><div class="l-info"><div class="l-info__inner"><h1 class="course-title">Health and Safety - Personal Protective Equipment </h1><div class="course-headline l-info__headline"> Learn the importance of PPE in the workplace, its correct use and the types available in this free online course. </div><div class="course-description l-info__description"><span class="l-info__description-short"> The safety of employees is of utmost importance and so personal protective equipment ... </span><span class="l-info__description-full"> The safety of employees is of utmost importance and so personal protective equipment (PPE) is commonly used in the workplace to prevent serious health hazards and mitigate risks. This course delves deeply into the use of PPE and studies the various types used for the different dangers that may occur. Learn how to conduct a ‘hazard assessment’ correctly and understand the training required in PPE use and care in this health and safety course. </span><span class="l-info__read-more" style="display: none"> Read More </span></div><div class="l-info__bottom"><div class="l-pub l-pub--small"><div class="l-pub__img missing" style="visibility: visible;"><img class=" lazyloaded" data-src="https://cdn01.alison-static.net/publishers/2/f1.jpg" src="https://cdn01.alison-static.net/publishers/2/f1.jpg"></div><div class="l-pub__content"><span class="l-pub__type"> COURSE PUBLISHER </span><span class="course-publisher l-pub__name">Advance Learning</span></div></div><a class="course_btn add-course-id course_btn--shop l-but" href="https://alison.com/resume/courses/4653" data-id="4653">Start Course Now</a><a class="course_btn--revisit" href="https://alison.com/resume/courses" style="display: none"><span> Revisit Course </span></a></div></div></div><div class="l-outcomes l-section l-outcomes--bg"><div class="l-section__inner"><h3>In This Free Course, You Will Learn How To</h3><ul class="course-outcomes"><li class="visible">Discuss the general personal protect...</li><li class="visible">Summarize the potential hazards foun...</li><li class="visible">Outline the proper use of PPE...</li><li class="visible">Explain the importance of being trai...</li>
-<li>Discuss the general personal protective equipment (PPE) requirements and their role in the workplace</li>
-<li>Summarize the potential hazards found at work</li>
-<li>Outline the proper use of PPE</li>
-<li>Explain the importance of being trained in PPE and who should do the training</li>
-<li>Discuss the importance of demonstration when training in the use of PPE</li>
-<li>List the most effective eye and face protection&nbsp;</li>
-<li>Explain the criteria for protective eye and face devices to meet OSHA standards</li>
-<li>Discuss the necessity for using personal protective equipment</li>
-<li>Discuss respiratory hazards and control measures</li>
-<li>Outline suitable respiratory protection program requirements and training</li>
-<li>Define the selection guidelines for head, hand and foot protection</li>
-<li>Recognize the care and use of electrical protective equipment</li>
-<li>Recall how sound and noise is measured and suitable control and protection</li>
-</ul><span class="l-outcomes__all"><span> View All Learning Outcomes <span class="icon-thick-chevron-down"></span></span><span style="display: none"> View Less <span class="icon-thick-chevron-up"></span></span></span></div></div><div class="l-tabs"><div class="l-tabs__nav"><div class="l-tabs__title l-tabs__title--active" data-tab="course-modules"><span>Course </span> Modules </div><div class="l-tabs__title" data-tab="course-outcomes" style="display:none;"> Outcomes </div><div class="l-tabs__title" data-tab="course-desc"><span>Course </span> Description </div><div class="l-tabs__title" data-tab="cert-desc"><span>Alison </span> Certificates </div></div><div class="l-tabs__content"><div class="l-mods course-modules"> <div class="l-mods__module l-mods__module--default "> <div class="l-mods__module-inner"> <a href="https://alison.com/courses/health-and-safety-personal-protective-equipment/content" title="Introduction to PPE"><div class="l-mods__module-num">Module <span></span></div> <h3>Introduction to PPE</h3> <div class="l-mods__module-desc">  <span> This module covers general Personal Protective Equipment (PPE). You will learn the requirements for employers to provide PPE to their workers and their proper use. Proper use of PP... <span class="l-read-more">Read More</span> </span>  <span style="display:none"> This module covers general Personal Protective Equipment (PPE). You will learn the requirements for employers to provide PPE to their workers and their proper use. Proper use of PPE is vital to avoid potential exposure. You will discover the potential hazards at work and why formal training and teaching is needed.  <span class="l-read-less">Read Less</span>  </span> </div> </a> <a class="l-mods__module-start" href="https://alison.com/topic/learn/135460/introduction-to-ppe-learning-outcomes">Start Course Now</a> </div> <div style="display:none" class="l-mods__topics"> <div class="l-mods__topics-inner">  <a href="https://alison.com/topic/learn/135460/introduction-to-ppe-learning-outcomes" class="l-mods__topic l-mods__topic--to-do l-mods__topic--start" data-lang="Start Course Now"> <h4>Introduction to PPE - Learning Outcomes</h4>  </a>  <a href="https://alison.com/topic/learn/135461/requirements-and-proper-use-of-ppe" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now"> <h4>Requirements and Proper Use of PPE</h4>  </a>  <a href="https://alison.com/topic/learn/135462/potential-hazards-in-the-workplace" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now"> <h4>Potential Hazards in the Workplace</h4>  </a>  <a href="https://alison.com/topic/learn/135463/teaching-and-training" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now"> <h4>Teaching and Training</h4>  </a>  <a href="https://alison.com/topic/learn/135464/introduction-to-ppe-lesson-summary" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now"> <h4>Introduction to PPE - Lesson Summary</h4>  </a>  </div> </div>
-</div>
-<!-- END .l-mods__module -->
- <div class="l-mods__module  "> <div class="l-mods__module-inner"> <a href="https://alison.com/courses/health-and-safety-personal-protective-equipment/content" title="Classifications of PPE"><div class="l-mods__module-num">Module <span></span></div> <h3>Classifications of PPE</h3> <div class="l-mods__module-desc">  <span> This module discusses the various types of PPE available for each part of the body. We detail each PPE, from head and face protection, respiratory protection, hand and foot protect... <span class="l-read-more">Read More</span> </span>  <span style="display:none"> This module discusses the various types of PPE available for each part of the body. We detail each PPE, from head and face protection, respiratory protection, hand and foot protection, electrical protection and finally, protection to prevent hearing loss. This will enable an employee to choose the correct PPE for each situation or job.  <span class="l-read-less">Read Less</span>  </span> </div> </a> <a class="l-mods__module-start" href="https://alison.com/topic/learn/135465/classifications-of-ppe-learning-outcomes">Start Course Now</a> </div> <div style="display:none" class="l-mods__topics"> <div class="l-mods__topics-inner">  <a href="https://alison.com/topic/learn/135465/classifications-of-ppe-learning-outcomes" class="l-mods__topic l-mods__topic--to-do l-mods__topic--start" data-lang="Start Course Now"> <h4>Classifications of PPE - Learning Outcomes</h4>  </a>  <a href="https://alison.com/topic/learn/135466/eye-and-face-protection" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now"> <h4>Eye and Face Protection</h4>  </a>  <a href="https://alison.com/topic/learn/135467/respiratory-protection" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now"> <h4>Respiratory Protection</h4>  </a>  <a href="https://alison.com/topic/learn/135468/ppe-for-the-head-hands-or-feet" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now"> <h4>PPE for the Head, Hands or Feet</h4>  </a>  <a href="https://alison.com/topic/learn/135469/electrical-protective-equipment" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now"> <h4>Electrical Protective Equipment</h4>  </a>  <a href="https://alison.com/topic/learn/135470/hearing-loss-protection" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now"> <h4>Hearing Loss Protection</h4>  </a>  <a href="https://alison.com/topic/learn/135471/health-and-safety-104-personal-protective-equipment-lesson-summary" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now"> <h4>Health &amp; Safety 104 - Personal Protective Equipment - Lesson Summary</h4>  </a>  </div> </div>
-</div>
-<!-- END .l-mods__module -->
- <div class="l-mods__module  "> <div class="l-mods__module-inner"> <a href="https://alison.com/courses/health-and-safety-personal-protective-equipment/content" title="Course assessment"><div class="l-mods__module-num">Module <span></span></div> <h3>Course assessment</h3> <div class="l-mods__module-desc">  <span>   </span> </div> </a> <a class="l-mods__module-start" href="https://alison.com/topic/learn/135472/health-and-safety-personal-protective-equipment-course-assessment">Start Course Now</a> </div> <div style="display:none" class="l-mods__topics"> <div class="l-mods__topics-inner">  <a href="https://alison.com/topic/learn/135472/health-and-safety-personal-protective-equipment-course-assessment" class="l-mods__topic l-mods__topic--to-do l-mods__topic--start" data-lang="Start Course Now"> <h4>Health and Safety - Personal Protective Equipment - Course Assessment</h4>  </a>  </div> </div>
-</div>
-<!-- END .l-mods__module -->
- <div class="l-mods__more l-but l-but--center" style="display: none"> View All Modules <span class="icon-thick-chevron-down"></span>
-</div> <div class="l-mods__less l-but l-but--center" style="display: none"> View Less Modules <span class="icon-thick-chevron-up"></span>
-</div> </div><div class="l-desc course-desc" style="display:none;"><p>Every business needs to develop a safe and healthy working environment. How do you protect the health and safety of your employees? This course provides the latest information on personal protective equipment (PPE), defines their categories and outlines the training requirements needed for any scenario. The first module explores the general use of PPE as a whole while the second module looks at the particular PPE used to protect each body part. Although every state or country will have its own regulations, the recommendations found in this course align with U.S. OSHA standards.</p><p>At first, you will explore the various designs of PPE and learn the importance of the ‘correct fit’ for each employee using them. We investigate the potential hazards found in the workplace and explain how to form an appropriate PPE hazard assessment. You will discover how to evaluate information to make an informed decision regarding suitable PPE and the level of protection an employee needs. You will go on to understand the required documentation, what hazards controls are and how you can apply them in your working environment. You will also become familiar with who needs training or retraining and the importance of practical evaluation.</p><p>The final module looks specifically at each type of PPE in more detail. You will examine eye and face protection, respiratory protection, heads, hands or feet protection, PPE for electrical safety and PPE needed to avoid hearing loss. You will gain further knowledge of the topics covered in the first module, pertaining more precisely to each type of PPE. Because dangers occur in every working environment, it is of utmost importance for supervisors and managers to be knowledgeable about PPE, manage programs and hazards assessments and to train and educate all personnel. This course is based on OSHA recommendations and is packed full of information for anyone who must understand the importance of hazard control. Enroll today and gain a deep understanding of PPE and its function in controlling dangers.</p><div class="l-but__outer"><a href="https://alison.com/resume/courses/4653" class="l-but course_btn">Start Course Now</a></div></div><div class="l-desc course-outcomes" style="display:none;"><div class="l-outcomes l-section l-outcomes--bg"><div class="l-section__inner"><h3>In This Free Course, You Will Learn How To</h3><ul class="course-outcomes"><li class="visible">Discuss the general personal protect...</li><li class="visible">Summarize the potential hazards foun...</li><li class="visible">Outline the proper use of PPE...</li><li class="visible">Explain the importance of being trai...</li>
-<li>Discuss the general personal protective equipment (PPE) requirements and their role in the workplace</li>
-<li>Summarize the potential hazards found at work</li>
-<li>Outline the proper use of PPE</li>
-<li>Explain the importance of being trained in PPE and who should do the training</li>
-<li>Discuss the importance of demonstration when training in the use of PPE</li>
-<li>List the most effective eye and face protection&nbsp;</li>
-<li>Explain the criteria for protective eye and face devices to meet OSHA standards</li>
-<li>Discuss the necessity for using personal protective equipment</li>
-<li>Discuss respiratory hazards and control measures</li>
-<li>Outline suitable respiratory protection program requirements and training</li>
-<li>Define the selection guidelines for head, hand and foot protection</li>
-<li>Recognize the care and use of electrical protective equipment</li>
-<li>Recall how sound and noise is measured and suitable control and protection</li>
-</ul><span class="l-outcomes__all"><span> View All Learning Outcomes <span class="icon-thick-chevron-down"></span></span><span style="display: none"> View Less <span class="icon-thick-chevron-up"></span></span></span></div></div></div><div class="l-desc cert-desc" style="display:none;"><p> All Alison courses are free to enrol study and complete. To successfully complete this <span class="course-type">certificate</span> course and become an Alison Graduate, you need to achieve 80% or higher in each course assessment. Once you have completed this <span class="course-type">certificate</span> course, you have the option to acquire an official Diploma, which is a great way to share your achievement with the world. </p><div class="l-list l-list--tick"><h6>Your Alison <span class="course-type">certificate</span> is:</h6><ul><li>Ideal for sharing with potential employers</li><li>Include it in your CV, professional social media profiles and job applications.</li><li>An indication of your commitment to continuously learn, upskill &amp; achieve high results.</li><li>An incentive for you to continue empowering yourself through lifelong learning.</li></ul></div><hr><div class="l-flex l-flex--even"><div class="l-list l-list--bullet"><h6>Alison offers <span class="l-list__color">3 types</span> of Diplomas for completed Diploma courses:</h6><ul><li><strong>Digital <span class="course-type">certificate</span>:</strong> a downloadable <span class="course-type">certificate</span> in PDF format immediately available to you when you complete your purchase. </li><li><strong><span class="course-type">certificate</span>:</strong> a physical version of your officially branded and security-marked <span class="course-type">certificate</span>, posted to you with FREE shipping. </li><li><strong>Framed <span class="course-type">certificate</span>:</strong> a physical version of your officially branded and security marked <span class="course-type">certificate</span> in a stylish frame, posted to you with FREE shipping. </li></ul></div><div class="l-diploma"><img class="lazyload" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/diploma.png"><a class="course_btn course_btn--alt" href="https://alison.com/resume/courses/4653">Start Course Now <span class="icon-thick-chevron-down right"></span></a></div></div><p> All <span class="course-type">certificate</span>s are available to purchase through the <a href="https://alison.com/shop">Alison Shop</a>. For more information on purchasing Alison <span class="course-type">certificate</span>, please visit our <a href="https://alison.com/faqs">FAQs</a>. If you decide not to purchase your Alison <span class="course-type">certificate</span>, you can still demonstrate your achievement by sharing your Learner Record or Learner Achievement Verification, both of which are accessible from your <a href="https://alison.com/settings">Account Settings</a>. For more details on our <span class="course-type">certificate</span> pricing, please visit our <a href="https://alison.com/about/pricing">Pricing Page</a></p></div></div></div><div class="l-tags l-tags--icon l-section" style="min-height: 210px"><div class="l-section__inner"><h3><img class=" ls-is-cached lazyloaded" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/knowledge-and-skills.svg" src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/knowledge-and-skills.svg"> Knowledge &amp; Skills You Will Learn</h3><ul><li><a href="/tag/health-and-safety" title="Health and Safety">Health and Safety</a></li><li><a href="/tag/osha" title="OSHA">OSHA</a></li><li><a href="/tag/ppe" title="PPE">PPE</a></li></ul></div></div><div class="l-accred l-section l-section--green"><div class="l-section__inner"><h3>Complete This CPD Accredited Course &amp; Get Your <span class="course-type">certificate</span>!</h3><div class="l-flex"><div class="l-list l-list--image"><ul><li><span><img class="lazyload" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certify-icon.svg"></span><span><h5>Certify Your Skills</h5> A CPD accredited Alison Diploma/Certificate certifies the skills you’ve learned </span></li><li><span><img class="lazyload" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/stand-out.svg"></span><span><h5>Stand Out From The Crowd</h5> Add your Alison Certification to your resumé and stay ahead of the competition </span></li><li><span><img class="lazyload" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/advance-in-career.svg"></span><span><h5>Advance in Your Career</h5> Share your Alison Certification with potential employers to show off your skills and capabilities </span></li></ul></div><div class="l-diploma"><picture class="lazyload" style="min-height: 167px"><source srcset="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate-small.webp" media="(max-width: 480px)" data-srcset="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate-small.webp"><source srcset="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate.webp" media="(max-width: 768px)" data-srcset="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate.webp"><img data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate.png" src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate.png"></picture><a class="course_btn course_btn--alt" href="https://alison.com/resume/courses/4653">Start Course Now <span class="icon-thick-chevron-down right"></span></a></div></div></div></div><div id="landing__ad--middle" class="landing__ad landing__ad--middle" style="min-height: 183px"><div class="landing__top-ad-inner"><div id="gam_inner"><script type="text/javascript"> if (window.device === 'mobile') { document.getElementById('gam_inner').style.cssText = 'width: 360px; text-align: center; margin: 0 auto;'; googletag.cmd.push(function () { googletag.defineSlot('/6434961/inner', inner_sizes, 'gam_inner').addService(googletag.pubads()); googletag.display('gam_inner'); }); } </script></div></div></div><div class="l-reviews-fullpage"><div class="l-reviews__back back-button l-reviews__back--top" style="display: none"><span class="icon-thick-chevron-down left"></span> Back to course information </div><div class="l-reviews-fullpage__inner"><div class="l-reviews"><div class="l-reviews__head"><h2><strong>Learner Reviews &amp; Feedback For</strong> Health and Safety - Personal Protective Equipment</h2><div class="l-rating enrol-to-rate"><div class="l-rating__love"><span class="rating disabled" data-val="5"></span><span class="course-love">6</span></div><div class="l-rating__like"><span class="rating disabled" data-val="2"></span><span class="course-like">2</span></div></div></div><div class="l-reviews__content"> <div class="l-review" data-id="720349"> <div class="l-flex"> <div class="l-review__img"> <img class="lazyload" data-src="https://alison.com/images/users/c8efb60f818aea1b28dbccd77e11304496052f88ee78b05c85c15a473cf9fa6f/24814055.jpg"> </div> <div class="l-review__details"> <div class="l-review__details-top">  <span class="l-review__name">Wagdi Abdel Samad S.</span>   <span class="l-review__flag"> <img width="20" height="10" class="lazyload" data-srcset="/html/site/img/course-landing-v2/small-flags/ae.png, /html/site/img/course-landing-v2/small-flags-2x/ae.png 2x" data-src="/html/site/img/course-landing-v2/small-flags/ae.png"> </span>  <span class="l-review__graduate"> <span class="icon-qualified"></span> Alison Graduate </span> </div> <span class="l-review__graduate " style="display: none"> <span class="icon-qualified"></span> Alison Graduate </span>  <span class="l-review__user-rating"> <span class="loved">loved</span> this course </span>  </div> </div> <div class="l-review__content"> L'un des meilleurs diplômes dans le domaine de la santé et de la sécurité, je conseille à tous ceux qui s'intéressent à ce domaine </div>  <div class="l-review__rating"> Was This Review Helpful? <div class="l-review__buttons"> <span class="review-icon icon-like "></span> <span class="review-icon icon-nope "></span> <span class="l-review__report">Report</span> </div> </div>  </div>
-</div><div class="l-reviews__more l-but l-but--center" style="display: none;"> View More Reviews </div><div class="l-reviews__pagination l-but l-but--center" style="display: none"><span class="icon-thick-chevron-down left"></span><span class="nums"><span class="active" data-page="1">1</span></span><span class="icon-thick-chevron-down right"></span></div></div><div class="l-reviews__back"><span class="icon-thick-chevron-down left"></span> Back to course information </div></div><div class="l-report" style="display:none;"><div class="l-report__inner"><span class="icon-cross2"></span><h3>Report Abuse</h3><p>Flagged content is reviewed by Alison to determine whether it violates Terms of Service or Community Guidelines. If you have a question or technical issue, please contact our <a title="Contact support" href="/contact-us">Support team here.</a></p><form method="POST" action="https://alison.com/contact-us/report" accept-charset="UTF-8" name="contact-form"><input name="_token" type="hidden" value="x5tJ0AXEjjU5AnHhuxwv9wciZRacsMF7zWEv8yYQ"><span>Issue Type</span><select required="" name="section"><option>Select an issue</option><option>Inappropriate content/behaviour</option><option>Alison Policy Violation</option><option>Other</option></select><span>Issue Details</span><textarea required="" name="message"></textarea><input name="id" type="hidden" value="36383682"><input name="comment_id" type="hidden" value=""><input name="email" type="hidden" value="shailmahan012@gmail.com"><input name="course" type="hidden" value="4653"><button>Submit</button></form></div></div></div><div class="l-careers l-careers--init"><h3>Explore Careers Related To This Course</h3><div class="l-careers__inner slick-initialized slick-slider"><div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 650px; left: 0px;" role="listbox"><div class="l-careers__section slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 650px;" tabindex="-1" role="option" aria-describedby="slick-slide00">  <a href="/careers/security/private-investigator" class="l-career" tabindex="0"> <div class="l-career__img"> <img class="lazyload" data-src="https://cdn01.alison-static.net/careers/career/private-investigator_xs.jpg"> </div> <span>Private Investigator</span> </a> 
-</div></div></div></div></div><div class="l-main-pub" id="l-main-pub"><div class="l-main-pub__back back-button" style="display: none"><span class="icon-thick-chevron-down left"></span> Back to course information </div><div class="mobile-scroll"><div class="l-main-pub__inner"><h3>About Your Alison Course Publisher</h3><h4 class="" style="display: none"><a class="course-publisher course-publisher--stats" href="https://alison.com/course-creators/advance-learning"><strong>Advance Learning's</strong></a> Alison Stats</h4><div class="l-main-pub__info"><div class="l-main-pub__img missing" style="visibility: visible;"><img class="lazyload" data-src="https://cdn01.alison-static.net/publishers/2/f1.jpg"></div><div class="l-main-pub__stats"><h4 class=""><a class="course-publisher course-publisher--stats" href="https://alison.com/course-creators/advance-learning"><strong>Advance Learning's</strong></a> Alison Stats</h4><span class=""><span class="icon-learners-1"></span><strong class="publisher-enrollments">10,255,745</strong> Learners</span><span class=""><span class="icon-Literature-Filled"></span><strong class="publisher-course-count">671</strong> Courses</span><span class=""><span class="icon-learners-benefited"></span><strong class="publisher-likes">57,586</strong> Learners Have Benefited From Their Courses </span></div></div><span class="l-main-pub__desc l-main-pub__desc--cut">Advance Learning has produced cutting-edge interactive multimedia IT Skills training courses for cor...</span><span class="l-main-pub__desc l-main-pub__desc--full" style="display: none">Advance Learning has produced cutting-edge interactive multimedia IT Skills training courses for corporate clients including the Microsoft Corporation. Advance Learning is an expert in the field of E-Learning Theory and Practice. Each course they publish is pedagogically sound and designed to offer the learner the best educational experience possible. <br><br> From 1998 to 2007, Advance Learning produced leading edge interactive multimedia IT Skills training courses for its own direct clients and for corporate clients such as the Microsoft Corporation. Over the years, Advance Learning has expanded its content and today boasts an extensive catalogue of curated courses on a wide range of categories, from Health &amp; Safety to GDPR, Business to Management and Caregiving to Parenting. Each online course is carefully selected, reviewed and edited to ensure it reaches Continuing Professional Development UK (CPD) high standards and accreditation. <br><br> Advance Learning provides high quality interactive multimedia content development services. They work with multiple partners and clients to continue to source, purchase and commission more and more courses developed by subject matter experts. </span><span class="l-main-pub__read-more" style="">Read More</span></div><div id="l-carousel--pub" class="l-carousel l-carousel--pub"><h3>More Free Online Courses by This Publisher</h3><div class="l-carousel__courses"><ul id="lcp-list"><li><a href="https://alison.com/course/protect-your-pc-against-the-notpetya-cyber-attack">Protect Your PC against the NotPetya Cyber Attack</a></li><li><a href="https://alison.com/course/introduction-to-digital-photography">Introduction to Digital Photography</a></li><li><a href="https://alison.com/course/english-grammar-comparisons-and-word-order-intermediate-level">English Grammar - Comparisons &amp; Word Order (Intermediate level)</a></li><li><a href="https://alison.com/course/introduction-to-supervision">Introduction to Supervision</a></li><li><a href="https://alison.com/course/wind-energy-from-wind-turbines-to-grid-integration">Wind Energy – From Wind Turbines to Grid Integration</a></li><li><a href="https://alison.com/course/beginner-digital-photography">Beginner Digital Photography</a></li><li><a href="https://alison.com/course/supervision-effective-communication-skills">Supervision - Effective Communication Skills</a></li><li><a href="https://alison.com/course/beginner-level-english-1-foundations">Beginner Level English 1 - Foundations</a></li><li><a href="https://alison.com/course/intermediate-digital-photography">Intermediate Digital Photography</a></li><li><a href="https://alison.com/course/beginner-level-english-2-make-a-request">Beginner Level English 2 - Make a Request</a></li></ul></div></div></div></div><div id="l-carousel--enrolled" class="l-carousel l-carousel--enrolled"><h3>Learners Who Took This Course Also Enrolled In</h3><div class="l-carousel__courses"><ul id="lce-list"><li><a href="https://alison.com/course/ohsas-18001-2007-occupational-health-and-safety-management">OHSAS 18001:2007 - Occupational Health &amp; Safety Management</a></li><li><a href="https://alison.com/course/health-and-safety-hazards-hazard-communication">Health and Safety Hazards - Hazard Communication</a></li><li><a href="https://alison.com/course/fire-safety-essential-concepts-prevention-and-control">Fire Safety - Essential Concepts, Prevention &amp; Control</a></li><li><a href="https://alison.com/course/osha-fundamentals-ladder-safety-and-prevention-of-injuries">OSHA Fundamentals - Ladder Safety &amp; Prevention of Injuries</a></li><li><a href="https://alison.com/course/osha-fundamentals-managing-risk-of-fire-emergencies">OSHA Fundamentals - Managing Risk of Fire Emergencies</a></li><li><a href="https://alison.com/course/cpr-aed-and-first-aid">CPR, AED and First Aid</a></li><li><a href="https://alison.com/course/diploma-in-workplace-safety-and-health-revised-2017">Diploma in Workplace Safety and Health</a></li><li><a href="https://alison.com/course/noise-and-hearing-protection-training">Noise and Hearing Protection Training</a></li><li><a href="https://alison.com/course/construction-safety-and-health">Construction Safety and Health</a></li><li><a href="https://alison.com/course/iso-45001-2018-principles-of-occupational-health-and-safety-management-systems">ISO 45001:2018 - Principles of Occupational Health and Safety Management Systems</a></li></ul></div></div><div class="l-tags l-section l-tags--lower"><div class="l-section__inner"><h3>Explore Subjects Related To This Course</h3><ul><li><a href="/tag/health-and-safety" title="Health and Safety">Health and Safety</a></li><li><a href="/tag/osha" title="OSHA">OSHA</a></li><li><a href="/tag/ppe" title="PPE">PPE</a></li></ul></div></div></div></div><div class="sticky-ad inner-page-sticky-ad player-page-sticky le-sticky" style="position: absolute; top: 87px;"><div id="gam_sidebar" style="height: 100%"><script type="text/javascript"> if (sidebar_sizes.length > 0) { if (window.device === 'desktop') { googletag.cmd.push(function () { googletag.defineSlot('/6434961/sidebar', sidebar_sizes, 'gam_sidebar').addService(googletag.pubads()); googletag.display('gam_sidebar'); }); } } </script></div></div></div>
+    <div id="main-holder">
+        <div class="landing__ad landing__ad--top" style="min-height: 119px">
+            <div class="landing__top-ad-inner">
+                <div id="gam_header" style="margin: 0px auto; text-align: center; width: 728px;">
+                    <script type="text/javascript">
+                        document.getElementById('gam_header').style.width = header_sizes[0][0] + 'px';
+                        googletag.cmd.push(function () {
+                            googletag.defineSlot('/6434961/header', header_sizes, 'gam_header').addService(googletag.pubads());
+                            googletag.display('gam_header');
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="landing">
+            <div class="l-card">
+                <div class="l-card__inner">
+                    <div class="l-card__img-overflow">
+                        <div class="l-card__img"><img width="300px" height="200px" src="https://cdn01.alison-static.net/courses/4653/alison_courseware_intro_4653.jpg" alt="Health and Safety - Personal Protective Equipment"></div>
+                    </div>
+                    <div class="l-card__info-padding">
+                        <h3 class="course-title">
+                            Health and Safety - Personal Protective Equipment
+                        </h3>
+                        <div class="l-card__enrolled">
+                            <span>
+                                <span class="icon-learners-1"></span>
+                                <span class="course-enrolled">2,540</span>
+                            </span>
+                            Learners already enrolled
+                        </div>
+                        <div class="l-rating enrol-to-rate">
+                            <div class="l-rating__love">
+                                <span class="rating disabled" data-val="5" data-l-tooltip="Loved it!"></span>
+                                <span class="course-love">6</span>
+                            </div>
+                            <div class="l-rating__like">
+                                <span class="rating disabled" data-val="2" data-l-tooltip="Liked it!"></span>
+                                <span class="course-like">2</span>
+                            </div>
+                            <div class="l-rating__no">
+                                <span class="rating disabled" data-val="0"></span>
+                                Not Interested
+                            </div>
+                        </div>
+                        <div class="l-card__includes l-list l-list--tick">
+                            <h6>This Free Online Course Includes:</h6>
+                            <ul>
+                                <li>
+                                    <span class="course-avg_duration l-time">3-4</span>
+                                    Hours of Learning</li>
+                                <li>CPD Accreditation</li>
+                                <li>Final Assessment</li>
+                            </ul>
+                        </div>
+                        <a class="course_btn add-course-id course_btn--shop l-but" href="https://alison.com/resume/courses/4653" data-id="4653">Start Course Now</a>
+                        <div class="l-pub l-pub--card">
+                            <div class="l-pub__img missing" style="visibility: visible;"><img class=" lazyloaded" data-src="https://cdn01.alison-static.net/publishers/2/f1.jpg" src="https://cdn01.alison-static.net/publishers/2/f1.jpg"></div>
+                            <div class="l-pub__content">
+                                <span class="l-pub__type">
+                                    COURSE PUBLISHER
+                                </span>
+                                <span class="l-pub__name">
+                                    <span class="l-pub__name-pre" style="display: none">Published by
+                                    </span>
+                                    <span class="course-publisher">Advance Learning</span>
+                                </span>
+                                <span class="course-publisher-info l-pub__desc">Expert providers of quality courses</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="landing__content">
+                <div class=" breadcrumb__outer ">
+                    <ol class="breadcrumb ">
+                        <li id="home-link">
+                            <i class="icon-home"></i>
+                            <a href="https://alison.com" title="Alison Homepage">Home</a>
+                        </li>
+                        <i class="icon-right-arrow"></i>
+                        <li class="top-cat">
+                            <a href="https://alison.com/courses/health" title="Free Health Courses">Health</a>
+                        </li>
+                        <i class="icon-right-arrow"></i>
+                        <li class="top-tag">
+                            <a href="https://alison.com/tag/health-and-safety" title="Free Health and Safety Courses">Health and Safety</a>
+                        </li>
+                        <i class="icon-right-arrow"></i>
+                        <li>
+                            <span class="breadcrumb_h1">Health and Safety - Personal Protective Equipment</span>
+                        </li>
+                    </ol>
+                </div>
+                <script>
+                    $(document).ready(function () {
+                        var courseId = "4653",
+                            tagRoute = "https://alison.com/tag/replaceme".replace(new RegExp('/replaceme', 'g'), '/'),
+                            categoryRoute = "https://alison.com/courses/replaceme".replace(new RegExp('/replaceme', 'g'), '/'),
+                            locale = "en",
+                            endpoint = $('body').attr('data-api_endpoint') || 'https://api.alison.com/v0.1';
+                        $.ajaxSetup({
+                            beforeSend: function (request) {
+                                request.setRequestHeader("x-header-host", "oTbrPD9HRO+jdciawiXuh4vUgB8=");
+                            }
+                        });
+                        $.ajax({
+                            type: "GET",
+                            url: endpoint + "/categories/breadcrumbs?course_id=" + courseId + "&locale=" + locale,
+                            dataType: 'json',
+                            async: true,
+                            success: function (response) {
+                                if (response.status === 200 && response.result.length > 1) {
+                                    $('<i class="icon-right-arrow"></i><li class="top-cat"><a href="' + categoryRoute + response.result[0].slug + '" title="Free ' + response.result[0].name + ' Courses">' + response.result[0].name + '</a></li>').insertAfter('li#home-link');
+                                    $('<i class="icon-right-arrow"></i><li class="top-tag"><a href="' + tagRoute + response.result[1].slug + '" title="Free ' + response.result[1].name + ' Courses">' + response.result[1].name + '</a></li>').insertAfter('li.top-cat');
+                                }
+                            },
+                            error: function (error) {
+                                console.log('Error loading breadcrumbs');
+                                console.log(error);
+                            },
+                            complete: function () {
+                                var element = document.createElement('script');
+                                element.setAttribute('type', 'application/ld+json');
+                                var breadcrumbs = {
+                                    "@context": "http://schema.org",
+                                    "@type": "BreadcrumbList",
+                                    "itemListElement": []
+                                };
+                                var courseUrl = "https://alison.com/course/health-and-safety-personal-protective-equipment";
+                                $('ol.breadcrumb li').each(function (index) {
+                                    var item = {};
+                                    var href = (typeof $(this).find("a").attr('href') !== "undefined") ? $(this).find("a").attr('href') : courseUrl;
+                                    if (href) 
+                                        item["@id"] = href;
+                                    
+
+                                    item["name"] = $.trim($(this).text());
+                                    breadcrumbs.itemListElement.push({
+                                        "@type": "ListItem",
+                                        "position": index + 1,
+                                        item
+                                    });
+                                });
+                                element.text = JSON.stringify(breadcrumbs);
+                                document.querySelector('head').appendChild(element);
+                                function trimString(str, length) {
+                                    str = str.trim();
+                                    return(str.length <= length) ? str : str.slice(0, length) + '...';
+                                }
+                                let breadcrumb_length = 75 - ($('.top-cat').text().length + $('.top-tag').text().length);
+                                $('.breadcrumb_h1').text(trimString($('.breadcrumb_h1').text(), breadcrumb_length));
+                            }
+                        });
+                    });
+                </script>
+                <div class="l-info">
+                    <div class="l-info__inner">
+                        <h1 class="course-title">Health and Safety - Personal Protective Equipment
+                        </h1>
+                        <div class="course-headline l-info__headline">
+                            Learn the importance of PPE in the workplace, its correct use and the types available in this free online course.
+                        </div>
+                        <div class="course-description l-info__description">
+                            <span class="l-info__description-short">
+                                The safety of employees is of utmost importance and so personal protective equipment ...
+                            </span>
+                            <span class="l-info__description-full">
+                                The safety of employees is of utmost importance and so personal protective equipment (PPE) is commonly used in the workplace to prevent serious health hazards and mitigate risks. This course delves deeply into the use of PPE and studies the various types used for the different dangers that may occur. Learn how to conduct a ‘hazard assessment’ correctly and understand the training required in PPE use and care in this health and safety course.
+                            </span>
+                            <span class="l-info__read-more" style="display: none">
+                                Read More
+                            </span>
+                        </div>
+                        <div class="l-info__bottom">
+                            <div class="l-pub l-pub--small">
+                                <div class="l-pub__img missing" style="visibility: visible;"><img class=" lazyloaded" data-src="https://cdn01.alison-static.net/publishers/2/f1.jpg" src="https://cdn01.alison-static.net/publishers/2/f1.jpg"></div>
+                                <div class="l-pub__content">
+                                    <span class="l-pub__type">
+                                        COURSE PUBLISHER
+                                    </span>
+                                    <span class="course-publisher l-pub__name">Advance Learning</span>
+                                </div>
+                            </div>
+                            <a class="course_btn add-course-id course_btn--shop l-but" href="https://alison.com/resume/courses/4653" data-id="4653">Start Course Now</a>
+                            <a class="course_btn--revisit" href="https://alison.com/resume/courses" style="display: none">
+                                <span>
+                                    Revisit Course
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-outcomes l-section l-outcomes--bg">
+                    <div class="l-section__inner">
+                        <h3>In This Free Course, You Will Learn How To</h3>
+                        <ul class="course-outcomes">
+                            <li class="visible">Discuss the general personal protect...</li>
+                            <li class="visible">Summarize the potential hazards foun...</li>
+                            <li class="visible">Outline the proper use of PPE...</li>
+                            <li class="visible">Explain the importance of being trai...</li>
+                            <li>Discuss the general personal protective equipment (PPE) requirements and their role in the workplace</li>
+                            <li>Summarize the potential hazards found at work</li>
+                            <li>Outline the proper use of PPE</li>
+                            <li>Explain the importance of being trained in PPE and who should do the training</li>
+                            <li>Discuss the importance of demonstration when training in the use of PPE</li>
+                            <li>List the most effective eye and face protection&nbsp;</li>
+                            <li>Explain the criteria for protective eye and face devices to meet OSHA standards</li>
+                            <li>Discuss the necessity for using personal protective equipment</li>
+                            <li>Discuss respiratory hazards and control measures</li>
+                            <li>Outline suitable respiratory protection program requirements and training</li>
+                            <li>Define the selection guidelines for head, hand and foot protection</li>
+                            <li>Recognize the care and use of electrical protective equipment</li>
+                            <li>Recall how sound and noise is measured and suitable control and protection</li>
+                        </ul>
+                        <span class="l-outcomes__all">
+                            <span>
+                                View All Learning Outcomes
+                                <span class="icon-thick-chevron-down"></span>
+                            </span>
+                            <span style="display: none">
+                                View Less
+                                <span class="icon-thick-chevron-up"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="l-tabs">
+                    <div class="l-tabs__nav">
+                        <div class="l-tabs__title l-tabs__title--active" data-tab="course-modules">
+                            <span>Course
+                            </span>
+                            Modules
+                        </div>
+                        <div class="l-tabs__title" data-tab="course-outcomes" style="display:none;">
+                            Outcomes
+                        </div>
+                        <div class="l-tabs__title" data-tab="course-desc">
+                            <span>Course
+                            </span>
+                            Description
+                        </div>
+                        <div class="l-tabs__title" data-tab="cert-desc">
+                            <span>Alison
+                            </span>
+                            Certificates
+                        </div>
+                    </div>
+                    <div class="l-tabs__content">
+                        <div class="l-mods course-modules">
+                            <div class="l-mods__module l-mods__module--default ">
+                                <div class="l-mods__module-inner">
+                                    <a onclick="javascript: return null;" href="#">
+                                        <div class="l-mods__module-num">Module
+                                            <span></span>
+                                        </div>
+                                        <h3>Introduction to PPE</h3>
+                                        <div class="l-mods__module-desc">
+                                            <span>
+                                                This module covers general Personal Protective Equipment (PPE). You will learn the requirements for employers to provide PPE to their workers and their proper use. Proper use of PP...
+                                                <span class="l-read-more">Read More</span>
+                                            </span>
+                                            <span style="display:none">
+                                                This module covers general Personal Protective Equipment (PPE). You will learn the requirements for employers to provide PPE to their workers and their proper use. Proper use of PPE is vital to avoid potential exposure. You will discover the potential hazards at work and why formal training and teaching is needed.
+                                                <span class="l-read-less">Read Less</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                    <a class="l-mods__module-start" href="https://alison.com/topic/learn/135460/introduction-to-ppe-learning-outcomes">Start Course Now</a>
+                                </div>
+                                <div style="display:none" class="l-mods__topics">
+                                    <div class="l-mods__topics-inner">
+                                        <a href="/course/4/module/1/sub_module/1" class="l-mods__topic l-mods__topic--to-do l-mods__topic--start" data-lang="Start Course Now">
+                                            <h4>Introduction to PPE - Learning Outcomes</h4>
+                                        </a>
+                                        <a href="/course/4/module/1/sub_module/2" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now">
+                                            <h4>Requirements and Proper Use of PPE</h4>
+                                        </a>
+                                        <a href="/course/4/module/1/sub_module/3" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now">
+                                            <h4>Potential Hazards in the Workplace</h4>
+                                        </a>
+                                        <a href="/course/4/module/1/sub_module/4" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now">
+                                            <h4>Teaching and Training</h4>
+                                        </a>
+                                        <a href="/course/4/module/1/sub_module/5" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now">
+                                            <h4>Introduction to PPE - Lesson Summary</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END .l-mods__module -->
+                            <div class="l-mods__module  ">
+                                <div class="l-mods__module-inner">
+                                    <a onclick="javascript: return null;" href="#">
+                                        <div class="l-mods__module-num">Module
+                                            <span></span>
+                                        </div>
+                                        <h3>Classifications of PPE</h3>
+                                        <div class="l-mods__module-desc">
+                                            <span>
+                                                This module discusses the various types of PPE available for each part of the body. We detail each PPE, from head and face protection, respiratory protection, hand and foot protect...
+                                                <span class="l-read-more">Read More</span>
+                                            </span>
+                                            <span style="display:none">
+                                                This module discusses the various types of PPE available for each part of the body. We detail each PPE, from head and face protection, respiratory protection, hand and foot protection, electrical protection and finally, protection to prevent hearing loss. This will enable an employee to choose the correct PPE for each situation or job.
+                                                <span class="l-read-less">Read Less</span>
+                                            </span>
+                                        </div>
+                                    </a>
+                                    <a class="l-mods__module-start" href="https://alison.com/topic/learn/135465/classifications-of-ppe-learning-outcomes">Start Course Now</a>
+                                </div>
+                                <div style="display:none" class="l-mods__topics">
+                                    <div class="l-mods__topics-inner">
+                                        <a href="/course/4/module/2/sub_module/1" class="l-mods__topic l-mods__topic--to-do l-mods__topic--start" data-lang="Start Course Now">
+                                            <h4>Classifications of PPE - Learning Outcomes</h4>
+                                        </a>
+                                        <a href="/course/4/module/2/sub_module/2" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now">
+                                            <h4>Eye and Face Protection</h4>
+                                        </a>
+                                        <a href="/course/4/module/2/sub_module/3" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now">
+                                            <h4>Respiratory Protection</h4>
+                                        </a>
+                                        <a href="/course/4/module/2/sub_module/4" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now">
+                                            <h4>PPE for the Head, Hands or Feet</h4>
+                                        </a>
+                                        <a href="/course/4/module/2/sub_module/5" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now">
+                                            <h4>Electrical Protective Equipment</h4>
+                                        </a>
+                                        <a href="/course/4/module/2/sub_module/6" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now">
+                                            <h4>Hearing Loss Protection</h4>
+                                        </a>
+                                        <a href="/course/4/module/2/sub_module/7" class="l-mods__topic  l-mods__topic--to-do " data-lang="Start Course Now">
+                                            <h4>Health &amp; Safety 104 - Personal Protective Equipment - Lesson Summary</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END .l-mods__module -->
+                            <div class="l-mods__module  ">
+                                <div class="l-mods__module-inner">
+                                    <a onclick="javascript: return null;" href="#">
+                                        <div class="l-mods__module-num">Module
+                                            <span></span>
+                                        </div>
+                                        <h3>Course assessment</h3>
+                                        <div class="l-mods__module-desc">
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                    <a class="l-mods__module-start" href="https://alison.com/topic/learn/135472/health-and-safety-personal-protective-equipment-course-assessment">Start Course Now</a>
+                                </div>
+                                <div style="display:none" class="l-mods__topics">
+                                    <div class="l-mods__topics-inner">
+                                        <a href="/course/4/module/3/sub_module/1" class="l-mods__topic l-mods__topic--to-do l-mods__topic--start" data-lang="Start Course Now">
+                                            <h4>Health and Safety - Personal Protective Equipment - Course Assessment</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END .l-mods__module -->
+                            <div class="l-mods__more l-but l-but--center" style="display: none">
+                                View All Modules
+                                <span class="icon-thick-chevron-down"></span>
+                            </div>
+                            <div class="l-mods__less l-but l-but--center" style="display: none">
+                                View Less Modules
+                                <span class="icon-thick-chevron-up"></span>
+                            </div>
+                        </div>
+                        <div class="l-desc course-desc" style="display:none;">
+                            <p>Every business needs to develop a safe and healthy working environment. How do you protect the health and safety of your employees? This course provides the latest information on personal protective equipment (PPE), defines their categories and outlines the training requirements needed for any scenario. The first module explores the general use of PPE as a whole while the second module looks at the particular PPE used to protect each body part. Although every state or country will have its own regulations, the recommendations found in this course align with U.S. OSHA standards.</p>
+                            <p>At first, you will explore the various designs of PPE and learn the importance of the ‘correct fit’ for each employee using them. We investigate the potential hazards found in the workplace and explain how to form an appropriate PPE hazard assessment. You will discover how to evaluate information to make an informed decision regarding suitable PPE and the level of protection an employee needs. You will go on to understand the required documentation, what hazards controls are and how you can apply them in your working environment. You will also become familiar with who needs training or retraining and the importance of practical evaluation.</p>
+                            <p>The final module looks specifically at each type of PPE in more detail. You will examine eye and face protection, respiratory protection, heads, hands or feet protection, PPE for electrical safety and PPE needed to avoid hearing loss. You will gain further knowledge of the topics covered in the first module, pertaining more precisely to each type of PPE. Because dangers occur in every working environment, it is of utmost importance for supervisors and managers to be knowledgeable about PPE, manage programs and hazards assessments and to train and educate all personnel. This course is based on OSHA recommendations and is packed full of information for anyone who must understand the importance of hazard control. Enroll today and gain a deep understanding of PPE and its function in controlling dangers.</p>
+                            <div class="l-but__outer">
+                                <a href="https://alison.com/resume/courses/4653" class="l-but course_btn">Start Course Now</a>
+                            </div>
+                        </div>
+                        <div class="l-desc course-outcomes" style="display:none;">
+                            <div class="l-outcomes l-section l-outcomes--bg">
+                                <div class="l-section__inner">
+                                    <h3>In This Free Course, You Will Learn How To</h3>
+                                    <ul class="course-outcomes">
+                                        <li class="visible">Discuss the general personal protect...</li>
+                                        <li class="visible">Summarize the potential hazards foun...</li>
+                                        <li class="visible">Outline the proper use of PPE...</li>
+                                        <li class="visible">Explain the importance of being trai...</li>
+                                        <li>Discuss the general personal protective equipment (PPE) requirements and their role in the workplace</li>
+                                        <li>Summarize the potential hazards found at work</li>
+                                        <li>Outline the proper use of PPE</li>
+                                        <li>Explain the importance of being trained in PPE and who should do the training</li>
+                                        <li>Discuss the importance of demonstration when training in the use of PPE</li>
+                                        <li>List the most effective eye and face protection&nbsp;</li>
+                                        <li>Explain the criteria for protective eye and face devices to meet OSHA standards</li>
+                                        <li>Discuss the necessity for using personal protective equipment</li>
+                                        <li>Discuss respiratory hazards and control measures</li>
+                                        <li>Outline suitable respiratory protection program requirements and training</li>
+                                        <li>Define the selection guidelines for head, hand and foot protection</li>
+                                        <li>Recognize the care and use of electrical protective equipment</li>
+                                        <li>Recall how sound and noise is measured and suitable control and protection</li>
+                                    </ul>
+                                    <span class="l-outcomes__all">
+                                        <span>
+                                            View All Learning Outcomes
+                                            <span class="icon-thick-chevron-down"></span>
+                                        </span>
+                                        <span style="display: none">
+                                            View Less
+                                            <span class="icon-thick-chevron-up"></span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="l-desc cert-desc" style="display:none;">
+                            <p>
+                                All Alison courses are free to enrol study and complete. To successfully complete this
+                                <span class="course-type">certificate</span>
+                                course and become an Alison Graduate, you need to achieve 80% or higher in each course assessment. Once you have completed this
+                                <span class="course-type">certificate</span>
+                                course, you have the option to acquire an official Diploma, which is a great way to share your achievement with the world.
+                            </p>
+                            <div class="l-list l-list--tick">
+                                <h6>Your Alison
+                                    <span class="course-type">certificate</span>
+                                    is:</h6>
+                                <ul>
+                                    <li>Ideal for sharing with potential employers</li>
+                                    <li>Include it in your CV, professional social media profiles and job applications.</li>
+                                    <li>An indication of your commitment to continuously learn, upskill &amp; achieve high results.</li>
+                                    <li>An incentive for you to continue empowering yourself through lifelong learning.</li>
+                                </ul>
+                            </div><hr><div class="l-flex l-flex--even">
+                                <div class="l-list l-list--bullet">
+                                    <h6>Alison offers
+                                        <span class="l-list__color">3 types</span>
+                                        of Diplomas for completed Diploma courses:</h6>
+                                    <ul>
+                                        <li>
+                                            <strong>Digital
+                                                <span class="course-type">certificate</span>:</strong>
+                                            a downloadable
+                                            <span class="course-type">certificate</span>
+                                            in PDF format immediately available to you when you complete your purchase.
+                                        </li>
+                                        <li>
+                                            <strong>
+                                                <span class="course-type">certificate</span>:</strong>
+                                            a physical version of your officially branded and security-marked
+                                            <span class="course-type">certificate</span>, posted to you with FREE shipping.
+                                        </li>
+                                        <li>
+                                            <strong>Framed
+                                                <span class="course-type">certificate</span>:</strong>
+                                            a physical version of your officially branded and security marked
+                                            <span class="course-type">certificate</span>
+                                            in a stylish frame, posted to you with FREE shipping.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="l-diploma"><img class="lazyload" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/diploma.png"><a class="course_btn course_btn--alt" href="https://alison.com/resume/courses/4653">Start Course Now
+                                        <span class="icon-thick-chevron-down right"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <p>
+                                All
+                                <span class="course-type">certificate</span>s are available to purchase through the
+                                <a href="https://alison.com/shop">Alison Shop</a>. For more information on purchasing Alison
+                                <span class="course-type">certificate</span>, please visit our
+                                <a href="https://alison.com/faqs">FAQs</a>. If you decide not to purchase your Alison
+                                <span class="course-type">certificate</span>, you can still demonstrate your achievement by sharing your Learner Record or Learner Achievement Verification, both of which are accessible from your
+                                <a href="https://alison.com/settings">Account Settings</a>. For more details on our
+                                <span class="course-type">certificate</span>
+                                pricing, please visit our
+                                <a href="https://alison.com/about/pricing">Pricing Page</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-tags l-tags--icon l-section" style="min-height: 210px">
+                    <div class="l-section__inner">
+                        <h3><img class=" ls-is-cached lazyloaded" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/knowledge-and-skills.svg" src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/knowledge-and-skills.svg">
+                            Knowledge &amp; Skills You Will Learn</h3>
+                        <ul>
+                            <li><a href="/tag/health-and-safety" title="Health and Safety">Health and Safety</a></li>
+                            <li><a href="/tag/osha" title="OSHA">OSHA</a></li>
+                            <li><a href="/tag/ppe" title="PPE">PPE</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="l-accred l-section l-section--green">
+                    <div class="l-section__inner">
+                        <h3>Complete This CPD Accredited Course &amp; Get Your
+                            <span class="course-type">certificate</span>!</h3>
+                        <div class="l-flex">
+                            <div class="l-list l-list--image">
+                                <ul>
+                                    <li>
+                                        <span><img class="lazyload" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certify-icon.svg"></span>
+                                        <span>
+                                            <h5>Certify Your Skills</h5>
+                                            A CPD accredited Alison Diploma/Certificate certifies the skills you’ve learned
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span><img class="lazyload" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/stand-out.svg"></span>
+                                        <span>
+                                            <h5>Stand Out From The Crowd</h5>
+                                            Add your Alison Certification to your resumé and stay ahead of the competition
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span><img class="lazyload" data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/advance-in-career.svg"></span>
+                                        <span>
+                                            <h5>Advance in Your Career</h5>
+                                            Share your Alison Certification with potential employers to show off your skills and capabilities
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="l-diploma">
+                                <picture class="lazyload" style="min-height: 167px"><source srcset="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate-small.webp" media="(max-width: 480px)" data-srcset="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate-small.webp"><source srcset="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate.webp" media="(max-width: 768px)" data-srcset="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate.webp"><img data-src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate.png" src="https://cdn01.alison-static.net/public/html/site/img/course-landing-v2/certificate.png"></picture>
+                                <a class="course_btn course_btn--alt" href="https://alison.com/resume/courses/4653">Start Course Now
+                                    <span class="icon-thick-chevron-down right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="landing__ad--middle" class="landing__ad landing__ad--middle" style="min-height: 183px">
+                    <div class="landing__top-ad-inner">
+                        <div id="gam_inner">
+                            <script type="text/javascript">
+                                if (window.device === 'mobile') {
+                                    document.getElementById('gam_inner').style.cssText = 'width: 360px; text-align: center; margin: 0 auto;';
+                                    googletag.cmd.push(function () {
+                                        googletag.defineSlot('/6434961/inner', inner_sizes, 'gam_inner').addService(googletag.pubads());
+                                        googletag.display('gam_inner');
+                                    });
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-reviews-fullpage">
+                    <div class="l-reviews__back back-button l-reviews__back--top" style="display: none">
+                        <span class="icon-thick-chevron-down left"></span>
+                        Back to course information
+                    </div>
+                    <div class="l-reviews-fullpage__inner">
+                        <div class="l-reviews">
+                            <div class="l-reviews__head">
+                                <h2>
+                                    <strong>Learner Reviews &amp; Feedback For</strong>
+                                    Health and Safety - Personal Protective Equipment</h2>
+                                <div class="l-rating enrol-to-rate">
+                                    <div class="l-rating__love">
+                                        <span class="rating disabled" data-val="5"></span>
+                                        <span class="course-love">6</span>
+                                    </div>
+                                    <div class="l-rating__like">
+                                        <span class="rating disabled" data-val="2"></span>
+                                        <span class="course-like">2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="l-reviews__content">
+                                <div class="l-review" data-id="720349">
+                                    <div class="l-flex">
+                                        <div class="l-review__img">
+                                            <img class="lazyload" data-src="https://alison.com/images/users/c8efb60f818aea1b28dbccd77e11304496052f88ee78b05c85c15a473cf9fa6f/24814055.jpg">
+                                        </div>
+                                        <div class="l-review__details">
+                                            <div class="l-review__details-top">
+                                                <span class="l-review__name">Wagdi Abdel Samad S.</span>
+                                                <span class="l-review__flag">
+                                                    <img width="20" height="10" class="lazyload" data-srcset="/html/site/img/course-landing-v2/small-flags/ae.png, /html/site/img/course-landing-v2/small-flags-2x/ae.png 2x" data-src="/html/site/img/course-landing-v2/small-flags/ae.png">
+                                                </span>
+                                                <span class="l-review__graduate">
+                                                    <span class="icon-qualified"></span>
+                                                    Alison Graduate
+                                                </span>
+                                            </div>
+                                            <span class="l-review__graduate " style="display: none">
+                                                <span class="icon-qualified"></span>
+                                                Alison Graduate
+                                            </span>
+                                            <span class="l-review__user-rating">
+                                                <span class="loved">loved</span>
+                                                this course
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="l-review__content">
+                                        L'un des meilleurs diplômes dans le domaine de la santé et de la sécurité, je conseille à tous ceux qui s'intéressent à ce domaine
+                                    </div>
+                                    <div class="l-review__rating">
+                                        Was This Review Helpful?
+                                        <div class="l-review__buttons">
+                                            <span class="review-icon icon-like "></span>
+                                            <span class="review-icon icon-nope "></span>
+                                            <span class="l-review__report">Report</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="l-reviews__more l-but l-but--center" style="display: none;">
+                                View More Reviews
+                            </div>
+                            <div class="l-reviews__pagination l-but l-but--center" style="display: none">
+                                <span class="icon-thick-chevron-down left"></span>
+                                <span class="nums">
+                                    <span class="active" data-page="1">1</span>
+                                </span>
+                                <span class="icon-thick-chevron-down right"></span>
+                            </div>
+                        </div>
+                        <div class="l-reviews__back">
+                            <span class="icon-thick-chevron-down left"></span>
+                            Back to course information
+                        </div>
+                    </div>
+                    <div class="l-report" style="display:none;">
+                        <div class="l-report__inner">
+                            <span class="icon-cross2"></span>
+                            <h3>Report Abuse</h3>
+                            <p>Flagged content is reviewed by Alison to determine whether it violates Terms of Service or Community Guidelines. If you have a question or technical issue, please contact our
+                                <a title="Contact support" href="/contact-us">Support team here.</a>
+                            </p>
+                            <form method="POST" action="https://alison.com/contact-us/report" accept-charset="UTF-8" name="contact-form"><input name="_token" type="hidden" value="x5tJ0AXEjjU5AnHhuxwv9wciZRacsMF7zWEv8yYQ"><span>Issue Type</span>
+                                <select required="" name="section">
+                                    <option>Select an issue</option>
+                                    <option>Inappropriate content/behaviour</option>
+                                    <option>Alison Policy Violation</option>
+                                    <option>Other</option>
+                                </select>
+                                <span>Issue Details</span>
+                                <textarea required="" name="message"></textarea><input name="id" type="hidden" value="36383682"><input name="comment_id" type="hidden" value=""><input name="email" type="hidden" value="shailmahan012@gmail.com"><input name="course" type="hidden" value="4653"><button>Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-careers l-careers--init">
+                    <h3>Explore Careers Related To This Course</h3>
+                    <div class="l-careers__inner slick-initialized slick-slider">
+                        <div aria-live="polite" class="slick-list draggable">
+                            <div class="slick-track" style="opacity: 1; width: 650px; left: 0px;" role="listbox">
+                                <div class="l-careers__section slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 650px;" tabindex="-1" role="option" aria-describedby="slick-slide00">
+                                    <a href="/careers/security/private-investigator" class="l-career" tabindex="0">
+                                        <div class="l-career__img">
+                                            <img class="lazyload" data-src="https://cdn01.alison-static.net/careers/career/private-investigator_xs.jpg">
+                                        </div>
+                                        <span>Private Investigator</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-main-pub" id="l-main-pub">
+                    <div class="l-main-pub__back back-button" style="display: none">
+                        <span class="icon-thick-chevron-down left"></span>
+                        Back to course information
+                    </div>
+                    <div class="mobile-scroll">
+                        <div class="l-main-pub__inner">
+                            <h3>About Your Alison Course Publisher</h3>
+                            <h4 class="" style="display: none">
+                                <a class="course-publisher course-publisher--stats" href="https://alison.com/course-creators/advance-learning">
+                                    <strong>Advance Learning's</strong>
+                                </a>
+                                Alison Stats</h4>
+                            <div class="l-main-pub__info">
+                                <div class="l-main-pub__img missing" style="visibility: visible;"><img class="lazyload" data-src="https://cdn01.alison-static.net/publishers/2/f1.jpg"></div>
+                                <div class="l-main-pub__stats">
+                                    <h4 class="">
+                                        <a class="course-publisher course-publisher--stats" href="https://alison.com/course-creators/advance-learning">
+                                            <strong>Advance Learning's</strong>
+                                        </a>
+                                        Alison Stats</h4>
+                                    <span class="">
+                                        <span class="icon-learners-1"></span>
+                                        <strong class="publisher-enrollments">10,255,745</strong>
+                                        Learners</span>
+                                    <span class="">
+                                        <span class="icon-Literature-Filled"></span>
+                                        <strong class="publisher-course-count">671</strong>
+                                        Courses</span>
+                                    <span class="">
+                                        <span class="icon-learners-benefited"></span>
+                                        <strong class="publisher-likes">57,586</strong>
+                                        Learners Have Benefited From Their Courses
+                                    </span>
+                                </div>
+                            </div>
+                            <span class="l-main-pub__desc l-main-pub__desc--cut">Advance Learning has produced cutting-edge interactive multimedia IT Skills training courses for cor...</span>
+                            <span class="l-main-pub__desc l-main-pub__desc--full" style="display: none">Advance Learning has produced cutting-edge interactive multimedia IT Skills training courses for corporate clients including the Microsoft Corporation. Advance Learning is an expert in the field of E-Learning Theory and Practice. Each course they publish is pedagogically sound and designed to offer the learner the best educational experience possible.
+                                <br><br>
+                                From 1998 to 2007, Advance Learning produced leading edge interactive multimedia IT Skills training courses for its own direct clients and for corporate clients such as the Microsoft Corporation. Over the years, Advance Learning has expanded its content and today boasts an extensive catalogue of curated courses on a wide range of categories, from Health &amp; Safety to GDPR, Business to Management and Caregiving to Parenting. Each online course is carefully selected, reviewed and edited to ensure it reaches Continuing Professional Development UK (CPD) high standards and accreditation.
+                                <br><br>
+                                Advance Learning provides high quality interactive multimedia content development services. They work with multiple partners and clients to continue to source, purchase and commission more and more courses developed by subject matter experts.
+                            </span>
+                            <span class="l-main-pub__read-more" style="">Read More</span>
+                        </div>
+                        <div id="l-carousel--pub" class="l-carousel l-carousel--pub">
+                            <h3>More Free Online Courses by This Publisher</h3>
+                            <div class="l-carousel__courses">
+                                <ul id="lcp-list">
+                                    <li>
+                                        <a href="https://alison.com/course/protect-your-pc-against-the-notpetya-cyber-attack">Protect Your PC against the NotPetya Cyber Attack</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://alison.com/course/introduction-to-digital-photography">Introduction to Digital Photography</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://alison.com/course/english-grammar-comparisons-and-word-order-intermediate-level">English Grammar - Comparisons &amp; Word Order (Intermediate level)</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://alison.com/course/introduction-to-supervision">Introduction to Supervision</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://alison.com/course/wind-energy-from-wind-turbines-to-grid-integration">Wind Energy – From Wind Turbines to Grid Integration</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://alison.com/course/beginner-digital-photography">Beginner Digital Photography</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://alison.com/course/supervision-effective-communication-skills">Supervision - Effective Communication Skills</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://alison.com/course/beginner-level-english-1-foundations">Beginner Level English 1 - Foundations</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://alison.com/course/intermediate-digital-photography">Intermediate Digital Photography</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://alison.com/course/beginner-level-english-2-make-a-request">Beginner Level English 2 - Make a Request</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="l-carousel--enrolled" class="l-carousel l-carousel--enrolled">
+                    <h3>Learners Who Took This Course Also Enrolled In</h3>
+                    <div class="l-carousel__courses">
+                        <ul id="lce-list">
+                            <li>
+                                <a href="https://alison.com/course/ohsas-18001-2007-occupational-health-and-safety-management">OHSAS 18001:2007 - Occupational Health &amp; Safety Management</a>
+                            </li>
+                            <li>
+                                <a href="https://alison.com/course/health-and-safety-hazards-hazard-communication">Health and Safety Hazards - Hazard Communication</a>
+                            </li>
+                            <li>
+                                <a href="https://alison.com/course/fire-safety-essential-concepts-prevention-and-control">Fire Safety - Essential Concepts, Prevention &amp; Control</a>
+                            </li>
+                            <li>
+                                <a href="https://alison.com/course/osha-fundamentals-ladder-safety-and-prevention-of-injuries">OSHA Fundamentals - Ladder Safety &amp; Prevention of Injuries</a>
+                            </li>
+                            <li>
+                                <a href="https://alison.com/course/osha-fundamentals-managing-risk-of-fire-emergencies">OSHA Fundamentals - Managing Risk of Fire Emergencies</a>
+                            </li>
+                            <li>
+                                <a href="https://alison.com/course/cpr-aed-and-first-aid">CPR, AED and First Aid</a>
+                            </li>
+                            <li>
+                                <a href="https://alison.com/course/diploma-in-workplace-safety-and-health-revised-2017">Diploma in Workplace Safety and Health</a>
+                            </li>
+                            <li>
+                                <a href="https://alison.com/course/noise-and-hearing-protection-training">Noise and Hearing Protection Training</a>
+                            </li>
+                            <li>
+                                <a href="https://alison.com/course/construction-safety-and-health">Construction Safety and Health</a>
+                            </li>
+                            <li>
+                                <a href="https://alison.com/course/iso-45001-2018-principles-of-occupational-health-and-safety-management-systems">ISO 45001:2018 - Principles of Occupational Health and Safety Management Systems</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="l-tags l-section l-tags--lower">
+                    <div class="l-section__inner">
+                        <h3>Explore Subjects Related To This Course</h3>
+                        <ul>
+                            <li><a href="/tag/health-and-safety" title="Health and Safety">Health and Safety</a></li>
+                            <li><a href="/tag/osha" title="OSHA">OSHA</a></li>
+                            <li><a href="/tag/ppe" title="PPE">PPE</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sticky-ad inner-page-sticky-ad player-page-sticky le-sticky" style="position: absolute; top: 87px;">
+            <div id="gam_sidebar" style="height: 100%">
+                <script type="text/javascript">
+                    if (sidebar_sizes.length > 0) {
+                        if (window.device === 'desktop') {
+                            googletag.cmd.push(function () {
+                                googletag.defineSlot('/6434961/sidebar', sidebar_sizes, 'gam_sidebar').addService(googletag.pubads());
+                                googletag.display('gam_sidebar');
+                            });
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
 {% endblock %}
