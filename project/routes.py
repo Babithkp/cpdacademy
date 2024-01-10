@@ -381,13 +381,14 @@ def course(ID):
     return render_template(f"course_data/{course.html}/index.html", files="course_files")
 
 
-@app.route("/course/<c_ID>/module/<module_num>/sub_module/<sub_num>")
+@app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>")
 def sub_module(c_ID, module_num, sub_num):
     course = db.session.get(Course, c_ID)
-    return render_template(f"course_data/{course.html}/module_{module_num}/{sub_num}.html", module_title="Fire Preventation")
+    URL = next_sub_module(c_ID, module_num, sub_num)
+    return render_template(f"course_data/{course.html}/module_{module_num}/{sub_num}.html", module_title="Fire Preventation", URL=URL)
 
 
-@app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>/next")
+# @app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>/next")
 def next_sub_module(c_ID, module_num, sub_num):
     mod_id = SubModule.query.filter_by(course_id=c_ID).group_by(SubModule.module_id).all()
     if mod_id:
@@ -403,7 +404,7 @@ def next_sub_module(c_ID, module_num, sub_num):
             row_num = get_sub_module_num(mod_id, sub_mod_id)
             if row_num:
                 data["sub_m_num"] = row_num
-                URL = f'/course/{data["c_ID"]}/module_num/{data["m_num"]}/sub_module/{data["sub_m_num"]}'
+                URL = f'/course/{data["c_ID"]}/module/{data["m_num"]}/sub_module/{data["sub_m_num"]}'
                 return URL
     return "None"
 

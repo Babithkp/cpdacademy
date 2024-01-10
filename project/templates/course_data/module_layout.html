@@ -820,6 +820,14 @@
                 width: 5px
             }
         </style>
+        <style>
+            .player__extras {
+                display: none !important;
+            }
+            .player-header__center {
+                visibility: hidden !important;
+            }
+        </style>
     </head>
 
     <body class="" data-api_endpoint="https://api.alison.com/v0.1" data-gclient_id="70245126531-aq99q60am7odbhgs779chq4abegbrlj9.apps.googleusercontent.com" data-in_sync="true" data-site_ads="true" data-loggedin="true">
@@ -1454,7 +1462,7 @@
                     e.preventDefault();
                     window.scrollTo(0, 0);
                     if ($(this).hasClass('player-nav__next')) {
-                        const nextPage = document.querySelector('.player-nav--top a').href;
+                        const nextPage = "{{URL}}";
                         document.dispatchEvent(new CustomEvent('course:player:next', {
                             detail: {
                                 nextPage: nextPage
