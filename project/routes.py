@@ -387,6 +387,27 @@ def sub_module(c_ID, module_num, sub_num):
     return render_template(f"course_data/{course.html}/module_{module_num}/{sub_num}.html", module_title="Fire Preventation")
 
 
+@app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>/next")
+def next_sub_module(c_ID, module_num, sub_num):
+    mod_id = SubModule.query.filter_by(course_id=c_ID).group_by(SubModule.module_id).all()
+    if mod_id:
+        mod_id = mod_id[module_num-1].module_id
+        sub_mod_id = get_sub_module(mod_id, sub_num).ID + 1 # next sub mod id
+        sub_mod = db.session.get(SubModule, sub_mod_id)
+        data = {}
+        data["c_ID"] = sub_mod.course_id
+        mod_id = sub_mod.module_id
+        row_num = get_module_num(data.get("c_ID"), mod_id)
+        if row_num:
+            data["m_num"] = row_num
+            row_num = get_sub_module_num(mod_id, sub_mod_id)
+            if row_num:
+                data["sub_m_num"] = row_num
+                URL = f'/course/{data["c_ID"]}/module_num/{data["m_num"]}/sub_module/{data["sub_m_num"]}'
+                return URL
+    return "None"
+
+
 @app.route("/course_complete")
 def course_complete():
     return render_template("course_data/course_complete.html")
