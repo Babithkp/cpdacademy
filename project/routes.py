@@ -381,6 +381,15 @@ def course(ID):
     return render_template(f"course_data/{course.html}/index.html", files="course_files")
 
 
+@app.route("/ncourse/<ID>")
+def new_course(ID):
+    course = db.session.get(Course, ID)
+    if not course:
+        return redirect("/")
+    modules = Module.query.filter_by(course_id=course.ID).all()
+    return render_template(f"course_data/new/course.html", title=TITLE, course=course, modules=modules)
+
+
 @app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>")
 def sub_module(c_ID, module_num, sub_num):
     course = db.session.get(Course, c_ID)
