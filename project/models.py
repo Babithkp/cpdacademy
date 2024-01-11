@@ -76,6 +76,7 @@ class SubModule(db.Model):
     course_id = db.Column(db.Integer)
     module_id = db.Column(db.Integer)
     module_num = db.Column(db.Integer)
+    sub_num = db.Column(db.Integer)
     title = db.Column(db.Text)
 
 def get_sub_module(m_id, offset):

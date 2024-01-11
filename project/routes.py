@@ -373,16 +373,9 @@ def done_quiz(unit_id):
     return "ok"
 
 
+
 @app.route("/course/<ID>")
-def course(ID):
-    course = db.session.get(Course, ID)
-    if not course:
-        return redirect("/")
-    return render_template(f"course_data/{course.html}/index.html", files="course_files")
-
-
-@app.route("/ncourse/<ID>")
-def new_course(ID):
+def get_course(ID):
     course = db.session.get(Course, ID)
     if not course:
         return redirect("/")
@@ -391,7 +384,7 @@ def new_course(ID):
 
 
 @app.route("/course/<int:c_ID>/module/<int:m_num>")
-def course_module(c_ID, m_num):
+def get_course_module(c_ID, m_num):
     course = db.session.get(Course, c_ID) # Specific Course
     module = Module.query.filter_by(course_id=c_ID, module_num=m_num).first() # Specific Module
     sub_modules = SubModule.query.filter_by(course_id=c_ID, module_num=m_num).all() # List of all submodules of this module
