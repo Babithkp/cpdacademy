@@ -79,6 +79,14 @@ class SubModule(db.Model):
     sub_num = db.Column(db.Integer)
     title = db.Column(db.Text)
 
+class NewProgress(db.Model):
+    __tablename__ = 'NewProgress'
+    ID = db.Column(db.Integer, primary_key=True)
+    course_id = db.Column(db.Integer)
+    sub_num = db.Column(db.Integer)
+    user_id = db.Column(db.Integer)
+
+
 def get_sub_module(m_id, offset):
     query = SubModule.query.filter_by(module_id=m_id)
     if offset:

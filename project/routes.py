@@ -383,20 +383,44 @@ def get_course(ID):
     return render_template(f"course_data/new/course.html", title=TITLE, course=course, modules=modules)
 
 
+def get_progress(c_ID):
+    user_id = session["id"]
+    topics_progress = 0
+    progress = NewProgress.query.filter_by(course_id=c_ID, user_id=user_id).first()
+    if progress:
+        topics_progress = progress.sub_num
+    return topics_progress
+
+
 @app.route("/course/<int:c_ID>/module/<int:m_num>")
+@login_required
 def get_course_module(c_ID, m_num):
+    user_id = session["id"]
     course = db.session.get(Course, c_ID) # Specific Course
     module = Module.query.filter_by(course_id=c_ID, module_num=m_num).first() # Specific Module
-    sub_modules = SubModule.query.filter_by(course_id=c_ID, module_num=m_num).all() # List of all submodules of this module
+    topics = SubModule.query.filter_by(course_id=c_ID, module_num=m_num).all() # List of all submodules of this module
     total_modules = Module.query.filter_by(course_id=c_ID).count() # Total number of modules of this course
-    return render_template("course_data/new/module.html", course=course, module=module, sub_modules=sub_modules, module_num=m_num, total_modules=total_modules)
+    progress = get_progress(c_ID)
+    return render_template("course_data/new/module.html", course=course, module=module, topics=topics, module_num=m_num, total_modules=total_modules, progress=progress)
 
 
 @app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>")
+@login_required
 def sub_module(c_ID, module_num, sub_num):
-    course = db.session.get(Course, c_ID)
-    URL = next_sub_module(c_ID, module_num, sub_num)
-    return render_template(f"course_data/{course.html}/module_{module_num}/{sub_num}.html", module_title="Fire Preventation", URL=URL)
+    topic = SubModule.query.filter_by(course_id=c_ID, module_num=module_num, sub_num=sub_num).first()
+    if topic:
+        user_id = session["id"]
+        progress = NewProgress.query.filter_by(course_id=c_ID, user_id=user_id).first()
+        if not progress:
+            progress = NewProgress(course_id=c_ID, user_id=user_id)
+            db.session.add(progress)
+        progress.sub_num = sub_num
+        db.session.commit()
+
+        course = db.session.get(Course, c_ID)
+        URL = next_sub_module(c_ID, module_num, sub_num)
+        return render_template(f"course_data/{course.html}/module_{module_num}/{sub_num}.html", module_title="Fire Preventation", URL=URL)
+    return redirect("/account")
 
 
 # @app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>/next")
