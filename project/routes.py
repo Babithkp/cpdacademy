@@ -390,6 +390,15 @@ def new_course(ID):
     return render_template(f"course_data/new/course.html", title=TITLE, course=course, modules=modules)
 
 
+@app.route("/course/<int:c_ID>/module/<int:m_num>")
+def course_module(c_ID, m_num):
+    course = db.session.get(Course, c_ID) # Specific Course
+    module = Module.query.filter_by(course_id=c_ID, module_num=m_num).first() # Specific Module
+    sub_modules = SubModule.query.filter_by(course_id=c_ID, module_num=m_num).all() # List of all submodules of this module
+    total_modules = Module.query.filter_by(course_id=c_ID).count() # Total number of modules of this course
+    return render_template("course_data/new/module.html", course=course, module=module, sub_modules=sub_modules, module_num=m_num, total_modules=total_modules)
+
+
 @app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>")
 def sub_module(c_ID, module_num, sub_num):
     course = db.session.get(Course, c_ID)
