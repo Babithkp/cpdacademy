@@ -11,13 +11,15 @@ if (topics_div) {
 
 
     var quiz_div  = document.getElementById("quiz_list")
-    if (topics.length == 0) {
-        quiz_div.style.display = "block"
-    }
-    else {
-        quiz_div.onclick = ()=> {
-            alert("Please complete all topics first")
-            return false
+    if (quiz_div) {
+        if (topics.length == 0) {1
+            quiz_div.style.display = "block"
+        }
+        else {
+            quiz_div.onclick = ()=> {
+                alert("Please complete all topics first")
+                return false
+            }
         }
     }
 }

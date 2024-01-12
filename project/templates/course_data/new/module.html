@@ -37,22 +37,22 @@ Below you will see the sections for this unit which you must work through. You m
   <div class="learndash_topic_dots type-list" id="learndash_topic_dots-151805">
     <strong>Unit Sections</strong>
     <ul>
-        {% for i in range(topics|length) %}
+        {% for i in range(topics[module.ID]|length) %}
       <li class="nth-of-type-odd">
         <span class="topic_item">
           <!-- a.class topic-completed, topic-notcompleted -->
           <a
             class="
-            {% if progress+1 > topics[i].ID %}
+            {% if progress+1 > topics[module.ID][i].ID %}
               topic-completed
             {% else %}
               topic-notcompleted
             {% endif %}
             "
             href="/course/{{course.ID}}/module/{{module_num}}/sub_module/{{i+1}}"
-            title="{{topics[i].title}}"
+            title="{{topics[module.ID][i].title}}"
           >
-            <span>{{topics[i].title}}</span>
+            <span>{{topics[module.ID][i].title}}</span>
           </a>
         </span>
       </li>

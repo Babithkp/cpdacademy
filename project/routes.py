@@ -374,11 +374,10 @@ def done_quiz(unit_id):
     return "ok"
 
 
-def get_sidebar_data(ID):
+def get_sidebar_data(c_ID, progress):
     data = {}
     user_id = session["id"]
-    topics = SubModule.query.filter_by(course_id=ID)
-    progress = get_progress(ID)
+    topics = SubModule.query.filter_by(course_id=c_ID)
 
     data["total_topics"] = topics.count()
     data["completed_topics"] = topics.filter(SubModule.ID<=progress).count()
@@ -394,6 +393,14 @@ def get_SubModules(modules):
     return data
 
 
+def get_next_topic(c_ID, progress):
+    if progress == 0:
+        topic = SubModule.query.filter_by(course_id=c_ID).first()
+    else:
+        topic = SubModule.query.filter_by(course_id=c_ID, ID=progress+1).first()
+    return topic
+
+
 @app.route("/course/<ID>")
 @login_required
 def get_course(ID):
@@ -407,14 +414,10 @@ def get_course(ID):
         course_completed = True
     else:
         course_completed = False
-        if progress == 0:
-            next_module_id = SubModule.query.filter_by(course_id=ID).first().module_id
-        else:
-            next_module = SubModule.query.filter_by(course_id=ID, ID=progress+1).first()
-            next_module_id = next_module.module_id
+        next_module_id = get_next_topic(ID, progress).module_id
 
     modules = Module.query.filter_by(course_id=course.ID).all()
-    sidebar = get_sidebar_data(ID)
+    sidebar = get_sidebar_data(ID, progress)
     topics = get_SubModules(modules)
     return render_template(f"course_data/new/course.html", title=TITLE, course=course, modules=modules, topics=topics, next_module_id=next_module_id, course_completed=course_completed, sidebar=sidebar, progress=progress)
 
@@ -434,13 +437,23 @@ def get_course_module(c_ID, m_num):
     user_id = session["id"]
     course = db.session.get(Course, c_ID) # Specific Course
     module = Module.query.filter_by(course_id=c_ID, module_num=m_num).first() # Specific Module
-    topics = SubModule.query.filter_by(course_id=c_ID).all() # List of all submodules of this module
+    modules = Module.query.filter_by(course_id=course.ID).all() # List of all modules
+    topics = get_SubModules(modules) # List of all submodules of all modules in dictionary
     total_modules = Module.query.filter_by(course_id=c_ID).count() # Total number of modules of this course
     progress = get_progress(c_ID)
 
     next_sub_module = db.session.get(SubModule, progress+1)
     next_module_num = next_sub_module.module_num
-    return render_template("course_data/new/module.html", course=course, module=module, topics=topics, module_num=m_num, total_modules=total_modules, progress=progress, next_module_num=next_module_num)
+
+    next_module_id = 0
+    last_module_id = SubModule.query.filter_by(course_id=c_ID).order_by(SubModule.ID.desc()).first().ID
+    if last_module_id == progress:
+        course_completed = True
+    else:
+        course_completed = False
+        next_module_id = get_next_topic(c_ID, progress).module_id
+    sidebar = get_sidebar_data(c_ID, progress)
+    return render_template("course_data/new/module.html", course=course, module=module, modules=modules, topics=topics, module_num=m_num, total_modules=total_modules, progress=progress, next_module_num=next_module_num, sidebar=sidebar, course_completed=course_completed, next_module_id=next_module_id)
 
 
 @app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>")
@@ -450,8 +463,11 @@ def sub_module(c_ID, module_num, sub_num):
     if topic:
         user_id = session["id"]
         progress = get_progress(c_ID)
-        if progress+1 < topic.ID:
+        next_topic_id = get_next_topic(c_ID, progress).ID
+        if next_topic_id < topic.ID:
             return redirect(f"/course/{c_ID}")
+
+        # Update Progress of user
         progress = NewProgress.query.filter_by(course_id=c_ID, user_id=user_id).first()
         if not progress:
             progress = NewProgress(course_id=c_ID, user_id=user_id)
