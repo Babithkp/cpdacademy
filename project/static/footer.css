@@ -1,4 +1,7 @@
 /* Creating footer HTML for alison courses */
+html, body {
+    height: 100%;
+}
 #custom_footer {
     text-align: center;
     font-size: 1em;

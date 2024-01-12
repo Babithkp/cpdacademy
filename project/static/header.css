@@ -1,0 +1,32 @@
+/* Header css file for alison */
+#custom_header {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+	box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.514);
+}
+
+#unit_btn {
+	display: inline-block;
+	border: none;
+	padding: .5em 1em;
+	border-radius: 4px;
+	background: #d9d9d9;
+	box-shadow: none;
+	color: #696969;
+	text-decoration: none;
+	font-family: inherit;
+	font-size: 1.3em;
+	font-weight: 700;
+	text-transform: capitalize;
+	line-height: 1.3;
+	letter-spacing: normal;
+	cursor: pointer;
+	transition: all .2s ease;
+    width: fit-content;
+}
+
+#unit_btn:hover {
+    background-color: #c4c4c4;
+    color: #555555;
+}

@@ -484,7 +484,7 @@ def sub_module(c_ID, module_num, sub_num):
 
         course = db.session.get(Course, c_ID)
         URL = next_sub_module(c_ID, module_num, sub_num)
-        return render_template(f"course_data/{course.html}/module_{module_num}/{sub_num}.html", module_title="Fire Preventation", URL=URL)
+        return render_template(f"course_data/{course.html}/module_{module_num}/{sub_num}.html", module_title="Fire Preventation", URL=URL, course_id=c_ID, module_num=module_num)
     return redirect("/account")
 
 
