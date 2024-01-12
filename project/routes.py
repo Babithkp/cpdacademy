@@ -419,7 +419,7 @@ def get_course(ID):
     modules = Module.query.filter_by(course_id=course.ID).all()
     sidebar = get_sidebar_data(ID, progress)
     topics = get_SubModules(modules)
-    return render_template(f"course_data/new/course.html", title=TITLE, course=course, modules=modules, topics=topics, next_module_id=next_module_id, course_completed=course_completed, sidebar=sidebar, progress=progress)
+    return render_template(f"course_data/course_layouts/course.html", title=TITLE, course=course, modules=modules, topics=topics, next_module_id=next_module_id, course_completed=course_completed, sidebar=sidebar, progress=progress)
 
 
 def get_progress(c_ID):
@@ -452,7 +452,7 @@ def get_course_module(c_ID, m_num):
         course_completed = False
         next_module_id = get_next_topic(c_ID, progress).module_id
     sidebar = get_sidebar_data(c_ID, progress)
-    return render_template("course_data/new/module.html", course=course, module=module, modules=modules, topics=topics, total_modules=total_modules, progress=progress, sidebar=sidebar, course_completed=course_completed, next_module_id=next_module_id)
+    return render_template("course_data/course_layouts/module.html", course=course, module=module, modules=modules, topics=topics, total_modules=total_modules, progress=progress, sidebar=sidebar, course_completed=course_completed, next_module_id=next_module_id)
 
 
 def update_progress(c_ID, topic_id):

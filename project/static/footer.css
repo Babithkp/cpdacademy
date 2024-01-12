@@ -1,0 +1,8 @@
+/* Creating footer HTML for alison courses */
+#custom_footer {
+    text-align: center;
+    font-size: 1em;
+    padding: 20px !important;
+    color: white;
+    background-color: #094b77;
+}
