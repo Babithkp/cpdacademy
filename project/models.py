@@ -83,7 +83,7 @@ class NewProgress(db.Model):
     __tablename__ = 'NewProgress'
     ID = db.Column(db.Integer, primary_key=True)
     course_id = db.Column(db.Integer)
-    sub_num = db.Column(db.Integer)
+    sub_id = db.Column(db.Integer)
     user_id = db.Column(db.Integer)
 
 

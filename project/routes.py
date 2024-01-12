@@ -388,7 +388,7 @@ def get_progress(c_ID):
     topics_progress = 0
     progress = NewProgress.query.filter_by(course_id=c_ID, user_id=user_id).first()
     if progress:
-        topics_progress = progress.sub_num
+        topics_progress = progress.sub_id
     return topics_progress
 
 
@@ -401,20 +401,24 @@ def get_course_module(c_ID, m_num):
     topics = SubModule.query.filter_by(course_id=c_ID, module_num=m_num).all() # List of all submodules of this module
     total_modules = Module.query.filter_by(course_id=c_ID).count() # Total number of modules of this course
     progress = get_progress(c_ID)
-    return render_template("course_data/new/module.html", course=course, module=module, topics=topics, module_num=m_num, total_modules=total_modules, progress=progress)
+
+    next_sub_module = db.session.get(SubModule, progress+1)
+    next_module_num = next_sub_module.module_num
+    return render_template("course_data/new/module.html", course=course, module=module, topics=topics, module_num=m_num, total_modules=total_modules, progress=progress, next_module_num=next_module_num)
 
 
 @app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>")
 @login_required
 def sub_module(c_ID, module_num, sub_num):
     topic = SubModule.query.filter_by(course_id=c_ID, module_num=module_num, sub_num=sub_num).first()
+    print(topic)
     if topic:
         user_id = session["id"]
         progress = NewProgress.query.filter_by(course_id=c_ID, user_id=user_id).first()
         if not progress:
             progress = NewProgress(course_id=c_ID, user_id=user_id)
             db.session.add(progress)
-        progress.sub_num = sub_num
+        progress.sub_id = topic.ID
         db.session.commit()
 
         course = db.session.get(Course, c_ID)

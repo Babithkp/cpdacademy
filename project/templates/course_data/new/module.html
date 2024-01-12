@@ -43,7 +43,7 @@ Below you will see the sections for this unit which you must work through. You m
           <!-- a.class topic-completed, topic-notcompleted -->
           <a
             class="
-            {% if progress > i %}
+            {% if progress+1 > topics[i].ID %}
               topic-completed
             {% else %}
               topic-notcompleted
@@ -84,7 +84,7 @@ Below you will see the sections for this unit which you must work through. You m
     {% if module_num-1 != 0 %}
         <a class="prev-link" href="/course/{{course.ID}}/module/{{module_num-1}}" rel="prev"><span class="meta-nav">←</span> Previous Unit</a>
     {% endif %}
-    {% if module_num < total_modules %}
+    {% if next_module_num > module_num and module_num < total_modules %}
         <a class="next-link" href="/course/{{course.ID}}/module/{{module_num+1}}" rel="next">Next Unit <span class="meta-nav">→</span></a>
     {% endif %}
 </p>
