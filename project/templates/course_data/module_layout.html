@@ -1489,7 +1489,8 @@
                 }
                 localStorage.setItem('certToBePurchased_' + id, JSON.stringify(certs_array));
                 localStorage.removeItem('startedCertJourney_' + id);
-                window.location.href = 'https://alison.com/shop?score=' + event.detail.score;
+                window.location.href = "{{URL}}"
+                // window.location.href = 'https://alison.com/shop?score=' + event.detail.score;
             });
             dataLayer.push({'event': 'optimize.activate'});
         </script>

@@ -1163,12 +1163,6 @@
                 }
             }
             const U = function (C) {
-                    if (this.tagName === "BUTTON") {
-                        if (this.className == "finish-button") {
-                            window.location.href = "finish_course"
-                            return (a)=> {}
-                        }
-                    }
                     return N(this, C, !1)
                 },
                 x = function (C) {
