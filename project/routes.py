@@ -478,12 +478,13 @@ def sub_module(c_ID, module_num, sub_num):
 
 
         last_topic = SubModule.query.filter_by(course_id=c_ID).order_by(SubModule.ID.desc()).first().ID
-        if topic.ID != last_topic:
-            # Update Progress of user only if it is not last topic
+        # Update Progress of user only if it is not last topic
+        if topic.ID > progress and topic.ID != last_topic:
             update_progress(c_ID, topic.ID)
 
         course = db.session.get(Course, c_ID)
         URL = next_sub_module(c_ID, module_num, sub_num)
+        print(URL)
         return render_template(f"course_data/{course.html}/module_{module_num}/{sub_num}.html", module_title="Fire Preventation", URL=URL, course_id=c_ID, module_num=module_num)
     return redirect("/account")
 
@@ -498,7 +499,7 @@ def next_sub_module(c_ID, m_num, sub_num):
     return URL
 
 
-@app.route("/course_complete/<int:c_ID>")
+@app.route("/course_completed/<int:c_ID>")
 @login_required
 def course_complete(c_ID):
     last_topic = SubModule.query.filter_by(course_id=c_ID).order_by(SubModule.ID.desc()).first()
