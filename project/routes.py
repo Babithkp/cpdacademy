@@ -491,11 +491,11 @@ def sub_module(c_ID, module_num, sub_num):
 
 def next_sub_module(c_ID, m_num, sub_num):
     topic = SubModule.query.filter_by(course_id=c_ID, module_num=m_num, sub_num=sub_num).first()
-    next_topic = db.session.get(SubModule, topic.ID+1)
+    next_topic = SubModule.query.filter_by(course_id=c_ID, ID=topic.ID+1).first()
     if next_topic:
         URL = f"/course/{c_ID}/module/{next_topic.module_num}/sub_module/{next_topic.sub_num}"
     else:
-        URL = f"/course_complete/{c_ID}"
+        URL = f"/course_completed/{c_ID}"
     return URL
 
 
