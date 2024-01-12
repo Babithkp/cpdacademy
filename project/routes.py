@@ -378,7 +378,8 @@ def get_sidebar_data(ID):
     data = {}
     user_id = session["id"]
     topics = SubModule.query.filter_by(course_id=ID)
-    progress = NewProgress.query.filter_by(course_id=ID, user_id=user_id).first().sub_id
+    progress = get_progress(ID)
+
     data["total_topics"] = topics.count()
     data["completed_topics"] = topics.filter(SubModule.ID<=progress).count()
     data["width"] = data["completed_topics"] * 100 / data["total_topics"]
