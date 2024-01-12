@@ -836,7 +836,9 @@
         </noscript>
         <div class="loading" style="display: none"><img class="lazyload" data-src="https://cdn01.alison-static.net/public/html/site/img/loader.gif" width="208" height="208" alt="Loading"></div>
         <div class="messages-q" style="position: fixed; right: 10px; bottom: 0px; max-width: 420px; width: 100%; height: 100%; pointer-events: none; z-index: 99999;"></div>
-        <section id="header-outer" class="header__outer header_outer--player ">
+        {#
+            <!-- Header which pop out of nowhere -->
+            <section id="header-outer" class="header__outer header_outer--player ">
             <header class="loggedin" data-id="36383682">
                 <script>
                     sale_id = "0";
@@ -1317,7 +1319,8 @@
             </header>
             <div class="body-padding "></div>
             <div class="darken" style="display: none"></div>
-        </section>
+            </section>
+        #}
         <div class="aff-over" style="display:none;"></div>
         <!-- player-header -->
         {% include "course_data/module_header.html" %}

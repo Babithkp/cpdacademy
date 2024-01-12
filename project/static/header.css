@@ -1,5 +1,6 @@
 /* Header css file for alison */
 #custom_header {
+	position: relative !important;
     background-color: white;
     padding: 20px;
     text-align: center;
