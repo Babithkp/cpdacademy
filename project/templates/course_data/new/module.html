@@ -49,7 +49,7 @@ Below you will see the sections for this unit which you must work through. You m
               topic-notcompleted
             {% endif %}
             "
-            href="/course/{{course.ID}}/module/{{module_num}}/sub_module/{{i+1}}"
+            href="/course/{{course.ID}}/module/{{module.module_num}}/sub_module/{{i+1}}"
             title="{{topics[module.ID][i].title}}"
           >
             <span>{{topics[module.ID][i].title}}</span>
@@ -81,11 +81,11 @@ Below you will see the sections for this unit which you must work through. You m
   <!-- Next and Previous Links -->
 
 <p id="learndash_next_prev_link">
-    {% if module_num-1 != 0 %}
-        <a class="prev-link" href="/course/{{course.ID}}/module/{{module_num-1}}" rel="prev"><span class="meta-nav">←</span> Previous Unit</a>
+    {% if module.module_num-1 != 0 %}
+        <a class="prev-link" href="/course/{{course.ID}}/module/{{module.module_num-1}}" rel="prev"><span class="meta-nav">←</span> Previous Unit</a>
     {% endif %}
-    {% if next_module_num > module_num and module_num < total_modules %}
-        <a class="next-link" href="/course/{{course.ID}}/module/{{module_num+1}}" rel="next">Next Unit <span class="meta-nav">→</span></a>
+    {% if (next_module_id > module.ID or course_completed) and (module.ID < modules[-1].ID)%}
+        <a class="next-link" href="/course/{{course.ID}}/module/{{module.module_num+1}}" rel="next">Next Unit <span class="meta-nav">→</span></a>
     {% endif %}
 </p>
 
