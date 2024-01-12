@@ -374,6 +374,24 @@ def done_quiz(unit_id):
     return "ok"
 
 
+def get_sidebar_data(ID):
+    data = {}
+    user_id = session["id"]
+    topics = SubModule.query.filter_by(course_id=ID)
+    progress = NewProgress.query.filter_by(course_id=ID, user_id=user_id).first().sub_id
+    data["total_topics"] = topics.count()
+    data["completed_topics"] = topics.filter(SubModule.ID<=progress).count()
+    data["width"] = data["completed_topics"] * 100 / data["total_topics"]
+    return data
+
+
+def get_SubModules(modules):
+    data = {}
+    for m in modules:
+        sub_modules = SubModule.query.filter_by(module_id=m.ID).all()
+        data[m.ID] = sub_modules
+    return data
+
 
 @app.route("/course/<ID>")
 @login_required
@@ -390,7 +408,9 @@ def get_course(ID):
     else:
         course_completed = True
     modules = Module.query.filter_by(course_id=course.ID).all()
-    return render_template(f"course_data/new/course.html", title=TITLE, course=course, modules=modules, next_module_id=next_module_id, course_completed=course_completed)
+    sidebar = get_sidebar_data(ID)
+    topics = get_SubModules(modules)
+    return render_template(f"course_data/new/course.html", title=TITLE, course=course, modules=modules, topics=topics, next_module_id=next_module_id, course_completed=course_completed, sidebar=sidebar, progress=progress)
 
 
 def get_progress(c_ID):
@@ -408,7 +428,7 @@ def get_course_module(c_ID, m_num):
     user_id = session["id"]
     course = db.session.get(Course, c_ID) # Specific Course
     module = Module.query.filter_by(course_id=c_ID, module_num=m_num).first() # Specific Module
-    topics = SubModule.query.filter_by(course_id=c_ID, module_num=m_num).all() # List of all submodules of this module
+    topics = SubModule.query.filter_by(course_id=c_ID).all() # List of all submodules of this module
     total_modules = Module.query.filter_by(course_id=c_ID).count() # Total number of modules of this course
     progress = get_progress(c_ID)
 
