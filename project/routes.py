@@ -360,6 +360,7 @@ def quiz(unit_id):
 
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/quiz/done")
+@login_required
 def done_quiz(unit_id):
     section_id = Section.query.filter_by(unit_id=unit_id, type="quiz").first().section_id
     if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=section_id).first():
@@ -375,12 +376,21 @@ def done_quiz(unit_id):
 
 
 @app.route("/course/<ID>")
+@login_required
 def get_course(ID):
     course = db.session.get(Course, ID)
     if not course:
         return redirect("/")
+    progress = get_progress(ID)
+    course_completed = False
+    next_module_id = 0
+    next_module = SubModule.query.filter_by(course_id=ID, ID=progress+1).first()
+    if next_module:
+        next_module_id = next_module.module_id
+    else:
+        course_completed = True
     modules = Module.query.filter_by(course_id=course.ID).all()
-    return render_template(f"course_data/new/course.html", title=TITLE, course=course, modules=modules)
+    return render_template(f"course_data/new/course.html", title=TITLE, course=course, modules=modules, next_module_id=next_module_id, course_completed=course_completed)
 
 
 def get_progress(c_ID):
@@ -451,6 +461,7 @@ def next_sub_module(c_ID, module_num, sub_num):
 
 
 @app.route("/course_complete")
+@login_required
 def course_complete():
     return render_template("course_data/course_complete.html")
 

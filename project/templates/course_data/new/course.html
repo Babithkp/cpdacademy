@@ -43,10 +43,17 @@
             <div id="lessons_list" class="lessons_list">
                 {% for i in range(modules| length) %}
                     <div class="post-151805 is_not_sample">
+                        
                         <div class="list-count">{{i+1}}</div>
                         <h4>
                             <!-- class will be completed, notcompleted -->
-                            <a class="completed" href="/course/{{course.ID}}/module/{{i+1}}">
+                            <a class="
+                            {% if next_module_id > modules[i].ID or course_completed %}
+                            completed
+                            {% else %}
+                            notcompleted
+                            {% endif %}
+                            " href="/course/{{course.ID}}/module/{{i+1}}">
                                 {{ modules[i].title }}
                             </a>
                         </h4>
