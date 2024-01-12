@@ -455,24 +455,32 @@ def get_course_module(c_ID, m_num):
     return render_template("course_data/new/module.html", course=course, module=module, modules=modules, topics=topics, total_modules=total_modules, progress=progress, sidebar=sidebar, course_completed=course_completed, next_module_id=next_module_id)
 
 
+def update_progress(c_ID, topic_id):
+    user_id = session["id"]
+    progress = NewProgress.query.filter_by(course_id=c_ID, user_id=user_id).first()
+    if not progress:
+        progress = NewProgress(course_id=c_ID, user_id=user_id)
+        db.session.add(progress)
+    progress.sub_id = topic_id
+    db.session.commit()
+
+
 @app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>")
 @login_required
 def sub_module(c_ID, module_num, sub_num):
     topic = SubModule.query.filter_by(course_id=c_ID, module_num=module_num, sub_num=sub_num).first()
     if topic:
-        user_id = session["id"]
         progress = get_progress(c_ID)
-        next_topic_id = get_next_topic(c_ID, progress).ID
-        if next_topic_id < topic.ID:
+        next_topic = get_next_topic(c_ID, progress)
+        
+        if next_topic and next_topic.ID < topic.ID:
             return redirect(f"/course/{c_ID}")
 
-        # Update Progress of user
-        progress = NewProgress.query.filter_by(course_id=c_ID, user_id=user_id).first()
-        if not progress:
-            progress = NewProgress(course_id=c_ID, user_id=user_id)
-            db.session.add(progress)
-        progress.sub_id = topic.ID
-        db.session.commit()
+
+        last_topic = SubModule.query.filter_by(course_id=c_ID).order_by(SubModule.ID.desc()).first().ID
+        if topic.ID != last_topic:
+            # Update Progress of user only if it is not last topic
+            update_progress(c_ID, topic.ID)
 
         course = db.session.get(Course, c_ID)
         URL = next_sub_module(c_ID, module_num, sub_num)
@@ -480,31 +488,23 @@ def sub_module(c_ID, module_num, sub_num):
     return redirect("/account")
 
 
-# @app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>/next")
-def next_sub_module(c_ID, module_num, sub_num):
-    mod_id = SubModule.query.filter_by(course_id=c_ID).group_by(SubModule.module_id).all()
-    if mod_id:
-        mod_id = mod_id[module_num-1].module_id
-        sub_mod_id = get_sub_module(mod_id, sub_num).ID + 1 # next sub mod id
-        sub_mod = db.session.get(SubModule, sub_mod_id)
-        data = {}
-        data["c_ID"] = sub_mod.course_id
-        mod_id = sub_mod.module_id
-        row_num = get_module_num(data.get("c_ID"), mod_id)
-        if row_num:
-            data["m_num"] = row_num
-            row_num = get_sub_module_num(mod_id, sub_mod_id)
-            if row_num:
-                data["sub_m_num"] = row_num
-                URL = f'/course/{data["c_ID"]}/module/{data["m_num"]}/sub_module/{data["sub_m_num"]}'
-                return URL
-    return "None"
+def next_sub_module(c_ID, m_num, sub_num):
+    topic = SubModule.query.filter_by(course_id=c_ID, module_num=m_num, sub_num=sub_num).first()
+    next_topic = db.session.get(SubModule, topic.ID+1)
+    if next_topic:
+        URL = f"/course/{c_ID}/module/{next_topic.module_num}/sub_module/{next_topic.sub_num}"
+    else:
+        URL = f"/course_complete/{c_ID}"
+    return URL
 
 
-@app.route("/course_complete")
+@app.route("/course_complete/<int:c_ID>")
 @login_required
-def course_complete():
-    return render_template("course_data/course_complete.html")
+def course_complete(c_ID):
+    last_topic = SubModule.query.filter_by(course_id=c_ID).order_by(SubModule.ID.desc()).first()
+    update_progress(c_ID, last_topic.ID)
+    return redirect(f"/course/{c_ID}")
+    # return render_template("course_data/course_complete.html")
 
 
 @app.route("/password_reset", methods=["GET", "POST"])
