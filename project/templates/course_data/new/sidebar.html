@@ -16,7 +16,7 @@
 
                             <!-- COURSE START -->
                             {% for i in range(modules| length) %}
-                                {% if next_module_id+1 > modules[i].ID or course_completed %}
+                                {% if next_module_id >= modules[i].ID or course_completed %}
                                 <div class="inactive" id="lesson_list-{{ i }}">
                                     <div class="list_arrow collapse flippable lesson_completed" onclick='return flip_expand_collapse("#lesson_list", {{ i }});'></div>
                                     <div class="list_lessons">

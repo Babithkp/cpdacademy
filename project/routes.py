@@ -401,13 +401,18 @@ def get_course(ID):
     if not course:
         return redirect("/")
     progress = get_progress(ID)
-    course_completed = False
     next_module_id = 0
-    next_module = SubModule.query.filter_by(course_id=ID, ID=progress+1).first()
-    if next_module:
-        next_module_id = next_module.module_id
-    else:
+    last_module_id = SubModule.query.filter_by(course_id=ID).order_by(SubModule.ID.desc()).first().ID
+    if last_module_id == progress:
         course_completed = True
+    else:
+        course_completed = False
+        if progress == 0:
+            next_module_id = SubModule.query.filter_by(course_id=ID).first().module_id
+        else:
+            next_module = SubModule.query.filter_by(course_id=ID, ID=progress+1).first()
+            next_module_id = next_module.module_id
+
     modules = Module.query.filter_by(course_id=course.ID).all()
     sidebar = get_sidebar_data(ID)
     topics = get_SubModules(modules)
