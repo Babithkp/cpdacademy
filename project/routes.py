@@ -411,9 +411,11 @@ def get_course_module(c_ID, m_num):
 @login_required
 def sub_module(c_ID, module_num, sub_num):
     topic = SubModule.query.filter_by(course_id=c_ID, module_num=module_num, sub_num=sub_num).first()
-    print(topic)
     if topic:
         user_id = session["id"]
+        progress = get_progress(c_ID)
+        if progress+1 < topic.ID:
+            return redirect(f"/course/{c_ID}")
         progress = NewProgress.query.filter_by(course_id=c_ID, user_id=user_id).first()
         if not progress:
             progress = NewProgress(course_id=c_ID, user_id=user_id)
