@@ -11,5 +11,3 @@ def read_config():
     with open(config_file, "rb") as file:
         config = load(file)
     return config
-
-print(read_config())

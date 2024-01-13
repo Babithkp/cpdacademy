@@ -3,31 +3,37 @@
     [courses.1]
         price = 5
         prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO" # Testing 5 USD
+        disabled = "disabled"
 
     # Essentials of Electrical Safety 
     [courses.2]
         price = 5
         prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO"
+        disabled = "disabled"
     
     # Welding Basics Theory and Safety Precautions 
     [courses.3]
         price = 5
         prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO"
+        disabled = "disabled"
     
     # Personal Protective Equipment
     [courses.4]
         price = 5
         prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO"
+        disabled = "disabled"
     
     # Food Safety and Hygiene
     [courses.5]
         price = 5
         prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO"
+        disabled = "disabled"
     
     # Care Course
     [courses.6]
         price = 5
         prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO"
+        disabled = "disabled"
         
 
 [gateways]

@@ -12539,7 +12539,7 @@
         <input type="number" id="quantity_6410af15a3f31" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="Qty" size="4" placeholder="" inputmode="numeric">
             </div> -->
 
-      <button onclick="location.href='/checkout'" class="button alt" {{disabled}}>
+      <button onclick="location.href='/checkout/{{course_id}}'" class="button alt" {{disabled}}>
         Checkout
       </button>
       <!-- </form> -->
@@ -13504,6 +13504,12 @@
       display: none;
     }
   </style>
+  <script>
+    const checkout_btn = document.querySelector("button.single_add_to_cart_button")
+    checkout_btn.onclick = ()=> {
+      window.location.href = "/checkout/{{course_id}}"
+    }
+  </script>
 </body>
 
 </html>

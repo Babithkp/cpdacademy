@@ -5,7 +5,7 @@ from project import app, db
 from project.models import *
 from project.send_mail import send_mail
 from project.stripe_config import stripe_config
-import project.config
+from project import config
 import stripe
 import os
 
@@ -154,12 +154,16 @@ def admin():
 @app.route("/info/<int:ID>")
 def course_info(ID):
     course = db.session.get(Course, ID)
-    return render_template(f"/course_data/{course.html}/info.html", title=course.title, img=f"/static/course/{course.html}/top_image.png", disabled="disabled", price=123)
+    if not course:
+        return abort(404)
+    conf = config.read_config()
+    conf = conf["courses"][str(ID)]
+    return render_template(f"/course_data/{course.html}/info.html", course_id=ID, title=course.title, img=f"/static/course/{course.html}/top_image.png", disabled=conf["disabled"], price=conf["price"])
 
 
 @app.route("/info/mental-info")
 def info_mental():
-    return render_template("mental-info.html", title="Mental Health Certificate", img="/static/course/mental/Autism-Awareness-200x200.png", disabled="disabled", price=150)
+    return render_template("mental-info.html", course_id=None, title="Mental Health Certificate", img="/static/course/mental/Autism-Awareness-200x200.png", disabled="disabled", price=150)
 
 
 @app.route('/create-checkout-session')
