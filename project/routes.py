@@ -192,9 +192,15 @@ def accept_payment():
     return "Paid"
 
 
-@app.route("/checkout")
-def checkout():
-    return render_template("checkout.html", title=TITLE)
+@app.route("/checkout/<int:ID>")
+def checkout(ID):
+    course = db.session.get(Course, ID)
+    if not course:
+        return abort(404)
+    
+    conf = config.read_config()
+    conf = conf["courses"][str(ID)]
+    return render_template("checkout.html", course_id=ID, title=course.title, price=conf["price"])
 
 
 def get_units():

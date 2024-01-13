@@ -10665,7 +10665,7 @@ Enter purchaser's details here. Create your account and get access to the course
                                     <tbody>
                                       <tr class="cart_item">
                                         <td class="product-name">
-                                          Care Training&nbsp;
+                                          {{title}}&nbsp;
                                           <strong class="product-quantity"
                                             >×&nbsp;1</strong
                                           >
@@ -10677,7 +10677,7 @@ Enter purchaser's details here. Create your account and get access to the course
                                               ><span
                                                 class="woocommerce-Price-currencySymbol"
                                                 >£</span
-                                              >150</bdi
+                                              >{{price}}</bdi
                                             ></span
                                           >
                                         </td>
@@ -10693,7 +10693,7 @@ Enter purchaser's details here. Create your account and get access to the course
                                               ><span
                                                 class="woocommerce-Price-currencySymbol"
                                                 >£</span
-                                              >150</bdi
+                                              >{{price}}</bdi
                                             ></span
                                           >
                                         </td>
@@ -10740,7 +10740,7 @@ Enter purchaser's details here. Create your account and get access to the course
                                                 ><span
                                                   class="woocommerce-Price-currencySymbol"
                                                   >£</span
-                                                >150</bdi
+                                                >{{price}}</bdi
                                               ></span
                                             ></strong
                                           >
@@ -10845,7 +10845,7 @@ Enter purchaser's details here. Create your account and get access to the course
       <link rel="stylesheet" href="/static/stripe.css">
                               <script src="/static/checkout/validate_form.js"></script>
                               <script src="/static/checkout/stripe_pay.js"></script>
-      <button id="stripe_pay" onclick="stripe_payment()" type="button">Pay With Stripe</button>
+      <button id="stripe_pay" onclick="stripe_payment('{{course_id}}')" type="button">Pay With Stripe</button>
 		</div>
 	</div>
                                   </div>
@@ -10889,7 +10889,7 @@ Enter purchaser's details here. Create your account and get access to the course
                           <div class="vc_column-inner">
                             <div class="wpb_wrapper">
                               <div
-                                class="wpb_single_image wpb_content_element vc_align_left"
+                                class="wpb_single_image wpb_content_element vc_align_left" style="text-align: center"
                               >
                                 <figure class="wpb_wrapper vc_figure">
                                   <div
