@@ -62,6 +62,12 @@ class Course(db.Model):
     title = db.Column(db.Text)
     html = db.Column(db.Text)
  
+class Paid(db.Model):
+    __tablename__ = 'Paid'
+    ID = db.Column(db.Integer, primary_key=True)
+    course_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer)
+
 class Module(db.Model):
     __tablename__ = 'Module'
     ID = db.Column(db.Integer, primary_key=True)
@@ -84,40 +90,3 @@ class NewProgress(db.Model):
     course_id = db.Column(db.Integer)
     sub_id = db.Column(db.Integer)
     user_id = db.Column(db.Integer)
-
-
-def get_sub_module(m_id, offset):
-    query = SubModule.query.filter_by(module_id=m_id)
-    if offset:
-        query = query.offset(offset-1)
-    query = query.limit(1)
-    result = query.first()
-    return result
-
-
-def get_module_num(c_ID, ID):
-    modules = Module.query.filter_by(course_id=c_ID).all()
-    flag = False
-    count = 0
-    for i in modules:
-        count += 1
-        if i.ID == ID:
-            flag = True
-            break
-    if flag:
-        return count
-    return None
-    
-
-def get_sub_module_num(m_ID, ID):
-    modules = SubModule.query.filter_by(module_id=m_ID).all()
-    flag = False
-    count = 0
-    for i in modules:
-        count += 1
-        if i.ID == ID:
-            flag = True
-            break
-    if flag:
-        return count
-    return None

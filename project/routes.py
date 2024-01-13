@@ -34,6 +34,31 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+def check_course(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        user_id = session["id"]
+        course_id = kwargs["c_ID"]
+        paid = Paid.query.filter_by(course_id=course_id, user_id=user_id).first()
+        if not paid:
+            return redirect(f"/info/{course_id}")
+        if course_id == 6:
+            return redirect("/lms/care-certificate")
+        return f(*args, **kwargs)
+    return decorated_function
+
+# Using another decorator for previous course to avoid infinite recursion
+def check_course_6(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        user_id = session["id"]
+        course_id = 6
+        paid = Paid.query.filter_by(course_id=course_id, user_id=user_id).first()
+        if not paid:
+            return redirect(f"/info/{course_id}")
+        return f(*args, **kwargs)
+    return decorated_function
+
 
 @app.route("/html/<path:path>")
 def extra_files(path):
@@ -125,7 +150,9 @@ def account():
     if session["id"] == -1:
         return redirect('/admin')
     user = Users.query.get(session["id"])
-    courses = Course.query.all()
+    paid = Paid.query.filter_by(user_id=user.id).all()
+    paid = [i.course_id for i in paid]
+    courses = Course.query.filter(Course.ID.in_(paid)).all()
     return render_template("account/account.html", user=user, title=TITLE, courses=courses)
 
 
@@ -256,6 +283,7 @@ def get_topic_progress(topics):
 
 @app.route("/lms/care-certificate")
 @login_required
+@check_course_6
 def care_certificate():
     units = get_units()
     topics = get_topics(units)
@@ -281,6 +309,7 @@ def check_unit(unit):
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>")
 @login_required
+@check_course_6
 def unit(unit_id):
     latest_unit = getLatestUnit()
     if not check_unit(unit_id):
@@ -318,6 +347,7 @@ def check_topic(unit_id, topic_no):
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/topic/<int:topic_no>")
 @login_required
+@check_course_6
 def topic(unit_id, topic_no):
     if not check_topic(unit_id, topic_no):
 
@@ -334,6 +364,7 @@ def topic(unit_id, topic_no):
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/quiz")
 @login_required
+@check_course_6
 def quiz(unit_id):
     last_topic = Section.query.filter_by(unit_id=unit_id).all()[-1].section_id - 1
     if not Progress.query.filter_by(user_id=session["id"], section_id=last_topic).first():
@@ -353,6 +384,7 @@ def quiz(unit_id):
 
 @app.route("/lms/care-certificate/unit/<int:unit_id>/quiz/done")
 @login_required
+@check_course_6
 def done_quiz(unit_id):
     section_id = Section.query.filter_by(unit_id=unit_id, type="quiz").first().section_id
     if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=section_id).first():
@@ -393,23 +425,24 @@ def get_next_topic(c_ID, progress):
     return topic
 
 
-@app.route("/course/<ID>")
+@app.route("/course/<int:c_ID>")
 @login_required
-def get_course(ID):
-    course = db.session.get(Course, ID)
+@check_course
+def get_course(c_ID):
+    course = db.session.get(Course, c_ID)
     if not course:
         return redirect("/")
-    progress = get_progress(ID)
+    progress = get_progress(c_ID)
     next_module_id = 0
-    last_module_id = SubModule.query.filter_by(course_id=ID).order_by(SubModule.ID.desc()).first().ID
+    last_module_id = SubModule.query.filter_by(course_id=c_ID).order_by(SubModule.ID.desc()).first().ID
     if last_module_id == progress:
         course_completed = True
     else:
         course_completed = False
-        next_module_id = get_next_topic(ID, progress).module_id
+        next_module_id = get_next_topic(c_ID, progress).module_id
 
     modules = Module.query.filter_by(course_id=course.ID).all()
-    sidebar = get_sidebar_data(ID, progress)
+    sidebar = get_sidebar_data(c_ID, progress)
     topics = get_SubModules(modules)
     return render_template(f"course_data/course_layouts/course.html", course=course, modules=modules, topics=topics, next_module_id=next_module_id, course_completed=course_completed, sidebar=sidebar, progress=progress)
 
@@ -425,6 +458,7 @@ def get_progress(c_ID):
 
 @app.route("/course/<int:c_ID>/module/<int:m_num>")
 @login_required
+@check_course
 def get_course_module(c_ID, m_num):
     user_id = session["id"]
     course = db.session.get(Course, c_ID) # Specific Course
@@ -459,6 +493,7 @@ def update_progress(c_ID, topic_id):
 
 @app.route("/course/<int:c_ID>/module/<int:module_num>/sub_module/<int:sub_num>")
 @login_required
+@check_course
 def sub_module(c_ID, module_num, sub_num):
     topic = SubModule.query.filter_by(course_id=c_ID, module_num=module_num, sub_num=sub_num).first()
     if topic:
@@ -492,6 +527,7 @@ def next_sub_module(c_ID, m_num, sub_num):
 
 @app.route("/course_completed/<int:c_ID>")
 @login_required
+@check_course
 def course_complete(c_ID):
     last_topic = SubModule.query.filter_by(course_id=c_ID).order_by(SubModule.ID.desc()).first()
     update_progress(c_ID, last_topic.ID)
