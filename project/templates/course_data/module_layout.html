@@ -1329,6 +1329,33 @@
         {% block module %}
         {% endblock %}
         <!-- FOOTER -->
+        <style>
+            dialog {
+                font-size: 1.3em;
+                width: 40%;
+            }
+            dialog a {
+                font-size: 1em;
+                font-weight: bold;
+                padding: 5px 10px;
+                text-decoration: none;
+                color: white;
+                border-radius: 10px;
+                background-color: #005879;
+                float: right;
+            }
+            @media screen and (max-width: 900px) {
+                dialog {
+                    font-size: 1em;
+                    width: 80%;
+                }
+            }
+        </style>
+        <dialog>
+            <div>Congratulations you have successfully passed your course assessment test. Your certificate will be sent to your email address within 48 hours!</div>
+            <br>
+            <div><a href="{{URL}}">OK</a></div>
+        </dialog>
         {% include "course_data/footer.html" %}
         <script>
             $(document).ready(function () {
@@ -1489,7 +1516,8 @@
                 }
                 localStorage.setItem('certToBePurchased_' + id, JSON.stringify(certs_array));
                 localStorage.removeItem('startedCertJourney_' + id);
-                window.location.href = "{{URL}}"
+                document.querySelector("dialog").showModal()
+                // window.location.href = "{{URL}}"
                 // window.location.href = 'https://alison.com/shop?score=' + event.detail.score;
             });
             dataLayer.push({'event': 'optimize.activate'});
