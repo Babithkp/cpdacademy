@@ -9,6 +9,7 @@ log.setLevel(logging.ERROR)
 app = Flask(__name__)
 
 app.config["APP_DIR"] = "/home/shail/programming/freelancing/Health-Care-WebApp/"
+app.config["CONFIG"] = "project/config.toml"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'secret_key'
 

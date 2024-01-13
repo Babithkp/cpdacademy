@@ -1,0 +1,39 @@
+[courses]
+    # Fire Preventation
+    [courses.1]
+        price = 5
+        prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO" # Testing 5 USD
+
+    # Essentials of Electrical Safety 
+    [courses.2]
+        price = 5
+        prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO"
+    
+    # Welding Basics Theory and Safety Precautions 
+    [courses.3]
+        price = 5
+        prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO"
+    
+    # Personal Protective Equipment
+    [courses.4]
+        price = 5
+        prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO"
+    
+    # Food Safety and Hygiene
+    [courses.5]
+        price = 5
+        prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO"
+    
+    # Care Course
+    [courses.6]
+        price = 5
+        prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO"
+        
+
+[gateways]
+    [gateways.stripe]
+        key = "REDACTED_STRIPE_LIVE_KEY"
+    [gateways.paypal]
+        key = "None"
+        currency = "USD"
+

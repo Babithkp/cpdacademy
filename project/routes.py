@@ -5,6 +5,7 @@ from project import app, db
 from project.models import *
 from project.send_mail import send_mail
 from project.stripe_config import stripe_config
+import project.config
 import stripe
 import os
 
@@ -150,36 +151,16 @@ def admin():
     return render_template("admin.html", users=users_data)
 
 
-@app.route("/info/care-info")
-def info_care():
-    return render_template("care-info.html", title="Care Certificate", img="/static/course/care-certificate_files/Care-Certificate-150x150.png", price=150)
+@app.route("/info/<int:ID>")
+def course_info(ID):
+    course = db.session.get(Course, ID)
+    return render_template(f"/course_data/{course.html}/info.html", title=course.title, img=f"/static/course/{course.html}/top_image.png", disabled="disabled", price=123)
 
 
 @app.route("/info/mental-info")
 def info_mental():
     return render_template("mental-info.html", title="Mental Health Certificate", img="/static/course/mental/Autism-Awareness-200x200.png", disabled="disabled", price=150)
 
-
-@app.route("/info/equ-info")
-def equipment_info():
-    return render_template("equipment-info.html", title="Personal Protective Equipment", img="/static/course/PPE-150x150.png", disabled="disabled", price=9090)
-
-@app.route("/info/food-info")
-def food_info():
-    return render_template("food-info.html", title="Food Safety", img="/static/course/food-hygiene-for-caterers-course-level-2-150x150.jpg", disabled="disabled", price=9090)
-
-@app.route("/info/weld-info")
-def weld_info():
-    return render_template("weld-info.html", title="Welding Awareness Course", img="/static/course/weld.png", disabled="disabled", price=9090)
-
-@app.route("/info/fire-info")
-def fire_info():
-	return render_template("fire-info.html", title="Fire Safety Certificate", img="/static/course/fire/Fire-safety-course-150x150.png", disabled="disabled", price=9090)
-
-
-@app.route("/info/electrical-info")
-def electrical_info():
-    return render_template("electrical-info.html", title="Electrical Awareness Course", img="/static/course/electrical.png", disabled="disabled", price=9090)
 
 @app.route('/create-checkout-session')
 def create_checkout_session():
@@ -484,7 +465,6 @@ def sub_module(c_ID, module_num, sub_num):
 
         course = db.session.get(Course, c_ID)
         URL = next_sub_module(c_ID, module_num, sub_num)
-        print(URL)
         return render_template(f"course_data/{course.html}/module_{module_num}/{sub_num}.html", module_title="Fire Preventation", URL=URL, course_id=c_ID, module_num=module_num)
     return redirect("/account")
 

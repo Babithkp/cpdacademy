@@ -61,7 +61,6 @@ class Course(db.Model):
     ID = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text)
     html = db.Column(db.Text)
-    files = db.Column(db.Text)
  
 class Module(db.Model):
     __tablename__ = 'Module'
