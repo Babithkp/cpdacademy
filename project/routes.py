@@ -410,7 +410,7 @@ def get_course(ID):
     modules = Module.query.filter_by(course_id=course.ID).all()
     sidebar = get_sidebar_data(ID, progress)
     topics = get_SubModules(modules)
-    return render_template(f"course_data/course_layouts/course.html", title=TITLE, course=course, modules=modules, topics=topics, next_module_id=next_module_id, course_completed=course_completed, sidebar=sidebar, progress=progress)
+    return render_template(f"course_data/course_layouts/course.html", course=course, modules=modules, topics=topics, next_module_id=next_module_id, course_completed=course_completed, sidebar=sidebar, progress=progress)
 
 
 def get_progress(c_ID):
@@ -475,7 +475,7 @@ def sub_module(c_ID, module_num, sub_num):
 
         course = db.session.get(Course, c_ID)
         URL = next_sub_module(c_ID, module_num, sub_num)
-        return render_template(f"course_data/{course.html}/module_{module_num}/{sub_num}.html", module_title="Fire Preventation", URL=URL, course_id=c_ID, module_num=module_num)
+        return render_template(f"course_data/{course.html}/module_{module_num}/{sub_num}.html", module_title=topic.title, URL=URL, course_id=c_ID, module_num=module_num)
     return redirect("/account")
 
 
