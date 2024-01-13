@@ -125,7 +125,8 @@ def account():
     if session["id"] == -1:
         return redirect('/admin')
     user = Users.query.get(session["id"])
-    return render_template("account/account.html", user=user, title=TITLE)
+    courses = Course.query.all()
+    return render_template("account/account.html", user=user, title=TITLE, courses=courses)
 
 
 @app.route("/admin")
@@ -158,7 +159,7 @@ def course_info(ID):
         return abort(404)
     conf = config.read_config()
     conf = conf["courses"][str(ID)]
-    return render_template(f"/course_data/{course.html}/info.html", course_id=ID, title=course.title, img=f"/static/course/{course.html}/top_image.png", disabled=conf["disabled"], price=conf["price"])
+    return render_template(f"/course_data/{course.html}/info.html", course_id=ID, title=course.title, img=f"/static/course/{course.html}/main.webp", disabled=conf["disabled"], price=conf["price"])
 
 
 @app.route("/info/mental-info")
