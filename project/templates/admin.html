@@ -12,33 +12,54 @@
 
 <body>
     <h1>Admin Panel</h1>
-    <h3><a class="logout" href="/logout">LOGOUT</a></h3>
-    <table border="2">
+    <h3><a class="btn" href="/logout">LOGOUT</a></h3>
+    <table border="2" style="display: block;">
         <thead>
             <tr>
-                <th>No</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Progress</th>
             </tr>
         </thead>
         <tbody id="users">
-            {#% for user in users %}
-            <tr>
-                <td>{{user["num"]}}</td>
-                <td>{{user["user"].f_name}} {{user["user"].l_name}}</td>
-                <td>
-                    <a href="mailto:{{user["user"].email}}">{{user["user"].email}}</a>
-                </td>
-                <!-- {{user["done"]}} / {{user["total"]}} -->
-                <td><button class="open_progress">OPEN</button></td>
-            </tr>
-            {% endfor %#}
         </tbody>
     </table>
 
     <dialog id="progress_container">
-        Shail
+        <div id="user_info">
+            <div>
+                <label for="name">Name: </label>
+                <span id="name">Shail Murtaza</span>
+            </div>
+            <div>
+                <label for="email">Email: </label>
+                <a id="email" href="mailto:shail@test.com">shail@test.com</a>
+            </div>
+        </div>
+        <div>
+            <table border="2">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Progress</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="progress">
+                    <tr>
+                        <td>1</td>
+                        <td>Care Course</td>
+                        <td>1 / 2</td>
+                        <td class="done">PENDING</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="close_div">
+            <button class="btn">CLOSE</button>
+        </div>
     </dialog>
 
     <script src="/static/admin/admin.js"></script>

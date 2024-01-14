@@ -83,10 +83,11 @@ class Admin {
         num.innerText = i
         name.innerText = user.f_name + " " + user.l_name
         email.appendChild(a_email)
+        a_email.innerText = user.email
         a_email.href = "mailto:" + user.email
         progress.appendChild(btn_progress)
         btn_progress.innerText = "OPEN"
-        btn_progress.classList.add("open_progress")
+        btn_progress.className = "btn open_progress"
         btn_progress.onclick = () => {
             this.open_progress(user_id)
         }
@@ -107,3 +108,5 @@ async function init(admin) {
 
 var admin = new Admin()
 init(admin)
+
+admin.progress_container.showModal()
