@@ -1,8 +1,9 @@
 class User {
-    constructor(f_name, l_name, email) {
+    constructor(f_name, l_name, email, enrolled) {
         this.f_name = f_name
         this.l_name = l_name
         this.email = email
+        this.enrolled = enrolled
         this.progress = null
     }
 
@@ -70,7 +71,7 @@ class Admin {
         let all_users = await this.fetch_data("users")
 
         for (let i = 0; i < all_users.length; i++) {
-            let new_user = new User(all_users[i].f_name, all_users[i].l_name, all_users[i].email)
+            let new_user = new User(all_users[i].f_name, all_users[i].l_name, all_users[i].email, all_users[i].enrolled)
             this.users[all_users[i].id] = new_user
         }
     }
@@ -100,6 +101,7 @@ class Admin {
         let num = document.createElement("td")
         let name = document.createElement("td")
         let email = document.createElement("td")
+        let enrolled = document.createElement("td")
         let progress = document.createElement("td")
         let a_email = document.createElement("a")
         let btn_progress = document.createElement("button")
@@ -110,6 +112,7 @@ class Admin {
         a_email.innerText = user.email
         a_email.href = "mailto:" + user.email
         a_email.target = "_blank"
+        enrolled.innerText = user.enrolled
         progress.appendChild(btn_progress)
         btn_progress.innerText = "OPEN"
         btn_progress.className = "btn open_progress"
@@ -117,7 +120,7 @@ class Admin {
             this.open_progress(user_id)
         }
 
-        tr.append(num, name, email, progress)
+        tr.append(num, name, email, enrolled, progress)
 
         this.container.appendChild(tr)
     }

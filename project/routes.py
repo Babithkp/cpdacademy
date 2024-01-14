@@ -574,6 +574,7 @@ def fetch_users():
         user["f_name"] = i.f_name
         user["l_name"] = i.l_name
         user["email"] = i.email
+        user["enrolled"] = Paid.query.filter_by(user_id=i.id).count()
         users_dict.append(user)
     
     return jsonify(users_dict)
