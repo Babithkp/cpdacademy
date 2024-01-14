@@ -137,7 +137,7 @@ def login():
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
-        if email == "admin@admin.com" and password == "@admin012":
+        if email == "admin@admin.com" and password == "admin@012":
             session["id"] = -1
             session["email"] = email
             return redirect("/admin")
