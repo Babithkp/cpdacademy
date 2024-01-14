@@ -1,4 +1,4 @@
-from flask import render_template, request, session, redirect, send_file, abort
+from flask import render_template, request, session, redirect, send_file, abort, jsonify
 from markupsafe import Markup
 from functools import wraps
 from project import app, db
@@ -30,6 +30,14 @@ def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if session.get("id") is None:
+            return redirect("/login")
+        return f(*args, **kwargs)
+    return decorated_function
+
+def admin_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if session.get("id") != -1:
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
@@ -157,9 +165,8 @@ def account():
 
 
 @app.route("/admin")
+@admin_required
 def admin():
-    if (session.get("email") != "admin@admin.com"):
-        return redirect("/account")
     users_data = []
     all_users = Users.query.all()
     
@@ -432,7 +439,8 @@ def get_course(c_ID):
     course = db.session.get(Course, c_ID)
     if not course:
         return redirect("/")
-    progress = get_progress(c_ID)
+    user_id = session["id"]
+    progress = get_progress(c_ID, user_id)
     next_module_id = 0
     last_module_id = SubModule.query.filter_by(course_id=c_ID).order_by(SubModule.ID.desc()).first().ID
     if last_module_id == progress:
@@ -447,8 +455,7 @@ def get_course(c_ID):
     return render_template(f"course_data/course_layouts/course.html", course=course, modules=modules, topics=topics, next_module_id=next_module_id, course_completed=course_completed, sidebar=sidebar, progress=progress)
 
 
-def get_progress(c_ID):
-    user_id = session["id"]
+def get_progress(c_ID, user_id):
     topics_progress = 0
     progress = NewProgress.query.filter_by(course_id=c_ID, user_id=user_id).first()
     if progress:
@@ -468,7 +475,7 @@ def get_course_module(c_ID, m_num):
     modules = Module.query.filter_by(course_id=course.ID).all() # List of all modules
     topics = get_SubModules(modules) # List of all submodules of all modules in dictionary
     total_modules = Module.query.filter_by(course_id=c_ID).count() # Total number of modules of this course
-    progress = get_progress(c_ID)
+    progress = get_progress(c_ID, user_id)
 
     next_module_id = 0
     last_module_id = SubModule.query.filter_by(course_id=c_ID).order_by(SubModule.ID.desc()).first().ID
@@ -497,7 +504,8 @@ def update_progress(c_ID, topic_id):
 def sub_module(c_ID, module_num, sub_num):
     topic = SubModule.query.filter_by(course_id=c_ID, module_num=module_num, sub_num=sub_num).first()
     if topic:
-        progress = get_progress(c_ID)
+        user_id = session["id"]
+        progress = get_progress(c_ID, user_id)
         next_topic = get_next_topic(c_ID, progress)
         
         if next_topic and next_topic.ID < topic.ID:
@@ -570,3 +578,53 @@ def logout():
     session.pop('email', None)
     return redirect("/")
 
+
+@app.route("/fetch/users")
+@admin_required
+def fetch_users():
+    users = Users.query.all()
+    users_dict = []
+    for i in users:
+        user = {}
+        user["id"] = i.id
+        user["f_name"] = i.f_name
+        user["l_name"] = i.l_name
+        user["email"] = i.email
+        users_dict.append(user)
+    
+    return jsonify(users_dict)
+
+@app.route("/fetch/courses")
+@admin_required
+def fetch_courses():
+    courses = Course.query.all()
+    course_dict = {}
+    for i in courses:
+        course_dict[i.ID] = i.title
+    
+    return jsonify(course_dict)
+
+@app.route("/fetch/user_progress/<int:ID>")
+@admin_required
+def fetch_user_progress(ID):
+    user = db.session.get(Users, ID)
+    user_progress = {}
+
+    if user:
+        paid = Paid.query.filter_by(user_id=ID).all()
+        for i in paid:
+            data = {}
+            if i.course_id == 6:
+                # Progress of care course#6
+                data["total"] = Section.query.count()
+                data["completed"] = Progress.query.filter_by(user_id=ID).group_by("section_id").count()
+            else:
+                # New progress. From course#1-5
+                progress = get_progress(i.course_id, ID)
+                topics = SubModule.query.filter_by(course_id=i.course_id)
+                data["total"] = topics.count()
+                data["completed"] = topics.filter(SubModule.ID<=progress).count()
+            user_progress[i.course_id] = data
+        
+
+    return jsonify(user_progress)
