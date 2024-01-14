@@ -1,0 +1,56 @@
+:root {
+    --grey: rgb(48, 48, 48);
+    --green: rgb(0, 107, 0);
+}
+
+body {
+    margin: 10px;
+    /* padding: 10px; */
+}
+
+.logout {
+    text-decoration: none;
+    padding: 5px 10px;
+    color: white;
+    font-weight: bold;
+    background-color: var(--grey);
+    border: 2px solid gray;
+}
+
+table {
+    width: 100%;
+}
+
+thead {
+    background-color: var(--grey);
+    color: white;
+}
+
+h1,
+h3,
+td,
+th {
+    padding: 6px;
+    text-align: center;
+}
+
+.done {
+    color: white;
+    background-color: var(--green);
+}
+
+.not-done {
+    color: white;
+    background-color: brown;
+}
+
+.open_progress {
+    width: 100%;
+    height: 40px;
+    background-color: var(--grey);
+    border: 2px solid gray;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 100px;
+}
