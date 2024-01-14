@@ -592,12 +592,13 @@ def fetch_courses():
 @admin_required
 def fetch_user_progress(ID):
     user = db.session.get(Users, ID)
-    user_progress = {}
+    user_progress = []
 
     if user:
         paid = Paid.query.filter_by(user_id=ID).all()
         for i in paid:
             data = {}
+            data["ID"] = i.course_id
             if i.course_id == 6:
                 # Progress of care course#6
                 data["total"] = Section.query.count()
@@ -608,7 +609,7 @@ def fetch_user_progress(ID):
                 topics = SubModule.query.filter_by(course_id=i.course_id)
                 data["total"] = topics.count()
                 data["completed"] = topics.filter(SubModule.ID<=progress).count()
-            user_progress[i.course_id] = data
+            user_progress.append(data)
         
 
     return jsonify(user_progress)

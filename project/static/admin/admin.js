@@ -1,19 +1,19 @@
 class User {
-    constructor(ID, f_name, l_name, email) {
-        this.ID = ID
+    constructor(f_name, l_name, email) {
         this.f_name = f_name
         this.l_name = l_name
         this.email = email
-        this.courses = []
+        this.progress = null
     }
 
 }
 
 class Admin {
     constructor() {
-        this.users = []
+        this.users = {}
         this.courses = null
         this.container = document.querySelector("#users")
+        this.progress_container = document.querySelector("#progress_container")
     }
 
     async init() {
@@ -23,22 +23,30 @@ class Admin {
     }
 
     show_users() {
-        for (let i = 0; i < this.users.length; i++) {
-            let user = this.users[i]
-            this.create_user_row(i + 1, user)
+        let users_id = Object.keys(this.users)
+        for (let i = 0; i < users_id.length; i++) {
+            let user_id = users_id[i]
+            let user = this.users[user_id]
+            this.create_user_row(i + 1, user, user_id)
         }
     }
 
-    open_progress(ID) {
-        console.log(ID)
+    async open_progress(ID) {
+        let user = this.users[ID]
+        await this.user_progress(ID)
+        this.display_progress(user)
+    }
+
+    display_progress(user) {
+        this.progress_container.showModal()
     }
 
     async get_users() {
         let all_users = await this.fetch_data("users")
 
         for (let i = 0; i < all_users.length; i++) {
-            let new_user = new User(all_users[i].id, all_users[i].f_name, all_users[i].l_name, all_users[i].email)
-            this.users.push(new_user)
+            let new_user = new User(all_users[i].f_name, all_users[i].l_name, all_users[i].email)
+            this.users[all_users[i].id] = new_user
         }
     }
 
@@ -46,11 +54,16 @@ class Admin {
         this.courses = await this.fetch_data("courses")
     }
 
-    async get_user_progress(ID) {
-        return await this.fetch_data("user_progress/" + ID)
+    async user_progress(ID) {
+        let user = this.users[ID]
+        if (!user.progress) {
+            let progress = await this.fetch_data("user_progress/" + ID)
+            user.progress = progress
+        }
     }
 
     async fetch_data(URL) {
+        console.log("fetching")
         return await fetch(`/fetch/${URL}`)
             .then(resp => resp.json())
             .then(json => {
@@ -58,7 +71,7 @@ class Admin {
             })
     }
 
-    create_user_row(i, user) {
+    create_user_row(i, user, user_id) {
         let tr = document.createElement("tr")
         let num = document.createElement("td")
         let name = document.createElement("td")
@@ -75,7 +88,7 @@ class Admin {
         btn_progress.innerText = "OPEN"
         btn_progress.classList.add("open_progress")
         btn_progress.onclick = () => {
-            this.open_progress(user.ID)
+            this.open_progress(user_id)
         }
 
         tr.appendChild(num)
@@ -85,7 +98,6 @@ class Admin {
 
         this.container.appendChild(tr)
     }
-
 }
 
 
