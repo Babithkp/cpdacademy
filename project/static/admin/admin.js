@@ -13,7 +13,9 @@ class Admin {
         this.users = {}
         this.courses = null
         this.container = document.querySelector("#users")
-        this.progress_container = document.querySelector("#progress_container")
+        this.progress_dialog = document.querySelector("#progress_dialog")
+        this.progress_data = document.querySelector("#progress_data")
+        this.overlay = document.querySelector("#overlay")
     }
 
     async init() {
@@ -32,13 +34,36 @@ class Admin {
     }
 
     async open_progress(ID) {
+        let prg = this.progress_dialog
         let user = this.users[ID]
         await this.user_progress(ID)
-        this.display_progress(user)
+
+        this.overlay.style.display = "block"
+        prg.showModal()
+        prg.querySelector("#close_div > button").onclick = () => {
+            this.close_progress()
+        }
+
+        // Remove all previous courses
+        while (this.progress_data.firstChild) {
+            this.progress_data.removeChild(this.progress_data.lastChild);
+        }
+
+        // set name and email
+        let name = prg.querySelector("#name")
+        name.innerText = user.f_name + " " + user.l_name
+        let email = prg.querySelector("#email")
+        email.innerText = user.email
+        email.href = "mailto:" + user.email
+
+        for (let i = 0; i < user.progress.length; i++) {
+            this.create_progress_row(i + 1, user.progress[i])
+        }
     }
 
-    display_progress(user) {
-        this.progress_container.showModal()
+    close_progress() {
+        this.overlay.style.display = "none"
+        this.progress_dialog.close()
     }
 
     async get_users() {
@@ -63,7 +88,6 @@ class Admin {
     }
 
     async fetch_data(URL) {
-        console.log("fetching")
         return await fetch(`/fetch/${URL}`)
             .then(resp => resp.json())
             .then(json => {
@@ -85,6 +109,7 @@ class Admin {
         email.appendChild(a_email)
         a_email.innerText = user.email
         a_email.href = "mailto:" + user.email
+        a_email.target = "_blank"
         progress.appendChild(btn_progress)
         btn_progress.innerText = "OPEN"
         btn_progress.className = "btn open_progress"
@@ -92,12 +117,31 @@ class Admin {
             this.open_progress(user_id)
         }
 
-        tr.appendChild(num)
-        tr.appendChild(name)
-        tr.appendChild(email)
-        tr.appendChild(progress)
+        tr.append(num, name, email, progress)
 
         this.container.appendChild(tr)
+    }
+
+    create_progress_row(i, course) {
+        let tr = document.createElement("tr")
+        let num = document.createElement("td")
+        let title = document.createElement("td")
+        let progress = document.createElement("td")
+        let status = document.createElement("td")
+
+        num.innerText = i
+        title.innerText = this.courses[course.ID]
+        progress.innerText = `${course.completed} / ${course.total}`
+        if (course.completed != course.total) {
+            status.className = "not-done"
+            status.innerText = "PENDING"
+        } else {
+            status.className = "done"
+            status.innerText = "DONE"
+        }
+
+        tr.append(num, title, progress, status)
+        this.progress_data.appendChild(tr)
     }
 }
 
@@ -108,5 +152,3 @@ async function init(admin) {
 
 var admin = new Admin()
 init(admin)
-
-admin.progress_container.showModal()

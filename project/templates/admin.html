@@ -13,7 +13,7 @@
 <body>
     <h1>Admin Panel</h1>
     <h3><a class="btn" href="/logout">LOGOUT</a></h3>
-    <table border="2" style="display: block;">
+    <table border="2">
         <thead>
             <tr>
                 <th>#</th>
@@ -26,15 +26,15 @@
         </tbody>
     </table>
 
-    <dialog id="progress_container">
+    <dialog id="progress_dialog">
         <div id="user_info">
             <div>
                 <label for="name">Name: </label>
-                <span id="name">Shail Murtaza</span>
+                <span id="name"></span>
             </div>
             <div>
                 <label for="email">Email: </label>
-                <a id="email" href="mailto:shail@test.com">shail@test.com</a>
+                <a id="email" target="_blank"></a>
             </div>
         </div>
         <div>
@@ -47,13 +47,7 @@
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody id="progress">
-                    <tr>
-                        <td>1</td>
-                        <td>Care Course</td>
-                        <td>1 / 2</td>
-                        <td class="done">PENDING</td>
-                    </tr>
+                <tbody id="progress_data">
                 </tbody>
             </table>
         </div>
@@ -62,6 +56,7 @@
         </div>
     </dialog>
 
+    <div id="overlay"></div>
     <script src="/static/admin/admin.js"></script>
 </body>
 
