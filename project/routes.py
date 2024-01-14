@@ -137,7 +137,7 @@ def login():
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
-        if email == "admin@admin.com" and password == "admin":
+        if email == "admin@admin.com" and password == "@admin012":
             session["id"] = -1
             session["email"] = email
             return redirect("/admin")
@@ -167,23 +167,7 @@ def account():
 @app.route("/admin")
 @admin_required
 def admin():
-    users_data = []
-    all_users = Users.query.all()
-    
-    num = 0
-    for user in all_users:
-        num += 1
-        data = {}
-        data["num"] = num
-        data["user"] = user
-
-        data["done"] = Progress.query.filter_by(user_id=user.id).group_by("section_id").count()
-        data["total"] = Section.query.count()
-        
-        users_data.append(data)
-
-
-    return render_template("admin.html", users=users_data)
+    return render_template("admin.html")
 
 
 @app.route("/info/<int:ID>")
