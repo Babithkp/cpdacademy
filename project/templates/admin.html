@@ -13,7 +13,10 @@
 
 <body>
     <h1>Admin Panel</h1>
-    <h3><a class="btn" href="/logout">LOGOUT</a></h3>
+    <h3>
+        <a class="btn" href="/logout">LOGOUT</a>
+        <a class="btn" onclick="init(admin)" href="#">RELOAD</a>
+    </h3>
     <table border="2">
         <thead>
             <tr>
@@ -61,6 +64,13 @@
     <div id="overlay"></div>
     <script src="/static/admin/loading.js"></script>
     <script src="/static/admin/admin.js"></script>
+    <script>
+        async function init(admin) {
+            await admin.init()
+        }
+        const admin = new Admin()
+        init(admin)
+    </script>
 </body>
 
 </html>

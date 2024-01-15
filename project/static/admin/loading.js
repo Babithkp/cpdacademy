@@ -11,4 +11,4 @@ function hide_loading() {
     loading.style.display = "none"
 }
 
-show_loading()
+// show_loading()
