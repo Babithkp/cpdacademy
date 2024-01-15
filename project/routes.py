@@ -252,6 +252,8 @@ def paypal_accept_payment(u_ID, c_ID):
 @app.route("/checkout/<int:ID>")
 def checkout(ID):
     user_id = session.get("id")
+    if (user_id == -1):
+        session.pop("id")
     if user_id and Paid.query.filter_by(course_id=ID, user_id=user_id).first():
         return redirect(f"/course/{ID}")
     course = db.session.get(Course, ID)
