@@ -82,10 +82,8 @@ def extra_files(path):
 def home():
     return render_template("home.html", homepage="True", title=TITLE)
 
-from time import sleep
 @app.route("/validate_email", methods=["POST"])
 def validate_email():
-    sleep(2)
     email = request.form["email"].lower()
     if(Users.query.filter_by(email=email, paid=True).first()):
         return "false"
@@ -94,7 +92,6 @@ def validate_email():
 
 @app.route("/signup", methods=["POST"])
 def signup():
-    sleep(5)
     form = request.form
     email = form["email"].lower()
     passwd = form["passwd"]
@@ -163,6 +160,9 @@ def account():
     if session["id"] == -1:
         return redirect('/admin')
     user = Users.query.get(session["id"])
+    if not user:
+        session.pop("id")
+        return redirect("/login")
     paid = Paid.query.filter_by(user_id=user.id).all()
     paid = [i.course_id for i in paid]
     courses = Course.query.filter(Course.ID.in_(paid)).all()
