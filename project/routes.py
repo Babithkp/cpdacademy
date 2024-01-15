@@ -221,7 +221,14 @@ def accept_payment():
     if u_ID and c_ID:
         session.pop("paying_user")
         session.pop("paying_course")
-        return f"Paid U:{u_ID}, C:{c_ID}"
+        user = db.session.get(Users, u_ID)
+        user.paid = True
+        
+        paid = Paid(user_id=u_ID, course_id=c_ID)
+        db.session.add(paid)
+
+        db.session.commit()
+        return redirect("/account")
     return abort(406)
 
 

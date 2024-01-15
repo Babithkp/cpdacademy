@@ -19,7 +19,7 @@ class Users(db.Model):
 
     phone = db.Column(db.Text)
 
-    paid = db.Column(db.Boolean, default=True)
+    paid = db.Column(db.Boolean, default=False)
     image_file = db.Column(db.Text, nullable=False, default='user.jpg')
 
     def __str__(self):

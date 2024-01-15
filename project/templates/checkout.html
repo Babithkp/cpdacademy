@@ -1950,7 +1950,6 @@
                                                                 <a href="/login" class="showlogin">Click here to login</a>
                                                             </div>
                                                         </div>
-                                                        {% endif %}
 
                                                         <link rel="stylesheet" href="/static/overlay.css">
                                                         <div id="custom-overlay">
@@ -1964,6 +1963,7 @@
                                                                 <div class="loading-ball"></div>
                                                             </div>
                                                         </div>
+                                                        {% endif %}
                                                         <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display: none">
                                                             <p>
                                                                 If you have a coupon code, please apply it
@@ -2792,9 +2792,20 @@
                                                                         <div style="text-align: center;">
                                                                             <div id="paypal-button-container"></div>
                                                                             <link rel="stylesheet" href="/static/stripe.css">
+                                                                            {% if not session["id"] %}
+                                                                            <script>
+                                                                                const form_validation = true;
+                                                                            </script>
                                                                             <script src="/static/checkout/validate_form.js"></script>
+                                                                            {% else %}
+                                                                            <script>
+                                                                                const form_validation = false;
+                                                                                const course_id = '{{course_id}}'
+                                                                                const user_id = '{{session.get("id")}}'
+                                                                            </script>
+                                                                            {% endif %}
                                                                             <script src="/static/checkout/stripe_pay.js"></script>
-                                                                            <button id="stripe_pay" onclick="stripe_payment('{{ course_id }}')" type="button">Pay with card</button>
+                                                                            <button id="stripe_pay" onclick="stripe_payment()" type="button">Pay with card</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
