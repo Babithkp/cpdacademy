@@ -235,9 +235,19 @@ def accept_payment():
         db.session.add(paid)
 
         db.session.commit()
-        return redirect("/account")
+        return render_template("paid.html")
     return abort(406)
 
+@app.route("/paypal/yfufcn1qqt/<int:u_ID>/<c_ID>")
+def paypal_accept_payment(u_ID, c_ID):
+    user = db.session.get(Users, u_ID)
+    user.paid = True
+    paid = Paid.query.filter_by(user_id=u_ID, course_id=c_ID).first()
+    if not paid:
+        paid = Paid(user_id=u_ID, course_id=c_ID)
+        db.session.add(paid)
+        db.session.commit()
+    return render_template("paid.html")
 
 @app.route("/checkout/<int:ID>")
 def checkout(ID):
@@ -249,8 +259,9 @@ def checkout(ID):
         return abort(404)
     
     conf = config.read_config()
-    conf = conf["courses"][str(ID)]
-    return render_template("checkout.html", course_id=ID, title=course.title, price=conf["price"])
+    course_conf = conf["courses"][str(ID)]
+    paypal_conf = conf["gateways"]["paypal"]
+    return render_template("checkout.html", course_id=ID, title=course.title, price=course_conf["price"], paypal_key=paypal_conf["key"], currency=paypal_conf["currency"])
 
 
 def get_units():

@@ -41,7 +41,7 @@
         # key = "REDACTED_STRIPE_LIVE_KEY"
         key = "REDACTED_STRIPE_TEST_KEY"
     [gateways.paypal]
-        key = "None"
+        key = "sb"
         currency = "GBP"
 
 [domain]
