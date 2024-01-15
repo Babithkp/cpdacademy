@@ -20,12 +20,20 @@ class Admin {
     }
 
     async init() {
+        this.overlay.style.display = "block"
+        show_loading()
         await this.get_users()
         await this.get_courses()
         this.show_users()
+        hide_loading()
+        this.overlay.style.display = "none"
     }
 
     show_users() {
+        // Remove all previous users
+        while (this.container.firstChild) {
+            this.container.removeChild(this.container.lastChild);
+        }
         let users_id = Object.keys(this.users)
         for (let i = 0; i < users_id.length; i++) {
             let user_id = users_id[i]
@@ -35,11 +43,12 @@ class Admin {
     }
 
     async open_progress(ID) {
+        this.overlay.style.display = "block"
+        show_loading()
         let prg = this.progress_dialog
         let user = this.users[ID]
         await this.user_progress(ID)
 
-        this.overlay.style.display = "block"
         prg.showModal()
         prg.querySelector("#close_div > button").onclick = () => {
             this.close_progress()
@@ -60,6 +69,7 @@ class Admin {
         for (let i = 0; i < user.progress.length; i++) {
             this.create_progress_row(i + 1, user.progress[i])
         }
+        hide_loading()
     }
 
     close_progress() {
@@ -68,6 +78,7 @@ class Admin {
     }
 
     async get_users() {
+        this.users = {}
         let all_users = await this.fetch_data("users")
 
         for (let i = 0; i < all_users.length; i++) {
@@ -147,11 +158,3 @@ class Admin {
         this.progress_data.appendChild(tr)
     }
 }
-
-
-async function init(admin) {
-    await admin.init()
-}
-
-var admin = new Admin()
-init(admin)
