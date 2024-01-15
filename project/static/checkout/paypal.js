@@ -31,7 +31,6 @@ function initPayPalButton() {
                                     verified_email = email.value
                                     actions.enable();
                                 } else {
-                                    alert("This Email is already in use")
                                     actions.disable();
                                 }
                             }).then(() => {
@@ -68,10 +67,22 @@ function initPayPalButton() {
                 console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
 
                 // Show a success message within this page, e.g.
-                // const element = document.getElementById('paypal-button-container');
-                // element.innerHTML = '';
-                // element.innerHTML = '<h3>Thanks for your payment!</h3>';
-                if (form_validation) {} else {
+                const element = document.getElementById('paypal-button-container');
+                element.innerHTML = '';
+                element.innerHTML = '<h3>Thanks for your payment!</h3>';
+                if (form_validation) {
+                    show_overlay("Veryfing Payment")
+                    send_signup_info().then((result) => {
+                        let data = JSON.parse(result)
+                        console.log(data)
+                        if (data.status) {
+                            let user_id = data.user_id
+                            window.location.href = `/paypal/yfufcn1qqt/${user_id}/${course_id}`
+                        } else {
+                            alert("ERROR")
+                        }
+                    })
+                } else {
                     window.location.href = `/paypal/yfufcn1qqt/${user_id}/${course_id}`
                 }
             });

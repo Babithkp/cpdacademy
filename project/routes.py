@@ -94,7 +94,7 @@ def validate_email():
 
 @app.route("/signup", methods=["POST"])
 def signup():
-    sleep(3)
+    sleep(5)
     form = request.form
     email = form["email"].lower()
     passwd = form["passwd"]
