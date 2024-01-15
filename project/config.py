@@ -1,4 +1,4 @@
-from tomllib import load
+import toml
 from project import app
 import os
 
@@ -8,6 +8,5 @@ CONFIG = app.config["CONFIG"]
 # return parsed TOML file -> Python DICT
 def read_config():
     config_file = os.path.join(APP_DIR, CONFIG)
-    with open(config_file, "rb") as file:
-        config = load(file)
+    config = toml.load(config_file)
     return config
