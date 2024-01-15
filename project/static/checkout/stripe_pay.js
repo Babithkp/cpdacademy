@@ -1,7 +1,7 @@
 async function stripe_payment() {
     if (form_validation) {
         if (validate_form()) {
-            show_overlay()
+            show_overlay("Veryfing Data")
             let result = await check_email()
             if (result) {
                 result = await send_signup_info()
