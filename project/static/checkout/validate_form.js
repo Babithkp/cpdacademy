@@ -79,18 +79,18 @@ async function send_data(form, url) {
     var output = "false";
 
     await fetch(url, {
-        method: "POST",
-        body: form,
-    })
+            method: "POST",
+            body: form,
+        })
         .then((result) => {
             return result.text()
         })
         .then(text => {
             output = text
         })
-            .catch((error) => {
-              console.log(error)
-              output = "error";
-            })
+        .catch((error) => {
+            console.log(error)
+            output = "error";
+        })
     return output;
 }

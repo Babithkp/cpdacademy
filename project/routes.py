@@ -1,10 +1,9 @@
-from flask import render_template, request, session, redirect, send_file, abort, jsonify
+from flask import render_template, request, session, redirect, send_file, abort, jsonify, url_for
 from markupsafe import Markup
 from functools import wraps
 from project import app, db
 from project.models import *
 from project.send_mail import send_mail
-from project.stripe_config import stripe_config
 from project import config
 import stripe
 import os
@@ -13,9 +12,8 @@ import os
 # scraper = cloudscraper.create_scraper()
 # ALISON = "https://alison.com"
 
-stripe.api_key = stripe_config["KEY"]
 TITLE = "Healthcare CPD"
-domain = ("https", "healthcarecpd.org")
+domain = config.read_config()["domain"]["domain"]
 TESTING = False
 
 
@@ -185,19 +183,28 @@ def info_mental():
     return render_template("mental-info.html", course_id=None, title="Mental Health Certificate", img="/static/course/mental/Autism-Awareness-200x200.png", disabled="disabled", price=150)
 
 
-@app.route('/create-checkout-session')
-def create_checkout_session():
+@app.route('/create-checkout-session/<int:u_ID>/<string:c_ID>')
+def create_checkout_session(u_ID, c_ID):
     try:
+        cfg = config.read_config()
+        prd_id = cfg["courses"][c_ID].get("prd_id")
+        user = db.session.get(Users, u_ID)
+        course = db.session.get(Course, c_ID)
+        if not (prd_id and user and course):
+            return abort(404)
+        session["paying_user"] = u_ID
+        session["paying_course"] = c_ID
+        stripe.api_key = cfg["gateways"]["stripe"]["key"]
         checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
-                    'price': stripe_config['PRD_ID'],
-                    'quantity': stripe_config['QUANTITY'],
+                    'price': prd_id,
+                    'quantity': 1,
                 },
             ],
             mode='payment',
-            success_url = f'{domain[0]}://{domain[1]}/yfufcn1qqt',
-            cancel_url = f'{domain[0]}://{domain[1]}/checkout',
+            success_url = f'{domain[0]}://{domain[1]}{url_for("accept_payment")}',
+            cancel_url = f'{domain[0]}://{domain[1]}/checkout/{c_ID}',
         )
     except Exception as e:
         print(e)
@@ -208,7 +215,14 @@ def create_checkout_session():
 
 @app.route("/yfufcn1qqt")
 def accept_payment():
-    return "Paid"
+    u_ID = session.get("paying_user")
+    c_ID = session.get("paying_course")
+
+    if u_ID and c_ID:
+        session.pop("paying_user")
+        session.pop("paying_course")
+        return f"Paid U:{u_ID}, C:{c_ID}"
+    return abort(406)
 
 
 @app.route("/checkout/<int:ID>")
