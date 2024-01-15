@@ -607,11 +607,9 @@ def logout():
     return redirect("/")
 
 
-from time import sleep
 @app.route("/fetch/users")
 @admin_required
 def fetch_users():
-    sleep(3)
     users = Users.query.filter_by(paid=True).all()
     users_dict = []
     for i in users:
@@ -638,7 +636,6 @@ def fetch_courses():
 @app.route("/fetch/user_progress/<int:ID>")
 @admin_required
 def fetch_user_progress(ID):
-    sleep(3)
     user = db.session.get(Users, ID)
     user_progress = []
 
