@@ -56,22 +56,27 @@ async function send_signup_info() {
     return await send_data(form, url)
 }
 
-async function check_email(email) {
-
-    console.log("CHECKING EMAIL")
+async function check_email() {
+    let email_addr = email.value
+    console.log("CHECKING EMAIL: " + email_addr)
     var form = new FormData();
     var url = "/validate_email"
-    form.append("email", email.value)
+    form.append("email", email_addr)
 
     var result = await send_data(form, url)
     if (result == "error") {
-        return "error"
+        alert("Try Again")
+        result = false
+    } else if (result == "false") {
+        alert("Email address is ready in use")
+        result = false
+    } else {
+        result = true
     }
-    if (result == "false") {
-        return "INVALID EMAIL"
-    }
+    if (result) console.log("EMAIL result: ", result)
+    else console.log("EMAIL: result", result)
 
-    return "VALID EMAIL"
+    return result
 }
 
 

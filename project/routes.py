@@ -82,17 +82,19 @@ def extra_files(path):
 def home():
     return render_template("home.html", homepage="True", title=TITLE)
 
-
+from time import sleep
 @app.route("/validate_email", methods=["POST"])
 def validate_email():
+    sleep(2)
     email = request.form["email"].lower()
-    if(Users.query.filter_by(email=email).first()):
+    if(Users.query.filter_by(email=email, paid=True).first()):
         return "false"
     return "true"
 
 
 @app.route("/signup", methods=["POST"])
 def signup():
+    sleep(3)
     form = request.form
     email = form["email"].lower()
     passwd = form["passwd"]
@@ -106,26 +108,31 @@ def signup():
     postal_code = form["postal_code"]
     phone = form["phone"]
 
-    if(Users.query.filter_by(email=email).first()):
-        return "email"
+    if(Users.query.filter_by(email=email, paid=True).first()):
+        status = False
+        cause = "email"
+        user_id = -1
+    else:
+        user = Users(
+            email=email,
+            password=passwd,
+            f_name=f_name,
+            l_name=l_name,
+            company=company,
+            country=country,
+            addr1=addr1,
+            addr2=addr2,
+            city=city,
+            postcode=postal_code,
+            phone=phone
+        )
+        db.session.add(user)
+        db.session.commit()
+        status = True
+        cause = None
+        user_id = user.id
 
-    user = Users(
-        email=email,
-        password=passwd,
-        f_name=f_name,
-        l_name=l_name,
-        company=company,
-        country=country,
-        addr1=addr1,
-        addr2=addr2,
-        city=city,
-        postcode=postal_code,
-        phone=phone
-    )
-    db.session.add(user)
-    db.session.commit()
-
-    return "success"
+    return jsonify({"status": status, "cause": cause, "user_id": user_id})
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -142,7 +149,7 @@ def login():
         if TESTING:
             user = Users.query.filter_by(email=email).first()
         else:
-            user = Users.query.filter_by(email=email, password=password).first()
+            user = Users.query.filter_by(email=email, password=password, paid=True).first()
         if(user):
             session["id"] = user.id
             session["email"] = email
@@ -590,7 +597,7 @@ def logout():
 @app.route("/fetch/users")
 @admin_required
 def fetch_users():
-    users = Users.query.all()
+    users = Users.query.filter_by(paid=True).all()
     users_dict = []
     for i in users:
         user = {}
