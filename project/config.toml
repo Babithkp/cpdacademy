@@ -20,7 +20,8 @@
     # Personal Protective Equipment
     [courses.4]
         price = 80
-        prd_id = "price_1OYiBED7upUCKzSUHzKbBH6Y"
+        # prd_id = "price_1OYiBED7upUCKzSUHzKbBH6Y" test environment
+        prd_id = "price_1OYhj8D7upUCKzSUwLDe74gH"
         disabled = ""
     
     # Food Safety and Hygiene
@@ -38,11 +39,12 @@
 
 [gateways]
     [gateways.stripe]
-        # key = "REDACTED_STRIPE_LIVE_KEY"
-        key = "REDACTED_STRIPE_TEST_KEY"
+        key = "REDACTED_STRIPE_LIVE_KEY"
+        # key = "REDACTED_STRIPE_TEST_KEY"
     [gateways.paypal]
-        key = "sb"
+        # key = "sb"
+        key = "REDACTED_PAYPAL_KEY"
         currency = "GBP"
 
 [domain]
-    domain = ["http", "localhost:8081"]
+    domain = ["https", "healthcarecpd.org"]
