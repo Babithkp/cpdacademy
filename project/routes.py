@@ -12,6 +12,15 @@ import os
 # scraper = cloudscraper.create_scraper()
 # ALISON = "https://alison.com"
 
+def scrap_alison_file(file, path):
+    # print("Scrapping Alison File")
+    # data = scraper.get(f"{ALISON}/html/{path}").text
+    # if file.endswith(".js"):
+    #     open(file, "w").write(data)
+    #     return send_file(file, as_attachment=False)
+    return abort(404)
+
+
 TITLE = "Healthcare CPD"
 domain = config.read_config()["domain"]["domain"]
 TESTING = False
@@ -72,11 +81,7 @@ def extra_files(path):
     file = os.path.join(app.config["APP_DIR"], "project", file)
     if os.path.isfile(file):
         return send_file(file, as_attachment=False)
-    # data = scraper.get(f"{ALISON}/html/{path}").text
-    # if file.endswith(".js"):
-    #     open(file, "w").write(data)
-    #     return send_file(file, as_attachment=False)
-    return abort(404)
+    return scrap_alison_file(file, path)
 
 @app.route("/")
 def home():
