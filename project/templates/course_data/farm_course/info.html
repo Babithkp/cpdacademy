@@ -1,0 +1,48 @@
+{% extends "course_info_layout.html" %}
+
+{% block content %}
+<div class="site grid-container container hfeed grid-parent" id="page">
+    <div class="site-content" id="content">
+        <div class="content-area grid-parent mobile-grid-100 push-25 grid-75 tablet-push-25 tablet-grid-75" id="primary">
+            <main class="site-main" id="main">
+                <article class="post-9435 product type-product status-publish" id="post-7" itemtype="https://schema.org/CreativeWork" itemscope="">
+                    <div class="inside-article">
+                        <div class="entry-content" itemprop="text">
+                            <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">Home&nbsp;/&nbsp;Agriculture&nbsp;/&nbsp;Farm Management and Maintenance</nav>
+                            <div class="woocommerce-notices-wrapper"></div>
+                            <div id="product-7" class="product">
+                                <div class="woo-product-gallery-slider images">
+                                    <img src="../static/pictures/farmManagerment.jpeg"
+                                    style="width: 100%; height: 320px; object-fit: cover; object-position: left;" class="attachment-shop_single" alt="Farm Management and Maintenance" />
+                                </div>
+                                <div class="summary entry-summary">
+                                    <h1 class="product_title entry-title">Farm Management and Maintenance</h1>
+                                    <p class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>{{price}}</bdi></span></p>
+                                    <div class="woocommerce-product-details__short-description">
+                                        <p>Acquire the right agricultural and farming skills required to manage a sustainable farm successfully and learn how to manage crops, livestock, equipment and more.</p>
+                                    </div>
+                                    <div class="cart">
+                                        <button type="submit" class="single_add_to_cart_button button alt" {{disabled}}>Checkout</button>
+                                    </div>
+                                </div>
+                                <section class="elegant-tabs-container">
+                                    <div class="et-content-wrap">
+                                        <section class="content-current" id="tab-description" style="background:#f2f2f2; color:#383838;">
+                                            <div class="infi-content-wrapper">
+                                                <h2>Product Description</h2>
+                                                <p>This course shows you how to be prepared to face the challenges of modern agriculture and to perform all farm duties with confidence. We explore the fundamentals of farming and farm management. The course covers various topics: introduction to farming management, crop management, livestock management, harvesting, planting, sustainable agriculture practices, farm equipment operations and maintenance.</p>
+                                                <p>You will earn 15 CPD points on completion of the course, this course will take around 1.5-3 hours to complete and the certificate will last for two years.</p>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </div>
+        {% include "course_data/info-sidebar.html" %}
+    </div>
+</div>
+{% endblock %}

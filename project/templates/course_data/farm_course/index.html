@@ -1,0 +1,97 @@
+{% extends 'course_data/course_layout.html' %}
+{% block data %}
+<div id="main-holder">
+    <div class="landing">
+        <div class="l-card closed">
+            <div class="l-card__inner" style="position: fixed; margin-top: 0px; top: 100px;">
+                <div class="l-card__img-overflow">
+                    <div class="l-card__img" style="display: none;"><img width="300px" height="200px" src="/static/course/{{files}}/alison_courseware_intro_4651.jpg" alt="Farm Management and Maintenance"></div>
+                </div>
+                <div class="l-card__info-padding">
+                    <h3 class="course-title">Farm Management and Maintenance</h3>
+                    <div class="l-card__enrolled">
+                        <span><span class="icon-learners-1"></span><span class="course-enrolled">18,967</span></span> Learners already enrolled
+                    </div>
+                    <div class="l-rating">
+                        <div class="l-rating__love"><span class="rating" data-val="5"></span><span class="course-love">350</span></div>
+                        <div class="l-rating__like"><span class="rating" data-val="2"></span><span class="course-like">129</span></div>
+                        <div class="l-rating__no"><span class="rating" data-val="0"></span>Not Interested</div>
+                    </div>
+                    <div class="l-card__includes l-list l-list--tick">
+                        <h6>This Free Online Course Includes:</h6>
+                        <ul>
+                            <li><span class="course-avg_duration l-time">1.5-3</span> Hours of Learning</li>
+                            <li>CPD Accreditation</li>
+                            <li>Final Assessment</li>
+                        </ul>
+                    </div>
+                    <a class="course_btn add-course-id course_btn--shop l-but" href="/course/{{course.ID}}" data-id="{{course.ID}}">Continue Learning</a>
+                </div>
+            </div>
+        </div>
+        <div class="landing__content">
+            <div class="breadcrumb__outer">
+                <ol class="breadcrumb">
+                    <li><i class="icon-home"></i><a href="/">Home</a></li>
+                    <li><i class="icon-right-arrow"></i><a href="#">Agriculture</a></li>
+                    <li><i class="icon-right-arrow"></i><span>Farm Management and Maintenance</span></li>
+                </ol>
+            </div>
+            <div class="l-info">
+                <div class="l-info__inner">
+                    <h1 class="course-title">Farm Management and Maintenance</h1>
+                    <div class="course-headline l-info__headline">Learn how to run a farm in this free online course that explains how to implement sustainable agricultural management.</div>
+                    <div class="course-description l-info__description">
+                        <span class="l-info__description-full">From cultivating crops to managing livestock, farming is a multifaceted activity. The use of modern technologies has changed traditional agricultural and land usage practices. Any aspiring farmer or farm manager thus needs a firm grasp of modern farming practices to succeed. This agriculture class provides a holistic understanding of farming and sustainable farming practices to help you become a well-rounded and successful farm manager.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="l-tabs">
+                <div class="l-tabs__nav">
+                    <div class="l-tabs__title l-tabs__title--active" data-tab="course-modules"><span>Course</span> Modules</div>
+                    <div class="l-tabs__title" data-tab="course-desc"><span>Course</span> Description</div>
+                </div>
+                <div class="l-tabs__content">
+                    <div class="l-mods course-modules l-mods--cancel">
+                        <div class="l-mods__module l-mods__module--open">
+                            <div class="l-mods__module-inner">
+                                <a href="#">
+                                    <div class="l-mods__module-num">Module 1</div>
+                                    <h3>Fundamentals of Farm Management</h3>
+                                </a>
+                            </div>
+                            <div class="l-mods__topics">
+                                <div class="l-mods__topics-inner">
+                                    <a href="/course/7/module/1/sub_module/1" class="l-mods__topic"><h4>Learning Outcomes</h4></a>
+                                    <a href="/course/7/module/1/sub_module/2" class="l-mods__topic"><h4>Introduction to Farm Management</h4></a>
+                                    <a href="/course/7/module/1/sub_module/3" class="l-mods__topic"><h4>Crop and Livestock Management</h4></a>
+                                    <a href="/course/7/module/1/sub_module/4" class="l-mods__topic"><h4>Financial Planning and Sustainable Agriculture Practices</h4></a>
+                                    <a href="/course/7/module/1/sub_module/5" class="l-mods__topic"><h4>Farm Maintenance and Business Management</h4></a>
+                                    <a href="/course/7/module/1/sub_module/6" class="l-mods__topic"><h4>Lesson Summary</h4></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="l-mods__module l-mods__module--open">
+                            <div class="l-mods__module-inner">
+                                <a href="#" title="Course assessment">
+                                    <div class="l-mods__module-num">Module 2</div>
+                                    <h3>Course assessment</h3>
+                                </a>
+                            </div>
+                            <div class="l-mods__topics">
+                                <div class="l-mods__topics-inner">
+                                    <a href="/course/7/module/2/sub_module/1" class="l-mods__topic"><h4>Farm Management and Maintenance: Course Assessment</h4></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-desc course-desc" style="display:none;">
+                        <p>From ancient methods to today's dynamic practices and innovative techniques, farming has evolved and come a long way. In this changed scenario, the need to adapt and master effective farm management has never been more crucial. This agriculture class covers all the vital components of modern farming, from managing crops and livestock to employing sustainable and organic farming practices and using the latest equipment to perform innovative techniques.</p>
+                        <p>We offer a detailed curriculum that covers every essential topic required to understand and implement modern agricultural practices. We explore the fundamentals of farming and farm management. The course covers various topics: introduction to farming management, crop management, livestock management, financial planning and management, sustainable agriculture practices, farm equipment and maintenance and farm business management.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -61,6 +61,16 @@
                 {% endfor %}
             </div>
         </div>
+
+        {% if course_completed %}
+        <div style="background: linear-gradient(135deg, #333333, #B8860B); padding: 25px; border-radius: 10px; margin-top: 25px; text-align: center; color: white;">
+            <h3 style="margin: 0 0 10px; color: white;">🎉 Congratulations! You have completed this course.</h3>
+            <p style="margin: 0 0 15px; font-size: 16px;">You can now download your certificate of completion.</p>
+            <a href="/download_certificate/{{course.ID}}" style="display: inline-block; background-color: #ffffff; color: #B8860B; padding: 12px 35px; border-radius: 25px; font-size: 16px; font-weight: bold; text-decoration: none; transition: all 0.3s ease;">
+                📄 Download Certificate
+            </a>
+        </div>
+        {% endif %}
     </div>
 
 {% endblock %}

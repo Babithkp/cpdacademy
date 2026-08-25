@@ -1,6 +1,9 @@
 <style>
     .course_img {
-        width: 100%;
+        
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover !important;
     }
 
     .courses_list {
@@ -16,9 +19,21 @@
     }
 </style>
 <div class="um-profile-body courses courses-default" id="course_div" style="display: none;">
+    {% set course_images = {
+        'care_course': 'https://cdn.pixabay.com/photo/2023/10/30/12/36/bed-8352775_1280.jpg',
+        'food_course': 'https://cdn.pixabay.com/photo/2016/11/18/15/40/cookies-1835414_1280.jpg',
+        'mental': 'https://cdn.pixabay.com/photo/2021/02/12/10/33/psychologist-6008048_1280.jpg',
+        'farm_course': 'https://cdn.pixabay.com/photo/2021/10/23/17/19/horse-6735455_1280.jpg',
+        'driver_course': 'https://www.dat.com/resources/wp-content/uploads/2023/06/DAT-Longform-Marketing-Pages-Guide-to-commercial-truck-driver-safety-training.jpg',
+        'fire_course': 'https://cdn.pixabay.com/photo/2019/09/22/08/57/fire-fighting-4495488_1280.jpg',
+        'electric_course': 'https://cdn.pixabay.com/photo/2015/12/07/10/49/electrician-1080554_1280.jpg',
+        'weld_course': 'https://cdn.pixabay.com/photo/2012/11/28/10/32/welding-67640_1280.jpg',
+        'equ_course': 'https://cdn.pixabay.com/photo/2021/02/04/16/50/coronavirus-5981935_1280.jpg',
+        'palliative_course': '/static/pictures/palliative.jpeg'
+    } %}
 
     <p style="text-align: center;"></p>
-    <h2 style="font-size: 34px;color: #094b77;text-align: center" class="vc_custom_heading">Your courses</h2>
+    <h2 style="font-size: 34px;color: #B8860B;text-align: center" class="vc_custom_heading">Your courses</h2>
     <p></p>
     <p style="text-align: center;">Find all the courses you are enrolled on below.</p>
     <p style="text-align: center;"></p>
@@ -31,11 +46,16 @@
                     <article class="thumbnail course post-151804 sfwd-courses type-sfwd-courses status-publish has-post-thumbnail hentry ld_course_category-care">
 
                         <a href="/course/{{c.ID}}" rel="bookmark">
-                            <img fetchpriority="high" decoding="async" width="300" height="200" src="/static/course/{{c.html}}/main.webp" class="attachment-medium size-medium wp-post-image course_img" alt="">
+                            <img fetchpriority="high" decoding="async" width="300" height="200" src="{{ course_images.get(c.html, '/static/course/' + c.html + '/main.webp') }}" class="attachment-medium size-medium wp-post-image course_img" alt="">
                         </a>
 
                         <div class="caption">
                             <h4 class="entry-title">{{c.title}}</h4>
+                            {% if c.is_complete %}
+                            <div style="text-align: center; margin-top: 10px;">
+                                <a href="/download_certificate/{{c.ID}}" class="button" style="background-color: #0b9444; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none; font-size: 12px;">Download Certificate</a>
+                            </div>
+                            {% endif %}
                         </div>
                         <!-- .entry-header -->
                     </article>

@@ -1,0 +1,141 @@
+{% extends "course_data/module_layout.html" %}
+{% block module %}
+<style>
+    /* Override global styles that hide radio buttons for assessments */
+    #learning-environment input[type="radio"] {
+        position: relative !important;
+        left: 0 !important;
+        width: 20px !important;
+        height: 20px !important;
+        cursor: pointer !important;
+        vertical-align: middle !important;
+        margin-right: 10px !important;
+        opacity: 1 !important;
+        display: inline-block !important;
+        -webkit-appearance: radio !important;
+        -moz-appearance: radio !important;
+        appearance: radio !important;
+        pointer-events: auto !important;
+        z-index: 100 !important;
+    }
+    #learning-environment .quiz-question label {
+        display: inline-block !important;
+        padding: 5px 0 !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        width: 100% !important;
+        font-size: 16px !important;
+        color: #333 !important;
+    }
+    #learning-environment [type=radio]+label:before,
+    #learning-environment [type=radio]+label:after {
+        display: none !important;
+    }
+    .m-course-player {
+        position: relative !important;
+        z-index: 10 !important;
+        pointer-events: auto !important;
+        background: #fff;
+    }
+    .quiz-question {
+        padding: 20px !important;
+        border-bottom: 1px solid #eee;
+        pointer-events: auto !important;
+    }
+    /* Hide the empty angular player that might be overlapping */
+    .js-angular-course-player {
+        display: none !important;
+    }
+</style>
+<div id="learning-environment">
+    <script>
+        var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+        if (window.localStorage && iOS) {
+            if (!localStorage.getItem('i')) {
+                localStorage['i'] = true;
+                window.location.reload();
+            } else {
+                localStorage.removeItem('i');
+            }
+        }
+        var wrapper = document.getElementById('learning-environment'),
+            observer = new MutationObserver(function (mutations, observer) {
+                wrapper.style.height = '';
+                wrapper.style.minHeight = '';
+            });
+        observer.observe(wrapper, {
+            attributes: true,
+            attributeFilter: ['style']
+        });
+    </script>
+    <div style="display:none;" class="player-nav--top">
+        <a style="display:none;" href="{{URL}}">next</a>
+    </div>
+    <div class="new-player player">
+        <div class="new-player--inner">
+            <div id="iframe_container" class="" style="min-height: auto;">
+                <div class="close-mode"></div>
+                <div style="display: none;">
+                    <app-root data-course-name="Course" data-course-completed="" data-course-id="{{ course_id }}" data-sco-id="0" data-course-theme="9" data-topics="[]" data-isassessment="2" course_id="{{ course_id }}" course_name="Course" data-canpassassessment="1" ng-version="16.2.5"></app-root>
+                </div>
+                <div class="js-angular-course-player angular-course-player" data-course-name="Course" data-course-completed="" data-course-id="{{ course_id }}" data-sco-id="0" data-course-theme="9" data-topics="[]" data-isassessment="2" data-canpassassessment="1">
+                    <app-course-player></app-course-player>
+                </div>
+                <div class="m-course-player">
+                    {% block assessment %}{% endblock %}
+                </div>
+                <div class="side-player-nav" style="">
+                    <div class="player-nav__button player-nav__button--left">
+                        <div class="player-nav__button-inner player-nav__next">
+                            <span>Next</span>
+                            <i class="icon-thick-chevron-up"></i>
+                        </div>
+                    </div>
+                    <div class="player-nav__button player-nav__button--right">
+                        <div class="player-nav__button-inner player-nav__prev disabled">
+                            <i class="icon-thick-chevron-down"></i>
+                            <span>Previous</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="player-popup" style="display: none"></div>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Show navigation
+    $('.side-player-nav').fadeIn();
+
+    // Enable Previous button if there's relevant history
+    if (document.referrer && document.referrer.indexOf('/course/') > -1) {
+        $('.player-nav__prev').removeClass('disabled');
+    }
+
+    $(document).on('click', '.player-nav__prev:not(.disabled)', function(e) {
+        e.preventDefault();
+        window.history.back();
+    });
+
+    // Next button handler — trigger assessment submission or navigate
+    $(document).on('click', '.player-nav__next:not(.disabled)', function(e) {
+        e.preventDefault();
+        // If quiz not yet submitted, do nothing (user should click Submit)
+        if ($('#quiz-form').length && !window.quizSubmitted) {
+            alert('Please complete and submit the assessment first.');
+            return;
+        }
+        var nextPage = "{{ URL }}";
+        if (nextPage && nextPage !== '') {
+            window.location.href = nextPage;
+        }
+    });
+
+    // Fire initialized event
+    document.dispatchEvent(new Event('course:player:initialized'));
+});
+</script>
+{% endblock %}

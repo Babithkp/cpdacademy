@@ -47,13 +47,13 @@
                     "touchend",
                     "wheel",
                 ]),
-                (this.userEventHandler = this._triggerListener.bind(this)),
-                (this.touchStartHandler = this._onTouchStart.bind(this)),
-                (this.touchMoveHandler = this._onTouchMove.bind(this)),
-                (this.touchEndHandler = this._onTouchEnd.bind(this)),
-                (this.clickHandler = this._onClick.bind(this)),
-                (this.interceptedClicks = []),
-                window.addEventListener("pageshow", (e) => {
+                    (this.userEventHandler = this._triggerListener.bind(this)),
+                    (this.touchStartHandler = this._onTouchStart.bind(this)),
+                    (this.touchMoveHandler = this._onTouchMove.bind(this)),
+                    (this.touchEndHandler = this._onTouchEnd.bind(this)),
+                    (this.clickHandler = this._onClick.bind(this)),
+                    (this.interceptedClicks = []),
+                    window.addEventListener("pageshow", (e) => {
                         this.persisted = e.persisted;
                     }),
                     window.addEventListener("DOMContentLoaded", () => {
@@ -73,10 +73,10 @@
                     return;
                 }
                 this.triggerEvents.forEach((t) =>
-                        window.addEventListener(t, e.userEventHandler, {
-                            passive: !0
-                        })
-                    ),
+                    window.addEventListener(t, e.userEventHandler, {
+                        passive: !0
+                    })
+                ),
                     window.addEventListener("touchstart", e.touchStartHandler, {
                         passive: !0,
                     }),
@@ -85,10 +85,10 @@
             }
             _removeUserInteractionListener() {
                 this.triggerEvents.forEach((e) =>
-                        window.removeEventListener(e, this.userEventHandler, {
-                            passive: !0,
-                        })
-                    ),
+                    window.removeEventListener(e, this.userEventHandler, {
+                        passive: !0,
+                    })
+                ),
                     document.removeEventListener(
                         "visibilitychange",
                         this.userEventHandler
@@ -136,8 +136,8 @@
             }
             _replayClicks() {
                 window.removeEventListener("touchstart", this.touchStartHandler, {
-                        passive: !0,
-                    }),
+                    passive: !0,
+                }),
                     window.removeEventListener("mousedown", this.touchStartHandler),
                     this.interceptedClicks.forEach((e) => {
                         e.target.dispatchEvent(
@@ -169,11 +169,11 @@
             _triggerListener() {
                 this._removeUserInteractionListener(this),
                     "loading" === document.readyState ?
-                    document.addEventListener(
-                        "DOMContentLoaded",
-                        this._loadEverythingNow.bind(this)
-                    ) :
-                    this._loadEverythingNow();
+                        document.addEventListener(
+                            "DOMContentLoaded",
+                            this._loadEverythingNow.bind(this)
+                        ) :
+                        this._loadEverythingNow();
             }
             _preconnect3rdParties() {
                 let e = [];
@@ -195,7 +195,7 @@
             }
             async _loadEverythingNow() {
                 (this.lastBreath = Date.now()),
-                this._delayEventListeners(this),
+                    this._delayEventListeners(this),
                     this._delayJQueryReady(this),
                     this._handleDocumentWrite(),
                     this._registerAllDelayedScripts(),
@@ -221,11 +221,11 @@
                     .forEach((e) => {
                         e.hasAttribute("data-rocket-src") ?
                             e.hasAttribute("async") && !1 !== e.async ?
-                            this.delayedScripts.async.push(e) :
-                            (e.hasAttribute("defer") && !1 !== e.defer) ||
-                            "module" === e.getAttribute("data-rocket-type") ?
-                            this.delayedScripts.defer.push(e) :
-                            this.delayedScripts.normal.push(e) :
+                                this.delayedScripts.async.push(e) :
+                                (e.hasAttribute("defer") && !1 !== e.defer) ||
+                                    "module" === e.getAttribute("data-rocket-type") ?
+                                    this.delayedScripts.defer.push(e) :
+                                    this.delayedScripts.normal.push(e) :
                             this.delayedScripts.normal.push(e);
                     });
             }
@@ -255,19 +255,19 @@
                             else if (navigator.userAgent.indexOf("Firefox/") > 0) {
                                 var a = document.createElement("script");
                                 [...e.attributes].forEach((e) => {
-                                        "type" !== e.nodeName &&
-                                            a.setAttribute(
-                                                "data-rocket-type" === e.nodeName ? "type" : e.nodeName,
-                                                e.nodeValue
-                                            );
-                                    }),
+                                    "type" !== e.nodeName &&
+                                        a.setAttribute(
+                                            "data-rocket-type" === e.nodeName ? "type" : e.nodeName,
+                                            e.nodeValue
+                                        );
+                                }),
                                     (a.text = e.text),
                                     e.parentNode.replaceChild(a, e),
                                     i();
                             } else
                                 e.src =
-                                "data:text/javascript;base64," +
-                                window.btoa(unescape(encodeURIComponent(e.text)));
+                                    "data:text/javascript;base64," +
+                                    window.btoa(unescape(encodeURIComponent(e.text)));
                         } catch (o) {
                             r();
                         }
@@ -293,22 +293,22 @@
             _batchInjectResourceHints(e, t) {
                 var i = document.createDocumentFragment();
                 e.forEach((e) => {
-                        let r =
-                            (e.getAttribute && e.getAttribute("data-rocket-src")) || e.src;
-                        if (r) {
-                            let n = document.createElement("link");
-                            (n.href = r),
+                    let r =
+                        (e.getAttribute && e.getAttribute("data-rocket-src")) || e.src;
+                    if (r) {
+                        let n = document.createElement("link");
+                        (n.href = r),
                             (n.rel = t),
                             "preconnect" !== t && (n.as = "script"),
-                                e.getAttribute &&
-                                "module" === e.getAttribute("data-rocket-type") &&
-                                (n.crossOrigin = !0),
-                                e.crossOrigin && (n.crossOrigin = e.crossOrigin),
-                                e.integrity && (n.integrity = e.integrity),
-                                i.appendChild(n),
-                                this.trash.push(n);
-                        }
-                    }),
+                            e.getAttribute &&
+                            "module" === e.getAttribute("data-rocket-type") &&
+                            (n.crossOrigin = !0),
+                            e.crossOrigin && (n.crossOrigin = e.crossOrigin),
+                            e.integrity && (n.integrity = e.integrity),
+                            i.appendChild(n),
+                            this.trash.push(n);
+                    }
+                }),
                     document.head.appendChild(i);
             }
             _delayEventListeners(e) {
@@ -318,32 +318,32 @@
                     !(function e(i) {
                         !t[i] &&
                             ((t[i] = {
-                                    originalFunctions: {
-                                        add: i.addEventListener,
-                                        remove: i.removeEventListener,
-                                    },
-                                    eventsToRewrite: [],
-                                }),
-                                (i.addEventListener = function() {
+                                originalFunctions: {
+                                    add: i.addEventListener,
+                                    remove: i.removeEventListener,
+                                },
+                                eventsToRewrite: [],
+                            }),
+                                (i.addEventListener = function () {
                                     (arguments[0] = r(arguments[0])),
-                                    t[i].originalFunctions.add.apply(i, arguments);
+                                        t[i].originalFunctions.add.apply(i, arguments);
                                 }),
-                                (i.removeEventListener = function() {
+                                (i.removeEventListener = function () {
                                     (arguments[0] = r(arguments[0])),
-                                    t[i].originalFunctions.remove.apply(i, arguments);
+                                        t[i].originalFunctions.remove.apply(i, arguments);
                                 }));
 
                         function r(e) {
                             return t[i].eventsToRewrite.indexOf(e) >= 0 ? "rocket-" + e : e;
                         }
                     })(e),
-                    t[e].eventsToRewrite.push(i);
+                        t[e].eventsToRewrite.push(i);
                 }
 
                 function r(e, t) {
                     let i = e[t];
                     Object.defineProperty(e, t, {
-                        get: () => i || function() {},
+                        get: () => i || function () { },
                         set(r) {
                             e["rocket" + t] = i = r;
                         },
@@ -363,27 +363,27 @@
 
                 function i(i) {
                     if (i && i.fn && !e.allJQueries.includes(i)) {
-                        i.fn.ready = i.fn.init.prototype.ready = function(t) {
+                        i.fn.ready = i.fn.init.prototype.ready = function (t) {
                             return (
                                 e.domReadyFired ?
-                                t.bind(document)(i) :
-                                document.addEventListener("rocket-DOMContentLoaded", () =>
-                                    t.bind(document)(i)
-                                ),
+                                    t.bind(document)(i) :
+                                    document.addEventListener("rocket-DOMContentLoaded", () =>
+                                        t.bind(document)(i)
+                                    ),
                                 i([])
                             );
                         };
                         let r = i.fn.on;
                         (i.fn.on = i.fn.init.prototype.on =
-                            function() {
+                            function () {
                                 if (this[0] === window) {
                                     function e(e) {
                                         return e
                                             .split(" ")
                                             .map((e) =>
                                                 "load" === e || 0 === e.indexOf("load.") ?
-                                                "rocket-jquery-load" :
-                                                e
+                                                    "rocket-jquery-load" :
+                                                    e
                                             )
                                             .join(" ");
                                     }
@@ -399,7 +399,7 @@
                                 }
                                 return r.apply(this, arguments), this;
                             }),
-                        e.allJQueries.push(i);
+                            e.allJQueries.push(i);
                     }
                     t = i;
                 }
@@ -413,7 +413,7 @@
             }
             async _triggerDOMContentLoaded() {
                 (this.domReadyFired = !0),
-                await this._littleBreath(),
+                    await this._littleBreath(),
                     document.dispatchEvent(new Event("rocket-DOMContentLoaded")),
                     await this._littleBreath(),
                     window.dispatchEvent(new Event("rocket-DOMContentLoaded")),
@@ -435,7 +435,7 @@
                     await this._littleBreath();
                 let e = new Event("rocket-pageshow");
                 (e.persisted = this.persisted),
-                window.dispatchEvent(e),
+                    window.dispatchEvent(e),
                     await this._littleBreath(),
                     window.rocketonpageshow &&
                     window.rocketonpageshow({
@@ -444,7 +444,7 @@
             }
             _handleDocumentWrite() {
                 let e = new Map();
-                document.write = document.writeln = function(t) {
+                document.write = document.writeln = function (t) {
                     let i = document.currentScript;
                     i || console.error("WPRocket unable to document.write this: " + t);
                     let r = document.createRange(),
@@ -482,6 +482,111 @@
             margin-top: calc(1px * 0.5);
             margin-bottom: calc(1px * 0.5);
         }
+
+        /* Course product gallery image standardization */
+        .woocommerce-product-gallery .wpgs-for img {
+            width: 100% !important;
+            height: 500px !important;
+            object-fit: cover !important;
+        }
+
+        .woocommerce-product-gallery .wpgs-nav img {
+            width: 100px !important;
+            height: 100px !important;
+            object-fit: cover !important;
+        }
+
+        /* Rebranding Individual Course Pages */
+        .woocommerce-breadcrumb {
+            font-size: 0.85em;
+            color: #666 !important;
+            margin-bottom: 20px !important;
+            display: block;
+        }
+
+        .woocommerce-breadcrumb a {
+            color: #666 !important;
+            text-decoration: none;
+        }
+
+        .product_title.entry-title {
+            color: #B8860B !important;
+            font-weight: 700 !important;
+            font-size: 36px !important;
+            margin-top: 0 !important;
+            margin-bottom: 15px !important;
+        }
+
+        .woocommerce-Price-amount.amount bdi {
+            color: #B8860B !important;
+            font-weight: bold;
+            font-size: 28px !important;
+        }
+
+        .ruk_rating_snippet {
+            color: #B8860B !important;
+            margin-bottom: 10px;
+        }
+
+        .single_add_to_cart_button.button.alt {
+            background-color: #333333 !important;
+            color: #ffffff !important;
+            transition: background-color 0.3s ease;
+            padding: 12px 35px !important;
+            border-radius: 4px !important;
+            font-size: 18px !important;
+            border: none;
+            cursor: pointer;
+        }
+
+        .single_add_to_cart_button.button.alt:hover {
+            background-color: #B8860B !important;
+        }
+
+        /* Layout adjustment for image/summary */
+        div[id^="product-"] {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            justify-content: space-between !important;
+            align-items: flex-start !important;
+            width: 100% !important;
+            margin-bottom: 30px !important;
+        }
+
+        .woocommerce-product-gallery {
+            width: 45% !important;
+            margin: 0 !important;
+            float: none !important;
+        }
+
+        .summary.entry-summary {
+            width: 50% !important;
+            margin: 0 !important;
+            float: none !important;
+            text-align: left !important;
+            padding-left: 0 !important;
+        }
+
+        /* Mobile layout (stacked) */
+        @media (max-width: 768px) {
+            div[id^="product-"] {
+                flex-direction: column !important;
+            }
+            .woocommerce-product-gallery,
+            .summary.entry-summary {
+                width: 100% !important;
+                margin-bottom: 20px !important;
+            }
+        }
+
+        /* Sidebar widget headers */
+        .ca-widget-title,
+        .widget-title {
+            color: #B8860B !important;
+            font-size: 24px !important;
+            font-weight: bold !important;
+        }
     </style>
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
@@ -489,7 +594,8 @@
     <title>{{title}} &amp; Skills For Approved Training</title>
     <link rel="shortcut icon" href="/static/care_certificate_files/cpd-favicon.png" type="image/x-icon">
     <link rel="preload" as="style" href="/static/course/care-certificate_files/d5316d65119f.google-fonts.css" />
-    <link rel="stylesheet" href="/static/course/care-certificate_files/d5316d65119f.google-fonts.css" media="all" onload="this.media='all'" />
+    <link rel="stylesheet" href="/static/course/care-certificate_files/d5316d65119f.google-fonts.css" media="all"
+        onload="this.media='all'" />
 
     <link rel="dns-prefetch" href="https://kit.fontawesome.com/" />
     <link rel="dns-prefetch" href="https://a.trstplse.com/" />
@@ -510,12 +616,17 @@
             padding: 0 !important;
         }
     </style>
-    <link data-minify="1" rel="stylesheet" id="simple_tooltips_style-css" href="/static/course/care-certificate_files/zebra_tooltips.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="simple_tooltips_style-css"
+        href="/static/course/care-certificate_files/zebra_tooltips.css" media="all" />
 
-    <link rel="stylesheet" id="wp-block-library-css" href="/static/course/care-certificate_files/style.min_003.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="wc-blocks-vendors-style-css" href="/static/course/care-certificate_files/wc-blocks-vendors-style.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="wc-blocks-style-css" href="/static/course/care-certificate_files/wc-blocks-style.css" media="all" />
-    <link rel="stylesheet" id="classic-theme-styles-css" href="/static/course/care-certificate_files/classic-themes.min.css" media="all" />
+    <link rel="stylesheet" id="wp-block-library-css" href="/static/course/care-certificate_files/style.min_003.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="wc-blocks-vendors-style-css"
+        href="/static/course/care-certificate_files/wc-blocks-vendors-style.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="wc-blocks-style-css"
+        href="/static/course/care-certificate_files/wc-blocks-style.css" media="all" />
+    <link rel="stylesheet" id="classic-theme-styles-css"
+        href="/static/course/care-certificate_files/classic-themes.min.css" media="all" />
     <style id="global-styles-inline-css">
         body {
             --wp--preset--color--black: #000000;
@@ -887,14 +998,22 @@
             line-height: 1.6;
         }
     </style>
-    <link data-minify="1" rel="stylesheet" id="bootstrap-tour-standalone-css" href="/static/course/care-certificate_files/bootstrap-tour-standalone.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="cbxtakeatour-public-css" href="/static/course/care-certificate_files/cbxtakeatour-public.css" media="all" />
-    <link rel="stylesheet" id="casp-front-css" href="/static/course/care-certificate_files/front.min.css" media="screen" />
-    <link rel="stylesheet" id="learndash_style-css" href="/static/course/care-certificate_files/style.min_002.css" media="all" />
-    <link rel="stylesheet" id="sfwd_front_css-css" href="/static/course/care-certificate_files/front.min_002.css" media="all" />
-    <link rel="stylesheet" id="learndash_template_style_css-css" href="/static/course/care-certificate_files/learndash_template_style.min.css" media="all" />
-    <link rel="stylesheet" id="learndash_quiz_front_css-css" href="/static/course/care-certificate_files/learndash_quiz_front.min.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="ldx-design-upgrade-learndash-css" href="/static/course/care-certificate_files/learndash.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="bootstrap-tour-standalone-css"
+        href="/static/course/care-certificate_files/bootstrap-tour-standalone.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="cbxtakeatour-public-css"
+        href="/static/course/care-certificate_files/cbxtakeatour-public.css" media="all" />
+    <link rel="stylesheet" id="casp-front-css" href="/static/course/care-certificate_files/front.min.css"
+        media="screen" />
+    <link rel="stylesheet" id="learndash_style-css" href="/static/course/care-certificate_files/style.min_002.css"
+        media="all" />
+    <link rel="stylesheet" id="sfwd_front_css-css" href="/static/course/care-certificate_files/front.min_002.css"
+        media="all" />
+    <link rel="stylesheet" id="learndash_template_style_css-css"
+        href="/static/course/care-certificate_files/learndash_template_style.min.css" media="all" />
+    <link rel="stylesheet" id="learndash_quiz_front_css-css"
+        href="/static/course/care-certificate_files/learndash_quiz_front.min.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="ldx-design-upgrade-learndash-css"
+        href="/static/course/care-certificate_files/learndash.css" media="all" />
     <style id="ldx-design-upgrade-learndash-inline-css">
         div#learndash_lessons h4>a,
         div#learndash_quizzes h4>a,
@@ -909,7 +1028,7 @@
         #course_navigation .widget_course_return a,
         div#learndash_profile .profile_edit_profile a,
         div#learndash_profile .quiz_title a {
-            color: #094b77;
+            color: #B8860B;
         }
 
         div#learndash_lessons h4>a:hover,
@@ -936,7 +1055,7 @@
         div#learndash_profile .profile_edit_profile a:active,
         div#learndash_profile .quiz_title a:hover,
         div#learndash_profile .quiz_title a:active {
-            color: #4a97cc;
+            color: #B8860B;
         }
 
         #lessons_list .list-count,
@@ -952,34 +1071,58 @@
             display: none;
         }
     </style>
-    <link data-minify="1" rel="stylesheet" id="ldx-design-upgrade-learndash-pro-css" href="/static/course/care-certificate_files/ld3-pro.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="iw_tab_style-css" href="/static/course/care-certificate_files/tabstyles.css" media="all" />
-    <link rel="stylesheet" id="iw_tab_aminate-css" href="/static/course/care-certificate_files/animate.min.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="iw_tabs-css" href="/static/course/care-certificate_files/tabs.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="infi-icon-icomoon-css" href="/static/course/care-certificate_files/icomoon.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="ltar-learndash-groups-css" href="/static/course/care-certificate_files/ltar-learndash-groups-public.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="ltar-site-changes-css" href="/static/course/care-certificate_files/ltar-site-changes-public.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="woocommerce-layout-css" href="/static/course/care-certificate_files/woocommerce-layout.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="woocommerce-smallscreen-css" href="/static/course/care-certificate_files/woocommerce-smallscreen.css" media="only screen and (max-width: 768px)" />
-    <link data-minify="1" rel="stylesheet" id="woocommerce-general-css" href="/static/course/care-certificate_files/woocommerce.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="ldx-design-upgrade-learndash-pro-css"
+        href="/static/course/care-certificate_files/ld3-pro.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="iw_tab_style-css"
+        href="/static/course/care-certificate_files/tabstyles.css" media="all" />
+    <link rel="stylesheet" id="iw_tab_aminate-css" href="/static/course/care-certificate_files/animate.min.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="iw_tabs-css" href="/static/course/care-certificate_files/tabs.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="infi-icon-icomoon-css"
+        href="/static/course/care-certificate_files/icomoon.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="ltar-learndash-groups-css"
+        href="/static/course/care-certificate_files/ltar-learndash-groups-public.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="ltar-site-changes-css"
+        href="/static/course/care-certificate_files/ltar-site-changes-public.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="woocommerce-layout-css"
+        href="/static/course/care-certificate_files/woocommerce-layout.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="woocommerce-smallscreen-css"
+        href="/static/course/care-certificate_files/woocommerce-smallscreen.css"
+        media="only screen and (max-width: 768px)" />
+    <link data-minify="1" rel="stylesheet" id="woocommerce-general-css"
+        href="/static/course/care-certificate_files/woocommerce.css" media="all" />
     <style id="woocommerce-inline-inline-css">
         .woocommerce form .form-row .required {
             visibility: visible;
         }
     </style>
-    <link rel="stylesheet" id="wp-show-posts-css" href="/static/course/care-certificate_files/wp-show-posts-min.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="wp-show-posts-pro-css" href="/static/course/care-certificate_files/wp-show-posts-min_002.css" media="all" />
-    <link rel="stylesheet" id="affwp-forms-css" href="/static/course/care-certificate_files/forms.min.css" media="all" />
-    <link rel="stylesheet" id="jquery-dropdown-css-css" href="/static/course/care-certificate_files/jquery.dropdown.min.css" media="all" />
-    <link rel="stylesheet" id="learndash_pager_css-css" href="/static/course/care-certificate_files/learndash_pager.min.css" media="all" />
-    <link rel="stylesheet" id="learndash_lesson_video-css" href="/static/course/care-certificate_files/learndash_lesson_video.min.css" media="all" />
-    <link rel="stylesheet" id="parent-style-css" href="/static/course/care-certificate_files/style_004.css" media="all" />
-    <link rel="stylesheet" id="child-style-css" href="/static/course/care-certificate_files/style_002.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="FontAwesomeCSS-local-css" href="/static/course/care-certificate_files/all.css" media="all" />
-    <link rel="stylesheet" id="learndash-course-import-export-css" href="/static/course/care-certificate_files/learndash-course-import-export-public.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="custom-css" href="/static/course/care-certificate_files/custom.css" media="all" />
-    <link rel="stylesheet" id="generate-style-grid-css" href="/static/course/care-certificate_files/unsemantic-grid.min.css" media="all" />
-    <link rel="stylesheet" id="generate-style-css" href="/static/course/care-certificate_files/style.min.css" media="all" />
+    <link rel="stylesheet" id="wp-show-posts-css" href="/static/course/care-certificate_files/wp-show-posts-min.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="wp-show-posts-pro-css"
+        href="/static/course/care-certificate_files/wp-show-posts-min_002.css" media="all" />
+    <link rel="stylesheet" id="affwp-forms-css" href="/static/course/care-certificate_files/forms.min.css"
+        media="all" />
+    <link rel="stylesheet" id="jquery-dropdown-css-css"
+        href="/static/course/care-certificate_files/jquery.dropdown.min.css" media="all" />
+    <link rel="stylesheet" id="learndash_pager_css-css"
+        href="/static/course/care-certificate_files/learndash_pager.min.css" media="all" />
+    <link rel="stylesheet" id="learndash_lesson_video-css"
+        href="/static/course/care-certificate_files/learndash_lesson_video.min.css" media="all" />
+    <link rel="stylesheet" id="parent-style-css" href="/static/course/care-certificate_files/style_004.css"
+        media="all" />
+    <link rel="stylesheet" id="child-style-css" href="/static/course/care-certificate_files/style_002.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="FontAwesomeCSS-local-css"
+        href="/static/course/care-certificate_files/all.css" media="all" />
+    <link rel="stylesheet" id="learndash-course-import-export-css"
+        href="/static/course/care-certificate_files/learndash-course-import-export-public.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="custom-css" href="/static/course/care-certificate_files/custom.css"
+        media="all" />
+    <link rel="stylesheet" id="generate-style-grid-css"
+        href="/static/course/care-certificate_files/unsemantic-grid.min.css" media="all" />
+    <link rel="stylesheet" id="generate-style-css" href="/static/course/care-certificate_files/style.min.css"
+        media="all" />
     <style id="generate-style-inline-css">
         .no-featured-image-padding .featured-image {
             margin-left: -40px;
@@ -1014,11 +1157,11 @@
         }
 
         a {
-            color: #1e73be;
+            color: #B8860B;
         }
 
         a:visited {
-            color: #1e73be;
+            color: #B8860B;
         }
 
         a:hover,
@@ -1048,7 +1191,7 @@
             --base: #f0f0f0;
             --base-2: #f7f8f9;
             --base-3: #ffffff;
-            --accent: #1e73be;
+            --accent: #B8860B;
         }
 
         .has-contrast-color {
@@ -1193,11 +1336,11 @@
 
         .top-bar {
             background-color: #ffffff;
-            color: #094b77;
+            color: #B8860B;
         }
 
         .top-bar a {
-            color: #094b77;
+            color: #B8860B;
         }
 
         .top-bar a:hover {
@@ -1205,7 +1348,7 @@
         }
 
         .site-header {
-            background-color: #094b77;
+            background-color: #333333;
         }
 
         .site-header a {
@@ -1229,7 +1372,7 @@
         .main-navigation .main-nav ul li a,
         .main-navigation .menu-toggle,
         .main-navigation .menu-bar-items {
-            color: #094b77;
+            color: #3a3a3a;
         }
 
         .main-navigation .main-nav ul li:not([class*="current-menu-"]):hover>a,
@@ -1238,7 +1381,7 @@
         .main-navigation .menu-bar-item:hover>a,
         .main-navigation .menu-bar-item.sfHover>a {
             color: #ffffff;
-            background-color: #4a97cc;
+            background-color: #B8860B;
         }
 
         button.menu-toggle:hover,
@@ -1246,12 +1389,12 @@
         .main-navigation .mobile-bar-items a,
         .main-navigation .mobile-bar-items a:hover,
         .main-navigation .mobile-bar-items a:focus {
-            color: #094b77;
+            color: #B8860B;
         }
 
         .main-navigation .main-nav ul li[class*="current-menu-"]>a {
             color: #ffffff;
-            background-color: #094b77;
+            background-color: #333333;
         }
 
         .navigation-search input[type="search"],
@@ -1260,7 +1403,7 @@
         .main-navigation .main-nav ul li.search-item.active>a,
         .main-navigation .menu-bar-items .search-item.active>a {
             color: #ffffff;
-            background-color: #4a97cc;
+            background-color: #B8860B;
         }
 
         .main-navigation ul ul {
@@ -1268,18 +1411,18 @@
         }
 
         .main-navigation .main-nav ul ul li a {
-            color: #094b77;
+            color: #3a3a3a;
         }
 
         .main-navigation .main-nav ul ul li:not([class*="current-menu-"]):hover>a,
         .main-navigation .main-nav ul ul li:not([class*="current-menu-"]):focus>a,
         .main-navigation .main-nav ul ul li.sfHover:not([class*="current-menu-"])>a {
-            color: #094b77;
+            color: #B8860B;
             background-color: var(--base-3);
         }
 
         .main-navigation .main-nav ul ul li[class*="current-menu-"]>a {
-            color: #094b77;
+            color: #B8860B;
             background-color: var(--base-3);
         }
 
@@ -1297,22 +1440,22 @@
         .paging-navigation a,
         .comments-area a,
         .page-header a {
-            color: #094b77;
+            color: #B8860B;
         }
 
         .inside-article a:hover,
         .paging-navigation a:hover,
         .comments-area a:hover,
         .page-header a:hover {
-            color: #4a97cc;
+            color: #B8860B;
         }
 
         .entry-title a {
-            color: #094b77;
+            color: #B8860B;
         }
 
         .entry-title a:hover {
-            color: #4a97cc;
+            color: #B8860B;
         }
 
         .entry-meta {
@@ -1324,32 +1467,32 @@
         }
 
         .entry-meta a:hover {
-            color: #1e73be;
+            color: #B8860B;
         }
 
         h1 {
-            color: #094b77;
+            color: #B8860B;
         }
 
         h2 {
-            color: #094b77;
+            color: #B8860B;
         }
 
         h3 {
-            color: #094b77;
+            color: #B8860B;
         }
 
         h4 {
-            color: #094b77;
+            color: #B8860B;
         }
 
         .sidebar .widget .widget-title {
-            color: #094b77;
+            color: #B8860B;
         }
 
         .footer-widgets {
             color: #ffffff;
-            background-color: #4a97cc;
+            background-color: #B8860B;
         }
 
         .footer-widgets a {
@@ -1357,7 +1500,7 @@
         }
 
         .footer-widgets a:hover {
-            color: #094b77;
+            color: #B8860B;
         }
 
         .footer-widgets .widget-title {
@@ -1366,7 +1509,7 @@
 
         .site-info {
             color: #ffffff;
-            background-color: #094b77;
+            background-color: #333333;
         }
 
         .site-info a {
@@ -1416,7 +1559,7 @@
         a.button,
         a.wp-block-button__link:not(.has-background) {
             color: #ffffff;
-            background-color: #1e73be;
+            background-color: #B8860B;
         }
 
         button:hover,
@@ -1433,7 +1576,7 @@
         a.wp-block-button__link:not(.has-background):focus,
         a.wp-block-button__link:not(.has-background):hover {
             color: #ffffff;
-            background-color: #094b77;
+            background-color: #333333;
         }
 
         a.generate-back-to-top {
@@ -1452,7 +1595,7 @@
             .main-navigation .menu-bar-item:hover>a,
             .main-navigation .menu-bar-item.sfHover>a {
                 background: none;
-                color: #094b77;
+                color: #B8860B;
             }
         }
 
@@ -1604,13 +1747,19 @@
             font-weight: 700;
         }
     </style>
-    <link rel="stylesheet" id="generate-mobile-style-css" href="/static/course/care-certificate_files/mobile.min.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="generate-font-icons-css" href="/static/course/care-certificate_files/font-icons.min.css" media="all" />
+    <link rel="stylesheet" id="generate-mobile-style-css" href="/static/course/care-certificate_files/mobile.min.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="generate-font-icons-css"
+        href="/static/course/care-certificate_files/font-icons.min.css" media="all" />
     <link rel="stylesheet" id="generate-child-css" href="/static/course/care-certificate_files/style.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="stripe_styles-css" href="/static/course/care-certificate_files/stripe-styles.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="js_composer_front-css" href="/static/course/care-certificate_files/js_composer.min.css" media="all" />
-    <link rel="stylesheet" id="ywdpd_owl-css" href="/static/course/care-certificate_files/owl.carousel.min.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="yith_ywdpd_frontend-css" href="/static/course/care-certificate_files/frontend.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="stripe_styles-css"
+        href="/static/course/care-certificate_files/stripe-styles.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="js_composer_front-css"
+        href="/static/course/care-certificate_files/js_composer.min.css" media="all" />
+    <link rel="stylesheet" id="ywdpd_owl-css" href="/static/course/care-certificate_files/owl.carousel.min.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="yith_ywdpd_frontend-css"
+        href="/static/course/care-certificate_files/frontend.css" media="all" />
     <style id="generateblocks-inline-css">
         .gb-container .wp-block-image img {
             vertical-align: middle;
@@ -1638,7 +1787,7 @@
         }
 
         .gb-container-c2af3289 {
-            background-color: #094b77;
+            background-color: #333333;
             color: var(--base-3);
             border-top-style: solid;
             border-top-width: 1px;
@@ -1686,7 +1835,7 @@
         }
 
         .gb-container-ec4c1b56 {
-            background-color: #094b77;
+            background-color: #333333;
             border-top-style: solid;
             border-top-width: 1px;
             border-bottom-style: solid;
@@ -1757,10 +1906,10 @@
         }
 
         h5.gb-headline-a183ac32 {
-            color: #094b77;
+            color: #B8860B;
             font-weight: bold;
             margin-top: 20px;
-            border-color: #094b77;
+            border-color: #B8860B;
             display: inline-flex;
             flex-direction: column;
         }
@@ -1825,21 +1974,28 @@
             }
         }
     </style>
-    <link rel="stylesheet" id="generate-blog-images-css" href="/static/course/care-certificate_files/featured-images.min.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="slick-css" href="/static/course/care-certificate_files/slick.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="slick-theme-css" href="/static/course/care-certificate_files/slick-theme.css" media="all" />
-    <link rel="stylesheet" id="fancybox-css" href="/static/course/care-certificate_files/jquery.fancybox.min.css" media="all" />
+    <link rel="stylesheet" id="generate-blog-images-css"
+        href="/static/course/care-certificate_files/featured-images.min.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="slick-css" href="/static/course/care-certificate_files/slick.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="slick-theme-css"
+        href="/static/course/care-certificate_files/slick-theme.css" media="all" />
+    <link rel="stylesheet" id="fancybox-css" href="/static/course/care-certificate_files/jquery.fancybox.min.css"
+        media="all" />
     <style id="fancybox-inline-css">
         .wpgs-for .slick-slide {
             cursor: pointer;
         }
     </style>
-    <link data-minify="1" rel="stylesheet" id="flaticon-wpgs-css" href="/static/course/care-certificate_files/flaticon.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="lgc-unsemantic-grid-responsive-tablet-css" href="/static/course/care-certificate_files/unsemantic-grid-responsive-tablet.css" media="all" />
-    <link rel="stylesheet" id="generate-woocommerce-css" href="/static/course/care-certificate_files/woocommerce.min.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="flaticon-wpgs-css"
+        href="/static/course/care-certificate_files/flaticon.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="lgc-unsemantic-grid-responsive-tablet-css"
+        href="/static/course/care-certificate_files/unsemantic-grid-responsive-tablet.css" media="all" />
+    <link rel="stylesheet" id="generate-woocommerce-css"
+        href="/static/course/care-certificate_files/woocommerce.min.css" media="all" />
     <style id="generate-woocommerce-inline-css">
         .woocommerce ul.products li.product .woocommerce-LoopProduct-link {
-            color: #094b77;
+            color: #B8860B;
         }
 
         .woocommerce ul.products li.product .woocommerce-LoopProduct-link h2,
@@ -1860,7 +2016,7 @@
         .woocommerce button.button,
         .woocommerce input.button {
             color: #ffffff;
-            background-color: #1e73be;
+            background-color: #B8860B;
             font-weight: normal;
             text-transform: none;
         }
@@ -1870,7 +2026,7 @@
         .woocommerce button.button:hover,
         .woocommerce input.button:hover {
             color: #ffffff;
-            background-color: #094b77;
+            background-color: #333333;
         }
 
         .woocommerce #respond input#submit.alt,
@@ -1902,7 +2058,7 @@
         .woocommerce input.button.alt:disabled[disabled],
         .woocommerce input.button.alt:disabled[disabled]:hover {
             color: #ffffff;
-            background-color: #094b77;
+            background-color: #333333;
         }
 
         .woocommerce #respond input#submit.alt:hover,
@@ -1919,13 +2075,13 @@
         }
 
         .woocommerce span.onsale {
-            background-color: #094b77;
+            background-color: #333333;
             color: #ffffff;
         }
 
         .woocommerce ul.products li.product .price,
         .woocommerce div.product p.price {
-            color: #094b77;
+            color: #B8860B;
         }
 
         .woocommerce div.product .woocommerce-tabs ul.tabs li a {
@@ -1934,7 +2090,7 @@
 
         .woocommerce div.product .woocommerce-tabs ul.tabs li a:hover,
         .woocommerce div.product .woocommerce-tabs ul.tabs li.active a {
-            color: #1e73be;
+            color: #B8860B;
         }
 
         .woocommerce-message {
@@ -1952,7 +2108,7 @@
         }
 
         .woocommerce-info {
-            background-color: #1e73be;
+            background-color: #B8860B;
             color: #ffffff;
         }
 
@@ -1985,12 +2141,12 @@
 
         #wc-mini-cart {
             background-color: var(--base);
-            color: #094b77;
+            color: #B8860B;
         }
 
         #wc-mini-cart a:not(.button),
         #wc-mini-cart a.remove {
-            color: #094b77;
+            color: #B8860B;
         }
 
         #wc-mini-cart .button {
@@ -2001,7 +2157,7 @@
         #wc-mini-cart .button:hover,
         #wc-mini-cart .button:focus,
         #wc-mini-cart .button:active {
-            background-color: #094b77;
+            background-color: #333333;
             color: #ffffff;
         }
 
@@ -2014,11 +2170,11 @@
 
         .add-to-cart-panel {
             background-color: #ffffff;
-            color: #094b77;
+            color: #B8860B;
         }
 
         .add-to-cart-panel a:not(.button) {
-            color: #094b77;
+            color: #B8860B;
         }
 
         .woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content {
@@ -2096,33 +2252,52 @@
             }
         }
     </style>
-    <link rel="stylesheet" id="generate-woocommerce-mobile-css" href="/static/course/care-certificate_files/woocommerce-mobile.min.css" media="(max-width:768px)" />
-    <link data-minify="1" rel="stylesheet" id="gp-premium-icons-css" href="/static/course/care-certificate_files/icons.min.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_fonticons_ii-css" href="/static/course/care-certificate_files/um-fonticons-ii.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_fonticons_fa-css" href="/static/course/care-certificate_files/um-fonticons-fa.css" media="all" />
+    <link rel="stylesheet" id="generate-woocommerce-mobile-css"
+        href="/static/course/care-certificate_files/woocommerce-mobile.min.css" media="(max-width:768px)" />
+    <link data-minify="1" rel="stylesheet" id="gp-premium-icons-css"
+        href="/static/course/care-certificate_files/icons.min.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_fonticons_ii-css"
+        href="/static/course/care-certificate_files/um-fonticons-ii.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_fonticons_fa-css"
+        href="/static/course/care-certificate_files/um-fonticons-fa.css" media="all" />
     <link rel="stylesheet" id="select2-css" href="/static/course/care-certificate_files/select2.min.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_crop-css" href="/static/course/care-certificate_files/um-crop.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_modal-css" href="/static/course/care-certificate_files/um-modal.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_styles-css" href="/static/course/care-certificate_files/um-styles.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_profile-css" href="/static/course/care-certificate_files/um-profile.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_account-css" href="/static/course/care-certificate_files/um-account.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_misc-css" href="/static/course/care-certificate_files/um-misc.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_fileupload-css" href="/static/course/care-certificate_files/um-fileupload.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_datetime-css" href="/static/course/care-certificate_files/default.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_datetime_date-css" href="/static/course/care-certificate_files/default.date.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_datetime_time-css" href="/static/course/care-certificate_files/default.time.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_raty-css" href="/static/course/care-certificate_files/um-raty.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_scrollbar-css" href="/static/course/care-certificate_files/simplebar.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_tipsy-css" href="/static/course/care-certificate_files/um-tipsy.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_responsive-css" href="/static/course/care-certificate_files/um-responsive.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="um_default_css-css" href="/static/course/care-certificate_files/um-old-default.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_crop-css" href="/static/course/care-certificate_files/um-crop.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_modal-css" href="/static/course/care-certificate_files/um-modal.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_styles-css" href="/static/course/care-certificate_files/um-styles.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_profile-css"
+        href="/static/course/care-certificate_files/um-profile.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_account-css"
+        href="/static/course/care-certificate_files/um-account.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_misc-css" href="/static/course/care-certificate_files/um-misc.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_fileupload-css"
+        href="/static/course/care-certificate_files/um-fileupload.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_datetime-css" href="/static/course/care-certificate_files/default.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_datetime_date-css"
+        href="/static/course/care-certificate_files/default.date.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_datetime_time-css"
+        href="/static/course/care-certificate_files/default.time.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_raty-css" href="/static/course/care-certificate_files/um-raty.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_scrollbar-css"
+        href="/static/course/care-certificate_files/simplebar.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_tipsy-css" href="/static/course/care-certificate_files/um-tipsy.css"
+        media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_responsive-css"
+        href="/static/course/care-certificate_files/um-responsive.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="um_default_css-css"
+        href="/static/course/care-certificate_files/um-old-default.css" media="all" />
     {#
-  <script type="text/template" id="tmpl-variation-template">
+    <script type="text/template" id="tmpl-variation-template">
       <div class="woocommerce-variation-description">{{{ data.variation.variation_description }}}</div>
       <div class="woocommerce-variation-price">{{{ data.variation.price_html }}}</div>
       <div class="woocommerce-variation-availability">{{{ data.variation.availability_html }}}</div>
     </script>
-  #}
+    #}
     <script type="text/template" id="tmpl-unavailable-variation-template">
         <p>Sorry, this product is unavailable. Please choose a different combination.</p>
     </script>
@@ -2153,7 +2328,7 @@
         }
 
         optimocha_check_wc_cart_script();
-        document.addEventListener("click", function() {
+        document.addEventListener("click", function () {
             setTimeout(optimocha_check_wc_cart_script, 1000);
         });
     </script>
@@ -2168,8 +2343,10 @@
             confirm_remove_user_message_not_started: "Are you sure you want to remove this user? This will free up one registration in your group. \n\n\t {user}",
         };
     </script>
-    <script data-minify="1" src="/static/course/care-certificate_files/ltar-learndash-groups-public.js" id="ltar-learndash-groups-js"></script>
-    <script data-minify="1" src="/static/course/care-certificate_files/ltar-site-changes-public.js" id="ltar-site-changes-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/ltar-learndash-groups-public.js"
+        id="ltar-learndash-groups-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/ltar-site-changes-public.js"
+        id="ltar-site-changes-js"></script>
     <script id="uncannyowl-learndash-toolkit-free-js-extra">
         var UncannyToolkit = {
             ajax: {
@@ -2214,7 +2391,8 @@
         };
     </script>
     <script src="/static/course/care-certificate_files/tracking.min.js" id="affwp-tracking-js"></script>
-    <script id="ir-fontawesome-script-js" src="/static/course/care-certificate_files/cf6d8a0a99.js" data-rocket-status="executed"></script>
+    <script id="ir-fontawesome-script-js" src="/static/course/care-certificate_files/cf6d8a0a99.js"
+        data-rocket-status="executed"></script>
     <style media="all" id="fa-v4-font-face">
         /*!
  * Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com
@@ -10610,8 +10788,10 @@
             font-weight: 900;
         }
     </style>
-    <script data-minify="1" src="/static/course/care-certificate_files/gtm4wp-woocommerce-enhanced.js" id="gtm4wp-woocommerce-enhanced-js"></script>
-    <script data-minify="1" src="/static/course/care-certificate_files/learndash-course-import-export-public.js" id="learndash-course-import-export-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/gtm4wp-woocommerce-enhanced.js"
+        id="gtm4wp-woocommerce-enhanced-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/learndash-course-import-export-public.js"
+        id="learndash-course-import-export-js"></script>
     <script data-minify="1" src="/static/course/care-certificate_files/ld-group.js" id="ld-group-js"></script>
     <script src="/static/course/care-certificate_files/regenerator-runtime.min.js" id="regenerator-runtime-js"></script>
     <script src="/static/course/care-certificate_files/wp-polyfill.min.js" id="wp-polyfill-js"></script>
@@ -10631,15 +10811,18 @@
             is_logged_in: "",
         };
     </script>
-    <script src="/static/course/care-certificate_files/tokenization-form.min.js" id="woocommerce-tokenization-form-js"></script>
+    <script src="/static/course/care-certificate_files/tokenization-form.min.js"
+        id="woocommerce-tokenization-form-js"></script>
     <script src="/static/course/care-certificate_files/um-gdpr.min.js" id="um-gdpr-js"></script>
     <link rel="https://api.w.org/" href="https://cpdonline.co.uk/wp-json/" />
     <link rel="alternate" type="application/json" href="https://cpdonline.co.uk/wp-json/wp/v2/product/155100" />
-    <link rel="alternate" type="application/json+oembed" href="https://cpdonline.co.uk/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcpdonline.co.uk%2Fcourse%2Fcare-certificate%2F" />
-    <link rel="alternate" type="text/xml+oembed" href="https://cpdonline.co.uk/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcpdonline.co.uk%2Fcourse%2Fcare-certificate%2F&amp;format=xml" />
+    <link rel="alternate" type="application/json+oembed"
+        href="https://cpdonline.co.uk/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcpdonline.co.uk%2Fcourse%2Fcare-certificate%2F" />
+    <link rel="alternate" type="text/xml+oembed"
+        href="https://cpdonline.co.uk/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcpdonline.co.uk%2Fcourse%2Fcare-certificate%2F&amp;format=xml" />
     <style type="text/css" id="tabs-dynamic-css">
         .et-tabs.et-horizontal.justified-tabs.et-tabs-style-underline.tab-class-6410af1582fd2 .infi-tab-accordion.infi-active-tab .infi_accordion_item {
-            background: #4a97cc !important;
+            background: #B8860B !important;
             color: #ffffff !important;
         }
 
@@ -10652,7 +10835,7 @@
         }
 
         .et-tabs.et-horizontal.justified-tabs.et-tabs-style-underline.tab-class-6410af1582fd2 nav ul li a::after {
-            background: #4a97cc;
+            background: #B8860B;
         }
 
         .et-tabs.et-horizontal.justified-tabs.et-tabs-style-underline.tab-class-6410af1582fd2 nav ul li.tab-current a,
@@ -10691,8 +10874,10 @@
             }
         }
     </style>
-    <link rel="stylesheet" type="text/css" id="rating-snippet-stars__css" href="/static/course/care-certificate_files/style-cf.css" />
-    <script type="text/javascript" id="rating-snippet-polaris__script" async="" src="/static/course/care-certificate_files/build.js"></script>
+    <link rel="stylesheet" type="text/css" id="rating-snippet-stars__css"
+        href="/static/course/care-certificate_files/style-cf.css" />
+    <script type="text/javascript" id="rating-snippet-polaris__script" async=""
+        src="/static/course/care-certificate_files/build.js"></script>
     <script async="" type="text/javascript" src="/static/course/care-certificate_files/stat.js"></script>
     <script src="/static/course/care-certificate_files/moment.min.js" async=""></script>
     <script src="/static/course/care-certificate_files/moment.min.js" async=""></script>
@@ -10722,8 +10907,10 @@
     <script src="/static/course/care-certificate_files/moment-timezone-with-data-2012-2022.min.js" async=""></script>
     <link rel="stylesheet" type="text/css" href="/static/course/care-certificate_files/elements-widget.css" />
     <link rel="stylesheet" type="text/css" href="/static/course/care-certificate_files/style_003.css" />
-    <link rel="stylesheet" type="text/css" href="data:text/css;charset=UTF-8,.ElementsWidget-prefix%20.ElementsWidget%7B--base-font-size%3A16px%3B--common-button-font-family%3Ainherit%3B--common-button-font-size%3A16px%3B--common-button-font-weight%3A500%3B--common-button-letter-spacing%3A0%3B--common-button-text-transform%3Anone%3B--common-button-vertical-padding%3A10px%3B--common-button-horizontal-padding%3A20px%3B--common-button-border-width%3A2px%3B--common-button-border-radius%3A0px%3B--primary-button-bg-color%3A%230E1311%3B--primary-button-border-color%3A%230E1311%3B--primary-button-text-color%3A%23ffffff%3B--secondary-button-bg-color%3Atransparent%3B--secondary-button-border-color%3A%230E1311%3B--secondary-button-text-color%3A%230E1311%3B--common-star-color%3A%23094B77%3B--common-star-disabled-color%3Argba(0%2C0%2C0%2C0.25)%3B--medium-star-size%3A22px%3B--small-star-size%3A19px%3B--heading-text-color%3A%230E1311%3B--heading-text-font-weight%3A600%3B--heading-text-font-family%3Ainherit%3B--heading-text-line-height%3A1.4%3B--heading-text-letter-spacing%3A0%3B--heading-text-transform%3Anone%3B--body-text-color%3A%230E1311%3B--body-text-font-weight%3A400%3B--body-text-font-family%3Ainherit%3B--body-text-line-height%3A1.4%3B--body-text-letter-spacing%3A0%3B--body-text-transform%3Anone%3B--inputfield-text-font-family%3Ainherit%3B--input-text-font-size%3A14px%3B--inputfield-text-font-weight%3A400%3B--inputfield-text-color%3A%230E1311%3B--inputfield-border-color%3Argba(0%2C0%2C0%2C0.2)%3B--inputfield-background-color%3Atransparent%3B--inputfield-border-width%3A1px%3B--inputfield-border-radius%3A0px%3B--common-border-color%3Argba(0%2C0%2C0%2C0.15)%3B--common-border-width%3A1px%3B--common-sidebar-width%3A190px%3B--slider-indicator-bg-color%3Argba(0%2C0%2C0%2C0.1)%3B--slider-indicator-button-color%3A%230E1311%3B--slider-indicator-width%3A190px%3B--badge-icon-color%3A%230E1311%3B--badge-icon-font-size%3Ainherit%3B--badge-text-color%3A%230E1311%3B--badge-text-font-size%3Ainherit%3B--badge-text-letter-spacing%3Ainherit%3B--badge-text-transform%3Ainherit%3B--author-font-size%3Ainherit%3B--author-text-transform%3Anone%3B--avatar-thumbnail-size%3A60px%3B--avatar-thumbnail-border-radius%3A100px%3B--avatar-thumbnail-text-color%3A%230E1311%3B--avatar-thumbnail-bg-color%3Argba(0%2C0%2C0%2C0.1)%3B--photo-video-thumbnail-size%3A80px%3B--photo-video-thumbnail-border-radius%3A0px%3B--mediaslider-scroll-button-icon-color%3A%230E1311%3B--mediaslider-scroll-button-bg-color%3Argba(255%2C%20255%2C%20255%2C%200.85)%3B--mediaslider-overlay-text-color%3A%23ffffff%3B--mediaslider-overlay-bg-color%3Argba(0%2C%200%2C%200%2C%200.8))%3B--mediaslider-item-size%3A110px%3B--pagination-tab-text-color%3A%230E1311%3B--pagination-tab-text-transform%3Anone%3B--pagination-tab-text-letter-spacing%3A0%3B--pagination-tab-text-font-size%3A16px%3B--pagination-tab-text-font-weight%3A600%3B--pagination-tab-active-text-color%3A%230E1311%3B--pagination-tab-active-text-font-weight%3A600%3B--pagination-tab-active-border-color%3A%230E1311%3B--pagination-tab-border-width%3A3px%3B%7D" />
-    <script src="/static/course/care-certificate_files/137016638.js" type="text/javascript" async="" data-ueto="ueto_fb291bf6f2"></script>
+    <link rel="stylesheet" type="text/css"
+        href="data:text/css;charset=UTF-8,.ElementsWidget-prefix%20.ElementsWidget%7B--base-font-size%3A16px%3B--common-button-font-family%3Ainherit%3B--common-button-font-size%3A16px%3B--common-button-font-weight%3A500%3B--common-button-letter-spacing%3A0%3B--common-button-text-transform%3Anone%3B--common-button-vertical-padding%3A10px%3B--common-button-horizontal-padding%3A20px%3B--common-button-border-width%3A2px%3B--common-button-border-radius%3A0px%3B--primary-button-bg-color%3A%230E1311%3B--primary-button-border-color%3A%230E1311%3B--primary-button-text-color%3A%23ffffff%3B--secondary-button-bg-color%3Atransparent%3B--secondary-button-border-color%3A%230E1311%3B--secondary-button-text-color%3A%230E1311%3B--common-star-color%3A%23094B77%3B--common-star-disabled-color%3Argba(0%2C0%2C0%2C0.25)%3B--medium-star-size%3A22px%3B--small-star-size%3A19px%3B--heading-text-color%3A%230E1311%3B--heading-text-font-weight%3A600%3B--heading-text-font-family%3Ainherit%3B--heading-text-line-height%3A1.4%3B--heading-text-letter-spacing%3A0%3B--heading-text-transform%3Anone%3B--body-text-color%3A%230E1311%3B--body-text-font-weight%3A400%3B--body-text-font-family%3Ainherit%3B--body-text-line-height%3A1.4%3B--body-text-letter-spacing%3A0%3B--body-text-transform%3Anone%3B--inputfield-text-font-family%3Ainherit%3B--input-text-font-size%3A14px%3B--inputfield-text-font-weight%3A400%3B--inputfield-text-color%3A%230E1311%3B--inputfield-border-color%3Argba(0%2C0%2C0%2C0.2)%3B--inputfield-background-color%3Atransparent%3B--inputfield-border-width%3A1px%3B--inputfield-border-radius%3A0px%3B--common-border-color%3Argba(0%2C0%2C0%2C0.15)%3B--common-border-width%3A1px%3B--common-sidebar-width%3A190px%3B--slider-indicator-bg-color%3Argba(0%2C0%2C0%2C0.1)%3B--slider-indicator-button-color%3A%230E1311%3B--slider-indicator-width%3A190px%3B--badge-icon-color%3A%230E1311%3B--badge-icon-font-size%3Ainherit%3B--badge-text-color%3A%230E1311%3B--badge-text-font-size%3Ainherit%3B--badge-text-letter-spacing%3Ainherit%3B--badge-text-transform%3Ainherit%3B--author-font-size%3Ainherit%3B--author-text-transform%3Anone%3B--avatar-thumbnail-size%3A60px%3B--avatar-thumbnail-border-radius%3A100px%3B--avatar-thumbnail-text-color%3A%230E1311%3B--avatar-thumbnail-bg-color%3Argba(0%2C0%2C0%2C0.1)%3B--photo-video-thumbnail-size%3A80px%3B--photo-video-thumbnail-border-radius%3A0px%3B--mediaslider-scroll-button-icon-color%3A%230E1311%3B--mediaslider-scroll-button-bg-color%3Argba(255%2C%20255%2C%20255%2C%200.85)%3B--mediaslider-overlay-text-color%3A%23ffffff%3B--mediaslider-overlay-bg-color%3Argba(0%2C%200%2C%200%2C%200.8))%3B--mediaslider-item-size%3A110px%3B--pagination-tab-text-color%3A%230E1311%3B--pagination-tab-text-transform%3Anone%3B--pagination-tab-text-letter-spacing%3A0%3B--pagination-tab-text-font-size%3A16px%3B--pagination-tab-text-font-weight%3A600%3B--pagination-tab-active-text-color%3A%230E1311%3B--pagination-tab-active-text-font-weight%3A600%3B--pagination-tab-active-border-color%3A%230E1311%3B--pagination-tab-border-width%3A3px%3B%7D" />
+    <script src="/static/course/care-certificate_files/137016638.js" type="text/javascript" async=""
+        data-ueto="ueto_fb291bf6f2"></script>
     <script type="text/javascript" async="" src="/static/course/care-certificate_files/f.txt"></script>
     <script type="text/javascript" async="" src="/static/course/care-certificate_files/f_002.txt"></script>
     <link rel="prefetch" href="https://cpdonline.co.uk/course/care-certificate#tab-how-it-works" />
@@ -10745,25 +10932,32 @@
     <link rel="prefetch" href="https://cpdonline.co.uk/courses/food-hygiene/" />
     <link rel="stylesheet" href="/static/course/care-certificate_files/css.css" media="all" />
     <link rel="stylesheet" href="/static/course/care-certificate_files/css.css" media="all" />
-    <script id="optimocha_loaded_wc_cart_fragments" src="/static/course/care-certificate_files/cart-fragments.min.js" async=""></script>
+    <script id="optimocha_loaded_wc_cart_fragments" src="/static/course/care-certificate_files/cart-fragments.min.js"
+        async=""></script>
 </head>
 
-<body itemscope="" itemtype="https://schema.org/Blog" class="product-template-default single single-product postid-155100 wp-custom-logo wp-embed-responsive theme-generatepress ldx-plugin post-image-below-header post-image-aligned-center sticky-menu-fade woocommerce woocommerce-page woocommerce-js left-sidebar nav-below-header separate-containers fluid-header active-footer-widgets-4 nav-aligned-center header-aligned-center dropdown-hover featured-image-active wpb-js-composer js-comp-ver-6.10.0 vc_responsive using-mouse">
+<body itemscope="" itemtype="https://schema.org/Blog"
+    class="product-template-default single single-product postid-155100 wp-custom-logo wp-embed-responsive theme-generatepress ldx-plugin post-image-below-header post-image-aligned-center sticky-menu-fade woocommerce woocommerce-page woocommerce-js left-sidebar nav-below-header separate-containers fluid-header active-footer-widgets-4 nav-aligned-center header-aligned-center dropdown-hover featured-image-active wpb-js-composer js-comp-ver-6.10.0 vc_responsive using-mouse">
     <svg width="0" height="0" class="h5ap_svg_hidden">
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.997 511.997" id="exchange">
-            <path d="M467.938 87.164L387.063 5.652c-7.438-7.495-19.531-7.54-27.02-.108s-7.54 19.525-.108 27.014l67.471 68.006-67.42 67.42c-7.464 7.457-7.464 19.557 0 27.014 3.732 3.732 8.616 5.598 13.507 5.598s9.781-1.866 13.513-5.591l80.876-80.876c7.443-7.44 7.463-19.495.056-26.965z">
+            <path
+                d="M467.938 87.164L387.063 5.652c-7.438-7.495-19.531-7.54-27.02-.108s-7.54 19.525-.108 27.014l67.471 68.006-67.42 67.42c-7.464 7.457-7.464 19.557 0 27.014 3.732 3.732 8.616 5.598 13.507 5.598s9.781-1.866 13.513-5.591l80.876-80.876c7.443-7.44 7.463-19.495.056-26.965z">
             </path>
-            <path d="M455.005 81.509H56.995c-10.552 0-19.104 8.552-19.104 19.104v147.741c0 10.552 8.552 19.104 19.104 19.104s19.104-8.552 19.104-19.104V119.718h378.905c10.552 0 19.104-8.552 19.104-19.104.001-10.552-8.551-19.105-19.103-19.105zM83.964 411.431l67.42-67.413c7.457-7.457 7.464-19.55 0-27.014-7.463-7.464-19.563-7.464-27.02 0l-80.876 80.869c-7.444 7.438-7.47 19.493-.057 26.963l80.876 81.512a19.064 19.064 0 0013.564 5.649c4.865 0 9.731-1.847 13.456-5.54 7.489-7.432 7.54-19.525.108-27.02l-67.471-68.006z">
+            <path
+                d="M455.005 81.509H56.995c-10.552 0-19.104 8.552-19.104 19.104v147.741c0 10.552 8.552 19.104 19.104 19.104s19.104-8.552 19.104-19.104V119.718h378.905c10.552 0 19.104-8.552 19.104-19.104.001-10.552-8.551-19.105-19.103-19.105zM83.964 411.431l67.42-67.413c7.457-7.457 7.464-19.55 0-27.014-7.463-7.464-19.563-7.464-27.02 0l-80.876 80.869c-7.444 7.438-7.47 19.493-.057 26.963l80.876 81.512a19.064 19.064 0 0013.564 5.649c4.865 0 9.731-1.847 13.456-5.54 7.489-7.432 7.54-19.525.108-27.02l-67.471-68.006z">
             </path>
-            <path d="M454.368 238.166c-10.552 0-19.104 8.552-19.104 19.104v135.005H56.995c-10.552 0-19.104 8.552-19.104 19.104s8.552 19.104 19.104 19.104h397.38c10.552 0 19.104-8.552 19.098-19.104V257.271c-.001-10.552-8.553-19.105-19.105-19.105z">
+            <path
+                d="M454.368 238.166c-10.552 0-19.104 8.552-19.104 19.104v135.005H56.995c-10.552 0-19.104 8.552-19.104 19.104s8.552 19.104 19.104 19.104h397.38c10.552 0 19.104-8.552 19.098-19.104V257.271c-.001-10.552-8.553-19.105-19.105-19.105z">
             </path>
         </symbol>
     </svg>
     <svg width="0" height="0" class="h5ap_svg_hidden">
         <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 477.88 477.88" id="shuffle">
-            <path d="M472.897 124.269a.892.892 0 01-.03-.031l-.017.017-68.267-68.267c-6.78-6.548-17.584-6.36-24.132.42-6.388 6.614-6.388 17.099 0 23.713l39.151 39.151h-95.334c-65.948.075-119.391 53.518-119.467 119.467-.056 47.105-38.228 85.277-85.333 85.333h-102.4C7.641 324.072 0 331.713 0 341.139s7.641 17.067 17.067 17.067h102.4c65.948-.075 119.391-53.518 119.467-119.467.056-47.105 38.228-85.277 85.333-85.333h95.334l-39.134 39.134c-6.78 6.548-6.968 17.353-.419 24.132 6.548 6.78 17.353 6.968 24.132.419.142-.137.282-.277.419-.419l68.267-68.267c6.674-6.657 6.687-17.463.031-24.136z">
+            <path
+                d="M472.897 124.269a.892.892 0 01-.03-.031l-.017.017-68.267-68.267c-6.78-6.548-17.584-6.36-24.132.42-6.388 6.614-6.388 17.099 0 23.713l39.151 39.151h-95.334c-65.948.075-119.391 53.518-119.467 119.467-.056 47.105-38.228 85.277-85.333 85.333h-102.4C7.641 324.072 0 331.713 0 341.139s7.641 17.067 17.067 17.067h102.4c65.948-.075 119.391-53.518 119.467-119.467.056-47.105 38.228-85.277 85.333-85.333h95.334l-39.134 39.134c-6.78 6.548-6.968 17.353-.419 24.132 6.548 6.78 17.353 6.968 24.132.419.142-.137.282-.277.419-.419l68.267-68.267c6.674-6.657 6.687-17.463.031-24.136z">
             </path>
-            <path d="M472.897 329.069l-.03-.03-.017.017-68.267-68.267c-6.78-6.548-17.584-6.36-24.132.42-6.388 6.614-6.388 17.099 0 23.712l39.151 39.151h-95.334a85.209 85.209 0 01-56.9-21.726c-7.081-6.222-17.864-5.525-24.086 1.555-6.14 6.988-5.553 17.605 1.319 23.874a119.28 119.28 0 0079.667 30.43h95.334l-39.134 39.134c-6.78 6.548-6.968 17.352-.42 24.132 6.548 6.78 17.352 6.968 24.132.42.142-.138.282-.277.42-.42l68.267-68.267c6.673-6.656 6.686-17.462.03-24.135zM199.134 149.702a119.28 119.28 0 00-79.667-30.43h-102.4C7.641 119.272 0 126.913 0 136.339s7.641 17.067 17.067 17.067h102.4a85.209 85.209 0 0156.9 21.726c7.081 6.222 17.864 5.525 24.086-1.555 6.14-6.989 5.553-17.606-1.319-23.875z">
+            <path
+                d="M472.897 329.069l-.03-.03-.017.017-68.267-68.267c-6.78-6.548-17.584-6.36-24.132.42-6.388 6.614-6.388 17.099 0 23.712l39.151 39.151h-95.334a85.209 85.209 0 01-56.9-21.726c-7.081-6.222-17.864-5.525-24.086 1.555-6.14 6.988-5.553 17.605 1.319 23.874a119.28 119.28 0 0079.667 30.43h95.334l-39.134 39.134c-6.78 6.548-6.968 17.352-.42 24.132 6.548 6.78 17.352 6.968 24.132.42.142-.138.282-.277.42-.42l68.267-68.267c6.673-6.656 6.686-17.462.03-24.135zM199.134 149.702a119.28 119.28 0 00-79.667-30.43h-102.4C7.641 119.272 0 126.913 0 136.339s7.641 17.067 17.067 17.067h102.4a85.209 85.209 0 0156.9 21.726c7.081 6.222 17.864 5.525 24.086-1.555 6.14-6.989 5.553-17.606-1.319-23.875z">
             </path>
         </symbol>
     </svg>
@@ -10861,14 +11055,14 @@
                         category: "Mental Health",
                         price: 20,
                         stocklevel: null,
-                    }, ],
+                    },],
                 },
             },
         };
         dataLayer.push(dataLayer_content);
     </script>
     <script data-cfasync="false">
-        (function(w, d, s, l, i) {
+        (function (w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 "gtm.start": new Date().getTime(),
@@ -10884,8 +11078,11 @@
     </script>
     <!-- End Google Tag Manager -->
     <!-- End Google Tag Manager for WordPress by gtm4wp.com -->
-    <link rel="preload" as="font" href="https://cpdonline.co.uk/wp-content/plugins/gp-premium/general/icons/gp-premium.ttf" crossorigin="" />
-    <link rel="preload" as="font" href="https://cpdonline.co.uk/wp-content/plugins/unlimited-addons-for-wpbakery-page-builder/assets_libraries/font-awsome/fonts/fontawesome-webfont.woff2?v=4.6.2" crossorigin="" />
+    <link rel="preload" as="font"
+        href="https://cpdonline.co.uk/wp-content/plugins/gp-premium/general/icons/gp-premium.ttf" crossorigin="" />
+    <link rel="preload" as="font"
+        href="https://cpdonline.co.uk/wp-content/plugins/unlimited-addons-for-wpbakery-page-builder/assets_libraries/font-awsome/fonts/fontawesome-webfont.woff2?v=4.6.2"
+        crossorigin="" />
     <noscript>
         <style>
             .woocommerce-product-gallery {
@@ -11022,7 +11219,7 @@
     <script>
         /*<![CDATA[*/
         window.zEmbed ||
-            (function(e, t) {
+            (function (e, t) {
                 var n,
                     o,
                     d,
@@ -11030,30 +11227,30 @@
                     s,
                     a = [],
                     r = document.createElement("iframe");
-                (window.zEmbed = function() {
+                (window.zEmbed = function () {
                     a.push(arguments);
                 }),
-                (window.zE = window.zE || window.zEmbed),
-                (r.src = "javascript:false"),
-                (r.title = ""),
-                (r.role = "presentation"),
-                ((r.frameElement || r).style.cssText = "display: none"),
-                (d = document.getElementsByTagName("script")),
-                (d = d[d.length - 1]),
-                d.parentNode.insertBefore(r, d),
+                    (window.zE = window.zE || window.zEmbed),
+                    (r.src = "javascript:false"),
+                    (r.title = ""),
+                    (r.role = "presentation"),
+                    ((r.frameElement || r).style.cssText = "display: none"),
+                    (d = document.getElementsByTagName("script")),
+                    (d = d[d.length - 1]),
+                    d.parentNode.insertBefore(r, d),
                     (i = r.contentWindow),
                     (s = i.document);
                 try {
                     o = s;
                 } catch (c) {
                     (n = document.domain),
-                    (r.src =
-                        'javascript:var d=document.open();d.domain="' +
-                        n +
-                        '";void(0);'),
-                    (o = s);
+                        (r.src =
+                            'javascript:var d=document.open();d.domain="' +
+                            n +
+                            '";void(0);'),
+                        (o = s);
                 }
-                (o.open()._l = function() {
+                (o.open()._l = function () {
                     var o = this.createElement("script");
                     n && (this.domain = n),
                         (o.id = "js-iframe-async"),
@@ -11063,7 +11260,7 @@
                         (this.zEQueue = a),
                         this.body.appendChild(o);
                 }),
-                o.write('<body onload="document._l();">'),
+                    o.write('<body onload="document._l();">'),
                     o.close();
             })(
                 "https://assets.zendesk.com/embeddable_framework/main.js",
@@ -11073,9 +11270,9 @@
     <!-- End of Zendesk Widget script -->
     <!-- Meta Pixel Code -->
     <script>
-        !(function(f, b, e, v, n, t, s) {
+        !(function (f, b, e, v, n, t, s) {
             if (f.fbq) return;
-            n = f.fbq = function() {
+            n = f.fbq = function () {
                 n.callMethod ?
                     n.callMethod.apply(n, arguments) :
                     n.queue.push(arguments);
@@ -11099,17 +11296,18 @@
         fbq("init", "3890661521158108");
         fbq("track", "PageView");
     </script>
-    <noscript><img height="1" width="1" style="display: none" src="https://www.facebook.com/tr?id=3890661521158108&ev=PageView&noscript=1" /></noscript>
+    <noscript><img height="1" width="1" style="display: none"
+            src="https://www.facebook.com/tr?id=3890661521158108&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
     <style type="text/css">
         .wpgs-for .slick-arrow::before,
         .wpgs-nav .slick-prev::before,
         .wpgs-nav .slick-next::before {
-            color: #094b77;
+            color: #B8860B;
         }
 
         .fancybox-bg {
-            background-color: #094b77;
+            background-color: #333333;
         }
 
         .fancybox-caption,
@@ -11122,7 +11320,7 @@
         }
 
         .wpgs-nav .slick-current {
-            border-color: #094b77;
+            border-color: #B8860B;
         }
     </style>
     <style id="wp-custom-css">
@@ -11156,12 +11354,12 @@
 
         .button.coursead {
             background: #fff;
-            color: #094b77;
+            color: #B8860B;
         }
 
         .button.coursead:hover {
             background: #c5c5c5;
-            color: #094b77;
+            color: #B8860B;
         }
 
         .courses-box {
@@ -11187,7 +11385,7 @@
         .woocommerce-page ul.products li.product {
             background-color: #f3f3f3;
             border-top-style: solid;
-            border-top-color: #094b77;
+            border-top-color: #B8860B;
             border-top-width: 8px;
         }
 
@@ -11225,7 +11423,7 @@
         .lms-table th,
         .lms-table td {
             text-align: center;
-            color: #094b77;
+            color: #B8860B;
             border: 1px solid #ddd;
             line-height: 125%;
             padding-bottom: 5px;
@@ -11237,14 +11435,14 @@
         }
 
         .lms-table th {
-            background-color: #094b77;
+            background-color: #333333;
             color: #fff;
-            border: 1px solid #094b77;
+            border: 1px solid #B8860B;
         }
 
         .internal-course-text {
             font-size: 20px !important;
-            color: #094b77 !important;
+            color: #B8860B !important;
             margin-top: 10px;
             list-style-position: inside !important;
         }
@@ -11256,7 +11454,7 @@
         .internal-course-textbox {
             font-size: 20px !important;
             color: #fff !important;
-            background-color: #094b77 !important;
+            background-color: #333333 !important;
             padding: 10px !important;
             border-radius: 3px;
             margin-bottom: 0;
@@ -11265,7 +11463,7 @@
 
         .internal-course-table {
             color: #fff !important;
-            background-color: #094b77 !important;
+            background-color: #333333 !important;
             border-radius: 3px;
             padding: 10px !important;
             margin-bottom: 0;
@@ -11273,7 +11471,7 @@
         }
 
         .internal-course-heading {
-            color: #094b77;
+            color: #B8860B;
         }
 
         #learndash_back_to_lesson {
@@ -11297,33 +11495,33 @@
         #text-15.widget.inner-padding.widget_text {
             text-align: center;
             border-top-style: solid;
-            border-top-color: #094b77;
+            border-top-color: #B8860B;
             border-top-width: 8px;
             border-bottom-width: 8px;
             border-bottom-style: solid;
-            border-bottom-color: #094b77;
+            border-bottom-color: #B8860B;
             background-color: #f0f0f0;
         }
 
         #text-17.widget.inner-padding.widget_text {
             text-align: center;
             border-top-style: solid;
-            border-top-color: #094b77;
+            border-top-color: #B8860B;
             border-top-width: 8px;
             border-bottom-width: 8px;
             border-bottom-style: solid;
-            border-bottom-color: #094b77;
+            border-bottom-color: #B8860B;
             background-color: #f0f0f0;
         }
 
         #text-6.widget.inner-padding.widget_text {
             text-align: center;
             border-top-style: solid;
-            border-top-color: #094b77;
+            border-top-color: #B8860B;
             border-top-width: 8px;
             border-bottom-width: 8px;
             border-bottom-style: solid;
-            border-bottom-color: #094b77;
+            border-bottom-color: #B8860B;
             background-color: #f0f0f0;
             margin-top: 20px;
         }
@@ -11402,7 +11600,7 @@
         }
 
         .um-profile-nav {
-            background-color: #094b77;
+            background-color: #333333;
         }
 
         .single-post,
@@ -11438,7 +11636,7 @@
         }
 
         .page-header>*:last-child {
-            color: #094b77;
+            color: #B8860B;
         }
 
         .grid-100.tablet-grid-100.mobile-grid-100.first-column {
@@ -11484,7 +11682,7 @@
         }
 
         .vc_gitem-post-data.vc_gitem-post-data-source-post_title {
-            color: #094b77;
+            color: #B8860B;
             font-size: 16px;
             line-height: 20px;
             font-weight: bold;
@@ -11495,7 +11693,7 @@
         }
 
         .author-box {
-            background-color: #094b77 !important;
+            background-color: #333333 !important;
             border-width: 5px !important;
             border-style: solid !important;
             border-color: #bfbfbf !important;
@@ -11687,7 +11885,9 @@
       ">
         <defs>
             <filter id="wp-duotone-dark-grayscale">
-                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+                    values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+                </feColorMatrix>
                 <feComponentTransfer color-interpolation-filters="sRGB">
                     <feFuncR type="table" tableValues="0 0.49803921568627"></feFuncR>
                     <feFuncG type="table" tableValues="0 0.49803921568627"></feFuncG>
@@ -11697,7 +11897,8 @@
                 <feComposite in2="SourceGraphic" operator="in"></feComposite>
             </filter>
         </defs>
-    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="
+    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+        style="
         visibility: hidden;
         position: absolute;
         left: -9999px;
@@ -11705,7 +11906,9 @@
       ">
         <defs>
             <filter id="wp-duotone-grayscale">
-                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+                    values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+                </feColorMatrix>
                 <feComponentTransfer color-interpolation-filters="sRGB">
                     <feFuncR type="table" tableValues="0 1"></feFuncR>
                     <feFuncG type="table" tableValues="0 1"></feFuncG>
@@ -11715,7 +11918,8 @@
                 <feComposite in2="SourceGraphic" operator="in"></feComposite>
             </filter>
         </defs>
-    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="
+    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+        style="
         visibility: hidden;
         position: absolute;
         left: -9999px;
@@ -11723,7 +11927,9 @@
       ">
         <defs>
             <filter id="wp-duotone-purple-yellow">
-                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+                    values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+                </feColorMatrix>
                 <feComponentTransfer color-interpolation-filters="sRGB">
                     <feFuncR type="table" tableValues="0.54901960784314 0.98823529411765"></feFuncR>
                     <feFuncG type="table" tableValues="0 1"></feFuncG>
@@ -11733,7 +11939,8 @@
                 <feComposite in2="SourceGraphic" operator="in"></feComposite>
             </filter>
         </defs>
-    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="
+    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+        style="
         visibility: hidden;
         position: absolute;
         left: -9999px;
@@ -11741,7 +11948,9 @@
       ">
         <defs>
             <filter id="wp-duotone-blue-red">
-                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+                    values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+                </feColorMatrix>
                 <feComponentTransfer color-interpolation-filters="sRGB">
                     <feFuncR type="table" tableValues="0 1"></feFuncR>
                     <feFuncG type="table" tableValues="0 0.27843137254902"></feFuncG>
@@ -11751,7 +11960,8 @@
                 <feComposite in2="SourceGraphic" operator="in"></feComposite>
             </filter>
         </defs>
-    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="
+    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+        style="
         visibility: hidden;
         position: absolute;
         left: -9999px;
@@ -11759,7 +11969,9 @@
       ">
         <defs>
             <filter id="wp-duotone-midnight">
-                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+                    values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+                </feColorMatrix>
                 <feComponentTransfer color-interpolation-filters="sRGB">
                     <feFuncR type="table" tableValues="0 0"></feFuncR>
                     <feFuncG type="table" tableValues="0 0.64705882352941"></feFuncG>
@@ -11769,7 +11981,8 @@
                 <feComposite in2="SourceGraphic" operator="in"></feComposite>
             </filter>
         </defs>
-    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="
+    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+        style="
         visibility: hidden;
         position: absolute;
         left: -9999px;
@@ -11777,7 +11990,9 @@
       ">
         <defs>
             <filter id="wp-duotone-magenta-yellow">
-                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+                    values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+                </feColorMatrix>
                 <feComponentTransfer color-interpolation-filters="sRGB">
                     <feFuncR type="table" tableValues="0.78039215686275 1"></feFuncR>
                     <feFuncG type="table" tableValues="0 0.94901960784314"></feFuncG>
@@ -11787,7 +12002,8 @@
                 <feComposite in2="SourceGraphic" operator="in"></feComposite>
             </filter>
         </defs>
-    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="
+    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+        style="
         visibility: hidden;
         position: absolute;
         left: -9999px;
@@ -11795,7 +12011,9 @@
       ">
         <defs>
             <filter id="wp-duotone-purple-green">
-                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+                    values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+                </feColorMatrix>
                 <feComponentTransfer color-interpolation-filters="sRGB">
                     <feFuncR type="table" tableValues="0.65098039215686 0.40392156862745"></feFuncR>
                     <feFuncG type="table" tableValues="0 1"></feFuncG>
@@ -11805,7 +12023,8 @@
                 <feComposite in2="SourceGraphic" operator="in"></feComposite>
             </filter>
         </defs>
-    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="
+    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+        style="
         visibility: hidden;
         position: absolute;
         left: -9999px;
@@ -11813,7 +12032,9 @@
       ">
         <defs>
             <filter id="wp-duotone-blue-orange">
-                <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+                <feColorMatrix color-interpolation-filters="sRGB" type="matrix"
+                    values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 ">
+                </feColorMatrix>
                 <feComponentTransfer color-interpolation-filters="sRGB">
                     <feFuncR type="table" tableValues="0.098039215686275 1"></feFuncR>
                     <feFuncG type="table" tableValues="0 0.66274509803922"></feFuncG>
@@ -11835,7 +12056,8 @@
         elem.appendChild(script);
     </script>
     <noscript>
-        <a href="https://www.clickcease.com" rel="nofollow"><img src="https://monitor.clickcease.com/stats/stats.aspx" alt="ClickCease" /></a>
+        <a href="https://www.clickcease.com" rel="nofollow"><img src="https://monitor.clickcease.com/stats/stats.aspx"
+                alt="ClickCease" /></a>
     </noscript>
     <!--  Clickcease.com tracking-->
     {% include "nav.html" %}
@@ -11856,8 +12078,12 @@
                                                 }
                                             </style>
                                         </defs>
-                                        <path d="M378.4 192.1c0 4.095-1.562 8.189-4.688 11.31L235.4 342.6c-3.125 3.124-7.22 4.686-11.31 4.686S215.9 345.7 212.8 342.6L138.4 268.3C135.3 265.2 133.7 261.1 133.7 256.1c0-4.095 1.562-8.189 4.688-11.31l11.31-11.31C152.9 231.2 156.1 229.7 161 229.7S169.2 231.2 172.4 234.3l51.72 51.72l115.7-115.7c3.125-3.124 7.22-4.686 11.31-4.686s8.189 1.562 11.31 4.686l11.31 11.31C376.9 184.8 378.4 188.9 378.4 192.1z" class="fa-primary"></path>
-                                        <path d="M466.5 83.71l-192-80c-4.875-2.031-13.16-3.703-18.44-3.703c-5.312 0-13.55 1.672-18.46 3.703L45.61 83.71C27.7 91.1 16 108.6 16 127.1C16 385.2 205.2 512 255.9 512C307.1 512 496 383.8 496 127.1C496 108.6 484.3 91.1 466.5 83.71zM378.4 192.1c0 4.095-1.562 8.189-4.688 11.31L235.4 342.6c-3.125 3.124-7.22 4.686-11.31 4.686S215.9 345.7 212.8 342.6L138.4 268.3C135.3 265.2 133.7 261.1 133.7 256.1c0-4.095 1.562-8.189 4.688-11.31l11.31-11.31C152.9 231.2 156.1 229.7 161 229.7S169.2 231.2 172.4 234.3l51.72 51.72l115.7-115.7c3.125-3.124 7.22-4.686 11.31-4.686s8.189 1.562 11.31 4.686l11.31 11.31C376.9 184.8 378.4 188.9 378.4 192.1z" class="fa-secondary"></path>
+                                        <path
+                                            d="M378.4 192.1c0 4.095-1.562 8.189-4.688 11.31L235.4 342.6c-3.125 3.124-7.22 4.686-11.31 4.686S215.9 345.7 212.8 342.6L138.4 268.3C135.3 265.2 133.7 261.1 133.7 256.1c0-4.095 1.562-8.189 4.688-11.31l11.31-11.31C152.9 231.2 156.1 229.7 161 229.7S169.2 231.2 172.4 234.3l51.72 51.72l115.7-115.7c3.125-3.124 7.22-4.686 11.31-4.686s8.189 1.562 11.31 4.686l11.31 11.31C376.9 184.8 378.4 188.9 378.4 192.1z"
+                                            class="fa-primary"></path>
+                                        <path
+                                            d="M466.5 83.71l-192-80c-4.875-2.031-13.16-3.703-18.44-3.703c-5.312 0-13.55 1.672-18.46 3.703L45.61 83.71C27.7 91.1 16 108.6 16 127.1C16 385.2 205.2 512 255.9 512C307.1 512 496 383.8 496 127.1C496 108.6 484.3 91.1 466.5 83.71zM378.4 192.1c0 4.095-1.562 8.189-4.688 11.31L235.4 342.6c-3.125 3.124-7.22 4.686-11.31 4.686S215.9 345.7 212.8 342.6L138.4 268.3C135.3 265.2 133.7 261.1 133.7 256.1c0-4.095 1.562-8.189 4.688-11.31l11.31-11.31C152.9 231.2 156.1 229.7 161 229.7S169.2 231.2 172.4 234.3l51.72 51.72l115.7-115.7c3.125-3.124 7.22-4.686 11.31-4.686s8.189 1.562 11.31 4.686l11.31 11.31C376.9 184.8 378.4 188.9 378.4 192.1z"
+                                            class="fa-secondary"></path>
                                     </svg></span><span class="gb-headline-text">Fully accredited CPD</span>
                             </h5>
                         </div>
@@ -11876,7 +12102,9 @@
                                                 }
                                             </style>
                                         </defs>
-                                        <path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z" class="fa-secondary"></path>
+                                        <path
+                                            d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"
+                                            class="fa-secondary"></path>
                                     </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                         <defs>
                                             <style>
@@ -11885,7 +12113,8 @@
                                                 }
                                             </style>
                                         </defs>
-                                        <path class="fa-secondary" d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z">
+                                        <path class="fa-secondary"
+                                            d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z">
                                         </path>
                                     </svg><svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
                                         <defs>
@@ -11895,7 +12124,9 @@
                                                 }
                                             </style>
                                         </defs>
-                                        <path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z" class="fa-secondary"></path>
+                                        <path
+                                            d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"
+                                            class="fa-secondary"></path>
                                     </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                                         <defs>
                                             <style>
@@ -11904,7 +12135,8 @@
                                                 }
                                             </style>
                                         </defs>
-                                        <path class="fa-secondary" d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z">
+                                        <path class="fa-secondary"
+                                            d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z">
                                         </path>
                                     </svg><svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
                                         <defs>
@@ -11914,7 +12146,9 @@
                                                 }
                                             </style>
                                         </defs>
-                                        <path d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z" class="fa-secondary"></path>
+                                        <path
+                                            d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"
+                                            class="fa-secondary"></path>
                                     </svg></span><span class="gb-headline-text">5 star reviews</span>
                             </h5>
                         </div>
@@ -11933,8 +12167,12 @@
                                                 }
                                             </style>
                                         </defs>
-                                        <path d="M384 0v128h128L384 0zM247.4 242.3C236.2 230.9 234.3 229.5 231.7 220.8C230.8 217.9 229.9 214.2 228.5 209C227.8 206.4 226.9 204 225.6 201.8C221.8 195.1 215.5 190.1 207.9 188C195.1 184.5 191.3 183.8 186.6 180C184.8 178.5 182.8 176.5 179.1 173.7C178.6 172.3 176.1 170.6 175.1 168.8C172.6 166.2 169.7 164.4 166.6 162.1C165.8 162.6 165.1 162.3 164.3 162C161.2 160.8 157.8 160 154.4 160c-.0176 0 .0176 0 0 0c-.002 0 .002 0 0 0s.002 0 0 0C151.9 160 149.4 160.3 146.9 161c.2441-.0664 .4809-.0391 .725-.0938C147.4 160.1 147.1 160.9 146.9 161C136.7 163.8 132.3 165.1 127.1 165.1c-4.359 0-8.697-1.375-18.82-4.125C106.7 160.3 104.1 160 101.6 160c-.0176 0 .0176 0 0 0C98.18 160 94.86 160.8 91.68 162C90.89 162.3 90.16 162.6 89.4 162.1C86.31 164.4 83.37 166.2 80.89 168.8C65.89 183.9 68.39 182.4 48.14 188C38.02 190.8 30.1 198.8 27.48 209C25.42 216.8 24.38 221.3 23.05 224.6C20.84 230.3 17.9 232.8 8.606 242.3C6.731 244.1 5.188 246.2 3.906 248.5C.0625 255.2-1.038 263.3 1.024 271.1c5.5 20.62 5.375 17.75 0 38.38c-2.062 7.688-.9616 15.8 2.882 22.54c1.281 2.246 2.825 4.34 4.7 6.215c11.06 11.34 13.09 12.77 15.72 21.48c.875 2.902 1.78 6.613 3.155 11.77c2.625 10.38 10.54 18.38 20.67 21.12c7.188 1.938 10.06 2.688 11.68 3.203s2.003 .7969 4.188 1.797V512l63.99-32l63.99 32v-114.4c4.25-2 1.501-1.125 15.87-5c7.592-2.062 13.91-7.078 17.71-13.84c1.266-2.25 2.257-4.695 2.913-7.289c1.375-5.188 2.303-8.914 3.169-11.82c2.594-8.727 4.549-10.09 15.7-21.43c7.5-7.5 10.38-18.5 7.625-28.75c-5.375-20.62-5.5-17.75 0-38.38C257.7 260.8 254.9 249.8 247.4 242.3zM128 352c-4.422 0-8.741-.4453-12.91-1.297c-8.336-1.703-16.08-5.027-22.89-9.625c-6.807-4.602-12.68-10.47-17.28-17.28C68.04 313.6 64.02 301.3 64.02 288s4.021-25.58 10.92-35.8c4.596-6.809 10.47-12.68 17.28-17.28c6.809-4.598 14.55-7.922 22.89-9.625C119.3 224.4 123.6 224 128 224c35.37 0 63.99 28.62 63.99 64S163.4 352 128 352z" class="fa-primary"></path>
-                                        <path d="M384 128V0H176C149.5 0 128 21.49 128 48l.0007 84.94c1.732-.3867 3.804-1.012 6.679-1.793l3.795-1.031c5.186-1.406 10.54-2.121 15.9-2.121c16.23 0 32.1 6.676 43.55 18.32l2.742 2.793c2.17 2.219 3.688 3.867 5.027 5.102c1.691 .5547 3.809 1.066 6.703 1.855l3.85 1.055c21.1 5.781 37.55 22.42 43.14 43.57l1.124 4.252c.791 3.008 1.293 5.18 1.854 6.91c1.24 1.41 2.92 3.004 5.209 5.324l2.412 2.445c15.56 15.77 21.62 38.48 15.88 59.88l-.852 3.175c-.8926 3.328-1.596 5.645-1.984 7.559C283.4 292 284 294.1 284.8 297.1l1.084 4.125c5.711 21.29-.3828 44.15-15.72 59.48l-2.875 2.914c-2.154 2.18-3.754 3.703-4.949 5.047c-.5605 1.746-1.066 3.941-1.861 6.977l-.9824 3.727c-4.748 18.77-18.02 34.06-35.52 41.47L223.1 512H464c26.51 0 48-21.49 48-48V128H384z" class="fa-secondary"></path>
+                                        <path
+                                            d="M384 0v128h128L384 0zM247.4 242.3C236.2 230.9 234.3 229.5 231.7 220.8C230.8 217.9 229.9 214.2 228.5 209C227.8 206.4 226.9 204 225.6 201.8C221.8 195.1 215.5 190.1 207.9 188C195.1 184.5 191.3 183.8 186.6 180C184.8 178.5 182.8 176.5 179.1 173.7C178.6 172.3 176.1 170.6 175.1 168.8C172.6 166.2 169.7 164.4 166.6 162.1C165.8 162.6 165.1 162.3 164.3 162C161.2 160.8 157.8 160 154.4 160c-.0176 0 .0176 0 0 0c-.002 0 .002 0 0 0s.002 0 0 0C151.9 160 149.4 160.3 146.9 161c.2441-.0664 .4809-.0391 .725-.0938C147.4 160.1 147.1 160.9 146.9 161C136.7 163.8 132.3 165.1 127.1 165.1c-4.359 0-8.697-1.375-18.82-4.125C106.7 160.3 104.1 160 101.6 160c-.0176 0 .0176 0 0 0C98.18 160 94.86 160.8 91.68 162C90.89 162.3 90.16 162.6 89.4 162.1C86.31 164.4 83.37 166.2 80.89 168.8C65.89 183.9 68.39 182.4 48.14 188C38.02 190.8 30.1 198.8 27.48 209C25.42 216.8 24.38 221.3 23.05 224.6C20.84 230.3 17.9 232.8 8.606 242.3C6.731 244.1 5.188 246.2 3.906 248.5C.0625 255.2-1.038 263.3 1.024 271.1c5.5 20.62 5.375 17.75 0 38.38c-2.062 7.688-.9616 15.8 2.882 22.54c1.281 2.246 2.825 4.34 4.7 6.215c11.06 11.34 13.09 12.77 15.72 21.48c.875 2.902 1.78 6.613 3.155 11.77c2.625 10.38 10.54 18.38 20.67 21.12c7.188 1.938 10.06 2.688 11.68 3.203s2.003 .7969 4.188 1.797V512l63.99-32l63.99 32v-114.4c4.25-2 1.501-1.125 15.87-5c7.592-2.062 13.91-7.078 17.71-13.84c1.266-2.25 2.257-4.695 2.913-7.289c1.375-5.188 2.303-8.914 3.169-11.82c2.594-8.727 4.549-10.09 15.7-21.43c7.5-7.5 10.38-18.5 7.625-28.75c-5.375-20.62-5.5-17.75 0-38.38C257.7 260.8 254.9 249.8 247.4 242.3zM128 352c-4.422 0-8.741-.4453-12.91-1.297c-8.336-1.703-16.08-5.027-22.89-9.625c-6.807-4.602-12.68-10.47-17.28-17.28C68.04 313.6 64.02 301.3 64.02 288s4.021-25.58 10.92-35.8c4.596-6.809 10.47-12.68 17.28-17.28c6.809-4.598 14.55-7.922 22.89-9.625C119.3 224.4 123.6 224 128 224c35.37 0 63.99 28.62 63.99 64S163.4 352 128 352z"
+                                            class="fa-primary"></path>
+                                        <path
+                                            d="M384 128V0H176C149.5 0 128 21.49 128 48l.0007 84.94c1.732-.3867 3.804-1.012 6.679-1.793l3.795-1.031c5.186-1.406 10.54-2.121 15.9-2.121c16.23 0 32.1 6.676 43.55 18.32l2.742 2.793c2.17 2.219 3.688 3.867 5.027 5.102c1.691 .5547 3.809 1.066 6.703 1.855l3.85 1.055c21.1 5.781 37.55 22.42 43.14 43.57l1.124 4.252c.791 3.008 1.293 5.18 1.854 6.91c1.24 1.41 2.92 3.004 5.209 5.324l2.412 2.445c15.56 15.77 21.62 38.48 15.88 59.88l-.852 3.175c-.8926 3.328-1.596 5.645-1.984 7.559C283.4 292 284 294.1 284.8 297.1l1.084 4.125c5.711 21.29-.3828 44.15-15.72 59.48l-2.875 2.914c-2.154 2.18-3.754 3.703-4.949 5.047c-.5605 1.746-1.066 3.941-1.861 6.977l-.9824 3.727c-4.748 18.77-18.02 34.06-35.52 41.47L223.1 512H464c26.51 0 48-21.49 48-48V128H384z"
+                                            class="fa-secondary"></path>
                                     </svg></span><span class="gb-headline-text">Printable certificates</span>
                             </h5>
                         </div>
@@ -11954,159 +12192,247 @@
         <div class="footer-logos">
             <br />
             <br />
-            <center>
-                <h3>Celebrating our clients and partners</h3>
-                <script>
-                    /*
-                     *  Initialize the slider
-                     */
 
-                    jQuery(document).ready(function($) {
-                        jQuery("#wpaft-logo-slider-default").owlCarousel({
-                            items: Number(wpaft.items),
-                            slideSpeed: Number(wpaft.slide_speed),
-                            paginationSpeed: Number(wpaft.pagination_speed),
-                            rewindSpeed: Number(wpaft.rewind_speed),
-                            singleItem: Boolean("1" == wpaft.single_item),
-                            autoPlay: Boolean("1" == wpaft.auto_play),
-                            stopOnHover: Boolean("1" == wpaft.stop_on_hover),
-                            navigation: Boolean("1" == wpaft.navigation),
-                            pagination: Boolean("1" == wpaft.pagination),
-                            responsive: Boolean("1" == wpaft.responsive),
-                        });
+            <h3>Celebrating our clients and partners</h3>
+            <script>
+                /*
+                 *  Initialize the slider
+                 */
+
+                jQuery(document).ready(function ($) {
+                    jQuery("#wpaft-logo-slider-default").owlCarousel({
+                        items: Number(wpaft.items),
+                        slideSpeed: Number(wpaft.slide_speed),
+                        paginationSpeed: Number(wpaft.pagination_speed),
+                        rewindSpeed: Number(wpaft.rewind_speed),
+                        singleItem: Boolean("1" == wpaft.single_item),
+                        autoPlay: Boolean("1" == wpaft.auto_play),
+                        stopOnHover: Boolean("1" == wpaft.stop_on_hover),
+                        navigation: Boolean("1" == wpaft.navigation),
+                        pagination: Boolean("1" == wpaft.pagination),
+                        responsive: Boolean("1" == wpaft.responsive),
                     });
-                </script>
-                <div id="wpaft-logo-slider-default" class="owl-carousel owl-theme" style="opacity: 1; display: block">
-                    <div class="owl-wrapper-outer">
-                        <div class="owl-wrapper" style="
+                });
+            </script>
+            <div id="wpaft-logo-slider-default" class="owl-carousel owl-theme" style="opacity: 1; display: block">
+                <div class="owl-wrapper-outer">
+                    <div class="owl-wrapper" style="
                   width: 4800px;
                   left: 0px;
                   display: block;
                   transition: all 500ms ease 0s;
                   transform: translate3d(0px, 0px, 0px);
                 ">
-                            <div class="owl-item" style="width: 240px">
-                                <div class="logo-container">
-                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="Greggs" decoding="async" data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs-100x100.png 100w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs.png" width="300" height="300" /><noscript><img width="300" height="300" src="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs.png" class="attachment-full size-full wp-post-image" alt="Greggs" decoding="async" loading="lazy" srcset="
+                        <div class="owl-item" style="width: 240px">
+                            <div class="logo-container">
+                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E"
+                                    class="attachment-full size-full wp-post-image" alt="Greggs" decoding="async"
+                                    data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs-100x100.png 100w"
+                                    data-lazy-sizes="(max-width: 300px) 100vw, 300px"
+                                    data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs.png"
+                                    width="300" height="300" /><noscript><img width="300" height="300"
+                                        src="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs.png"
+                                        class="attachment-full size-full wp-post-image" alt="Greggs" decoding="async"
+                                        loading="lazy" srcset="
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs.png         300w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs-200x200.png 200w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs-150x150.png 150w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091632/Greggs-100x100.png 100w
                         " sizes="(max-width: 300px) 100vw, 300px" /></noscript>
-                                </div>
                             </div>
-                            <div class="owl-item" style="width: 240px">
-                                <div class="logo-container">
-                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="" decoding="async" data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix-100x100.png 100w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix.png" width="300" height="300" /><noscript><img width="300" height="300" src="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix.png" class="attachment-full size-full wp-post-image" alt="" decoding="async" loading="lazy" srcset="
+                        </div>
+                        <div class="owl-item" style="width: 240px">
+                            <div class="logo-container">
+                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E"
+                                    class="attachment-full size-full wp-post-image" alt="" decoding="async"
+                                    data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix-100x100.png 100w"
+                                    data-lazy-sizes="(max-width: 300px) 100vw, 300px"
+                                    data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix.png"
+                                    width="300" height="300" /><noscript><img width="300" height="300"
+                                        src="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix.png"
+                                        class="attachment-full size-full wp-post-image" alt="" decoding="async"
+                                        loading="lazy" srcset="
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix.png         300w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix-200x200.png 200w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix-150x150.png 150w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091633/ScrewFix-100x100.png 100w
                         " sizes="(max-width: 300px) 100vw, 300px" /></noscript>
-                                </div>
                             </div>
-                            <div class="owl-item" style="width: 240px">
-                                <div class="logo-container">
-                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="" decoding="async" data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1-100x100.png 100w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1.png" width="300" height="300" /><noscript><img width="300" height="300" src="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1.png" class="attachment-full size-full wp-post-image" alt="" decoding="async" loading="lazy" srcset="
+                        </div>
+                        <div class="owl-item" style="width: 240px">
+                            <div class="logo-container">
+                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E"
+                                    class="attachment-full size-full wp-post-image" alt="" decoding="async"
+                                    data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1-100x100.png 100w"
+                                    data-lazy-sizes="(max-width: 300px) 100vw, 300px"
+                                    data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1.png"
+                                    width="300" height="300" /><noscript><img width="300" height="300"
+                                        src="https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1.png"
+                                        class="attachment-full size-full wp-post-image" alt="" decoding="async"
+                                        loading="lazy" srcset="
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1.png         300w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1-200x200.png 200w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1-150x150.png 150w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2022/07/28091634/Costa-Coffee-2-1-100x100.png 100w
                         " sizes="(max-width: 300px) 100vw, 300px" /></noscript>
-                                </div>
                             </div>
-                            <div class="owl-item" style="width: 240px">
-                                <div class="logo-container">
-                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20500%20500'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="" decoding="async" data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4.png 500w, https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4-300x300.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4-100x100.png 100w" data-lazy-sizes="(max-width: 500px) 100vw, 500px" data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4.png" width="500" height="500" /><noscript><img width="500" height="500" src="https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4.png" class="attachment-full size-full wp-post-image" alt="" decoding="async" loading="lazy" srcset="
+                        </div>
+                        <div class="owl-item" style="width: 240px">
+                            <div class="logo-container">
+                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20500%20500'%3E%3C/svg%3E"
+                                    class="attachment-full size-full wp-post-image" alt="" decoding="async"
+                                    data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4.png 500w, https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4-300x300.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4-100x100.png 100w"
+                                    data-lazy-sizes="(max-width: 500px) 100vw, 500px"
+                                    data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4.png"
+                                    width="500" height="500" /><noscript><img width="500" height="500"
+                                        src="https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4.png"
+                                        class="attachment-full size-full wp-post-image" alt="" decoding="async"
+                                        loading="lazy" srcset="
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4.png         500w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4-200x200.png 200w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4-150x150.png 150w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4-300x300.png 300w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2021/11/28121916/Company-logos-4-100x100.png 100w
                         " sizes="(max-width: 500px) 100vw, 500px" /></noscript>
-                                </div>
                             </div>
-                            <div class="owl-item" style="width: 240px">
-                                <div class="logo-container">
-                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20500%20500'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="Kip McGrath" decoding="async" data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath.png 500w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath-300x300.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath-100x100.png 100w" data-lazy-sizes="(max-width: 500px) 100vw, 500px" data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath.png" width="500" height="500" /><noscript><img width="500" height="500" src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath.png" class="attachment-full size-full wp-post-image" alt="Kip McGrath" decoding="async" loading="lazy" srcset="
+                        </div>
+                        <div class="owl-item" style="width: 240px">
+                            <div class="logo-container">
+                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20500%20500'%3E%3C/svg%3E"
+                                    class="attachment-full size-full wp-post-image" alt="Kip McGrath" decoding="async"
+                                    data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath.png 500w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath-300x300.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath-100x100.png 100w"
+                                    data-lazy-sizes="(max-width: 500px) 100vw, 500px"
+                                    data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath.png"
+                                    width="500" height="500" /><noscript><img width="500" height="500"
+                                        src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath.png"
+                                        class="attachment-full size-full wp-post-image" alt="Kip McGrath"
+                                        decoding="async" loading="lazy" srcset="
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath.png         500w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath-200x200.png 200w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath-150x150.png 150w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath-300x300.png 300w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145751/Kip-McGrath-100x100.png 100w
                         " sizes="(max-width: 500px) 100vw, 500px" /></noscript>
-                                </div>
                             </div>
-                            <div class="owl-item" style="width: 240px">
-                                <div class="logo-container">
-                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20500%20500'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="HM Government" decoding="async" data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1.png 500w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1-300x300.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1-100x100.png 100w" data-lazy-sizes="(max-width: 500px) 100vw, 500px" data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1.png" width="500" height="500" /><noscript><img width="500" height="500" src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1.png" class="attachment-full size-full wp-post-image" alt="HM Government" decoding="async" loading="lazy" srcset="
+                        </div>
+                        <div class="owl-item" style="width: 240px">
+                            <div class="logo-container">
+                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20500%20500'%3E%3C/svg%3E"
+                                    class="attachment-full size-full wp-post-image" alt="HM Government" decoding="async"
+                                    data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1.png 500w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1-300x300.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1-100x100.png 100w"
+                                    data-lazy-sizes="(max-width: 500px) 100vw, 500px"
+                                    data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1.png"
+                                    width="500" height="500" /><noscript><img width="500" height="500"
+                                        src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1.png"
+                                        class="attachment-full size-full wp-post-image" alt="HM Government"
+                                        decoding="async" loading="lazy" srcset="
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1.png         500w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1-200x200.png 200w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1-150x150.png 150w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1-300x300.png 300w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/09/28145752/HM-Government-1-100x100.png 100w
                         " sizes="(max-width: 500px) 100vw, 500px" /></noscript>
-                                </div>
                             </div>
-                            <div class="owl-item" style="width: 240px">
-                                <div class="logo-container">
-                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20450'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="Age UK" decoding="async" data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK.png 450w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK-300x300.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK-100x100.png 100w" data-lazy-sizes="(max-width: 450px) 100vw, 450px" data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK.png" width="450" height="450" /><noscript><img width="450" height="450" src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK.png" class="attachment-full size-full wp-post-image" alt="Age UK" decoding="async" loading="lazy" srcset="
+                        </div>
+                        <div class="owl-item" style="width: 240px">
+                            <div class="logo-container">
+                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20450'%3E%3C/svg%3E"
+                                    class="attachment-full size-full wp-post-image" alt="Age UK" decoding="async"
+                                    data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK.png 450w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK-300x300.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK-100x100.png 100w"
+                                    data-lazy-sizes="(max-width: 450px) 100vw, 450px"
+                                    data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK.png"
+                                    width="450" height="450" /><noscript><img width="450" height="450"
+                                        src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK.png"
+                                        class="attachment-full size-full wp-post-image" alt="Age UK" decoding="async"
+                                        loading="lazy" srcset="
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK.png         450w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK-200x200.png 200w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK-150x150.png 150w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK-300x300.png 300w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154345/Age-UK-100x100.png 100w
                         " sizes="(max-width: 450px) 100vw, 450px" /></noscript>
-                                </div>
                             </div>
-                            <div class="owl-item" style="width: 240px">
-                                <div class="logo-container">
-                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20450'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="Cardiff University" decoding="async" data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University.png 450w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University-300x300.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University-100x100.png 100w" data-lazy-sizes="(max-width: 450px) 100vw, 450px" data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University.png" width="450" height="450" /><noscript><img width="450" height="450" src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University.png" class="attachment-full size-full wp-post-image" alt="Cardiff University" decoding="async" loading="lazy" srcset="
+                        </div>
+                        <div class="owl-item" style="width: 240px">
+                            <div class="logo-container">
+                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20450%20450'%3E%3C/svg%3E"
+                                    class="attachment-full size-full wp-post-image" alt="Cardiff University"
+                                    decoding="async"
+                                    data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University.png 450w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University-300x300.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University-100x100.png 100w"
+                                    data-lazy-sizes="(max-width: 450px) 100vw, 450px"
+                                    data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University.png"
+                                    width="450" height="450" /><noscript><img width="450" height="450"
+                                        src="https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University.png"
+                                        class="attachment-full size-full wp-post-image" alt="Cardiff University"
+                                        decoding="async" loading="lazy" srcset="
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University.png         450w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University-200x200.png 200w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University-150x150.png 150w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University-300x300.png 300w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2020/03/28154346/Cardiff-University-100x100.png 100w
                         " sizes="(max-width: 450px) 100vw, 450px" /></noscript>
-                                </div>
                             </div>
-                            <div class="owl-item" style="width: 240px">
-                                <div class="logo-container">
-                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20331%20331'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="Yeo Valley" decoding="async" data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley.png 331w, https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley-300x300.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley-100x100.png 100w" data-lazy-sizes="(max-width: 331px) 100vw, 331px" data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley.png" width="331" height="331" /><noscript><img width="331" height="331" src="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley.png" class="attachment-full size-full wp-post-image" alt="Yeo Valley" decoding="async" loading="lazy" srcset="
+                        </div>
+                        <div class="owl-item" style="width: 240px">
+                            <div class="logo-container">
+                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20331%20331'%3E%3C/svg%3E"
+                                    class="attachment-full size-full wp-post-image" alt="Yeo Valley" decoding="async"
+                                    data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley.png 331w, https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley-200x200.png 200w, https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley-150x150.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley-300x300.png 300w, https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley-100x100.png 100w"
+                                    data-lazy-sizes="(max-width: 331px) 100vw, 331px"
+                                    data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley.png"
+                                    width="331" height="331" /><noscript><img width="331" height="331"
+                                        src="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley.png"
+                                        class="attachment-full size-full wp-post-image" alt="Yeo Valley"
+                                        decoding="async" loading="lazy" srcset="
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley.png         331w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley-200x200.png 200w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley-150x150.png 150w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley-300x300.png 300w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28154052/Yeo-Valley-100x100.png 100w
                         " sizes="(max-width: 331px) 100vw, 331px" /></noscript>
-                                </div>
                             </div>
-                            <div class="owl-item" style="width: 240px">
-                                <div class="logo-container">
-                                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20150%20150'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="NHS logo" decoding="async" data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28162125/Untitled-design-10.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28162125/Untitled-design-10-100x100.png 100w" data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28162125/Untitled-design-10.png" width="150" height="150" /><noscript><img width="150" height="150" src="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28162125/Untitled-design-10.png" class="attachment-full size-full wp-post-image" alt="NHS logo" decoding="async" loading="lazy" srcset="
+                        </div>
+                        <div class="owl-item" style="width: 240px">
+                            <div class="logo-container">
+                                <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20150%20150'%3E%3C/svg%3E"
+                                    class="attachment-full size-full wp-post-image" alt="NHS logo" decoding="async"
+                                    data-lazy-srcset="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28162125/Untitled-design-10.png 150w, https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28162125/Untitled-design-10-100x100.png 100w"
+                                    data-lazy-sizes="(max-width: 150px) 100vw, 150px"
+                                    data-lazy-src="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28162125/Untitled-design-10.png"
+                                    width="150" height="150" /><noscript><img width="150" height="150"
+                                        src="https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28162125/Untitled-design-10.png"
+                                        class="attachment-full size-full wp-post-image" alt="NHS logo" decoding="async"
+                                        loading="lazy" srcset="
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28162125/Untitled-design-10.png         150w,
                           https://cdn.cpdonline.co.uk/wp-content/uploads/2019/09/28162125/Untitled-design-10-100x100.png 100w
                         " sizes="(max-width: 150px) 100vw, 150px" /></noscript>
-                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="owl-controls clickable" style="display: none">
-                        <div class="owl-pagination">
-                            <div class="owl-page active"><span class=""></span></div>
-                        </div>
+                <div class="owl-controls clickable" style="display: none">
+                    <div class="owl-pagination">
+                        <div class="owl-page active"><span class=""></span></div>
                     </div>
                 </div>
-            </center>
+            </div>
+
         </div>
         {% include 'footer.html' %}
     </div>
-
+<center>
     <div id="wc-sticky-cart-panel" class="add-to-cart-panel show-sticky-add-to-cart" style="transform: translateY(0px)">
         <div class="inside-add-to-cart-panel grid-container grid-parent">
             <div class="product-image">
-                <img src="{{img}}" class="attachment-thumbnail size-thumbnail wp-post-image entered lazyloaded" alt="Certificate Course" decoding="async" data-lazy-srcset="{{img}} 150w, {{img}} 500w, {{img}} 200w, {{img}} 300w, {{img}} 100w" data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="{img}" data-ll-status="loaded" sizes="(max-width: 150px) 100vw, 150px" srcset="{{img}} 150w" width="150" height="150" /><noscript><img width="150" height="150" src="{{img}}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Certificate Course" decoding="async" loading="lazy" srcset="
+                <img src="{{img}}" class="attachment-thumbnail size-thumbnail wp-post-image entered lazyloaded"
+                    alt="Certificate Course" decoding="async"
+                    data-lazy-srcset="{{img}} 150w, {{img}} 500w, {{img}} 200w, {{img}} 300w, {{img}} 100w"
+                    data-lazy-sizes="(max-width: 150px) 100vw, 150px" data-lazy-src="{img}" data-ll-status="loaded"
+                    sizes="(max-width: 150px) 100vw, 150px" srcset="{{img}} 150w" width="150"
+                    height="150" /><noscript><img width="150" height="150" src="{{img}}"
+                        class="attachment-thumbnail size-thumbnail wp-post-image" alt="Certificate Course"
+                        decoding="async" loading="lazy" srcset="
                 {{img}} 150w,
                 {{img}} 500w,
                 {{img}} 200w,
@@ -12118,7 +12444,8 @@
             <div class="product-title">{{title}}</div>
 
             <div class="product-price">
-                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">£</span>{{price}}</bdi></span>
+                <span class="woocommerce-Price-amount amount"><bdi><span
+                            class="woocommerce-Price-currencySymbol">$</span>{{price}}</bdi></span>
                 <!-- <small class="woocommerce-price-suffix">+ VAT</small> -->
             </div>
             <!-- <form action="?add-to-cart=155100" class="cart" method="post" enctype="multipart/form-data" tp-global-watched="true">
@@ -12140,7 +12467,8 @@
 
     <div id="um_upload_single" style="display: none"></div>
     <div id="um_view_photo" style="display: none">
-        <a href="javascript:void(0);" data-action="um_remove_modal" class="um-modal-close" aria-label="Close view photo modal">
+        <a href="javascript:void(0);" data-action="um_remove_modal" class="um-modal-close"
+            aria-label="Close view photo modal">
             <i class="um-faicon-times"></i>
         </a>
 
@@ -12148,25 +12476,27 @@
             <div class="um-modal-photo"></div>
         </div>
     </div>
+    </center>
     <script>
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery("p#user_switching_switch_on").css("position", "relative");
         });
     </script>
 
     <!-- GTM Container placement set to footer -->
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDNT4XX" height="0" width="0" style="display: none; visibility: hidden" aria-hidden="true"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WDNT4XX" height="0" width="0"
+            style="display: none; visibility: hidden" aria-hidden="true"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <script id="generate-a11y">
-        !(function() {
+        !(function () {
             "use strict";
             if ("querySelector" in document && "addEventListener" in window) {
                 var e = document.body;
-                e.addEventListener("mousedown", function() {
-                        e.classList.add("using-mouse");
-                    }),
-                    e.addEventListener("keydown", function() {
+                e.addEventListener("mousedown", function () {
+                    e.classList.add("using-mouse");
+                }),
+                    e.addEventListener("keydown", function () {
                         e.classList.remove("using-mouse");
                     });
             }
@@ -12242,23 +12572,29 @@
         </div>
     </div>
     <script>
-        (function() {
+        (function () {
             var c = document.body.className;
             c = c.replace(/woocommerce-no-js/, "woocommerce-js");
             document.body.className = c;
         })();
     </script>
-    <link data-minify="1" rel="stylesheet" id="wdm_single_product_gr_css-css" href="/static/course/care-certificate_files/wdm_single_product_gr.css" media="all" />
-    <link rel="stylesheet" id="vc_font_awesome_5_shims-css" href="/static/course/care-certificate_files/v4-shims.min.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="vc_font_awesome_5-css" href="/static/course/care-certificate_files/all.min.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="wpaft-logo-slider-css" href="/static/course/care-certificate_files/client-carousel.css" media="all" />
-    <link data-minify="1" rel="stylesheet" id="reviewsio-rating-snippet-style-css" href="/static/course/care-certificate_files/dist.css" media="" />
+    <link data-minify="1" rel="stylesheet" id="wdm_single_product_gr_css-css"
+        href="/static/course/care-certificate_files/wdm_single_product_gr.css" media="all" />
+    <link rel="stylesheet" id="vc_font_awesome_5_shims-css"
+        href="/static/course/care-certificate_files/v4-shims.min.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="vc_font_awesome_5-css"
+        href="/static/course/care-certificate_files/all.min.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="wpaft-logo-slider-css"
+        href="/static/course/care-certificate_files/client-carousel.css" media="all" />
+    <link data-minify="1" rel="stylesheet" id="reviewsio-rating-snippet-style-css"
+        href="/static/course/care-certificate_files/dist.css" media="" />
     <style id="reviewsio-rating-snippet-font-style-inline-css">
         .ruk_rating_snippet>.ruk-rating-snippet-count {
             font-family: inherit !important;
         }
     </style>
-    <script data-minify="1" src="/static/course/care-certificate_files/zebra_tooltips.js" id="simple_tooltips_base-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/zebra_tooltips.js"
+        id="simple_tooltips_base-js"></script>
     <script id="h5ap-player-js-extra">
         var h5ap_i18n = {
             restart: "Restart",
@@ -12306,8 +12642,10 @@
             },
         };
     </script>
-    <script data-minify="1" src="/static/course/care-certificate_files/bootstrap-tour-standalone.js" id="bootstrap-tour-standalone-js"></script>
-    <script data-minify="1" src="/static/course/care-certificate_files/cbxtakeatour-events.js" id="cbxtakeatour-events-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/bootstrap-tour-standalone.js"
+        id="bootstrap-tour-standalone-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/cbxtakeatour-events.js"
+        id="cbxtakeatour-events-js"></script>
     <script id="cbxtakeatour-events-hooked-js-extra">
         var cbxtakeatourpro = {
             ajaxurl: "https:\/\/cpdonline.co.uk\/wp-admin\/admin-ajax.php",
@@ -12318,7 +12656,8 @@
             track_log: "1",
         };
     </script>
-    <script data-minify="1" src="/static/course/care-certificate_files/cbxtakeatour-events-hooked.js" id="cbxtakeatour-events-hooked-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/cbxtakeatour-events-hooked.js"
+        id="cbxtakeatour-events-hooked-js"></script>
     <script id="cbxtakeatour-public-js-extra">
         var cbxtakeatour = {
             steps: [],
@@ -12329,7 +12668,8 @@
             tour_label_endtour: "End tour",
         };
     </script>
-    <script data-minify="1" src="/static/course/care-certificate_files/cbxtakeatour-public.js" id="cbxtakeatour-public-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/cbxtakeatour-public.js"
+        id="cbxtakeatour-public-js"></script>
     <script data-minify="1" src="/static/course/care-certificate_files/eTabs.js" id="iw_tabs-js"></script>
     <script src="/static/course/care-certificate_files/jquery.zoom.min.js" id="zoom-js"></script>
     <script src="/static/course/care-certificate_files/jquery.flexslider.min.js" id="flexslider-js"></script>
@@ -12395,11 +12735,12 @@
     </script>
     <script src="/static/course/care-certificate_files/menu.min.js" id="generate-menu-js"></script>
     <script src="/static/course/care-certificate_files/comment-reply.min.js" id="comment-reply-js"></script>
-    <script data-minify="1" async="" src="/static/course/care-certificate_files/api.min.js" id="trustpulse-api-js-js"></script>
+    <script data-minify="1" async="" src="/static/course/care-certificate_files/api.min.js"
+        id="trustpulse-api-js-js"></script>
     <script id="trustpulse-api-js-js-after">
-        !(function(n, t) {
+        !(function (n, t) {
             if (!n[t])
-                n[t] = function() {
+                n[t] = function () {
                     (n._tpq = n._tpq || []).push(arguments);
                 };
         })(window, "tptag");
@@ -12411,7 +12752,7 @@
             thresholds: "0px 0px",
             class_loading: "pmloading",
             class_loaded: "pmloaded",
-            callback_loaded: function(element) {
+            callback_loaded: function (element) {
                 if (element.tagName === "IFRAME") {
                     if (element.classList.contains("pmloaded")) {
                         if (typeof window.jQuery != "undefined") {
@@ -12423,7 +12764,7 @@
                 }
             },
         };
-        window.addEventListener("LazyLoad::Initialized", function(e) {
+        window.addEventListener("LazyLoad::Initialized", function (e) {
             var lazyLoadInstance = e.detail.instance;
         });
 
@@ -12431,8 +12772,8 @@
             var t = document.createElement("iframe"),
                 r = "ID?";
             (r += 0 === e.dataset.query.length ? "" : e.dataset.query + "&"),
-            (r += "autoplay=1"),
-            t.setAttribute("src", r.replace("ID", e.dataset.src)),
+                (r += "autoplay=1"),
+                t.setAttribute("src", r.replace("ID", e.dataset.src)),
                 t.setAttribute("frameborder", "0"),
                 t.setAttribute("allowfullscreen", "1"),
                 t.setAttribute(
@@ -12513,13 +12854,14 @@
             i18n_unavailable_text: "Sorry, this product is unavailable. Please choose a different combination.",
         };
     </script>
-    <script src="/static/course/care-certificate_files/add-to-cart-variation.min.js" id="wc-add-to-cart-variation-js"></script>
+    <script src="/static/course/care-certificate_files/add-to-cart-variation.min.js"
+        id="wc-add-to-cart-variation-js"></script>
     <script src="/static/course/care-certificate_files/slick.min.js" id="slick-js"></script>
     <script data-minify="1" src="/static/course/care-certificate_files/imagezoom.js" id="imagezoom-js"></script>
     <script src="/static/course/care-certificate_files/jquery.fancybox.min.js" id="fancybox-js"></script>
     <script data-minify="1" src="/static/course/care-certificate_files/wpgs.js" id="wpgs-public-js"></script>
     <script id="wpgs-public-js-after">
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             jQuery(".wpgs-for").slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
@@ -12548,26 +12890,26 @@
                 infinite: false,
                 focusOnSelect: true,
                 responsive: [{
-                        breakpoint: 1025,
-                        settings: {
-                            variableWidth: false,
+                    breakpoint: 1025,
+                    settings: {
+                        variableWidth: false,
 
-                            slidesToShow: 4,
-                            slidesToScroll: 1,
-                            swipeToSlide: true,
-                        },
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        swipeToSlide: true,
                     },
+                },
 
-                    {
-                        breakpoint: 767,
-                        settings: {
-                            variableWidth: false,
+                {
+                    breakpoint: 767,
+                    settings: {
+                        variableWidth: false,
 
-                            slidesToShow: 4,
-                            slidesToScroll: 1,
-                            swipeToSlide: true,
-                        },
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        swipeToSlide: true,
                     },
+                },
                 ],
             });
         });
@@ -12586,8 +12928,10 @@
     <script src="/static/course/care-certificate_files/um-jquery-form.min.js" id="um_jquery_form-js"></script>
     <script data-minify="1" src="/static/course/care-certificate_files/um-fileupload.js" id="um_fileupload-js"></script>
     <script data-minify="1" src="/static/course/care-certificate_files/picker.js" id="um_datetime-js"></script>
-    <script data-minify="1" src="/static/course/care-certificate_files/picker.date.js" id="um_datetime_date-js"></script>
-    <script data-minify="1" src="/static/course/care-certificate_files/picker.time.js" id="um_datetime_time-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/picker.date.js"
+        id="um_datetime_date-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/picker.time.js"
+        id="um_datetime_time-js"></script>
     <script src="/static/course/care-certificate_files/i18n.min.js" id="wp-i18n-js"></script>
     <script id="wp-i18n-js-after">
         wp.i18n.setLocaleData({
@@ -12612,7 +12956,8 @@
     <script src="/static/course/care-certificate_files/um-scripts.min.js" id="um_scripts-js"></script>
     <script src="/static/course/care-certificate_files/um-profile.min.js" id="um_profile-js"></script>
     <script src="/static/course/care-certificate_files/um-account.min.js" id="um_account-js"></script>
-    <script data-minify="1" data-cfasync="false" data-no-optimize="1" src="/static/course/care-certificate_files/instantpage.js" id="perfmatters-instant-page-js"></script>
+    <script data-minify="1" data-cfasync="false" data-no-optimize="1"
+        src="/static/course/care-certificate_files/instantpage.js" id="perfmatters-instant-page-js"></script>
     <script id="wdm_single_product_gr_js-js-extra">
         var wdm_gr_data = {
             default_script: "front",
@@ -12631,7 +12976,8 @@
             bulk_discount_data: [],
         };
     </script>
-    <script data-minify="1" src="/static/course/care-certificate_files/wdm_single_product_gr.js" id="wdm_single_product_gr_js-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/wdm_single_product_gr.js"
+        id="wdm_single_product_gr_js-js"></script>
     <script id="wdm_single_product_functions_js-js-extra">
         var wdm_functions_data = {
             decimal_separator: ".",
@@ -12642,7 +12988,8 @@
             price_on_load: "20",
         };
     </script>
-    <script data-minify="1" src="/static/course/care-certificate_files/wdm_single_product_functions.js" id="wdm_single_product_functions_js-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/wdm_single_product_functions.js"
+        id="wdm_single_product_functions_js-js"></script>
     <script src="/static/course/care-certificate_files/js_composer_front.min.js" id="wpb_composer_front_js-js"></script>
     <script src="/static/course/care-certificate_files/jquery.matchHeight-min.js" id="lgc-matchHeight-js"></script>
     <script id="wpaft-logo-slider-js-extra">
@@ -12661,18 +13008,19 @@
         };
     </script>
     <script src="/static/course/care-certificate_files/client-carousel.js" id="wpaft-logo-slider-js"></script>
-    <script data-minify="1" src="/static/course/care-certificate_files/dist_002.js" id="reviewsio-rating-snippet-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/dist_002.js"
+        id="reviewsio-rating-snippet-js"></script>
     <script id="reviewsio-rating-snippet-js-after">
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             loadReviewsIoRatingSnippets();
         });
 
-        var loadReviewsIoRatingSnippets = function() {
+        var loadReviewsIoRatingSnippets = function () {
             ratingSnippet("ruk_rating_snippet", {
                 store: "cpd-online-college",
                 lang: "en",
                 usePolaris: true,
-                color: "#094B77",
+                color: "#B8860B",
                 linebreak: "1",
                 minRating: "1",
                 text: "Reviews",
@@ -12681,10 +13029,11 @@
         };
     </script>
     <script data-minify="1" src="/static/course/care-certificate_files/dist.js" id="reviewsio-rich-snippet-js"></script>
-    <script data-minify="1" src="/static/course/care-certificate_files/build_002.js" id="reviewsio-polaris-review-js"></script>
+    <script data-minify="1" src="/static/course/care-certificate_files/build_002.js"
+        id="reviewsio-polaris-review-js"></script>
     <script>
-        jQuery(function($) {
-            (function() {
+        jQuery(function ($) {
+            (function () {
                 var hash = window.location.hash;
                 var tabs = $(this).find(".wc-tabs, ul.tabs").first();
                 var ref = {
@@ -12740,7 +13089,7 @@
     </script>
 
     <script>
-        jQuery(function() {
+        jQuery(function () {
             jQuery(".tooltips img")
                 .closest(".tooltips")
                 .css("display", "inline-block");
@@ -12767,54 +13116,54 @@
         };
     </script>
     <script>
-        jQuery(window).on("load", function() {
+        jQuery(window).on("load", function () {
             jQuery('input[name="um_request"]').val("");
         });
     </script>
     <script>
         window.lazyLoadOptions = [{
-                elements_selector: "img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",
-                data_src: "lazy-src",
-                data_srcset: "lazy-srcset",
-                data_sizes: "lazy-sizes",
-                class_loading: "lazyloading",
-                class_loaded: "lazyloaded",
-                threshold: 300,
-                callback_loaded: function(element) {
-                    if (
-                        element.tagName === "IFRAME" &&
-                        element.dataset.rocketLazyload == "fitvidscompatible"
-                    ) {
-                        if (element.classList.contains("lazyloaded")) {
-                            if (typeof window.jQuery != "undefined") {
-                                if (jQuery.fn.fitVids) {
-                                    jQuery(element).parent().fitVids();
-                                }
+            elements_selector: "img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",
+            data_src: "lazy-src",
+            data_srcset: "lazy-srcset",
+            data_sizes: "lazy-sizes",
+            class_loading: "lazyloading",
+            class_loaded: "lazyloaded",
+            threshold: 300,
+            callback_loaded: function (element) {
+                if (
+                    element.tagName === "IFRAME" &&
+                    element.dataset.rocketLazyload == "fitvidscompatible"
+                ) {
+                    if (element.classList.contains("lazyloaded")) {
+                        if (typeof window.jQuery != "undefined") {
+                            if (jQuery.fn.fitVids) {
+                                jQuery(element).parent().fitVids();
                             }
                         }
                     }
-                },
+                }
             },
-            {
-                elements_selector: ".rocket-lazyload",
-                data_src: "lazy-src",
-                data_srcset: "lazy-srcset",
-                data_sizes: "lazy-sizes",
-                class_loading: "lazyloading",
-                class_loaded: "lazyloaded",
-                threshold: 300,
-            },
+        },
+        {
+            elements_selector: ".rocket-lazyload",
+            data_src: "lazy-src",
+            data_srcset: "lazy-srcset",
+            data_sizes: "lazy-sizes",
+            class_loading: "lazyloading",
+            class_loaded: "lazyloaded",
+            threshold: 300,
+        },
         ];
         window.addEventListener(
             "LazyLoad::Initialized",
-            function(e) {
+            function (e) {
                 var lazyLoadInstance = e.detail.instance;
                 if (window.MutationObserver) {
-                    var observer = new MutationObserver(function(mutations) {
+                    var observer = new MutationObserver(function (mutations) {
                         var image_count = 0;
                         var iframe_count = 0;
                         var rocketlazy_count = 0;
-                        mutations.forEach(function(mutation) {
+                        mutations.forEach(function (mutation) {
                             for (var i = 0; i < mutation.addedNodes.length; i++) {
                                 if (
                                     typeof mutation.addedNodes[i].getElementsByTagName !==
@@ -12932,7 +13281,9 @@
     <div id="tp-Bb19BlSn-holder" data-campaign="83c907af-146d-45cb-9d1b-66c65f98ed37"></div>
     <div id="tp-Jwl02Nfd-holder" data-campaign="83c907af-146d-45cb-9d1b-66c65f98ed37"></div>
     <div id="tp-E0Wq9BIW-holder" data-campaign="83c907af-146d-45cb-9d1b-66c65f98ed37"></div>
-    <iframe name="__privateStripeMetricsController4630" allowtransparency="true" scrolling="no" role="presentation" src="/static/course/care-certificate_files/m-outer-93afeeb17bc37e711759584dbfc50d47.html" aria-hidden="true" tabindex="-1" style="
+    <iframe name="__privateStripeMetricsController4630" allowtransparency="true" scrolling="no" role="presentation"
+        src="/static/course/care-certificate_files/m-outer-93afeeb17bc37e711759584dbfc50d47.html" aria-hidden="true"
+        tabindex="-1" style="
         border: medium none !important;
         margin: 0px !important;
         padding: 0px !important;
@@ -12953,7 +13304,10 @@
         </div>
     </div>
     <div style="width: 0px; height: 0px; display: none; visibility: hidden" id="batBeacon56815416612">
-        <img style="width: 0px; height: 0px; display: none; visibility: hidden" id="batBeacon106569699764" alt="" src="/static/course/care-certificate_files/0_002" width="0" height="0" /><img style="width: 0px; height: 0px; display: none; visibility: hidden" id="batBeacon254168145540" alt="" src="/static/course/care-certificate_files/0" width="0" height="0" />
+        <img style="width: 0px; height: 0px; display: none; visibility: hidden" id="batBeacon106569699764" alt=""
+            src="/static/course/care-certificate_files/0_002" width="0" height="0" /><img
+            style="width: 0px; height: 0px; display: none; visibility: hidden" id="batBeacon254168145540" alt=""
+            src="/static/course/care-certificate_files/0" width="0" height="0" />
     </div>
     <iframe data-product="web_widget" title="No content" tabindex="-1" allow="microphone *" aria-hidden="true" style="
         width: 0px;

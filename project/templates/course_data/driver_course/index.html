@@ -1,0 +1,96 @@
+{% extends 'course_data/course_layout.html' %}
+{% block data %}
+<div id="main-holder">
+    <div class="landing">
+        <div class="l-card closed">
+            <div class="l-card__inner" style="position: fixed; margin-top: 0px; top: 100px;">
+                <div class="l-card__img-overflow">
+                    <div class="l-card__img" style="display: none;"><img width="300px" height="200px" src="/static/course/{{files}}/alison_courseware_intro_4651.jpg" alt="Driver Safety Awareness Training"></div>
+                </div>
+                <div class="l-card__info-padding">
+                    <h3 class="course-title">Driver Safety Awareness Training</h3>
+                    <div class="l-card__enrolled">
+                        <span><span class="icon-learners-1"></span><span class="course-enrolled">6,646</span></span> Learners already enrolled
+                    </div>
+                    <div class="l-rating">
+                        <div class="l-rating__love"><span class="rating" data-val="5"></span><span class="course-love">140</span></div>
+                        <div class="l-rating__like"><span class="rating" data-val="2"></span><span class="course-like">103</span></div>
+                        <div class="l-rating__no"><span class="rating" data-val="0"></span>Not Interested</div>
+                    </div>
+                    <div class="l-card__includes l-list l-list--tick">
+                        <h6>This Free Online Course Includes:</h6>
+                        <ul>
+                            <li><span class="course-avg_duration l-time">1.5-3</span> Hours of Learning</li>
+                            <li>CPD Accreditation</li>
+                            <li>Final Assessment</li>
+                        </ul>
+                    </div>
+                    <a class="course_btn add-course-id course_btn--shop l-but" href="/course/{{course.ID}}" data-id="{{course.ID}}">Continue Learning</a>
+                </div>
+            </div>
+        </div>
+        <div class="landing__content">
+            <div class="breadcrumb__outer">
+                <ol class="breadcrumb">
+                    <li><i class="icon-home"></i><a href="/">Home</a></li>
+                    <li><i class="icon-right-arrow"></i><a href="#">Safety</a></li>
+                    <li><i class="icon-right-arrow"></i><span>Driver Safety Awareness Training</span></li>
+                </ol>
+            </div>
+            <div class="l-info">
+                <div class="l-info__inner">
+                    <h1 class="course-title">Driver Safety Awareness Training</h1>
+                    <div class="course-headline l-info__headline">Ensure road safety, minimise accidents, and cultivate responsible driving practices with this free online course.</div>
+                    <div class="course-description l-info__description">
+                        <span class="l-info__description-full">Navigating the roads can be quite challenging. It takes more than basic driving skills to ensure your safety and the safety of others. This course is your guide to becoming a confident and responsible driver. We break down the complexities of Canada traffic laws, road signs and pre-journey checks, equipping you with the knowledge to handle any situation that may arise.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="l-tabs">
+                <div class="l-tabs__nav">
+                    <div class="l-tabs__title l-tabs__title--active" data-tab="course-modules"><span>Course</span> Modules</div>
+                    <div class="l-tabs__title" data-tab="course-desc"><span>Course</span> Description</div>
+                </div>
+                <div class="l-tabs__content">
+                    <div class="l-mods course-modules l-mods--cancel">
+                        <div class="l-mods__module l-mods__module--open">
+                            <div class="l-mods__module-inner">
+                                <a href="#">
+                                    <div class="l-mods__module-num">Module 1</div>
+                                    <h3>Mastering Safe Driving</h3>
+                                </a>
+                            </div>
+                            <div class="l-mods__topics">
+                                <div class="l-mods__topics-inner">
+                                    <a href="/course/8/module/1/sub_module/1" class="l-mods__topic"><h4>Learning Outcomes</h4></a>
+                                    <a href="/course/8/module/1/sub_module/2" class="l-mods__topic"><h4>Foundations of Safe Driving</h4></a>
+                                    <a href="/course/8/module/1/sub_module/3" class="l-mods__topic"><h4>Vehicle Safety and Driving Tactics</h4></a>
+                                    <a href="/course/8/module/1/sub_module/4" class="l-mods__topic"><h4>Adverse Conditions and Road Incidents</h4></a>
+                                    <a href="/course/8/module/1/sub_module/5" class="l-mods__topic"><h4>Lesson Summary</h4></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="l-mods__module l-mods__module--open">
+                            <div class="l-mods__module-inner">
+                                <a href="#" title="Course assessment">
+                                    <div class="l-mods__module-num">Module 2</div>
+                                    <h3>Course assessment</h3>
+                                </a>
+                            </div>
+                            <div class="l-mods__topics">
+                                <div class="l-mods__topics-inner">
+                                    <a href="/course/8/module/2/sub_module/1" class="l-mods__topic"><h4>Driver Safety Awareness Training: Course Assessment</h4></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-desc course-desc" style="display:none;">
+                        <p>The intricacies of traffic regulations combined with the changing weather and the constant risk of accidents can create a sense of unease even for experienced drivers. This course will equip you with the knowledge and skills to become a confident and responsible driver.</p>
+                        <p>First, we introduce you to the principles of safe driving, emphasising the importance of factors such as a safe driving attitude and passing a driving theory test. We explain road signals and markings to ensure safe driving and efficient traffic flow. Additionally, you will learn how to conduct pre-journey safety checks and employ specific driving tactics tailored to the unique challenges encountered while driving in the Canada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

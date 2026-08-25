@@ -7,7 +7,7 @@
 
     # Essentials of Electrical Safety
     [courses.2]
-        price = 80
+        price = 5
         prd_id = "price_1OYhj8D7upUCKzSUwLDe74gH"
         disabled = ""
     
@@ -32,19 +32,36 @@
     
     # Care Course
     [courses.6]
-        price = 5
+        price = 80
         prd_id = "price_1OVEOWD7upUCKzSU8j7V0QCO" # Testing 5 USD
         disabled = ""
         
+    # Farm Management and Maintenance
+    [courses.7]
+        price = 65
+        prd_id = "price_1OYhj8D7upUCKzSUwLDe74gH"
+        disabled = ""
+
+    # Driver Safety Awareness Training
+    [courses.8]
+        price = 80
+        prd_id = "price_1OYhj8D7upUCKzSUwLDe74gH"
+        disabled = ""
+
+    # End-of-Life and Palliative Care
+    [courses.9]
+        price = 65
+        prd_id = "price_1OYhj8D7upUCKzSUwLDe74gH"
+        disabled = ""
+
 
 [gateways]
     [gateways.stripe]
         key = "REDACTED_STRIPE_LIVE_KEY"
-        # key = "REDACTED_STRIPE_TEST_KEY"
     [gateways.paypal]
         # key = "sb"
         key = "REDACTED_PAYPAL_KEY"
-        currency = "GBP"
+        currency = "USD"
 
 [domain]
     domain = ["https", "healthcarecpd.org"]

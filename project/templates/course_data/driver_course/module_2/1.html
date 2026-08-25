@@ -1,0 +1,184 @@
+{% extends 'course_data/course_layouts/assessment_layout.html' %}
+{% block assessment %}
+<div class="m-course-player__head" style="background-color: #1a3c5e; padding: 20px;">
+    <h2 style="color: #fff; margin: 0;">{{ module_title }}</h2>
+</div>
+<div class="m-course-player__text" style="padding: 20px;">
+    <div id="quiz-intro">
+        <h4>Course Assessment — Driver Safety Awareness Training</h4>
+        <p>You must score <strong>80% or higher</strong> to pass this assessment and earn your CPD certificate.</p>
+        <p>There are <strong>10 questions</strong> in this assessment. Read each question carefully and select the best answer.</p>
+        <button id="start-quiz-btn" style="background-color: #1a3c5e; color: white; padding: 12px 30px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; margin-top: 10px;">Start Assessment</button>
+    </div>
+
+    <form id="quiz-form" style="display: none;">
+        <div class="quiz-question" data-correct="b">
+            <p><strong>1. What does a circular road sign with a red border indicate?</strong></p>
+            <label><input type="radio" name="q1" value="a"> A warning about a hazard ahead</label><br>
+            <label><input type="radio" name="q1" value="b"> A prohibition or order that must be obeyed</label><br>
+            <label><input type="radio" name="q1" value="c"> Information about a route</label><br>
+            <label><input type="radio" name="q1" value="d"> Direction to the nearest petrol station</label>
+        </div>
+        <hr>
+        <div class="quiz-question" data-correct="d">
+            <p><strong>2. What is the national speed limit on a single carriageway for cars?</strong></p>
+            <label><input type="radio" name="q2" value="a"> 30 mph</label><br>
+            <label><input type="radio" name="q2" value="b"> 40 mph</label><br>
+            <label><input type="radio" name="q2" value="c"> 70 mph</label><br>
+            <label><input type="radio" name="q2" value="d"> 60 mph</label>
+        </div>
+        <hr>
+        <div class="quiz-question" data-correct="c">
+            <p><strong>3. What does the acronym POWER stand for in pre-journey checks?</strong></p>
+            <label><input type="radio" name="q3" value="a"> Petrol, Oil, Windows, Engine, Roof</label><br>
+            <label><input type="radio" name="q3" value="b"> Parking, Oil, Water, Engine, Rubber</label><br>
+            <label><input type="radio" name="q3" value="c"> Petrol, Oil, Water, Electrics, Rubber</label><br>
+            <label><input type="radio" name="q3" value="d"> Power, Oil, Wipers, Engine, Roof</label>
+        </div>
+        <hr>
+        <div class="quiz-question" data-correct="a">
+            <p><strong>4. By how much can stopping distances increase on ice?</strong></p>
+            <label><input type="radio" name="q4" value="a"> Up to ten times</label><br>
+            <label><input type="radio" name="q4" value="b"> Twice as much</label><br>
+            <label><input type="radio" name="q4" value="c"> Three times as much</label><br>
+            <label><input type="radio" name="q4" value="d"> Five times as much</label>
+        </div>
+        <hr>
+        <div class="quiz-question" data-correct="b">
+            <p><strong>5. When should you use your fog lights?</strong></p>
+            <label><input type="radio" name="q5" value="a"> Whenever it is raining</label><br>
+            <label><input type="radio" name="q5" value="b"> When visibility drops below 100 metres</label><br>
+            <label><input type="radio" name="q5" value="c"> At night on all roads</label><br>
+            <label><input type="radio" name="q5" value="d"> When driving on motorways</label>
+        </div>
+        <hr>
+        <div class="quiz-question" data-correct="c">
+            <p><strong>6. What is the drink-drive limit in Scotland?</strong></p>
+            <label><input type="radio" name="q6" value="a"> 80mg per 100ml of blood</label><br>
+            <label><input type="radio" name="q6" value="b"> 0mg — no alcohol at all</label><br>
+            <label><input type="radio" name="q6" value="c"> 50mg per 100ml of blood</label><br>
+            <label><input type="radio" name="q6" value="d"> 100mg per 100ml of blood</label>
+        </div>
+        <hr>
+        <div class="quiz-question" data-correct="a">
+            <p><strong>7. What is the minimum distance from which you must be able to read a number plate?</strong></p>
+            <label><input type="radio" name="q7" value="a"> 20 metres</label><br>
+            <label><input type="radio" name="q7" value="b"> 10 metres</label><br>
+            <label><input type="radio" name="q7" value="c"> 50 metres</label><br>
+            <label><input type="radio" name="q7" value="d"> 30 metres</label>
+        </div>
+        <hr>
+        <div class="quiz-question" data-correct="d">
+            <p><strong>8. What happens when a new driver accumulates 6 penalty points within 2 years of passing?</strong></p>
+            <label><input type="radio" name="q8" value="a"> They receive a warning letter</label><br>
+            <label><input type="radio" name="q8" value="b"> They must pay a fine</label><br>
+            <label><input type="radio" name="q8" value="c"> They must take a refresher course</label><br>
+            <label><input type="radio" name="q8" value="d"> They lose their licence and must retake both tests</label>
+        </div>
+        <hr>
+        <div class="quiz-question" data-correct="b">
+            <p><strong>9. What should you do if you feel drowsy while driving?</strong></p>
+            <label><input type="radio" name="q9" value="a"> Open the window and continue driving</label><br>
+            <label><input type="radio" name="q9" value="b"> Stop safely, drink caffeine, and take a 15-20 minute nap</label><br>
+            <label><input type="radio" name="q9" value="c"> Turn up the radio volume</label><br>
+            <label><input type="radio" name="q9" value="d"> Drive faster to reach your destination sooner</label>
+        </div>
+        <hr>
+        <div class="quiz-question" data-correct="c">
+            <p><strong>10. What is the minimum legal level of motor insurance required to drive on UK roads?</strong></p>
+            <label><input type="radio" name="q10" value="a"> Comprehensive</label><br>
+            <label><input type="radio" name="q10" value="b"> Third Party, Fire and Theft</label><br>
+            <label><input type="radio" name="q10" value="c"> Third Party Only</label><br>
+            <label><input type="radio" name="q10" value="d"> No insurance is required</label>
+        </div>
+        <hr>
+        <button type="button" id="submit-quiz" style="background-color: #1a3c5e; color: white; padding: 12px 30px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer;">Submit Assessment</button>
+    </form>
+
+    <div id="quiz-results" style="display: none;">
+        <h4>Assessment Results</h4>
+        <div id="score-display" style="text-align: center; padding: 20px;">
+            <div id="score-circle" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: bold; color: white;"></div>
+            <p id="score-text" style="font-size: 18px; font-weight: bold;"></p>
+        </div>
+        <div id="pass-message" style="display: none; background: #e3f2fd; padding: 15px; border-radius: 8px; border-left: 4px solid #1a3c5e; margin: 15px 0;">
+            <p style="margin: 0;"><strong>🎉 Congratulations!</strong> You have passed the assessment. Click the button below to mark the course as complete and download your certificate.</p>
+        </div>
+        <div id="fail-message" style="display: none; background: #ffebee; padding: 15px; border-radius: 8px; border-left: 4px solid #c62828; margin: 15px 0;">
+            <p style="margin: 0;"><strong>❌ Unfortunately, you did not pass.</strong> You need at least 80% to pass. Please review the course material and try again.</p>
+        </div>
+        <div id="action-buttons" style="text-align: center; margin-top: 20px;">
+            <a id="mark-complete-btn" href="{{ URL }}" style="display: none; background-color: #1a3c5e; color: white; padding: 12px 30px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; text-decoration: none; margin: 5px;">Mark Complete</a>
+            <a id="download-cert-btn" href="/download_certificate/{{ course_id }}" style="display: none; background-color: #1565c0; color: white; padding: 12px 30px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; text-decoration: none; margin: 5px;">Download Certificate</a>
+            <button id="retry-btn" style="display: none; background-color: #e65100; color: white; padding: 12px 30px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; margin: 5px;" onclick="location.reload()">Retry Assessment</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.quizSubmitted = false;
+
+    $('#start-quiz-btn').click(function() {
+        $('#quiz-intro').hide();
+        $('#quiz-form').show();
+    });
+
+    $('#submit-quiz').click(function() {
+        var total = $('.quiz-question').length;
+        var answered = 0;
+        var correct = 0;
+
+        $('.quiz-question').each(function(i) {
+            var selected = $(this).find('input[type="radio"]:checked').val();
+            var correctAnswer = $(this).data('correct');
+            if (selected) {
+                answered++;
+                if (selected === correctAnswer) {
+                    correct++;
+                    $(this).css('background-color', '#e8f5e9').css('padding', '10px').css('border-radius', '6px');
+                } else {
+                    $(this).css('background-color', '#ffebee').css('padding', '10px').css('border-radius', '6px');
+                }
+            } else {
+                $(this).css('background-color', '#fff3e0').css('padding', '10px').css('border-radius', '6px');
+            }
+        });
+
+        if (answered < total) {
+            alert('Please answer all ' + total + ' questions before submitting.');
+            return;
+        }
+
+        var score = Math.round((correct / total) * 100);
+        window.quizSubmitted = true;
+
+        // Disable form
+        $('#quiz-form input').prop('disabled', true);
+        $('#submit-quiz').hide();
+
+        // Show results
+        $('#quiz-results').show();
+        $('#score-circle').text(score + '%');
+        if (score >= 80) {
+            $('#score-circle').css('background-color', '#1a3c5e');
+            $('#score-text').text('You scored ' + correct + ' out of ' + total + ' (' + score + '%)');
+            $('#pass-message').show();
+            $('#mark-complete-btn').show();
+            $('#download-cert-btn').show();
+
+            // Dispatch assessment finished event
+            document.dispatchEvent(new CustomEvent('course:player:assessment:finished', {
+                detail: { score: score }
+            }));
+        } else {
+            $('#score-circle').css('background-color', '#c62828');
+            $('#score-text').text('You scored ' + correct + ' out of ' + total + ' (' + score + '%)');
+            $('#fail-message').show();
+            $('#retry-btn').show();
+        }
+
+        // Scroll to results
+        $('html, body').animate({ scrollTop: $('#quiz-results').offset().top - 100 }, 500);
+    });
+</script>
+{% endblock %}

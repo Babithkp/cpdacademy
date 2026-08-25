@@ -1,0 +1,199 @@
+{% extends "course_data/module_layout.html" %}
+{% block module %}
+<div id="learning-environment">
+    <script>
+        var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+        if (window.localStorage && iOS) {
+            if (!localStorage.getItem('i')) {
+                localStorage['i'] = true;
+                window.location.reload();
+            } else {
+                localStorage.removeItem('i');
+            }
+        }
+        var wrapper = document.getElementById('learning-environment'),
+            observer = new MutationObserver(function (mutations, observer) {
+                wrapper.style.height = '';
+                wrapper.style.minHeight = '';
+            });
+        observer.observe(wrapper, {
+            attributes: true,
+            attributeFilter: ['style']
+        });
+    </script>
+    <div style="display:none;" class="player-nav--top">
+        <a style="display:none;" href="{{URL}}">next</a>
+    </div>
+    <div class="new-player player">
+        <div class="new-player--inner">
+            <div id="iframe_container" class="" style="min-height: auto;">
+                <div class="close-mode"></div>    <style>
+        /* hide Ghost Angular player container to avoid blank top block in non-SPA mode */
+        #learning-environment .js-angular-course-player.angular-course-player,
+        #learning-environment .js-angular-course-player.angular-course-player > app-course-player {
+            display: none !important;
+            height: 0 !important;
+            min-height: 0 !important;
+            max-height: 0 !important;
+            overflow: hidden !important;
+        }
+
+        #learning-environment {
+            background: transparent !important;
+            min-height: auto !important;
+            padding-top: 0 !important;
+        }
+
+        #iframe_container {
+            min-height: auto !important;
+            margin-bottom: 0 !important;
+        }
+    </style>                <div style="display: none;">
+                    <app-root data-course-name="{{ course.title }}" data-course-completed="" data-course-id="{{ course_id }}" data-sco-id="0" data-course-theme="9" data-topics="[]" data-isassessment="0" course_id="{{ course_id }}" course_name="{{ course.title }}" data-canpassassessment="1" ng-version="16.2.5"></app-root>
+                </div>
+                <div class="js-angular-course-player angular-course-player" data-course-name="{{ course.title }}" data-course-completed="" data-course-id="{{ course_id }}" data-sco-id="0" data-course-theme="9" data-topics="[]" data-isassessment="0" data-canpassassessment="1">
+                    <app-course-player></app-course-player>
+                </div>
+                <div class="m-course-player">
+                    {% block data %}{% endblock %}
+                </div>
+                <div class="side-player-nav">
+                    <div class="player-nav__button player-nav__button--left">
+                        <div class="player-nav__button-inner player-nav__next">
+                            <span>Next</span>
+                            <i class="icon-thick-chevron-up"></i>
+                        </div>
+                    </div>
+                    <div class="player-nav__button player-nav__button--right">
+                        <div class="player-nav__button-inner player-nav__prev disabled">
+                            <i class="icon-thick-chevron-down"></i>
+                            <span>Previous</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mot-message-outer" style="display: none">
+                    <div class="mot-message">
+                        <span class="icon-cross2"></span>
+                        <div class="mot-message__inner">
+                            <div class="mot-message__img"><img src="/html/site/img/player/motivational.svg"></div>
+                            <p>
+                                Great Work!
+                                <br>
+                                Keep going to complete this module
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="sr-banner" class="sr-banner-primary" style="display: none;">
+                    <div class="sr-message">
+                        <h2 class="sr-message-heading">You've started now, make sure you finish!</h2>
+                        <p class="sr-message-headline">Set study reminders to guarantee a steady learning routine.</p>
+                    </div>
+                    <div class="sr-buttons">
+                        <span class="sr-banner-button sr-banner-button--blank">Not Now</span>
+                        <span class="sr-banner-button sr-banner-button--green">Set Study Reminder</span>
+                    </div>
+                </div>
+                <div id="sr-banner" class="sr-banner-secondary" style="display: none">
+                    <div class="sr-message">
+                        <h2 class="sr-message-heading sr-message-heading--narrow">Learners with study reminders are 34% more likely to finish their course!</h2>
+                        <p class="sr-message-headline sr-message-headline sr-message-headline--underline">Don't ask me again</p>
+                    </div>
+                    <div class="sr-buttons">
+                        <span class="sr-banner-button sr-banner-button--blank">Not Now</span>
+                        <span class="sr-banner-button sr-banner-button--green">Set Study Reminder</span>
+                    </div>
+                    <div class="sr-hide-mobile">
+                        <p>Don't ask me again</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="player__extras">
+            <ul class="topic-helpers"></ul>
+            <div class="player-tabs player-tabs--no-resources ">
+                <div class="player-tabs__navigation">
+                    <div data-tab="study-reminders-item">
+                        <span class=""><img src="/html/site/img/player/reminders.svg"><span class="hide-study">Study
+                            </span>
+                            Reminders</span>
+                    </div>
+                    <div class="intercom-tab">
+                        <span class=""><img src="/html/site/img/player/intercom-logo.png" title="Click to chat">
+                            Support</span>
+                    </div>
+                </div>
+                <div class="player-tabs__content">
+                    <div class="study-reminders-item">
+                        <section id="srv2-container">
+                            <div class="srv2-no-reminders-set" style="display: none;">
+                                <h3>Set A Weekly Study Reminder</h3>
+                                <p>Learners who set study reminders are 75% more likely to complete a course. You can change this any time.</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="search-sticky" class="sticky-ad player-sticky search-sticky--index" style="position: absolute; top: 92px;">
+        <div id="gam_sidebar" style="height: 100%"></div>
+    </div>
+    <div class="player-popup" style="display: none">
+        <div class="player-popup__inner">
+            <h4><br><strong>Are you sure you want<br>
+                    to leave midway?</strong>
+            </h4>
+            <p>
+                <strong>If you leave now, you'll lose some of your progress.</strong><br><span>
+                    To save your progress, keep learning until you see the
+                    <span>"Progress Saved"</span>
+                    message appear under your progress bar.
+                </span>
+            </p>
+            <div class="player-popup__buttons">
+                <div class="but but--outline player-popup__close">
+                    <span>Discard Progress</span>
+                </div>
+                <div class="but player-popup__next">
+                    <span>Keep Learning</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Self-initialise navigation since we don't have the Angular course player
+    $(document).ready(function() {
+        // Show the side navigation immediately
+        $('.side-player-nav').fadeIn();
+
+        // Handle Next button click — navigate to the next URL
+        $(document).on('click', '.player-nav__next:not(.disabled)', function (e) {
+            e.preventDefault();
+            window.scrollTo(0, 0);
+            var nextPage = "{{ URL }}";
+            if (nextPage && nextPage !== '') {
+                window.location.href = nextPage;
+            }
+        });
+
+        // Handle Previous button click — go back in history
+        $(document).on('click', '.player-nav__prev:not(.disabled)', function (e) {
+            e.preventDefault();
+            window.scrollTo(0, 0);
+            window.history.back();
+        });
+
+        // Enable the Previous button (remove 'disabled' class) if there's history
+        if (document.referrer && document.referrer.indexOf('/course/') > -1) {
+            $('.player-nav__prev').removeClass('disabled');
+        }
+
+        // Fake the course:player:initialized event so module_layout.html JS can work
+        document.dispatchEvent(new Event('course:player:initialized'));
+    });
+</script>
+{% endblock %}
