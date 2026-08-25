@@ -56,11 +56,8 @@
 
 
 [gateways]
-    [gateways.stripe]
-        key = "REDACTED_STRIPE_LIVE_KEY"
+    # Stripe and PayPal secret keys live in .env (STRIPE_SECRET_KEY, PAYPAL_KEY) - not committed to git
     [gateways.paypal]
-        # key = "sb"
-        key = "REDACTED_PAYPAL_KEY"
         currency = "USD"
 
 [domain]

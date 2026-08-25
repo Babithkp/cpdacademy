@@ -433,7 +433,7 @@ def create_checkout_session(u_ID, c_ID):
             return abort(404)
         session["paying_user"] = u_ID
         session["paying_course"] = c_ID
-        stripe.api_key = cfg["gateways"]["stripe"]["key"]
+        stripe.api_key = os.environ["STRIPE_SECRET_KEY"]
         checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
@@ -501,7 +501,7 @@ def checkout(ID):
     conf = config.read_config()
     course_conf = conf["courses"][str(ID)]
     paypal_conf = conf["gateways"]["paypal"]
-    return render_template("checkout.html", course_id=ID, title=course.title, price=course_conf["price"], paypal_key=paypal_conf["key"], currency=paypal_conf["currency"])
+    return render_template("checkout.html", course_id=ID, title=course.title, price=course_conf["price"], paypal_key=os.environ["PAYPAL_KEY"], currency=paypal_conf["currency"])
 
 
 def get_units():

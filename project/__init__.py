@@ -1,5 +1,6 @@
 from flask import Flask, Blueprint
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
 import logging
 import os
 
@@ -9,6 +10,7 @@ log.setLevel(logging.ERROR)
 app = Flask(__name__)
 application = app
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 #BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/autouttl/healthcarecpd.org/test.db'
 app.config["APP_DIR"] = BASE_DIR
