@@ -24,7 +24,7 @@ def scrap_alison_file(file, path):
     return abort(404)
 
 
-TITLE = "Healthcare CPD"
+TITLE = "CPD Academy"
 domain = config.read_config()["domain"]["domain"]
 TESTING = False
 
@@ -57,9 +57,10 @@ def check_course(f):
     def decorated_function(*args, **kwargs):
         user_id = session["id"]
         course_id = kwargs["c_ID"]
-        paid = Paid.query.filter_by(course_id=course_id, user_id=user_id).first()
-        if not paid:
-            return redirect(f"/info/{course_id}")
+        if user_id != -1:
+            paid = Paid.query.filter_by(course_id=course_id, user_id=user_id).first()
+            if not paid:
+                return redirect(f"/info/{course_id}")
         if course_id == 6:
             return redirect("/lms/care-certificate")
         return f(*args, **kwargs)
@@ -71,9 +72,10 @@ def check_course_6(f):
     def decorated_function(*args, **kwargs):
         user_id = session["id"]
         course_id = 6
-        paid = Paid.query.filter_by(course_id=course_id, user_id=user_id).first()
-        if not paid:
-            return redirect(f"/info/{course_id}")
+        if user_id != -1:
+            paid = Paid.query.filter_by(course_id=course_id, user_id=user_id).first()
+            if not paid:
+                return redirect(f"/info/{course_id}")
         return f(*args, **kwargs)
     return decorated_function
 
@@ -147,7 +149,7 @@ def login():
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
-        if email == "admin@admin.com" and password == "admin@012":
+        if email == "admin@admin.com" and password == "admin@123":
             session["id"] = -1
             session["email"] = email
             return redirect("/admin")
@@ -574,6 +576,8 @@ def getLatestUnit():
 
 
 def check_unit(unit):
+    if session["id"] == -1:
+        return unit > 0 and unit < 16
     latest_unit = getLatestUnit()
     if (unit <= latest_unit and unit > 0 and unit < 16):
         return True
@@ -612,6 +616,8 @@ def getLatestTopic():
 def check_topic(unit_id, topic_no):
     section_id = Section.query.filter_by(unit_id=unit_id).order_by("section_id").all()[topic_no-1].section_id
     total_topics = Section.query.count()
+    if session["id"] == -1:
+        return section_id > 0 and section_id <= total_topics
     latest_topic = getLatestTopic()
     if section_id <= latest_topic and section_id > 0 and section_id <= total_topics:
         return True
@@ -628,7 +634,7 @@ def topic(unit_id, topic_no):
     unit_dir = f"care_certificate/units/unit_{unit_id}"
 
     section_id = Section.query.filter_by(unit_id=unit_id).order_by("section_id").all()[topic_no-1].section_id
-    if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=section_id).first():
+    if session["id"] != -1 and not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=section_id).first():
         progress = Progress(unit_id=unit_id, user_id=session["id"], section_id=section_id)
         db.session.add(progress)
         db.session.commit()
@@ -640,7 +646,7 @@ def topic(unit_id, topic_no):
 @check_course_6
 def quiz(unit_id):
     last_topic = Section.query.filter_by(unit_id=unit_id).all()[-1].section_id - 1
-    if not Progress.query.filter_by(user_id=session["id"], section_id=last_topic).first():
+    if session["id"] != -1 and not Progress.query.filter_by(user_id=session["id"], section_id=last_topic).first():
         return redirect(f"/lms/care-certificate/unit/{unit_id}")
 
     unit_dir = f"care_certificate/units/unit_{unit_id}"
@@ -660,14 +666,15 @@ def quiz(unit_id):
 @check_course_6
 def done_quiz(unit_id):
     section_id = Section.query.filter_by(unit_id=unit_id, type="quiz").first().section_id
-    if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=section_id).first():
-        progress = Progress(unit_id=unit_id, user_id=session["id"], section_id=section_id)
-        db.session.add(progress)
-        db.session.commit()
-    if not Unit_Progress.query.filter_by(user_id=session["id"], unit_id=unit_id).first():
-        unit = Unit_Progress(user_id=session["id"], unit_id=unit_id, status=True)
-        db.session.add(unit)
-        db.session.commit()
+    if session["id"] != -1:
+        if not Progress.query.filter_by(unit_id=unit_id, user_id=session["id"], section_id=section_id).first():
+            progress = Progress(unit_id=unit_id, user_id=session["id"], section_id=section_id)
+            db.session.add(progress)
+            db.session.commit()
+        if not Unit_Progress.query.filter_by(user_id=session["id"], unit_id=unit_id).first():
+            unit = Unit_Progress(user_id=session["id"], unit_id=unit_id, status=True)
+            db.session.add(unit)
+            db.session.commit()
     return "ok"
 
 
@@ -756,6 +763,8 @@ def get_course_module(c_ID, m_num):
 
 def update_progress(c_ID, topic_id):
     user_id = session["id"]
+    if user_id == -1:
+        return
     progress = NewProgress.query.filter_by(course_id=c_ID, user_id=user_id).first()
     if not progress:
         progress = NewProgress(course_id=c_ID, user_id=user_id)
@@ -773,8 +782,8 @@ def sub_module(c_ID, module_num, sub_num):
         user_id = session["id"]
         progress = get_progress(c_ID, user_id)
         next_topic = get_next_topic(c_ID, progress)
-        
-        if next_topic and next_topic.ID < topic.ID:
+
+        if user_id != -1 and next_topic and next_topic.ID < topic.ID:
             return redirect(f"/course/{c_ID}")
 
 

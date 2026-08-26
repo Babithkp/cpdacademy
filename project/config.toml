@@ -48,9 +48,9 @@
         prd_id = "price_1OYhj8D7upUCKzSUwLDe74gH"
         disabled = ""
 
-    # End-of-Life and Palliative Care
+    # Palliative Care
     [courses.9]
-        price = 65
+        price = 75
         prd_id = "price_1OYhj8D7upUCKzSUwLDe74gH"
         disabled = ""
 

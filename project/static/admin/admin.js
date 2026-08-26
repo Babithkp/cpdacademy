@@ -14,6 +14,7 @@ class Admin {
         this.users = {}
         this.courses = null
         this.container = document.querySelector("#users")
+        this.courses_container = document.querySelector("#courses")
         this.progress_dialog = document.querySelector("#progress_dialog")
         this.progress_data = document.querySelector("#progress_data")
         this.overlay = document.querySelector("#overlay")
@@ -25,6 +26,7 @@ class Admin {
         await this.get_users()
         await this.get_courses()
         this.show_users()
+        this.show_courses()
         hide_loading()
         this.overlay.style.display = "none"
     }
@@ -89,6 +91,36 @@ class Admin {
 
     async get_courses() {
         this.courses = await this.fetch_data("courses")
+    }
+
+    show_courses() {
+        // Remove all previous courses
+        while (this.courses_container.firstChild) {
+            this.courses_container.removeChild(this.courses_container.lastChild);
+        }
+        let course_ids = Object.keys(this.courses)
+        for (let i = 0; i < course_ids.length; i++) {
+            let course_id = course_ids[i]
+            this.create_course_row(i + 1, this.courses[course_id], course_id)
+        }
+    }
+
+    create_course_row(i, title, course_id) {
+        let tr = document.createElement("tr")
+        let num = document.createElement("td")
+        let title_td = document.createElement("td")
+        let view = document.createElement("td")
+        let a_view = document.createElement("a")
+
+        num.innerText = i
+        title_td.innerText = title
+        a_view.innerText = "VIEW"
+        a_view.className = "btn"
+        a_view.href = course_id == "6" ? "/lms/care-certificate" : `/course/${course_id}`
+        view.appendChild(a_view)
+
+        tr.append(num, title_td, view)
+        this.courses_container.appendChild(tr)
     }
 
     async user_progress(ID) {
