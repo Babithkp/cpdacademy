@@ -288,11 +288,11 @@ def generate_certificate_pdf(user, course):
         pdf.image(brand_logo, x=139, y=29, w=logo_w)
     
 
-    # "Healthcare CPD" heading — WHITE text (sits on charcoal header area)
+    # "CPD Academy" heading — WHITE text (sits on charcoal header area)
     pdf.set_y(51)
     pdf.set_font('helvetica', 'B', 15)
     pdf.set_text_color(*GOLD)
-    pdf.cell(0, 6, 'Healthcare CPD', 0, 1, 'C')
+    pdf.cell(0, 6, 'CPD Academy', 0, 1, 'C')
 
     # "CONSTANT LEARNING" slogan — GOLD
     pdf.set_font('helvetica', 'I', 9)
@@ -359,7 +359,7 @@ def generate_certificate_pdf(user, course):
     pdf.set_x(45)
     pdf.set_font('helvetica', '', 8)
     pdf.set_text_color(*MID_GREY)
-    pdf.cell(50, 4, 'On behalf of Healthcare CPD', 0, 0, 'L')
+    pdf.cell(50, 4, 'On behalf of CPD Academy', 0, 0, 'L')
 
     # ── 10. Accreditation logo (bottom-right) ─────────────────────────────────
     logo_y  = 130
@@ -374,7 +374,7 @@ def generate_certificate_pdf(user, course):
     pdf.set_y(199)
     pdf.set_font('helvetica', 'B', 11)
     pdf.set_text_color(*WHITE)
-    pdf.cell(0, 11, 'www.healthcarecpd.org', 0, 0, 'C')
+    pdf.cell(0, 11, 'www.cpdacademy.org', 0, 0, 'C')
 
     return pdf
 
@@ -814,7 +814,7 @@ def course_complete(c_ID):
 @app.route("/password_reset", methods=["GET", "POST"])
 def reset_password():
     layout = """
-<h1 style="text-align: center;">Healthcare CPD</h1>
+<h1 style="text-align: center;">CPD Academy</h1>
 <p>CODE: <b>{}</b></p>
 """
     if request.method == "POST":

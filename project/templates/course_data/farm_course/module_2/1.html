@@ -7,92 +7,300 @@
     <div id="quiz-intro">
         <h4>Course Assessment — Farm Management and Maintenance</h4>
         <p>You must score <strong>80% or higher</strong> to pass this assessment and earn your CPD certificate.</p>
-        <p>There are <strong>10 questions</strong> in this assessment. Read each question carefully and select the best answer.</p>
+        <p>There are <strong>25 questions</strong> in this assessment. Read each question carefully and select the best answer.</p>
         <button id="start-quiz-btn" style="background-color: #2d6a4f; color: white; padding: 12px 30px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; margin-top: 10px;">Start Assessment</button>
     </div>
 
     <form id="quiz-form" style="display: none;">
-        <div class="quiz-question" data-correct="b">
-            <p><strong>1. What is farm management primarily concerned with?</strong></p>
-            <label><input type="radio" name="q1" value="a"> Only growing crops</label><br>
-            <label><input type="radio" name="q1" value="b"> Making and implementing decisions to organise and operate a farm business</label><br>
-            <label><input type="radio" name="q1" value="c"> Selling farm land</label><br>
-            <label><input type="radio" name="q1" value="d"> Hiring farm workers only</label>
+
+        <div class="quiz-question" data-type="fillblank" data-correct="texture">
+            <p><strong>1. Soil ______ refers to the size distribution of mineral particles in the soil.</strong></p>
+            <input type="text" name="q1" placeholder="Type your answer here..." style="padding:8px; width:100%; max-width:400px; border:1px solid #ccc; border-radius:4px;">
         </div>
         <hr>
-        <div class="quiz-question" data-correct="c">
-            <p><strong>2. Which technology uses GPS and sensors to manage fields at a micro level?</strong></p>
-            <label><input type="radio" name="q2" value="a"> Organic farming</label><br>
-            <label><input type="radio" name="q2" value="b"> Subsistence farming</label><br>
-            <label><input type="radio" name="q2" value="c"> Precision agriculture</label><br>
-            <label><input type="radio" name="q2" value="d"> Crop rotation</label>
+
+        <div class="quiz-question" data-type="match">
+            <p><strong>2. Match the type of budget that farmers can use with their correct description.</strong></p>
+            <div class="match-row" style="margin-bottom:10px;">
+                <span style="display:inline-block; width:160px;">Cash Budget</span>
+                <select data-correct="0" style="padding:6px;">
+                    <option value="">--Select--</option>
+                    <option value="0">This budget focuses on the inflows and outflows of cash in farming operations.</option>
+                    <option value="1">This budget focuses on long-term investment in farming operations.</option>
+                    <option value="2">This budget focuses on the day-to-day activities of farming operations.</option>
+                </select>
+            </div>
+            <div class="match-row" style="margin-bottom:10px;">
+                <span style="display:inline-block; width:160px;">Capital Budget</span>
+                <select data-correct="1" style="padding:6px;">
+                    <option value="">--Select--</option>
+                    <option value="0">This budget focuses on the inflows and outflows of cash in farming operations.</option>
+                    <option value="1">This budget focuses on long-term investment in farming operations.</option>
+                    <option value="2">This budget focuses on the day-to-day activities of farming operations.</option>
+                </select>
+            </div>
+            <div class="match-row">
+                <span style="display:inline-block; width:160px;">Operating Budget</span>
+                <select data-correct="2" style="padding:6px;">
+                    <option value="">--Select--</option>
+                    <option value="0">This budget focuses on the inflows and outflows of cash in farming operations.</option>
+                    <option value="1">This budget focuses on long-term investment in farming operations.</option>
+                    <option value="2">This budget focuses on the day-to-day activities of farming operations.</option>
+                </select>
+            </div>
         </div>
         <hr>
-        <div class="quiz-question" data-correct="a">
-            <p><strong>3. What is the minimum legal tread depth for tyres on farm vehicles used on public roads?</strong></p>
-            <label><input type="radio" name="q3" value="a"> 1.6mm</label><br>
-            <label><input type="radio" name="q3" value="b"> 3.0mm</label><br>
-            <label><input type="radio" name="q3" value="c"> 0.5mm</label><br>
-            <label><input type="radio" name="q3" value="d"> 5.0mm</label>
+
+        <div class="quiz-question" data-type="single" data-correct="b">
+            <p><strong>3. What is the purpose of Agroforestry in sustainable agriculture?</strong></p>
+            <label><input type="radio" name="q3" value="a"> To reduce the need for crop rotation.</label><br>
+            <label><input type="radio" name="q3" value="b"> To enhance biodiversity and provide a resilient ecosystem.</label><br>
+            <label><input type="radio" name="q3" value="c"> To eliminate all trees from agricultural fields.</label><br>
+            <label><input type="radio" name="q3" value="d"> To grow only one type of crop for higher yield.</label>
         </div>
         <hr>
-        <div class="quiz-question" data-correct="d">
-            <p><strong>4. What is Integrated Pest Management (IPM)?</strong></p>
-            <label><input type="radio" name="q4" value="a"> Using only chemical pesticides</label><br>
-            <label><input type="radio" name="q4" value="b"> Removing all insects from the farm</label><br>
-            <label><input type="radio" name="q4" value="c"> Ignoring pest problems</label><br>
-            <label><input type="radio" name="q4" value="d"> Combining biological, cultural, and chemical controls</label>
+
+        <div class="quiz-question" data-type="single" data-correct="true">
+            <p><strong>4. The profitability and sustainability of any farm business depend on competent farm management.</strong></p>
+            <label><input type="radio" name="q4" value="true"> True</label><br>
+            <label><input type="radio" name="q4" value="false"> False</label>
         </div>
         <hr>
-        <div class="quiz-question" data-correct="b">
-            <p><strong>5. Which of the following is a variable cost in farm budgeting?</strong></p>
-            <label><input type="radio" name="q5" value="a"> Land rent</label><br>
-            <label><input type="radio" name="q5" value="b"> Seeds and fertiliser</label><br>
-            <label><input type="radio" name="q5" value="c"> Insurance premiums</label><br>
-            <label><input type="radio" name="q5" value="d"> Machinery depreciation</label>
+
+        <div class="quiz-question" data-type="single" data-correct="false">
+            <p><strong>5. Crop selection is the only component of crop management.</strong></p>
+            <label><input type="radio" name="q5" value="true"> True</label><br>
+            <label><input type="radio" name="q5" value="false"> False</label>
         </div>
         <hr>
-        <div class="quiz-question" data-correct="a">
-            <p><strong>6. What does no-till farming help to prevent?</strong></p>
-            <label><input type="radio" name="q6" value="a"> Soil erosion</label><br>
-            <label><input type="radio" name="q6" value="b"> High crop yields</label><br>
-            <label><input type="radio" name="q6" value="c"> Excessive plant growth</label><br>
-            <label><input type="radio" name="q6" value="d"> Water flooding</label>
+
+        <div class="quiz-question" data-type="single" data-correct="a">
+            <p><strong>6. Which type of crop planning involves growing two or more crops together in the same field at the same time?</strong></p>
+            <label><input type="radio" name="q6" value="a"> Intercropping</label><br>
+            <label><input type="radio" name="q6" value="b"> Double cropping</label><br>
+            <label><input type="radio" name="q6" value="c"> Multiple cropping</label><br>
+            <label><input type="radio" name="q6" value="d"> Single cropping</label>
         </div>
         <hr>
-        <div class="quiz-question" data-correct="c">
-            <p><strong>7. Which irrigation method delivers water directly to plant roots?</strong></p>
-            <label><input type="radio" name="q7" value="a"> Sprinkler systems</label><br>
-            <label><input type="radio" name="q7" value="b"> Flood irrigation</label><br>
-            <label><input type="radio" name="q7" value="c"> Drip irrigation</label><br>
-            <label><input type="radio" name="q7" value="d"> Surface irrigation</label>
+
+        <div class="quiz-question" data-type="fillblank" data-correct="cover">
+            <p><strong>7. ______ crops are planted between the main crop cycles and help prevent soil erosion by holding the soil in place.</strong></p>
+            <input type="text" name="q7" placeholder="Type your answer here..." style="padding:8px; width:100%; max-width:400px; border:1px solid #ccc; border-radius:4px;">
         </div>
         <hr>
-        <div class="quiz-question" data-correct="b">
-            <p><strong>8. What is the purpose of crop rotation?</strong></p>
-            <label><input type="radio" name="q8" value="a"> To increase the use of pesticides</label><br>
-            <label><input type="radio" name="q8" value="b"> To prevent nutrient depletion and reduce pest build-up</label><br>
-            <label><input type="radio" name="q8" value="c"> To reduce the number of crops grown</label><br>
-            <label><input type="radio" name="q8" value="d"> To eliminate the need for irrigation</label>
+
+        <div class="quiz-question" data-type="single" data-correct="c">
+            <p><strong>8. Which risk management approach involves accepting the risk and taking steps to minimise its impact?</strong></p>
+            <label><input type="radio" name="q8" value="a"> Risk Reduction</label><br>
+            <label><input type="radio" name="q8" value="b"> Risk Avoidance</label><br>
+            <label><input type="radio" name="q8" value="c"> Risk Retention</label><br>
+            <label><input type="radio" name="q8" value="d"> Risk Sharing</label>
         </div>
         <hr>
-        <div class="quiz-question" data-correct="d">
-            <p><strong>9. What should be checked daily before using a tractor?</strong></p>
-            <label><input type="radio" name="q9" value="a"> Paint condition</label><br>
-            <label><input type="radio" name="q9" value="b"> Radio reception</label><br>
-            <label><input type="radio" name="q9" value="c"> Seat colour</label><br>
-            <label><input type="radio" name="q9" value="d"> Fluid levels, tyre pressure, and belt tension</label>
+
+        <div class="quiz-question" data-type="fillblank" data-correct="grass">
+            <p><strong>9. ______ is the most natural feed for herbivorous animals such as cows, sheep and goats.</strong></p>
+            <input type="text" name="q9" placeholder="Type your answer here..." style="padding:8px; width:100%; max-width:400px; border:1px solid #ccc; border-radius:4px;">
         </div>
         <hr>
-        <div class="quiz-question" data-correct="a">
-            <p><strong>10. Which of the following is NOT a pillar of sustainable agriculture?</strong></p>
-            <label><input type="radio" name="q10" value="a"> Maximum chemical usage</label><br>
-            <label><input type="radio" name="q10" value="b"> Environmental health</label><br>
-            <label><input type="radio" name="q10" value="c"> Economic viability</label><br>
-            <label><input type="radio" name="q10" value="d"> Social equity</label>
+
+        <div class="quiz-question" data-type="fillblank" data-correct="inheritance">
+            <p><strong>10. An ______ tax is levied on the transfer of assets from one generation to the next.</strong></p>
+            <input type="text" name="q10" placeholder="Type your answer here..." style="padding:8px; width:100%; max-width:400px; border:1px solid #ccc; border-radius:4px;">
         </div>
         <hr>
-        <button type="button" id="submit-quiz" style="background-color: #2d6a4f; color: white; padding: 12px 30px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer;">Submit Assessment</button>
+
+        <div class="quiz-question" data-type="multi" data-correct="a,b,c,d">
+            <p><strong>11. What are a farmer's considerations when selecting crops? (Choose four)</strong></p>
+            <label><input type="checkbox" name="q11" value="a"> Market demand</label><br>
+            <label><input type="checkbox" name="q11" value="b"> Water availability</label><br>
+            <label><input type="checkbox" name="q11" value="c"> Soil type</label><br>
+            <label><input type="checkbox" name="q11" value="d"> Climate</label><br>
+            <label><input type="checkbox" name="q11" value="e"> Seed availability</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="single" data-correct="c">
+            <p><strong>12. Which of the following is a characteristic of sustainable agriculture?</strong></p>
+            <label><input type="radio" name="q12" value="a"> Minimal concern for soil and water conservation.</label><br>
+            <label><input type="radio" name="q12" value="b"> Mono culture farming without crop rotation.</label><br>
+            <label><input type="radio" name="q12" value="c"> Diverse cropping systems and integrated pest management.</label><br>
+            <label><input type="radio" name="q12" value="d"> Intensive use of chemical fertilizers and pesticides.</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="single" data-correct="true">
+            <p><strong>13. Farming is one of the oldest professions in the world.</strong></p>
+            <label><input type="radio" name="q13" value="true"> True</label><br>
+            <label><input type="radio" name="q13" value="false"> False</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="single" data-correct="true">
+            <p><strong>14. Genetic diversity helps ensure the long-term sustainability of the livestock population.</strong></p>
+            <label><input type="radio" name="q14" value="true"> True</label><br>
+            <label><input type="radio" name="q14" value="false"> False</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="multi" data-correct="a,b,c">
+            <p><strong>15. What are the levels into which biosecurity measures can be categorised? (Choose three)</strong></p>
+            <label><input type="checkbox" name="q15" value="a"> Herd/Flock level</label><br>
+            <label><input type="checkbox" name="q15" value="b"> Individual animal level</label><br>
+            <label><input type="checkbox" name="q15" value="c"> Farm level</label><br>
+            <label><input type="checkbox" name="q15" value="d"> Pasture level</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="multi" data-correct="a,b,d,e">
+            <p><strong>16. Which of the following are parts of the business governance structure? (Choose four)</strong></p>
+            <label><input type="checkbox" name="q16" value="a"> Compliance with ethical standards.</label><br>
+            <label><input type="checkbox" name="q16" value="b"> Auditing.</label><br>
+            <label><input type="checkbox" name="q16" value="c"> Appointing workers and staff.</label><br>
+            <label><input type="checkbox" name="q16" value="d"> Appointing a board of directors.</label><br>
+            <label><input type="checkbox" name="q16" value="e"> Risk management.</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="multi" data-correct="a,b,d">
+            <p><strong>17. What are the principles of soil fertility and nutrient management? (Choose three)</strong></p>
+            <label><input type="checkbox" name="q17" value="a"> Maintaining soil cover.</label><br>
+            <label><input type="checkbox" name="q17" value="b"> Using natural inputs such as compost.</label><br>
+            <label><input type="checkbox" name="q17" value="c"> Leaving fields bare during the off-season.</label><br>
+            <label><input type="checkbox" name="q17" value="d"> Avoiding synthetic fertilisers and pesticides.</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="single" data-correct="b">
+            <p><strong>18. Which of the following plays a crucial role in influencing the animal's characteristics like growth rate, disease resistance and meat quality?</strong></p>
+            <label><input type="radio" name="q18" value="a"> Living environment</label><br>
+            <label><input type="radio" name="q18" value="b"> Breeding and genetics</label><br>
+            <label><input type="radio" name="q18" value="c"> Weather conditions</label><br>
+            <label><input type="radio" name="q18" value="d"> Diet</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="single" data-correct="true">
+            <p><strong>19. One of the factors to consider when planning for farm succession is the current and future value of the farm business.</strong></p>
+            <label><input type="radio" name="q19" value="true"> True</label><br>
+            <label><input type="radio" name="q19" value="false"> False</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="single" data-correct="d">
+            <p><strong>20. What is the primary goal of financial planning in farm management?</strong></p>
+            <label><input type="radio" name="q20" value="a"> Minimising costs</label><br>
+            <label><input type="radio" name="q20" value="b"> Maximising production</label><br>
+            <label><input type="radio" name="q20" value="c"> Minimising risks</label><br>
+            <label><input type="radio" name="q20" value="d"> Maximising profits</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="single" data-correct="b">
+            <p><strong>21. What equipment will you use for removing weeds and loosening the soil?</strong></p>
+            <label><input type="radio" name="q21" value="a"> Sprayer</label><br>
+            <label><input type="radio" name="q21" value="b"> Cultivator</label><br>
+            <label><input type="radio" name="q21" value="c"> Harvester</label><br>
+            <label><input type="radio" name="q21" value="d"> Tractor</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="multi" data-correct="a,b,c,e">
+            <p><strong>22. What are the skills and qualities needed for a successful farm manager? (Choose four)</strong></p>
+            <label><input type="checkbox" name="q22" value="a"> Able to keep up with emerging market trends and technologies.</label><br>
+            <label><input type="checkbox" name="q22" value="b"> Well-versed in farming methods and practices.</label><br>
+            <label><input type="checkbox" name="q22" value="c"> Able to establish and maintain connections with important parties.</label><br>
+            <label><input type="checkbox" name="q22" value="d"> Strong commitment to making profits.</label><br>
+            <label><input type="checkbox" name="q22" value="e"> Excellent interpersonal and communication abilities.</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="single" data-correct="a">
+            <p><strong>23. Which type of irrigation system is suitable for crops with a high water requirement?</strong></p>
+            <label><input type="radio" name="q23" value="a"> Drip</label><br>
+            <label><input type="radio" name="q23" value="b"> Surface</label><br>
+            <label><input type="radio" name="q23" value="c"> Any type of irrigation system is suitable.</label><br>
+            <label><input type="radio" name="q23" value="d"> Sprinkler</label>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="match">
+            <p><strong>24. Match these farm business structures with their correct descriptions.</strong></p>
+            <div class="match-row" style="margin-bottom:10px;">
+                <span style="display:inline-block; width:160px;">Limited companies</span>
+                <select data-correct="0" style="padding:6px;">
+                    <option value="">--Select--</option>
+                    <option value="0">In this structure, the farm business is incorporated as a separate legal entity.</option>
+                    <option value="1">This structure is common in large farming operations that require more capital investment.</option>
+                    <option value="2">This structure is ideal for small-scale farming operations that require less capital investment.</option>
+                </select>
+            </div>
+            <div class="match-row" style="margin-bottom:10px;">
+                <span style="display:inline-block; width:160px;">Partnerships</span>
+                <select data-correct="1" style="padding:6px;">
+                    <option value="">--Select--</option>
+                    <option value="0">In this structure, the farm business is incorporated as a separate legal entity.</option>
+                    <option value="1">This structure is common in large farming operations that require more capital investment.</option>
+                    <option value="2">This structure is ideal for small-scale farming operations that require less capital investment.</option>
+                </select>
+            </div>
+            <div class="match-row">
+                <span style="display:inline-block; width:160px;">Sole proprietorship</span>
+                <select data-correct="2" style="padding:6px;">
+                    <option value="">--Select--</option>
+                    <option value="0">In this structure, the farm business is incorporated as a separate legal entity.</option>
+                    <option value="1">This structure is common in large farming operations that require more capital investment.</option>
+                    <option value="2">This structure is ideal for small-scale farming operations that require less capital investment.</option>
+                </select>
+            </div>
+        </div>
+        <hr>
+
+        <div class="quiz-question" data-type="match">
+            <p><strong>25. Match the types of farming with the correct description.</strong></p>
+            <div class="match-row" style="margin-bottom:10px;">
+                <span style="display:inline-block; width:160px;">Organic farming</span>
+                <select data-correct="0" style="padding:6px;">
+                    <option value="">--Select--</option>
+                    <option value="0">Promotes soil health and reduces environmental impact.</option>
+                    <option value="1">Aims to maximise profit using large-scale production methods.</option>
+                    <option value="2">A low input, low output farming system.</option>
+                    <option value="3">Farmers grow crops and raise livestock for consumption.</option>
+                </select>
+            </div>
+            <div class="match-row" style="margin-bottom:10px;">
+                <span style="display:inline-block; width:160px;">Commercial farming</span>
+                <select data-correct="1" style="padding:6px;">
+                    <option value="">--Select--</option>
+                    <option value="0">Promotes soil health and reduces environmental impact.</option>
+                    <option value="1">Aims to maximise profit using large-scale production methods.</option>
+                    <option value="2">A low input, low output farming system.</option>
+                    <option value="3">Farmers grow crops and raise livestock for consumption.</option>
+                </select>
+            </div>
+            <div class="match-row" style="margin-bottom:10px;">
+                <span style="display:inline-block; width:160px;">Subsistence farming</span>
+                <select data-correct="3" style="padding:6px;">
+                    <option value="">--Select--</option>
+                    <option value="0">Promotes soil health and reduces environmental impact.</option>
+                    <option value="1">Aims to maximise profit using large-scale production methods.</option>
+                    <option value="2">A low input, low output farming system.</option>
+                    <option value="3">Farmers grow crops and raise livestock for consumption.</option>
+                </select>
+            </div>
+            <div class="match-row">
+                <span style="display:inline-block; width:160px;">Traditional farming</span>
+                <select data-correct="2" style="padding:6px;">
+                    <option value="">--Select--</option>
+                    <option value="0">Promotes soil health and reduces environmental impact.</option>
+                    <option value="1">Aims to maximise profit using large-scale production methods.</option>
+                    <option value="2">A low input, low output farming system.</option>
+                    <option value="3">Farmers grow crops and raise livestock for consumption.</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="button" id="submit-quiz" style="background-color: #2d6a4f; color: white; padding: 12px 30px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; margin-top: 20px;">Submit Assessment</button>
     </form>
 
     <div id="quiz-results" style="display: none;">
@@ -128,19 +336,60 @@
         var answered = 0;
         var correct = 0;
 
-        $('.quiz-question').each(function(i) {
-            var selected = $(this).find('input[type="radio"]:checked').val();
-            var correctAnswer = $(this).data('correct');
-            if (selected) {
+        $('.quiz-question').each(function() {
+            var $q = $(this);
+            var type = $q.data('type') || 'single';
+            var isAnswered = false;
+            var isCorrect = false;
+
+            if (type === 'single') {
+                var selected = $q.find('input[type="radio"]:checked').val();
+                if (selected) {
+                    isAnswered = true;
+                    isCorrect = (selected === String($q.data('correct')));
+                }
+            } else if (type === 'multi') {
+                var selectedVals = $q.find('input[type="checkbox"]:checked').map(function() { return $(this).val(); }).get().sort();
+                if (selectedVals.length > 0) {
+                    isAnswered = true;
+                    var correctVals = String($q.data('correct')).split(',').sort();
+                    isCorrect = (selectedVals.length === correctVals.length) &&
+                        selectedVals.every(function(v, idx) { return v === correctVals[idx]; });
+                }
+            } else if (type === 'fillblank') {
+                var val = $q.find('input[type="text"]').val();
+                if (val && val.trim().length > 0) {
+                    isAnswered = true;
+                    isCorrect = val.trim().toLowerCase() === String($q.data('correct')).toLowerCase();
+                }
+            } else if (type === 'match') {
+                var $selects = $q.find('select');
+                var allSelected = true;
+                var allCorrect = true;
+                $selects.each(function() {
+                    var val = $(this).val();
+                    if (!val) {
+                        allSelected = false;
+                    } else if (val !== String($(this).data('correct'))) {
+                        allCorrect = false;
+                    }
+                });
+                if (allSelected) {
+                    isAnswered = true;
+                    isCorrect = allCorrect;
+                }
+            }
+
+            if (isAnswered) {
                 answered++;
-                if (selected === correctAnswer) {
+                if (isCorrect) {
                     correct++;
-                    $(this).css('background-color', '#e8f5e9').css('padding', '10px').css('border-radius', '6px');
+                    $q.css('background-color', '#e8f5e9').css('padding', '10px').css('border-radius', '6px');
                 } else {
-                    $(this).css('background-color', '#ffebee').css('padding', '10px').css('border-radius', '6px');
+                    $q.css('background-color', '#ffebee').css('padding', '10px').css('border-radius', '6px');
                 }
             } else {
-                $(this).css('background-color', '#fff3e0').css('padding', '10px').css('border-radius', '6px');
+                $q.css('background-color', '#fff3e0').css('padding', '10px').css('border-radius', '6px');
             }
         });
 
@@ -153,7 +402,7 @@
         window.quizSubmitted = true;
 
         // Disable form
-        $('#quiz-form input').prop('disabled', true);
+        $('#quiz-form input, #quiz-form select').prop('disabled', true);
         $('#submit-quiz').hide();
 
         // Show results

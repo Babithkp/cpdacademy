@@ -61,4 +61,4 @@
         currency = "USD"
 
 [domain]
-    domain = ["https", "healthcarecpd.org"]
+    domain = ["https", "www.cpdacademy.org"]
