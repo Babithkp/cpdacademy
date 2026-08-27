@@ -4,7 +4,7 @@ import os
 sys.path.append(os.getcwd())
 
 from project import app, db
-from project.models import Users, Paid
+from project.models import Users, Paid, Course
 
 def add_test_user():
     with app.app_context():
@@ -16,6 +16,7 @@ def add_test_user():
         if existing:
             print(f"User '{email}' already exists (id={existing.id}). Ensuring payments...")
             user = existing
+            user.paid = True
         else:
             user = Users(
                 email=email,
@@ -35,8 +36,10 @@ def add_test_user():
             db.session.commit()
             print(f"Created user '{email}' with id={user.id}")
 
-        # Pay for Farm course (ID 7) and Electric course (ID 5) and Driver course (ID 8)
-        for course_id in [7, 5, 8]:
+        # Simulate a completed purchase for every course (same effect as the
+        # Stripe/PayPal success handlers: insert a Paid row per course).
+        course_ids = [c.ID for c in Course.query.all()]
+        for course_id in course_ids:
             if not Paid.query.filter_by(user_id=user.id, course_id=course_id).first():
                 paid = Paid(user_id=user.id, course_id=course_id)
                 db.session.add(paid)
@@ -48,7 +51,7 @@ def add_test_user():
         print(f"\nDone! Login with:")
         print(f"  Email:    {email}")
         print(f"  Password: {password}")
-        print(f"  Paid courses: Farm (7), Electric (5), Driver (8)")
+        print(f"  Paid courses: {course_ids}")
 
 if __name__ == "__main__":
     add_test_user()

@@ -2789,6 +2789,7 @@
                                                                     <div id="smart-button-container">
                                                                         <div style="text-align: center;">
                                                                             <div id="paypal-button-container"></div>
+                                                                            <button id="bypass_buy" type="button" style="margin-top:10px;padding:10px 20px;background-color:#28a745;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:16px;">Bypass Buy</button>
                                                                             <link rel="stylesheet" href="/static/stripe.css">
                                                                             {% if not session["id"] %}
                                                                             <script>
@@ -2817,6 +2818,7 @@
                                                         <script src="/static/overlay.js"></script>
                                                         <script src="https://www.paypal.com/sdk/js?client-id={{paypal_key}}&enable-funding=venmo&currency={{currency}}" data-sdk-integration-source="button-factory"></script>
                                                         <script src="/static/checkout/paypal.js"></script>
+                                                        <script src="/static/checkout/bypass.js"></script>
                                                     </div>
                                                 </div>
                                             </div>

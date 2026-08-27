@@ -236,14 +236,11 @@ def generate_certificate_pdf(user, course):
     # Paths to assets
     static_dir = os.path.join(app.root_path, "static")
     care_cert_dir = os.path.join(static_dir, "care_certificate_files")
-    home_files_dir = os.path.join(static_dir, "home_files")
 
     # Assets
     brand_logo = os.path.join(care_cert_dir, "logo.png")
     cpd_certified_logo = os.path.join(care_cert_dir, "CPD Certified Logo.PNG")
     signature_img   = os.path.join(care_cert_dir, "Signature Image.PNG")
-    quality_mark_logo  = os.path.join(home_files_dir, "Quality-Mark-logo.png")
-    skills_for_care_logo = os.path.join(home_files_dir, "Skills-for-Care.png")
 
     # ═══════════════════════════════════════════════════════════════════════════
     # 1. WHITE BACKGROUND
@@ -364,15 +361,11 @@ def generate_certificate_pdf(user, course):
     pdf.set_text_color(*MID_GREY)
     pdf.cell(50, 4, 'On behalf of Healthcare CPD', 0, 0, 'L')
 
-    # ── 10. Accreditation logos (bottom-right) ────────────────────────────────
+    # ── 10. Accreditation logo (bottom-right) ─────────────────────────────────
     logo_y  = 130
     logo_x2 = 215
-    if os.path.exists(quality_mark_logo):
-        pdf.image(quality_mark_logo, x=logo_x2, y=logo_y, w=28)
-    if os.path.exists(skills_for_care_logo):
-        pdf.image(skills_for_care_logo, x=logo_x2 - 4, y=logo_y + 10, w=38)
     if os.path.exists(cpd_certified_logo):
-        pdf.image(cpd_certified_logo, x=logo_x2, y=logo_y + 30, w=28)
+        pdf.image(cpd_certified_logo, x=logo_x2, y=logo_y + 15, w=28)
     
         
     # ── 11. Bottom gold banner ────────────────────────────────────────────────
